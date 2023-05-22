@@ -1,47 +1,47 @@
-import { CareerPrompt, ClientPrompt, Prompt } from 'types/common';
-import { deno, golang, java, react as reactJNode, rust, svelte, vue } from 'data/jnodes';
+import { ClientPrompt, Prompt } from 'types/common';
 import { initialEdges, initialNodes } from 'data/flow';
 
-import { Edge } from 'reactflow';
+import { careersMap } from 'data/careers';
 import { getPathsToNode } from 'utils/jnodes';
-import { highlightEdges } from 'utils/flow';
+import { highlightManyEdges } from 'utils/flow';
+import { techMap } from 'data/tech';
 
-const frontend: CareerPrompt = {
-  id: 'frontend',
-  prompt: 'I want to become a frontend developer',
-  type: 'career',
-  response: () => {
-    const paths = [getPathsToNode(reactJNode), getPathsToNode(vue), getPathsToNode(svelte)];
-    const edges = paths.flat().reduce<Edge[]>((list, path) => highlightEdges(list, path), initialEdges);
-    return { nodes: initialNodes, edges };
-  },
-};
-
-const backend: CareerPrompt = {
-  id: 'backend',
-  prompt: 'I want to become a backend developer',
-  type: 'career',
-  response: () => {
-    const paths = [getPathsToNode(deno), getPathsToNode(java), getPathsToNode(rust), getPathsToNode(golang)];
-    const edges = paths.flat().reduce<Edge[]>((list, path) => highlightEdges(list, path), initialEdges);
-    return { nodes: initialNodes, edges };
-  },
-};
-
-// const react: CareerPrompt = {
-//   id: 'react',
-//   prompt: 'I want to learn react',
-//   type: 'technology',
-//   jNodes: [
-//     {
-//       id: 'frontend',
-//       name: 'Junior Frontend Developer',
-//       type: 'career',
-//     },
-//   ],
+// const typesafe: Prompt = {
+//   id: 'typesafe',
+//   prompt: 'I like type safe languages',
+//   response: async () => ({
+//     nodes: initialNodes,
+//     edges: highlightManyEdges(
+//       initialEdges,
+//       [techMap.typescript, techMap.java, techMap.rust, techMap.golang].map(getPathsToNode),
+//     ),
+//   }),
 // };
 
-export const prompts: Prompt[] = [frontend, backend];
+const techPrompts = Object.values(techMap).map<Prompt>((jNode) => ({
+  id: jNode.id,
+  prompt: `I want to learn ${jNode.name}`,
+  response: async () => ({
+    nodes: initialNodes,
+    edges: highlightManyEdges(initialEdges, [jNode].map(getPathsToNode)),
+  }),
+}));
+
+const careerPrompts = Object.values(careersMap).map<Prompt>((jNode) => ({
+  id: jNode.id,
+  prompt: `I want to become a ${jNode.name}`,
+  response: async () => ({
+    nodes: initialNodes,
+    edges: highlightManyEdges(initialEdges, jNode.dependencies.map(getPathsToNode)),
+  }),
+}));
+
+export const prompts: Prompt[] = [...techPrompts, ...careerPrompts];
+
+export const promptsMap = prompts.reduce<Record<string, Prompt>>(
+  (obj, prompt) => ({ ...obj, [prompt.id]: prompt }),
+  {},
+);
 
 export const clientPrompts = prompts.map<ClientPrompt>((p) => ({
   value: p.id,

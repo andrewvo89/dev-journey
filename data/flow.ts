@@ -1,25 +1,5 @@
-import { Edge } from 'reactflow';
-import { NodeWithData } from 'types/flow';
-import { getLayoutedElements } from 'utils/flow';
-import { jNodes } from 'data/jnodes';
+import { root, techMap } from 'data/tech';
 
-const nodes = jNodes.map<NodeWithData>((jNode) => ({
-  id: jNode.id,
-  data: { label: jNode.name, jNode },
-  position: { x: 0, y: 0 },
-}));
+import { jNodesToFlow } from 'utils/flow';
 
-const edges = nodes.reduce<Edge[]>(
-  (list, node) => [
-    ...list,
-    ...node.data.jNode.dependencies.map<Edge>((dependency) => ({
-      id: `${node.id}-${dependency.id}`,
-      source: dependency.id,
-      target: node.id,
-      type: 'default',
-    })),
-  ],
-  [],
-);
-
-export const { nodes: initialNodes, edges: initialEdges } = getLayoutedElements(nodes, edges, 'LR');
+export const { nodes: initialNodes, edges: initialEdges } = jNodesToFlow([root, ...Object.values(techMap)]);

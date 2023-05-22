@@ -1,6 +1,7 @@
 import { Edge, Node, Position } from 'reactflow';
 
 import { JNode } from 'types/common';
+import { NodeWithData } from 'types/flow';
 import dagre from 'dagre';
 
 export const getLayoutedElements = (nodes: Node[], edges: Edge[], direction = 'TB') => {
@@ -68,3 +69,29 @@ export const highlightEdges = (edges: Edge[], jNodes: JNode[]): Edge[] => {
 
   return Array.from(updatedEdges.values());
 };
+
+export function jNodesToFlow(jNodes: JNode[]): { nodes: Node[]; edges: Edge[] } {
+  const nodes = jNodes.map<NodeWithData>((jNode) => ({
+    id: jNode.id,
+    data: { label: jNode.name, jNode },
+    position: { x: 0, y: 0 },
+  }));
+
+  const edges = nodes.reduce<Edge[]>(
+    (list, node) => [
+      ...list,
+      ...node.data.jNode.dependencies.map<Edge>((dependency) => ({
+        id: `${node.id}-${dependency.id}`,
+        source: dependency.id,
+        target: node.id,
+        type: 'default',
+      })),
+    ],
+    [],
+  );
+  return getLayoutedElements(nodes, edges, 'LR');
+}
+
+export function highlightManyEdges(edges: Edge[], paths: JNode[][][]): Edge[] {
+  return paths.flat().reduce<Edge[]>((list, jNodes) => highlightEdges(list, jNodes), edges);
+}
