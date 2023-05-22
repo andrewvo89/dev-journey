@@ -35,8 +35,7 @@ const useStyles = createStyles((theme, props: { isLoading: boolean }) => ({
 export default function Home(props: Props) {
   const { initialEdges, initialNodes, prompts } = props;
 
-  const [nodes, setNodes, onNodesChange] = useNodesState<NodeData>(initialNodes);
-  console.log('nodes', nodes);
+  const [nodes, , onNodesChange] = useNodesState<NodeData>(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -54,8 +53,7 @@ export default function Home(props: Props) {
     setIsLoading(true);
     try {
       const res = await fetch(`/api/prompts/${prompt.value}`, { method: 'POST' });
-      const { nodes, edges } = await res.json();
-      setNodes(nodes);
+      const { edges } = await res.json();
       setEdges(edges);
     } catch (error) {
       console.error(error);

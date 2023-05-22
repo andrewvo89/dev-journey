@@ -24,7 +24,6 @@ export const promptSchema = z.object({
   response: z.function().returns(
     z.promise(
       z.object({
-        nodes: z.any().array(),
         edges: z.any().array(),
       }),
     ),

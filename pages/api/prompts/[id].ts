@@ -4,7 +4,6 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { promptsMap } from 'data/prompts';
 
 type SuccessResponse = {
-  nodes: Node[];
   edges: Edge[];
 };
 
@@ -31,6 +30,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     return;
   }
 
-  const { edges, nodes } = await prompt.response();
-  res.status(200).json({ nodes, edges });
+  const { edges } = await prompt.response();
+  res.status(200).json({ edges });
 }
