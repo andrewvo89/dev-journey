@@ -1,6 +1,6 @@
-import { Edge, Node } from 'reactflow';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
+import { Edge } from 'reactflow';
 import { promptsMap } from 'data/prompts';
 
 type SuccessResponse = {
