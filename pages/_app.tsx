@@ -1,4 +1,5 @@
 import '../styles/globals.css';
+import 'reactflow/dist/style.css';
 
 import { AppProps } from 'next/app';
 import Head from 'next/head';
