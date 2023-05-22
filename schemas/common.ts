@@ -1,4 +1,3 @@
-import { Prompt } from 'types/common';
 import { z } from 'zod';
 
 const baseJNodeSchema = z.object({
@@ -12,6 +11,10 @@ type JNode = {
   dependencies: JNode[];
 };
 
+export const promptResponseSchema = z.object({
+  goalIds: z.array(z.string()),
+});
+
 export const jnodeSchema: z.ZodType<JNode> = baseJNodeSchema.extend({
   id: z.string(),
   name: z.string(),
@@ -21,11 +24,5 @@ export const jnodeSchema: z.ZodType<JNode> = baseJNodeSchema.extend({
 export const promptSchema = z.object({
   id: z.string(),
   prompt: z.string(),
-  response: z.function().returns(
-    z.promise(
-      z.object({
-        edges: z.any().array(),
-      }),
-    ),
-  ),
+  response: z.function().returns(z.promise(promptResponseSchema)),
 });

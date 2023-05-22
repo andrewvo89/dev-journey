@@ -70,26 +70,39 @@ export const highlightEdges = (edges: Edge[], jNodes: JNode[]): Edge[] => {
   return Array.from(updatedEdges.values());
 };
 
-export function jNodesToFlow(jNodes: JNode[]): { nodes: Node[]; edges: Edge[] } {
+export function jNodesToFlow(
+  jNodes: JNode[],
+  nodesOnPath: JNode[],
+  maintainSettings: Map<string, Partial<Node>>,
+): { nodes: Node[]; edges: Edge[] } {
   const nodes = jNodes.map<NodeWithData>((jNode) => ({
     id: jNode.id,
-    data: { label: jNode.name, jNode },
+    data: { label: jNode.name, isOnPath: nodesOnPath.includes(jNode) },
     position: { x: 0, y: 0 },
+    ...maintainSettings.get(jNode.id),
   }));
 
-  const edges = nodes.reduce<Edge[]>(
-    (list, node) => [
+  const edges = jNodes.reduce<Edge[]>(
+    (list, jNode) => [
       ...list,
-      ...node.data.jNode.dependencies.map<Edge>((dependency) => ({
-        id: `${node.id}-${dependency.id}`,
-        source: dependency.id,
-        target: node.id,
-        type: 'default',
-      })),
+      ...jNode.dependencies.map<Edge>((dependency) => {
+        const edge: Edge = {
+          id: `${jNode.id}-${dependency.id}`,
+          source: dependency.id,
+          target: jNode.id,
+          type: 'default',
+        };
+        if (nodesOnPath.includes(jNode)) {
+          edge.style = { stroke: '#f00000' };
+          edge.animated = true;
+        }
+        return edge;
+      }),
     ],
     [],
   );
-  return getLayoutedElements(nodes, edges, 'LR');
+
+  return { nodes, edges };
 }
 
 export function highlightManyEdges(edges: Edge[], paths: JNode[][][]): Edge[] {

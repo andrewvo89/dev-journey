@@ -1,19 +1,21 @@
-import { Edge, Node } from 'reactflow';
+import { ClientPrompt, JNode } from 'types/common';
 import type { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next';
-import { initialEdges, initialNodes } from 'data/flow';
+import { initialEdges, initialJNodes, initialNodes } from 'data/flow';
 
-import { ClientPrompt } from '../types/common';
+import { Edge } from 'reactflow';
 import Home from 'components/home';
+import { NodeWithData } from 'types/flow';
 import { clientPrompts } from 'data/prompts';
 
 export type Props = {
   prompts: ClientPrompt[];
-  initialNodes: Node[];
+  initialNodes: NodeWithData[];
   initialEdges: Edge[];
+  initialJNodes: JNode[];
 };
 
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
-  return { props: { prompts: clientPrompts, initialNodes, initialEdges } };
+  return { props: { prompts: clientPrompts, initialNodes, initialEdges, initialJNodes } };
 };
 
 const HomePage: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = (props) => {

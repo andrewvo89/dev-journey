@@ -1,12 +1,13 @@
 import { Autocomplete, Flex, Loader, createStyles } from '@mantine/core';
-import { Edge, ReactFlow, ReactFlowProvider, useEdgesState, useNodesState } from 'reactflow';
-import { NodeData, NodeWithData } from 'types/flow';
+import { ClientPrompt, JNode } from 'types/common';
+import { Node, ReactFlow, ReactFlowProvider, useEdgesState, useNodesState } from 'reactflow';
+import { useMemo, useState } from 'react';
 
-import { ClientPrompt } from 'types/common';
+import { NodeData } from 'types/flow';
 import { Props } from 'pages';
 import { getPathsToNode } from 'utils/jnodes';
-import { highlightEdges } from 'utils/flow';
-import { useState } from 'react';
+import { jNodesToFlow } from 'utils/flow';
+import { promptResponseSchema } from 'schemas/common';
 
 const useStyles = createStyles((theme, props: { isLoading: boolean }) => ({
   container: {
@@ -33,27 +34,57 @@ const useStyles = createStyles((theme, props: { isLoading: boolean }) => ({
 }));
 
 export default function Home(props: Props) {
-  const { initialEdges, initialNodes, prompts } = props;
+  const { initialEdges, initialNodes, initialJNodes, prompts } = props;
 
-  const [nodes, , onNodesChange] = useNodesState<NodeData>(initialNodes);
+  const [nodes, setNodes, onNodesChange] = useNodesState<NodeData>(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [paths, setPaths] = useState<JNode[][][]>([]);
+
+  const jNodesMap = useMemo<Map<string, JNode>>(
+    () => initialJNodes.reduce<Map<string, JNode>>((map, jNode) => map.set(jNode.id, jNode), new Map()),
+    [initialJNodes],
+  );
+
+  const nodeSettingsMap = useMemo(
+    () =>
+      nodes.reduce<Map<string, Partial<Node>>>(
+        (map, node) =>
+          map.set(node.id, {
+            position: node.position,
+            sourcePosition: node.sourcePosition,
+            targetPosition: node.targetPosition,
+          }),
+        new Map(),
+      ),
+    [nodes],
+  );
 
   const { classes } = useStyles({ isLoading });
-
-  const nodeClickHandler = (node: NodeWithData) => {
-    const flatNodePaths = getPathsToNode(node.data.jNode);
-    const newEdges = flatNodePaths.reduce<Edge[]>((list, path) => highlightEdges(list, path), initialEdges);
-    setEdges(newEdges);
-  };
 
   const itemSelectedHandler = async (prompt: ClientPrompt) => {
     setSearchTerm(prompt.label);
     setIsLoading(true);
     try {
       const res = await fetch(`/api/prompts/${prompt.value}`, { method: 'POST' });
-      const { edges } = await res.json();
+      const jsonResponse = await res.json();
+      console.log('jsonResponse', jsonResponse);
+      const { goalIds } = promptResponseSchema.parse(jsonResponse);
+
+      const goalJNodes = goalIds.reduce<JNode[]>((list, id) => {
+        const found = jNodesMap.get(id);
+        if (found) {
+          list.push(found);
+        }
+        return list;
+      }, []);
+
+      const paths = goalJNodes.map((goal) => getPathsToNode(goal));
+      setPaths(paths);
+      const nodesOnPath = paths.flatMap((path) => path.reduce((list, p) => [...list, ...p], []));
+      const { edges, nodes } = jNodesToFlow(initialJNodes, nodesOnPath, nodeSettingsMap);
+      setNodes(nodes);
       setEdges(edges);
     } catch (error) {
       console.error(error);
@@ -70,7 +101,6 @@ export default function Home(props: Props) {
           edges={edges}
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
-          onNodeClick={(_e, node) => nodeClickHandler(node)}
           onInit={(i) => i.fitView()}
           proOptions={{ hideAttribution: true }}
         />

@@ -1,5 +1,7 @@
+import { getLayoutedElements, jNodesToFlow } from 'utils/flow';
 import { root, techMap } from 'data/tech';
 
-import { jNodesToFlow } from 'utils/flow';
+export const initialJNodes = [root, ...Object.values(techMap)];
 
-export const { nodes: initialNodes, edges: initialEdges } = jNodesToFlow([root, ...Object.values(techMap)]);
+const { nodes, edges } = jNodesToFlow(initialJNodes, [], new Map());
+export const { nodes: initialNodes, edges: initialEdges } = getLayoutedElements(nodes, edges, 'LR');

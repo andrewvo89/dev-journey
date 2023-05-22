@@ -1,9 +1,6 @@
 import { ClientPrompt, Prompt } from 'types/common';
 
 import { careersMap } from 'data/careers';
-import { getPathsToNode } from 'utils/jnodes';
-import { highlightManyEdges } from 'utils/flow';
-import { initialEdges } from 'data/flow';
 import { techMap } from 'data/tech';
 
 // const typesafe: Prompt = {
@@ -22,7 +19,7 @@ const techPrompts = Object.values(techMap).map<Prompt>((jNode) => ({
   id: jNode.id,
   prompt: `I want to learn ${jNode.name}`,
   response: async () => ({
-    edges: highlightManyEdges(initialEdges, [jNode].map(getPathsToNode)),
+    goalIds: [jNode.id],
   }),
 }));
 
@@ -30,7 +27,7 @@ const careerPrompts = Object.values(careersMap).map<Prompt>((jNode) => ({
   id: jNode.id,
   prompt: `I want to become a ${jNode.name}`,
   response: async () => ({
-    edges: highlightManyEdges(initialEdges, jNode.dependencies.map(getPathsToNode)),
+    goalIds: jNode.dependencies.map((dep) => dep.id),
   }),
 }));
 

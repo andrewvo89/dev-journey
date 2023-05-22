@@ -1,6 +1,5 @@
-import { JNode } from 'types/common';
 import { Node } from 'reactflow';
 
-export type NodeData = { label: string; jNode: JNode };
+export type NodeData = { label: string; isOnPath: boolean };
 
 export type NodeWithData = Node<NodeData>;

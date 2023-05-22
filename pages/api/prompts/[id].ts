@@ -1,11 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { Edge } from 'reactflow';
+import { PromptResponse } from 'types/common';
 import { promptsMap } from 'data/prompts';
 
-type SuccessResponse = {
-  edges: Edge[];
-};
+type SuccessResponse = PromptResponse;
 
 type FailResponse = {
   error: string;
@@ -30,6 +28,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     return;
   }
 
-  const { edges } = await prompt.response();
-  res.status(200).json({ edges });
+  const { goalIds } = await prompt.response();
+  res.status(200).json({ goalIds });
 }
