@@ -26,7 +26,7 @@ export const useHistoryStore = create<HistoryState>()(
           return { journeys: [journey, ...state.journeys], selected: journey };
         }),
       removeJourney: (journey: Journey) =>
-        set((state) => ({ journeys: state.journeys.filter((j) => j.id !== journey.id) })),
+        set((state) => ({ journeys: state.journeys.filter((j) => j.id !== journey.id), selected: null })),
       setJourney: (journey: Journey) =>
         set((state) => ({ journeys: state.journeys.map((j) => (j.id === journey.id ? journey : j)) })),
       selected: null,
@@ -37,6 +37,7 @@ export const useHistoryStore = create<HistoryState>()(
       partialize: (state) => ({
         journeys: state.journeys,
       }),
+      version: 1,
     },
   ),
 );

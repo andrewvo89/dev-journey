@@ -15,6 +15,7 @@ export type ClientPrompt = {
 
 export type Journey = {
   id: string;
+  createdAt: string;
   prompt: ClientPrompt;
   goalIds: string[];
 };

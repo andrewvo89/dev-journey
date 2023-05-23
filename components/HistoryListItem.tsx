@@ -1,6 +1,7 @@
-import { ChangeEvent, useEffect, useState } from 'react';
-import { NavLink, Switch, Text, Tooltip, createStyles } from '@mantine/core';
+import { ActionIcon, Group, NavLink, Switch, Text, Tooltip, createStyles } from '@mantine/core';
+import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
 
+import { FaTrash } from 'react-icons/fa';
 import { Journey } from 'types/common';
 import { shallow } from 'zustand/shallow';
 import { useHistoryStore } from 'store/history';
@@ -11,18 +12,21 @@ type Props = {
 };
 
 const useStyles = createStyles(() => ({
-  listItem: {
+  listItemChildren: {
     display: 'flex',
     flexDirection: 'column',
     gap: 4,
+  },
+  listItemRoot: {
+    borderRadius: 8,
   },
 }));
 
 export default function HistoryListItem(props: Props) {
   const { journey } = props;
 
-  const { selected, setSelected } = useHistoryStore(
-    (state) => ({ selected: state.selected, setSelected: state.setSelected }),
+  const { selected, setSelected, removeJourney } = useHistoryStore(
+    (state) => ({ selected: state.selected, setSelected: state.setSelected, removeJourney: state.removeJourney }),
     shallow,
   );
 
@@ -46,8 +50,13 @@ export default function HistoryListItem(props: Props) {
     updateNodesWithGoals(Array.from(paths));
   }, [isSelected, paths, updateNodesWithGoals]);
 
-  const buttonClickHandler = (journey: Journey) => {
+  const promptClickHandler = () => {
     setSelected(journey);
+  };
+
+  const removeClickHandler = (e: MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.stopPropagation();
+    removeJourney(journey);
   };
 
   const switchToggleHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -72,11 +81,22 @@ export default function HistoryListItem(props: Props) {
     <Tooltip label={journey.prompt.label} key={journey.id} openDelay={500}>
       <NavLink
         classNames={{
-          children: classes.listItem,
+          children: classes.listItemChildren,
+          root: classes.listItemRoot,
         }}
+        component='li'
         active={isSelected}
-        onClick={() => buttonClickHandler(journey)}
-        label={<Text truncate>{journey.prompt.label}</Text>}
+        onClick={promptClickHandler}
+        label={
+          <Group position='apart'>
+            <Text truncate>{journey.prompt.label}</Text>
+            {isSelected && (
+              <ActionIcon color='blue' onClick={removeClickHandler}>
+                <FaTrash />
+              </ActionIcon>
+            )}
+          </Group>
+        }
         opened={isOpen}
         onChange={expandHandler}
       >
