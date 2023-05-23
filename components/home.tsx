@@ -1,25 +1,26 @@
-import { Autocomplete, Flex, Loader, createStyles } from '@mantine/core';
-import { ClientPrompt, JNode } from 'types/common';
-import { Node, ReactFlow, ReactFlowProvider, useEdgesState, useNodesState } from 'reactflow';
-import { useMemo, useState } from 'react';
+import { AppShell, Autocomplete, Flex, Loader, Navbar, createStyles } from '@mantine/core';
+import { ReactFlow, ReactFlowProvider } from 'reactflow';
+import { useEffect, useState } from 'react';
 
-import { NodeData } from 'types/flow';
+import { ClientPrompt } from 'types/common';
+import HistoryList from 'components/HistoryList';
 import { Props } from 'pages';
-import { getPathsToNode } from 'utils/jnodes';
-import { jNodesToFlow } from 'utils/flow';
 import { promptResponseSchema } from 'schemas/common';
+import { shallow } from 'zustand/shallow';
+import { useHistoryStore } from 'store/history';
+import { useNodeStore } from 'store/nodes';
+import { usePromptStore } from 'store/search';
+import { v4 as uuidv4 } from 'uuid';
 
 const useStyles = createStyles((theme, props: { isLoading: boolean }) => ({
   container: {
-    width: '100vw',
     height: '100vh',
   },
   autocomplete: {
-    position: 'absolute',
+    position: 'sticky',
     bottom: 32,
     width: '50%',
     boxShadow: theme.shadows.md,
-    size: 'md',
     left: 0,
     right: 0,
     margin: 'auto',
@@ -35,57 +36,50 @@ const useStyles = createStyles((theme, props: { isLoading: boolean }) => ({
 
 export default function Home(props: Props) {
   const { initialEdges, initialNodes, initialJNodes, prompts } = props;
+  const { edges, nodes, onEdgesChange, onNodesChange, initFlow, updateNodesWithGoals } = useNodeStore(
+    (state) => ({
+      nodes: state.nodes,
+      edges: state.edges,
+      onNodesChange: state.onNodesChange,
+      onEdgesChange: state.onEdgesChange,
+      initFlow: state.initFlow,
+      updateNodesWithGoals: state.updateNodesWithGoals,
+    }),
+    shallow,
+  );
 
-  const [nodes, setNodes, onNodesChange] = useNodesState<NodeData>(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const [searchTerm, setSearchTerm] = useState('');
+  useEffect(() => {
+    initFlow(initialJNodes, initialNodes, initialEdges);
+  }, [initFlow, initialEdges, initialJNodes, initialNodes]);
+
+  const addJourney = useHistoryStore((state) => state.addJourney);
+
+  const { prompt, setPrompt } = usePromptStore(
+    (state) => ({ prompt: state.prompt, setPrompt: state.setPrompt }),
+    shallow,
+  );
+
+  const selected = useHistoryStore((state) => state.selected);
+
   const [isLoading, setIsLoading] = useState(false);
-  const [paths, setPaths] = useState<JNode[][][]>([]);
-
-  const jNodesMap = useMemo<Map<string, JNode>>(
-    () => initialJNodes.reduce<Map<string, JNode>>((map, jNode) => map.set(jNode.id, jNode), new Map()),
-    [initialJNodes],
-  );
-
-  const nodeSettingsMap = useMemo(
-    () =>
-      nodes.reduce<Map<string, Partial<Node>>>(
-        (map, node) =>
-          map.set(node.id, {
-            position: node.position,
-            sourcePosition: node.sourcePosition,
-            targetPosition: node.targetPosition,
-          }),
-        new Map(),
-      ),
-    [nodes],
-  );
 
   const { classes } = useStyles({ isLoading });
 
+  useEffect(() => {
+    if (!selected) {
+      return;
+    }
+    setPrompt(selected.prompt.label);
+  }, [selected, setPrompt]);
+
   const itemSelectedHandler = async (prompt: ClientPrompt) => {
-    setSearchTerm(prompt.label);
     setIsLoading(true);
     try {
       const res = await fetch(`/api/prompts/${prompt.value}`, { method: 'POST' });
       const jsonResponse = await res.json();
-      console.log('jsonResponse', jsonResponse);
       const { goalIds } = promptResponseSchema.parse(jsonResponse);
-
-      const goalJNodes = goalIds.reduce<JNode[]>((list, id) => {
-        const found = jNodesMap.get(id);
-        if (found) {
-          list.push(found);
-        }
-        return list;
-      }, []);
-
-      const paths = goalJNodes.map((goal) => getPathsToNode(goal));
-      setPaths(paths);
-      const nodesOnPath = paths.flatMap((path) => path.reduce((list, p) => [...list, ...p], []));
-      const { edges, nodes } = jNodesToFlow(initialJNodes, nodesOnPath, nodeSettingsMap);
-      setNodes(nodes);
-      setEdges(edges);
+      updateNodesWithGoals(goalIds);
+      addJourney({ id: uuidv4(), goalIds, prompt });
     } catch (error) {
       console.error(error);
     } finally {
@@ -95,30 +89,47 @@ export default function Home(props: Props) {
 
   return (
     <ReactFlowProvider>
-      <Flex className={classes.container}>
-        <ReactFlow
-          nodes={nodes}
-          edges={edges}
-          onNodesChange={onNodesChange}
-          onEdgesChange={onEdgesChange}
-          onInit={(i) => i.fitView()}
-          proOptions={{ hideAttribution: true }}
+      <AppShell
+        navbar={
+          <Navbar p='xs' width={{ base: 300 }}>
+            {/* First section with normal height (depends on section content) */}
+            <Navbar.Section>History</Navbar.Section>
+
+            {/* Grow section will take all available space that is not taken by first and last sections */}
+            <Navbar.Section grow>
+              <HistoryList />
+            </Navbar.Section>
+
+            {/* Last section with normal height (depends on section content) */}
+            <Navbar.Section>Last section</Navbar.Section>
+          </Navbar>
+        }
+      >
+        <Flex className={classes.container}>
+          <ReactFlow
+            nodes={nodes}
+            edges={edges}
+            onNodesChange={onNodesChange}
+            onEdgesChange={onEdgesChange}
+            onInit={(i) => i.fitView()}
+            proOptions={{ hideAttribution: true }}
+          />
+        </Flex>
+        <Autocomplete
+          classNames={{ root: classes.autocomplete, input: classes.input }}
+          placeholder='Prompt dev journey...'
+          data={prompts}
+          value={prompt}
+          onChange={setPrompt}
+          onItemSubmit={itemSelectedHandler}
+          filter={(value, prompt: ClientPrompt) => prompt.label.toLowerCase().includes(value.toLowerCase())}
+          dropdownPosition='flip'
+          switchDirectionOnFlip
+          readOnly={isLoading}
+          rightSection={isLoading ? <Loader size='sm' /> : undefined}
+          size='lg'
         />
-      </Flex>
-      <Autocomplete
-        classNames={{ root: classes.autocomplete, input: classes.input }}
-        placeholder='Prompt dev journey...'
-        data={prompts}
-        value={searchTerm}
-        onChange={setSearchTerm}
-        onItemSubmit={itemSelectedHandler}
-        filter={(value, prompt: ClientPrompt) => prompt.label.toLowerCase().includes(value.toLowerCase())}
-        dropdownPosition='flip'
-        switchDirectionOnFlip
-        readOnly={isLoading}
-        rightSection={isLoading ? <Loader size='sm' /> : undefined}
-        size='lg'
-      />
+      </AppShell>
     </ReactFlowProvider>
   );
 }

@@ -72,12 +72,12 @@ export const highlightEdges = (edges: Edge[], jNodes: JNode[]): Edge[] => {
 
 export function jNodesToFlow(
   jNodes: JNode[],
-  nodesOnPath: JNode[],
+  nodesOnPath: Set<JNode>,
   maintainSettings: Map<string, Partial<Node>>,
 ): { nodes: Node[]; edges: Edge[] } {
   const nodes = jNodes.map<NodeWithData>((jNode) => ({
     id: jNode.id,
-    data: { label: jNode.name, isOnPath: nodesOnPath.includes(jNode) },
+    data: { label: jNode.name, isOnPath: nodesOnPath.has(jNode) },
     position: { x: 0, y: 0 },
     ...maintainSettings.get(jNode.id),
   }));
@@ -85,14 +85,14 @@ export function jNodesToFlow(
   const edges = jNodes.reduce<Edge[]>(
     (list, jNode) => [
       ...list,
-      ...jNode.dependencies.map<Edge>((dependency) => {
+      ...jNode.dependencies.map<Edge>((depId) => {
         const edge: Edge = {
-          id: `${jNode.id}-${dependency.id}`,
-          source: dependency.id,
+          id: `${jNode.id}-${depId}`,
+          source: depId,
           target: jNode.id,
           type: 'default',
         };
-        if (nodesOnPath.includes(jNode)) {
+        if (nodesOnPath.has(jNode)) {
           edge.style = { stroke: '#f00000' };
           edge.animated = true;
         }

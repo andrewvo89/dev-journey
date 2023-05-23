@@ -9,91 +9,91 @@ export const root: JNode = {
 const html: JNode = {
   id: 'html',
   name: 'HTML',
-  dependencies: [root],
+  dependencies: [root.id],
 };
 
 const css: JNode = {
   id: 'css',
   name: 'CSS',
-  dependencies: [html],
+  dependencies: [html.id],
 };
 
 const javascript: JNode = {
   id: 'javascript',
   name: 'JavaScript',
-  dependencies: [html, css, root],
+  dependencies: [html.id, css.id, root.id],
 };
 
 const typescript: JNode = {
   id: 'typescript',
   name: 'TypeScript',
-  dependencies: [javascript],
+  dependencies: [javascript.id],
 };
 
 const golang: JNode = {
   id: 'golang',
   name: 'Golang',
-  dependencies: [root],
+  dependencies: [root.id],
 };
 
 const rust: JNode = {
   id: 'rust',
   name: 'Rust',
-  dependencies: [root],
+  dependencies: [root.id],
 };
 
 const java: JNode = {
   id: 'java',
   name: 'Java',
-  dependencies: [root],
+  dependencies: [root.id],
 };
 
 const react: JNode = {
   id: 'react',
   name: 'React',
-  dependencies: [javascript],
+  dependencies: [javascript.id],
 };
 
 const nextjs: JNode = {
   id: 'nextjs',
   name: 'Next.js',
-  dependencies: [react],
+  dependencies: [react.id],
 };
 
 const remix: JNode = {
   id: 'remix',
   name: 'Remix',
-  dependencies: [react],
+  dependencies: [react.id],
 };
 
 const astro: JNode = {
   id: 'astro',
   name: 'Astro',
-  dependencies: [react],
+  dependencies: [react.id],
 };
 
 const vue: JNode = {
   id: 'vue',
   name: 'Vue.js',
-  dependencies: [javascript],
+  dependencies: [javascript.id],
 };
 
 const svelte: JNode = {
   id: 'svelte',
   name: 'Svelte',
-  dependencies: [javascript],
+  dependencies: [javascript.id],
 };
 
 const nodejs: JNode = {
   id: 'nodejs',
   name: 'Node.js',
-  dependencies: [javascript],
+  dependencies: [javascript.id],
 };
 
 const deno: JNode = {
   id: 'deno',
   name: 'Deno',
-  dependencies: [nodejs],
+  dependencies: [nodejs.id],
 };
 
 export const techMap = {

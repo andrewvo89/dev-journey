@@ -12,3 +12,9 @@ export type ClientPrompt = {
   value: string;
   label: string;
 };
+
+export type Journey = {
+  id: string;
+  prompt: ClientPrompt;
+  goalIds: string[];
+};

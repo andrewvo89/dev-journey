@@ -3,7 +3,7 @@ import type { GetServerSideProps, InferGetServerSidePropsType, NextPage } from '
 import { initialEdges, initialJNodes, initialNodes } from 'data/flow';
 
 import { Edge } from 'reactflow';
-import Home from 'components/home';
+import Home from 'components/Home';
 import { NodeWithData } from 'types/flow';
 import { clientPrompts } from 'data/prompts';
 
