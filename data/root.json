@@ -1,0 +1,10 @@
+{
+  "root": {
+    "id": "root",
+    "name": "Start of journey",
+    "dependencies": [],
+    "attributes": {
+      "careers": []
+    }
+  }
+}

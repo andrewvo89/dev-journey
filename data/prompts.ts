@@ -1,9 +1,12 @@
 import { ClientPrompt, Prompt } from 'types/common';
+import { careerJSONSchema, techJSONSchema } from 'schemas/data';
 
-import { careersMap } from 'data/careers';
-import { techMap } from 'data/tech';
+import careersJSON from 'data/careers.json';
+import techJSON from 'data/tech.json';
 
-const techPrompts = Object.values(techMap).map<Prompt>((jNode) => ({
+const tech = techJSONSchema.parse(techJSON);
+const techList = Object.values(tech);
+const techPrompts = techList.map<Prompt>((jNode) => ({
   id: jNode.id,
   prompt: `I want to learn ${jNode.name}`,
   response: async () => ({
@@ -11,11 +14,12 @@ const techPrompts = Object.values(techMap).map<Prompt>((jNode) => ({
   }),
 }));
 
-const careerPrompts = Object.values(careersMap).map<Prompt>((jNode) => ({
-  id: jNode.id,
-  prompt: `I want to become a ${jNode.name}`,
+const careers = careerJSONSchema.parse(careersJSON);
+const careerPrompts = Object.values(careers).map<Prompt>((career) => ({
+  id: career.id,
+  prompt: `I want to be a ${career.name}`,
   response: async () => ({
-    goalIds: jNode.dependencies,
+    goalIds: techList.filter((t) => t.attributes.careers.includes(career.id)).map((t) => t.id),
   }),
 }));
 

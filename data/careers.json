@@ -1,0 +1,18 @@
+{
+  "frontend": {
+    "id": "frontend",
+    "name": "Frontend developer"
+  },
+  "backend": {
+    "id": "backend",
+    "name": "Backend developer"
+  },
+  "devops": {
+    "id": "devops",
+    "name": "DevOps engineer"
+  },
+  "database_administrator": {
+    "id": "database_administrator",
+    "name": "Database administrator"
+  }
+}

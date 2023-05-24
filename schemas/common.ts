@@ -8,6 +8,9 @@ export const jnodeSchema = z.object({
   id: z.string(),
   name: z.string(),
   dependencies: z.array(z.string()),
+  attributes: z.object({
+    careers: z.array(z.string()),
+  }),
 });
 
 export const promptSchema = z.object({

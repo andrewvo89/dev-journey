@@ -60,7 +60,7 @@ export const highlightEdges = (edges: Edge[], jNodes: JNode[]): Edge[] => {
       source: node.id,
       target: nextNode.id,
       animated: true,
-      style: { stroke: '#f00000' },
+      style: { stroke: '#228be6' },
       type: 'default',
     });
 
@@ -93,7 +93,7 @@ export function jNodesToFlow(
           type: 'default',
         };
         if (nodesOnPath.has(jNode)) {
-          edge.style = { stroke: '#f00000' };
+          edge.style = { stroke: '#228be6' };
           edge.animated = true;
         }
         return edge;

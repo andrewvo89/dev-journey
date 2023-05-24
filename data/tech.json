@@ -1,0 +1,176 @@
+{
+  "css": {
+    "id": "css",
+    "name": "CSS",
+    "dependencies": [
+      "html"
+    ],
+    "attributes": {
+      "careers": []
+    }
+  },
+  "html": {
+    "id": "html",
+    "name": "HTML",
+    "dependencies": [
+      "root"
+    ],
+    "attributes": {
+      "careers": []
+    }
+  },
+  "javascript": {
+    "id": "javascript",
+    "name": "JavaScript",
+    "dependencies": [
+      "html",
+      "css",
+      "root"
+    ],
+    "attributes": {
+      "careers": []
+    }
+  },
+  "typescript": {
+    "id": "typescript",
+    "name": "TypeScript",
+    "dependencies": [
+      "javascript"
+    ],
+    "attributes": {
+      "careers": []
+    }
+  },
+  "golang": {
+    "id": "golang",
+    "name": "Golang",
+    "dependencies": [
+      "root"
+    ],
+    "attributes": {
+      "careers": [
+        "backend"
+      ]
+    }
+  },
+  "rust": {
+    "id": "rust",
+    "name": "Rust",
+    "dependencies": [
+      "root"
+    ],
+    "attributes": {
+      "careers": [
+        "backend"
+      ]
+    }
+  },
+  "java": {
+    "id": "java",
+    "name": "Java",
+    "dependencies": [
+      "root"
+    ],
+    "attributes": {
+      "careers": [
+        "backend"
+      ]
+    }
+  },
+  "react": {
+    "id": "react",
+    "name": "React",
+    "dependencies": [
+      "javascript"
+    ],
+    "attributes": {
+      "careers": [
+        "frontend"
+      ]
+    }
+  },
+  "nextjs": {
+    "id": "nextjs",
+    "name": "Next.js",
+    "dependencies": [
+      "react"
+    ],
+    "attributes": {
+      "careers": [
+        "frontend"
+      ]
+    }
+  },
+  "remix": {
+    "id": "remix",
+    "name": "Remix",
+    "dependencies": [
+      "react"
+    ],
+    "attributes": {
+      "careers": [
+        "frontend"
+      ]
+    }
+  },
+  "astro": {
+    "id": "astro",
+    "name": "Astro",
+    "dependencies": [
+      "react"
+    ],
+    "attributes": {
+      "careers": [
+        "frontend"
+      ]
+    }
+  },
+  "vue": {
+    "id": "vue",
+    "name": "Vue.js",
+    "dependencies": [
+      "javascript"
+    ],
+    "attributes": {
+      "careers": [
+        "frontend"
+      ]
+    }
+  },
+  "svelte": {
+    "id": "svelte",
+    "name": "Svelte",
+    "dependencies": [
+      "javascript"
+    ],
+    "attributes": {
+      "careers": [
+        "frontend"
+      ]
+    }
+  },
+  "nodejs": {
+    "id": "nodejs",
+    "name": "Node.js",
+    "dependencies": [
+      "javascript"
+    ],
+    "attributes": {
+      "careers": [
+        "backend"
+      ]
+    }
+  },
+  "deno": {
+    "id": "deno",
+    "name": "Deno",
+    "dependencies": [
+      "nodejs"
+    ],
+    "attributes": {
+      "careers": [
+        "backend"
+      ]
+    }
+  }
+}
