@@ -10,7 +10,7 @@ import { useNodeStore } from 'store/nodes';
 import { usePromptStore } from 'store/prompt';
 
 export default function Home(props: Props) {
-  const { initialEdges, initialNodes, initialJNodes, prompts } = props;
+  const { initialEdges, initialNodes, initialJNodes, prompts, placeholder } = props;
 
   const initFlow = useNodeStore((state) => state.initFlow);
   const setPrompts = usePromptStore((state) => state.setPrompts);
@@ -32,7 +32,7 @@ export default function Home(props: Props) {
     <ReactFlowProvider>
       <AppShell navbar={<LeftPanel />}>
         <Graph />
-        <PromptBar />
+        <PromptBar placeholder={placeholder} />
       </AppShell>
     </ReactFlowProvider>
   );

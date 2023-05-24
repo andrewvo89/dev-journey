@@ -28,7 +28,12 @@ const useStyles = createStyles((theme, props: { isLoading: boolean }) => ({
   },
 }));
 
-export default function PromptBar() {
+type Props = {
+  placeholder: string;
+};
+
+export default function PromptBar(props: Props) {
+  const { placeholder } = props;
   const [isLoading, setIsLoading] = useState(false);
   const { classes } = useStyles({ isLoading });
 
@@ -63,7 +68,7 @@ export default function PromptBar() {
   return (
     <Autocomplete
       classNames={{ root: classes.autocomplete, input: classes.input }}
-      placeholder='Embark on your coding adventure...'
+      placeholder={placeholder}
       data={prompts}
       value={prompt}
       onChange={setPrompt}
