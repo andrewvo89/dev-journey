@@ -1,15 +1,16 @@
 import { Edge, Node, OnEdgesChange, OnNodesChange, applyEdgeChanges, applyNodeChanges } from 'reactflow';
 
 import { JNode } from 'types/common';
+import { JNodeTypeData } from 'types/flow';
 import { create } from 'zustand';
 import { getPathsToNode } from 'utils/jnodes';
 import { jnodesToFlow } from 'utils/flow';
 
 type NodeState = {
   jnodes: Map<string, JNode>;
-  nodes: Node[];
+  nodes: Node<JNodeTypeData>[];
   edges: Edge[];
-  initFlow: (jnodes: JNode[], nodes: Node[], edges: Edge[]) => void;
+  initFlow: (jnodes: JNode[], nodes: Node<JNodeTypeData>[], edges: Edge[]) => void;
   onNodesChange: OnNodesChange;
   onEdgesChange: OnEdgesChange;
   updateNodesWithGoals: (goalIds: string[]) => void;

@@ -1,4 +1,4 @@
-export type JNodeTypeProps = {
+export type NodeTypeProps = {
   type: 'jnode';
   dimensions: {
     width: 200;
@@ -6,7 +6,7 @@ export type JNodeTypeProps = {
   };
 };
 
-export const jnodeProps: JNodeTypeProps = {
+export const jnodeProps: NodeTypeProps = {
   type: 'jnode',
   dimensions: {
     width: 200,

@@ -1,6 +1,8 @@
-import { Divider, Navbar, Title, createStyles } from '@mantine/core';
+import { Button, Divider, Navbar, Title, createStyles } from '@mantine/core';
 
 import HistoryList from 'components/HistoryList';
+import { useHistoryStore } from 'store/history';
+import { useHydratedStore } from 'hooks/useHydratedStore';
 
 const useStyles = createStyles((theme) => ({
   navbar: {
@@ -17,16 +19,27 @@ const useStyles = createStyles((theme) => ({
 
 export default function LeftPanel() {
   const { classes } = useStyles();
+  const setSelected = useHistoryStore((state) => state.setSelected);
+  const journeys = useHydratedStore(useHistoryStore, (state) => state.journeys);
+  const showClearHistory = journeys !== undefined && journeys.length > 0;
+
+  const outsideClickHandler = () => {
+    setSelected(null);
+  };
   return (
     <Navbar className={classes.navbar} width={{ base: 300 }}>
       <Navbar.Section>
         <Title order={2}>Dev Journey</Title>
       </Navbar.Section>
       <Divider my='sm' />
-      <Navbar.Section grow>
+      <Navbar.Section grow onClick={outsideClickHandler}>
         <HistoryList />
       </Navbar.Section>
-      <Navbar.Section>Last section</Navbar.Section>
+      {showClearHistory && (
+        <Navbar.Section>
+          <Button fullWidth>Clear history</Button>
+        </Navbar.Section>
+      )}
     </Navbar>
   );
 }

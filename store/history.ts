@@ -8,7 +8,7 @@ type HistoryState = {
   removeJourney: (journey: Journey) => void;
   setJourney: (journey: Journey) => void;
   selected: Journey | null;
-  setSelected: (journey: Journey) => void;
+  setSelected: (journey: Journey | null) => void;
 };
 
 export const useHistoryStore = create<HistoryState>()(

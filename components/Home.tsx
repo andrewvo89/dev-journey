@@ -5,6 +5,7 @@ import PromptBar from 'components/PromptBar';
 import { Props } from 'pages';
 import { ReactFlowProvider } from 'reactflow';
 import { useEffect } from 'react';
+import { useHistoryStore } from 'store/history';
 import { useNodeStore } from 'store/nodes';
 import { usePromptStore } from 'store/prompt';
 
@@ -13,12 +14,19 @@ export default function Home(props: Props) {
 
   const initFlow = useNodeStore((state) => state.initFlow);
   const setPrompts = usePromptStore((state) => state.setPrompts);
+  const updateNodesWithGoals = useNodeStore((state) => state.updateNodesWithGoals);
+  const selected = useHistoryStore((state) => state.selected);
 
   // Store initial values in store
   useEffect(() => {
     initFlow(initialJNodes, initialNodes, initialEdges);
     setPrompts(prompts);
   }, [initFlow, initialEdges, initialJNodes, initialNodes, prompts, setPrompts]);
+
+  // Update nodes when selected updates
+  useEffect(() => {
+    updateNodesWithGoals(selected?.goalIds ?? []);
+  }, [selected, updateNodesWithGoals]);
 
   return (
     <ReactFlowProvider>

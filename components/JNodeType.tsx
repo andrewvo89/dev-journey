@@ -27,7 +27,6 @@ export default function JNodeType(props: NodeProps<JNodeTypeData>) {
     targetPosition,
   } = props;
   const { classes } = useStyles({ isOnPath, noNodesOnPath });
-  console.log('noNodesOnPath', noNodesOnPath);
 
   return (
     <Fragment>

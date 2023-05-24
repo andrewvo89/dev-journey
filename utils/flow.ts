@@ -1,14 +1,10 @@
 import { Edge, Node, Position } from 'reactflow';
-import { JNodeTypeData, JNodeTypeProps, jnodeProps } from 'types/flow';
+import { JNodeTypeData, jnodeProps } from 'types/flow';
 
 import { JNode } from 'types/common';
 import dagre from 'dagre';
 
-export function getLayoutedElements<TData, TType extends string>(
-  nodes: Node<TData, TType>[],
-  edges: Edge[],
-  direction = 'TB',
-) {
+export function getLayoutedElements<TData>(nodes: Node<TData>[], edges: Edge[], direction = 'TB') {
   const dagreGraph = new dagre.graphlib.Graph();
   dagreGraph.setDefaultEdgeLabel(() => ({}));
 
@@ -80,13 +76,12 @@ export function jnodesToFlow(
   jnodes: JNode[],
   nodesOnPath: Set<JNode>,
   maintainSettings: Map<string, Partial<Node>>,
-): { nodes: Node<JNodeTypeData, JNodeTypeProps['type']>[]; edges: Edge[] } {
+): { nodes: Node<JNodeTypeData>[]; edges: Edge[] } {
   const noNodesOnPath = nodesOnPath.size === 0;
 
-  const nodes = jnodes.map<Node<JNodeTypeData, JNodeTypeProps['type']>>((jnode) => ({
+  const nodes = jnodes.map<Node<JNodeTypeData>>((jnode) => ({
     id: jnode.id,
     position: { x: 0, y: 0 },
-    ...maintainSettings.get(jnode.id),
     data: {
       label: jnode.name,
       isOnPath: nodesOnPath.has(jnode),
@@ -96,6 +91,7 @@ export function jnodesToFlow(
     type: 'jnode',
     width: jnodeProps.dimensions.width,
     height: jnodeProps.dimensions.height,
+    ...maintainSettings.get(jnode.id),
   }));
 
   const edges = jnodes.reduce<Edge[]>(
@@ -130,4 +126,8 @@ export function jnodesToFlow(
 
 export function highlightManyEdges(edges: Edge[], paths: JNode[][][]): Edge[] {
   return paths.flat().reduce<Edge[]>((list, jnodes) => highlightEdges(list, jnodes), edges);
+}
+
+export function isJnodeNodeType(node: Node): node is Node<JNodeTypeData> {
+  return node.type === 'jnode';
 }

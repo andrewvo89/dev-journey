@@ -6,7 +6,6 @@ import dayjs from 'dayjs';
 import { promptResponseSchema } from 'schemas/common';
 import { shallow } from 'zustand/shallow';
 import { useHistoryStore } from 'store/history';
-import { useNodeStore } from 'store/nodes';
 import { usePromptStore } from 'store/prompt';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -43,15 +42,12 @@ export default function PromptBar() {
     shallow,
   );
 
-  const updateNodesWithGoals = useNodeStore((state) => state.updateNodesWithGoals);
-
   const itemSelectedHandler = async (prompt: ClientPrompt) => {
     setIsLoading(true);
     try {
       const res = await fetch(`/api/prompts/${prompt.value}`, { method: 'POST' });
       const jsonResponse = await res.json();
       const { goalIds } = promptResponseSchema.parse(jsonResponse);
-      updateNodesWithGoals(goalIds);
       addJourney({ id: uuidv4(), createdAt: dayjs().toISOString(), goalIds, prompt });
     } catch (error) {
       console.error(error);

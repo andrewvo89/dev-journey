@@ -15,16 +15,18 @@ export default function HistoryList() {
 
   const journeys = useHydratedStore(useHistoryStore, (state) => state.journeys);
 
+  const cancelPropagation = (e: React.MouseEvent) => e.stopPropagation();
+
   if (!journeys) {
     return (
-      <Center>
+      <Center onClick={cancelPropagation}>
         <Loader />
       </Center>
     );
   }
 
   return (
-    <Flex className={classes.list}>
+    <Flex className={classes.list} onClick={cancelPropagation}>
       {journeys.map((journey) => (
         <HistoryListItem key={journey.id} journey={journey} />
       ))}

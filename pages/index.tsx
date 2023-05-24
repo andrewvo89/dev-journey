@@ -1,10 +1,10 @@
 import { ClientPrompt, JNode } from 'types/common';
 import { Edge, Node } from 'reactflow';
 import type { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next';
-import { JNodeTypeData, JNodeTypeProps } from 'types/flow';
 import { getLayoutedElements, jnodesToFlow } from 'utils/flow';
 
 import Home from 'components/Home';
+import { JNodeTypeData } from 'types/flow';
 import { clientPrompts } from 'data/prompts';
 import rootJSON from 'data/root.json';
 import techJSON from 'data/tech.json';
@@ -18,7 +18,7 @@ const { nodes: initialNodes, edges: initialEdges } = getLayoutedElements(nodes, 
 
 export type Props = {
   prompts: ClientPrompt[];
-  initialNodes: Node<JNodeTypeData, JNodeTypeProps['type']>[];
+  initialNodes: Node<JNodeTypeData>[];
   initialEdges: Edge[];
   initialJNodes: JNode[];
 };
