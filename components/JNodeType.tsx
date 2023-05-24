@@ -3,23 +3,23 @@ import { JNodeTypeData, jnodeProps } from 'types/flow';
 import { Paper, Text, createStyles } from '@mantine/core';
 
 import { Fragment } from 'react';
+import { useHistoryStore } from 'store/history';
 
 type StyleProps = {
-  isOnPath: boolean;
-  noNodesOnPath: boolean;
+  fadeNode: boolean;
 };
 
-const useStyles = createStyles((_, { isOnPath, noNodesOnPath }: StyleProps) => ({
+const useStyles = createStyles((_, { fadeNode }: StyleProps) => ({
   paper: {
     width: jnodeProps.dimensions.width,
     height: jnodeProps.dimensions.height,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    opacity: isOnPath || noNodesOnPath ? 1 : 0.2,
+    opacity: fadeNode ? 0.2 : 1,
   },
   handle: {
-    opacity: isOnPath || noNodesOnPath ? 1 : 0.2,
+    opacity: fadeNode ? 0.2 : 1,
   },
 }));
 
@@ -30,7 +30,10 @@ export default function JNodeType(props: NodeProps<JNodeTypeData>) {
     sourcePosition,
     targetPosition,
   } = props;
-  const { classes } = useStyles({ isOnPath, noNodesOnPath });
+
+  const selected = useHistoryStore((state) => state.selected);
+  const fadeNode = (!isOnPath && !noNodesOnPath) || (noNodesOnPath && !!selected);
+  const { classes } = useStyles({ fadeNode });
   const isRoot = id === 'root';
 
   return (

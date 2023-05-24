@@ -53,7 +53,8 @@ export default function PromptBar(props: Props) {
       const res = await fetch(`/api/prompts/${prompt.value}`, { method: 'POST' });
       const jsonResponse = await res.json();
       const { goalIds } = promptResponseSchema.parse(jsonResponse);
-      addJourney({ id: uuidv4(), createdAt: dayjs().toISOString(), goalIds, prompt });
+      const paths = goalIds.reduce((map, goalId) => ({ ...map, [goalId]: true }), {});
+      addJourney({ id: uuidv4(), createdAt: dayjs().toISOString(), paths, prompt });
     } catch (error) {
       console.error(error);
     } finally {

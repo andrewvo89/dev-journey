@@ -19,5 +19,5 @@ export type Journey = {
   id: string;
   createdAt: string;
   prompt: ClientPrompt;
-  goalIds: string[];
+  paths: Record<string, boolean>;
 };

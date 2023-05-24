@@ -25,7 +25,15 @@ export default function Home(props: Props) {
 
   // Update nodes when selected updates
   useEffect(() => {
-    updateNodesWithGoals(selected?.goalIds ?? []);
+    if (!selected) {
+      updateNodesWithGoals([]);
+      return;
+    }
+    const goalIds = Object.entries(selected.paths).reduce<string[]>(
+      (list, [key, value]) => (value ? [...list, key] : list),
+      [],
+    );
+    updateNodesWithGoals(goalIds);
   }, [selected, updateNodesWithGoals]);
 
   return (

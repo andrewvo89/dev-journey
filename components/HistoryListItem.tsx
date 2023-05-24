@@ -33,15 +33,20 @@ const useStyles = createStyles(() => ({
 export default function HistoryListItem(props: Props) {
   const { journey } = props;
 
-  const { selected, setSelected, removeJourney } = useHistoryStore(
-    (state) => ({ selected: state.selected, setSelected: state.setSelected, removeJourney: state.removeJourney }),
+  const { selected, setSelected, removeJourney, selectPath, deselectPath } = useHistoryStore(
+    (state) => ({
+      selected: state.selected,
+      setSelected: state.setSelected,
+      removeJourney: state.removeJourney,
+      selectPath: state.selectPath,
+      deselectPath: state.deselectPath,
+    }),
     shallow,
   );
 
   const isSelected = selected?.id === journey.id;
   const { classes } = useStyles();
 
-  const [paths, setPaths] = useState(new Set<string>(journey.goalIds));
   const [isOpen, setIsOpen] = useState(false);
   const [deleteMode, setDeleteMode] = useState(false);
   const [relativeTime, setRelativeTime] = useState(dayjs().to(dayjs(journey.createdAt)));
@@ -69,8 +74,8 @@ export default function HistoryListItem(props: Props) {
       setDeleteMode(false);
       return;
     }
-    updateNodesWithGoals(Array.from(paths));
-  }, [isSelected, paths, updateNodesWithGoals]);
+    // updateNodesWithGoals(Array.from(paths));
+  }, [isSelected, updateNodesWithGoals]);
 
   const promptClickHandler = () => {
     setSelected(journey);
@@ -92,14 +97,11 @@ export default function HistoryListItem(props: Props) {
   };
 
   const switchToggleHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const newPaths = new Set(paths);
     if (e.target.checked) {
-      newPaths.add(e.target.value);
+      selectPath(journey, e.target.value);
     } else {
-      newPaths.delete(e.target.value);
+      deselectPath(journey, e.target.value);
     }
-    setPaths(newPaths);
-    updateNodesWithGoals(Array.from(newPaths));
   };
 
   const expandHandler = (newIsOpened: boolean) => {
@@ -143,9 +145,9 @@ export default function HistoryListItem(props: Props) {
         opened={isOpen}
         onChange={expandHandler}
       >
-        {journey.goalIds.length > 1 && (
+        {Object.keys(journey.paths).length > 1 && (
           <Stack className={classes.switchContainer}>
-            {journey.goalIds.map((goalId) => {
+            {Object.entries(journey.paths).map(([goalId, selected]) => {
               const found = jnodes.get(goalId);
               if (!found) {
                 return null;
@@ -155,7 +157,7 @@ export default function HistoryListItem(props: Props) {
                   key={goalId}
                   label={found.name}
                   value={goalId}
-                  checked={paths.has(goalId)}
+                  checked={selected}
                   onChange={(e) => switchToggleHandler(e)}
                 />
               );
