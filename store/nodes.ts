@@ -1,16 +1,16 @@
 import { Edge, Node, OnEdgesChange, OnNodesChange, applyEdgeChanges, applyNodeChanges } from 'reactflow';
 
-import { JNode } from 'types/common';
+import { ClientJNode } from 'types/common';
 import { JNodeTypeData } from 'types/flow';
 import { create } from 'zustand';
 import { getPathsToNode } from 'utils/jnodes';
 import { jnodesToFlow } from 'utils/flow';
 
 type NodeState = {
-  jnodes: Map<string, JNode>;
+  jnodes: Map<string, ClientJNode>;
   nodes: Node<JNodeTypeData>[];
   edges: Edge[];
-  initFlow: (jnodes: JNode[], nodes: Node<JNodeTypeData>[], edges: Edge[]) => void;
+  initFlow: (jnodes: ClientJNode[], nodes: Node<JNodeTypeData>[], edges: Edge[]) => void;
   onNodesChange: OnNodesChange;
   onEdgesChange: OnEdgesChange;
   updateNodesWithGoals: (goalIds: string[]) => void;
@@ -22,7 +22,7 @@ export const useNodeStore = create<NodeState>()((set) => ({
   edges: [],
   initFlow: (jnodes, nodes, edges) =>
     set({
-      jnodes: jnodes.reduce<Map<string, JNode>>((map, jnode) => map.set(jnode.id, jnode), new Map()),
+      jnodes: jnodes.reduce<Map<string, ClientJNode>>((map, jnode) => map.set(jnode.id, jnode), new Map()),
       nodes,
       edges,
     }),
@@ -46,7 +46,7 @@ export const useNodeStore = create<NodeState>()((set) => ({
         new Map(),
       );
 
-      const goalJNodes = goalIds.reduce<JNode[]>((list, id) => {
+      const goalJNodes = goalIds.reduce<ClientJNode[]>((list, id) => {
         const found = state.jnodes.get(id);
         if (found) {
           list.push(found);
@@ -55,7 +55,7 @@ export const useNodeStore = create<NodeState>()((set) => ({
       }, []);
 
       const journeys = goalJNodes.map((goalJNode) => getPathsToNode(goalJNode, state.jnodes));
-      const nodesOnPath = new Set<JNode>();
+      const nodesOnPath = new Set<ClientJNode>();
       for (const journey of journeys) {
         for (const paths of journey) {
           for (const jnode of paths) {

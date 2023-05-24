@@ -1,6 +1,8 @@
-import { Button, Divider, Navbar, Title, createStyles } from '@mantine/core';
+import { Button, Divider, Navbar, Text, Title, createStyles } from '@mantine/core';
 
 import HistoryList from 'components/HistoryList';
+import { modals } from '@mantine/modals';
+import { shallow } from 'zustand/shallow';
 import { useHistoryStore } from 'store/history';
 import { useHydratedStore } from 'hooks/useHydratedStore';
 
@@ -19,13 +21,26 @@ const useStyles = createStyles((theme) => ({
 
 export default function LeftPanel() {
   const { classes } = useStyles();
-  const setSelected = useHistoryStore((state) => state.setSelected);
+  const { setSelected, clearHistory } = useHistoryStore(
+    (state) => ({ setSelected: state.setSelected, clearHistory: state.clearHistory }),
+    shallow,
+  );
   const journeys = useHydratedStore(useHistoryStore, (state) => state.journeys);
-  const showClearHistory = journeys !== undefined && journeys.length > 0;
+  const disableClearHistory = journeys?.length === 0;
 
   const outsideClickHandler = () => {
     setSelected(null);
   };
+
+  const clearHistoryClickHandler = () =>
+    modals.openConfirmModal({
+      centered: true,
+      title: 'Confirmation',
+      children: <Text>Please confirm that you want to clear your history. This action cannot be undone.</Text>,
+      labels: { confirm: 'Confirm', cancel: 'Cancel' },
+      onConfirm: clearHistory,
+    });
+
   return (
     <Navbar className={classes.navbar} width={{ base: 300 }}>
       <Navbar.Section>
@@ -35,11 +50,11 @@ export default function LeftPanel() {
       <Navbar.Section grow onClick={outsideClickHandler}>
         <HistoryList />
       </Navbar.Section>
-      {showClearHistory && (
-        <Navbar.Section>
-          <Button fullWidth>Clear history</Button>
-        </Navbar.Section>
-      )}
+      <Navbar.Section>
+        <Button disabled={disableClearHistory} fullWidth variant='light' onClick={clearHistoryClickHandler}>
+          Clear history
+        </Button>
+      </Navbar.Section>
     </Navbar>
   );
 }

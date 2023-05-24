@@ -63,7 +63,7 @@ export default function PromptBar() {
   return (
     <Autocomplete
       classNames={{ root: classes.autocomplete, input: classes.input }}
-      placeholder='Prompt dev journey...'
+      placeholder='Embark on your coding adventure...'
       data={prompts}
       value={prompt}
       onChange={setPrompt}

@@ -1,7 +1,7 @@
+import { ClientJNode, JNode } from 'types/common';
 import { Edge, Node, Position } from 'reactflow';
 import { JNodeTypeData, jnodeProps } from 'types/flow';
 
-import { JNode } from 'types/common';
 import dagre from 'dagre';
 
 export function getLayoutedElements<TData>(nodes: Node<TData>[], edges: Edge[], direction = 'TB') {
@@ -68,13 +68,13 @@ export const highlightEdges = (edges: Edge[], jnodes: JNode[]): Edge[] => {
   return Array.from(updatedEdges.values());
 };
 
-function isLeafNode(node: JNode, jnodes: JNode[]): boolean {
+function isLeafNode(node: ClientJNode, jnodes: ClientJNode[]): boolean {
   return jnodes.every((jnode) => !jnode.dependencies.includes(node.id));
 }
 
 export function jnodesToFlow(
-  jnodes: JNode[],
-  nodesOnPath: Set<JNode>,
+  jnodes: ClientJNode[],
+  nodesOnPath: Set<ClientJNode>,
   maintainSettings: Map<string, Partial<Node>>,
 ): { nodes: Node<JNodeTypeData>[]; edges: Edge[] } {
   const noNodesOnPath = nodesOnPath.size === 0;

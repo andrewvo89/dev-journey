@@ -4,6 +4,7 @@ import 'reactflow/dist/style.css';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { MantineProvider } from '@mantine/core';
+import { ModalsProvider } from '@mantine/modals';
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
@@ -23,7 +24,9 @@ export default function App(props: AppProps) {
           colorScheme: 'light',
         }}
       >
-        <Component {...pageProps} />
+        <ModalsProvider>
+          <Component {...pageProps} />
+        </ModalsProvider>
       </MantineProvider>
     </>
   );

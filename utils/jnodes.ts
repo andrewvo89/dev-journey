@@ -1,7 +1,7 @@
-import { JNode } from 'types/common';
+import { ClientJNode } from 'types/common';
 
-export function getPathsToNode(jnode: JNode, jnodesMap: Map<string, JNode>): JNode[][] {
-  const parentPaths = jnode.dependencies.reduce<JNode[][]>((list, depId) => {
+export function getPathsToNode(jnode: ClientJNode, jnodesMap: Map<string, ClientJNode>): ClientJNode[][] {
+  const parentPaths = jnode.dependencies.reduce<ClientJNode[][]>((list, depId) => {
     const dependency = jnodesMap.get(depId);
     if (!dependency) {
       return list;

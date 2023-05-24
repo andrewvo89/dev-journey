@@ -13,6 +13,8 @@ export type ClientPrompt = {
   label: string;
 };
 
+export type ClientJNode = Pick<JNode, 'id' | 'name' | 'dependencies'>;
+
 export type Journey = {
   id: string;
   createdAt: string;

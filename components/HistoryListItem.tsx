@@ -65,6 +65,7 @@ export default function HistoryListItem(props: Props) {
 
   useEffect(() => {
     if (!isSelected) {
+      setIsOpen(false);
       setDeleteMode(false);
       return;
     }
@@ -127,7 +128,7 @@ export default function HistoryListItem(props: Props) {
               </ActionIcon>
             )}
             {deleteMode && (
-              <Group spacing={4}>
+              <Group spacing={4} noWrap>
                 <ActionIcon color='blue' onClick={removeConfirmHandler} size={20}>
                   <IconCheck />
                 </ActionIcon>

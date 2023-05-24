@@ -9,6 +9,7 @@ type HistoryState = {
   setJourney: (journey: Journey) => void;
   selected: Journey | null;
   setSelected: (journey: Journey | null) => void;
+  clearHistory: () => void;
 };
 
 export const useHistoryStore = create<HistoryState>()(
@@ -31,6 +32,7 @@ export const useHistoryStore = create<HistoryState>()(
         set((state) => ({ journeys: state.journeys.map((j) => (j.id === journey.id ? journey : j)) })),
       selected: null,
       setSelected: (selected) => set({ selected }),
+      clearHistory: () => set({ journeys: [], selected: null }),
     }),
     {
       name: 'history',

@@ -18,20 +18,25 @@ const useStyles = createStyles((_, { isOnPath, noNodesOnPath }: StyleProps) => (
     justifyContent: 'center',
     opacity: isOnPath || noNodesOnPath ? 1 : 0.2,
   },
+  handle: {
+    opacity: isOnPath || noNodesOnPath ? 1 : 0.2,
+  },
 }));
 
 export default function JNodeType(props: NodeProps<JNodeTypeData>) {
   const {
+    id,
     data: { label, isOnPath, isLeafNode, noNodesOnPath },
     sourcePosition,
     targetPosition,
   } = props;
   const { classes } = useStyles({ isOnPath, noNodesOnPath });
+  const isRoot = id === 'root';
 
   return (
     <Fragment>
-      {sourcePosition && !isLeafNode && <Handle type='source' position={sourcePosition} style={{ color: 'red' }} />}
-      {targetPosition && <Handle type='target' position={targetPosition} />}
+      {sourcePosition && !isLeafNode && <Handle type='source' position={sourcePosition} className={classes.handle} />}
+      {targetPosition && !isRoot && <Handle type='target' position={targetPosition} className={classes.handle} />}
       <Paper shadow='sm' className={classes.paper} withBorder>
         <Text>{label}</Text>
       </Paper>
