@@ -1,4 +1,4 @@
-import { Navbar, createStyles } from '@mantine/core';
+import { Divider, Navbar, Title, createStyles } from '@mantine/core';
 
 import HistoryList from 'components/HistoryList';
 
@@ -19,7 +19,10 @@ export default function LeftPanel() {
   const { classes } = useStyles();
   return (
     <Navbar className={classes.navbar} width={{ base: 300 }}>
-      <Navbar.Section>History</Navbar.Section>
+      <Navbar.Section>
+        <Title order={2}>Dev Journey</Title>
+      </Navbar.Section>
+      <Divider my='sm' />
       <Navbar.Section grow>
         <HistoryList />
       </Navbar.Section>

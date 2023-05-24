@@ -6,7 +6,6 @@ import { useHydratedStore } from 'hooks/useHydratedStore';
 
 const useStyles = createStyles(() => ({
   list: {
-    gap: 8,
     flexDirection: 'column',
   },
 }));
