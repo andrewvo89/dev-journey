@@ -1,12 +1,14 @@
 import { Edge, Node, Position } from 'reactflow';
+import { JNodeTypeData, JNodeTypeProps, jnodeProps } from 'types/flow';
 
 import { JNode } from 'types/common';
-import { NodeWithData } from 'types/flow';
 import dagre from 'dagre';
 
-export const getLayoutedElements = (nodes: Node[], edges: Edge[], direction = 'TB') => {
-  const nodeWidth = 172;
-  const nodeHeight = 36;
+export function getLayoutedElements<TData, TType extends string>(
+  nodes: Node<TData, TType>[],
+  edges: Edge[],
+  direction = 'TB',
+) {
   const dagreGraph = new dagre.graphlib.Graph();
   dagreGraph.setDefaultEdgeLabel(() => ({}));
 
@@ -14,7 +16,7 @@ export const getLayoutedElements = (nodes: Node[], edges: Edge[], direction = 'T
   dagreGraph.setGraph({ rankdir: direction });
 
   nodes.forEach((node) => {
-    dagreGraph.setNode(node.id, { width: nodeWidth, height: nodeHeight });
+    dagreGraph.setNode(node.id, { width: jnodeProps.dimensions.width, height: jnodeProps.dimensions.height });
   });
 
   edges.forEach((edge) => {
@@ -31,23 +33,23 @@ export const getLayoutedElements = (nodes: Node[], edges: Edge[], direction = 'T
     // We are shifting the dagre node position (anchor=center center) to the top left
     // so it matches the React Flow node anchor point (top left).
     node.position = {
-      x: nodeWithPosition.x - nodeWidth / 2,
-      y: nodeWithPosition.y - nodeHeight / 2,
+      x: nodeWithPosition.x - jnodeProps.dimensions.width / 2,
+      y: nodeWithPosition.y - jnodeProps.dimensions.height / 2,
     };
 
     return node;
   });
 
   return { nodes, edges };
-};
+}
 
-export const highlightEdges = (edges: Edge[], jNodes: JNode[]): Edge[] => {
+export const highlightEdges = (edges: Edge[], jnodes: JNode[]): Edge[] => {
   const currentEdges = edges.reduce<Map<string, Edge>>((map, edge) => {
     const newMap = new Map(map);
     return newMap.set(edge.id, edge);
   }, new Map());
 
-  const updatedEdges = jNodes.reduce<Map<string, Edge>>((map, node, index, arr) => {
+  const updatedEdges = jnodes.reduce<Map<string, Edge>>((map, node, index, arr) => {
     if (index === arr.length - 1) {
       return map;
     }
@@ -70,32 +72,53 @@ export const highlightEdges = (edges: Edge[], jNodes: JNode[]): Edge[] => {
   return Array.from(updatedEdges.values());
 };
 
-export function jNodesToFlow(
-  jNodes: JNode[],
+function isLeafNode(node: JNode, jnodes: JNode[]): boolean {
+  return jnodes.every((jnode) => !jnode.dependencies.includes(node.id));
+}
+
+export function jnodesToFlow(
+  jnodes: JNode[],
   nodesOnPath: Set<JNode>,
   maintainSettings: Map<string, Partial<Node>>,
-): { nodes: Node[]; edges: Edge[] } {
-  const nodes = jNodes.map<NodeWithData>((jNode) => ({
-    id: jNode.id,
-    data: { label: jNode.name, isOnPath: nodesOnPath.has(jNode) },
+): { nodes: Node<JNodeTypeData, JNodeTypeProps['type']>[]; edges: Edge[] } {
+  const noNodesOnPath = nodesOnPath.size === 0;
+
+  const nodes = jnodes.map<Node<JNodeTypeData, JNodeTypeProps['type']>>((jnode) => ({
+    id: jnode.id,
     position: { x: 0, y: 0 },
-    ...maintainSettings.get(jNode.id),
+    ...maintainSettings.get(jnode.id),
+    data: {
+      label: jnode.name,
+      isOnPath: nodesOnPath.has(jnode),
+      isLeafNode: isLeafNode(jnode, jnodes),
+      noNodesOnPath,
+    },
+    type: 'jnode',
+    width: jnodeProps.dimensions.width,
+    height: jnodeProps.dimensions.height,
   }));
 
-  const edges = jNodes.reduce<Edge[]>(
-    (list, jNode) => [
+  const edges = jnodes.reduce<Edge[]>(
+    (list, jnode) => [
       ...list,
-      ...jNode.dependencies.map<Edge>((depId) => {
+      ...jnode.dependencies.map<Edge>((depId) => {
+        const nodeIsOnPath = nodesOnPath.has(jnode);
         const edge: Edge = {
-          id: `${jNode.id}-${depId}`,
+          id: `${jnode.id}-${depId}`,
           source: depId,
-          target: jNode.id,
+          target: jnode.id,
           type: 'default',
+          animated: nodeIsOnPath,
         };
-        if (nodesOnPath.has(jNode)) {
+
+        if (nodeIsOnPath) {
           edge.style = { stroke: '#228be6' };
-          edge.animated = true;
         }
+
+        if (!noNodesOnPath && !nodeIsOnPath) {
+          edge.style = { opacity: 0.2 };
+        }
+
         return edge;
       }),
     ],
@@ -106,5 +129,5 @@ export function jNodesToFlow(
 }
 
 export function highlightManyEdges(edges: Edge[], paths: JNode[][][]): Edge[] {
-  return paths.flat().reduce<Edge[]>((list, jNodes) => highlightEdges(list, jNodes), edges);
+  return paths.flat().reduce<Edge[]>((list, jnodes) => highlightEdges(list, jnodes), edges);
 }

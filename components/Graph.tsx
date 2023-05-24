@@ -1,6 +1,7 @@
 import { Flex, createStyles } from '@mantine/core';
+import { NodeTypes, ReactFlow } from 'reactflow';
 
-import { ReactFlow } from 'reactflow';
+import JNodeType from 'components/JNodeType';
 import { shallow } from 'zustand/shallow';
 import { useNodeStore } from 'store/nodes';
 
@@ -9,6 +10,10 @@ const useStyles = createStyles(() => ({
     height: '100vh',
   },
 }));
+
+const nodeTypes: NodeTypes = {
+  jnode: JNodeType,
+};
 
 export function Graph() {
   const { edges, nodes, onEdgesChange, onNodesChange } = useNodeStore(
@@ -32,6 +37,7 @@ export function Graph() {
         onEdgesChange={onEdgesChange}
         onInit={(i) => i.fitView()}
         proOptions={{ hideAttribution: true }}
+        nodeTypes={nodeTypes}
       />
     </Flex>
   );

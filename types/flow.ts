@@ -1,5 +1,22 @@
-import { Node } from 'reactflow';
+export type JNodeTypeProps = {
+  type: 'jnode';
+  dimensions: {
+    width: 200;
+    height: 50;
+  };
+};
 
-export type NodeData = { label: string; isOnPath: boolean };
+export const jnodeProps: JNodeTypeProps = {
+  type: 'jnode',
+  dimensions: {
+    width: 200,
+    height: 50,
+  },
+};
 
-export type NodeWithData = Node<NodeData>;
+export type JNodeTypeData = {
+  label: string;
+  isOnPath: boolean;
+  isLeafNode: boolean;
+  noNodesOnPath: boolean;
+};

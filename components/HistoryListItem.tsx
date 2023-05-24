@@ -56,7 +56,7 @@ export default function HistoryListItem(props: Props) {
     };
   }, [journey.createdAt]);
 
-  const jNodes = useNodeStore((state) => state.jNodes);
+  const jnodes = useNodeStore((state) => state.jnodes);
 
   const { updateNodesWithGoals } = useNodeStore(
     (state) => ({ updateNodesWithGoals: state.updateNodesWithGoals }),
@@ -145,7 +145,7 @@ export default function HistoryListItem(props: Props) {
         {journey.goalIds.length > 1 && (
           <Stack className={classes.switchContainer}>
             {journey.goalIds.map((goalId) => {
-              const found = jNodes.get(goalId);
+              const found = jnodes.get(goalId);
               if (!found) {
                 return null;
               }

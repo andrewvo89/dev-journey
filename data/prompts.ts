@@ -6,11 +6,11 @@ import techJSON from 'data/tech.json';
 
 const tech = techJSONSchema.parse(techJSON);
 const techList = Object.values(tech);
-const techPrompts = techList.map<Prompt>((jNode) => ({
-  id: jNode.id,
-  prompt: `I want to learn ${jNode.name}`,
+const techPrompts = techList.map<Prompt>((jnode) => ({
+  id: jnode.id,
+  prompt: `I want to learn ${jnode.name}`,
   response: async () => ({
-    goalIds: [jNode.id],
+    goalIds: [jnode.id],
   }),
 }));
 

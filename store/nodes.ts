@@ -1,28 +1,27 @@
-import { Edge, OnEdgesChange, OnNodesChange, applyEdgeChanges, applyNodeChanges } from 'reactflow';
+import { Edge, Node, OnEdgesChange, OnNodesChange, applyEdgeChanges, applyNodeChanges } from 'reactflow';
 
 import { JNode } from 'types/common';
-import { NodeWithData } from 'types/flow';
 import { create } from 'zustand';
 import { getPathsToNode } from 'utils/jnodes';
-import { jNodesToFlow } from 'utils/flow';
+import { jnodesToFlow } from 'utils/flow';
 
 type NodeState = {
-  jNodes: Map<string, JNode>;
-  nodes: NodeWithData[];
+  jnodes: Map<string, JNode>;
+  nodes: Node[];
   edges: Edge[];
-  initFlow: (jNodes: JNode[], nodes: NodeWithData[], edges: Edge[]) => void;
+  initFlow: (jnodes: JNode[], nodes: Node[], edges: Edge[]) => void;
   onNodesChange: OnNodesChange;
   onEdgesChange: OnEdgesChange;
   updateNodesWithGoals: (goalIds: string[]) => void;
 };
 
 export const useNodeStore = create<NodeState>()((set) => ({
-  jNodes: new Map(),
+  jnodes: new Map(),
   nodes: [],
   edges: [],
-  initFlow: (jNodes, nodes, edges) =>
+  initFlow: (jnodes, nodes, edges) =>
     set({
-      jNodes: jNodes.reduce<Map<string, JNode>>((map, jNode) => map.set(jNode.id, jNode), new Map()),
+      jnodes: jnodes.reduce<Map<string, JNode>>((map, jnode) => map.set(jnode.id, jnode), new Map()),
       nodes,
       edges,
     }),
@@ -36,7 +35,7 @@ export const useNodeStore = create<NodeState>()((set) => ({
     })),
   updateNodesWithGoals: (goalIds) =>
     set((state) => {
-      const nodeSettingsMap = state.nodes.reduce<Map<string, Partial<NodeWithData>>>(
+      const nodeSettingsMap = state.nodes.reduce<Map<string, Partial<Node>>>(
         (map, node) =>
           map.set(node.id, {
             position: node.position,
@@ -47,24 +46,24 @@ export const useNodeStore = create<NodeState>()((set) => ({
       );
 
       const goalJNodes = goalIds.reduce<JNode[]>((list, id) => {
-        const found = state.jNodes.get(id);
+        const found = state.jnodes.get(id);
         if (found) {
           list.push(found);
         }
         return list;
       }, []);
 
-      const journeys = goalJNodes.map((goalJNode) => getPathsToNode(goalJNode, state.jNodes));
+      const journeys = goalJNodes.map((goalJNode) => getPathsToNode(goalJNode, state.jnodes));
       const nodesOnPath = new Set<JNode>();
       for (const journey of journeys) {
         for (const paths of journey) {
-          for (const jNode of paths) {
-            nodesOnPath.add(jNode);
+          for (const jnode of paths) {
+            nodesOnPath.add(jnode);
           }
         }
       }
 
-      const { edges, nodes } = jNodesToFlow(Array.from(state.jNodes.values()), nodesOnPath, nodeSettingsMap);
+      const { edges, nodes } = jnodesToFlow(Array.from(state.jnodes.values()), nodesOnPath, nodeSettingsMap);
       return { nodes, edges };
     }),
 }));

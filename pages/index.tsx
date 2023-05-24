@@ -1,10 +1,10 @@
 import { ClientPrompt, JNode } from 'types/common';
+import { Edge, Node } from 'reactflow';
 import type { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next';
-import { getLayoutedElements, jNodesToFlow } from 'utils/flow';
+import { JNodeTypeData, JNodeTypeProps } from 'types/flow';
+import { getLayoutedElements, jnodesToFlow } from 'utils/flow';
 
-import { Edge } from 'reactflow';
 import Home from 'components/Home';
-import { NodeWithData } from 'types/flow';
 import { clientPrompts } from 'data/prompts';
 import rootJSON from 'data/root.json';
 import techJSON from 'data/tech.json';
@@ -12,14 +12,13 @@ import { techJSONSchema } from 'schemas/data';
 
 const tech = techJSONSchema.parse(techJSON);
 const root = techJSONSchema.parse(rootJSON);
-
 const initialJNodes = [...Object.values(root), ...Object.values(tech).sort((a, b) => a.name.localeCompare(b.name))];
-const { nodes, edges } = jNodesToFlow(initialJNodes, new Set(), new Map());
+const { nodes, edges } = jnodesToFlow(initialJNodes, new Set(), new Map());
 const { nodes: initialNodes, edges: initialEdges } = getLayoutedElements(nodes, edges, 'LR');
 
 export type Props = {
   prompts: ClientPrompt[];
-  initialNodes: NodeWithData[];
+  initialNodes: Node<JNodeTypeData, JNodeTypeProps['type']>[];
   initialEdges: Edge[];
   initialJNodes: JNode[];
 };
