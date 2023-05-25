@@ -1,4 +1,5 @@
-import { AppShell } from '@mantine/core';
+import { Flex, createStyles } from '@mantine/core';
+
 import { Graph } from 'components/Graph';
 import LeftPanel from 'components/LeftPanel';
 import PromptBar from 'components/PromptBar';
@@ -9,6 +10,16 @@ import { useHistoryStore } from 'store/history';
 import { useNodeStore } from 'store/nodes';
 import { usePromptStore } from 'store/prompt';
 
+const useStyles = createStyles(() => ({
+  container: {
+    flexDirection: 'row',
+  },
+  rightContainer: {
+    flex: 1,
+    position: 'relative',
+  },
+}));
+
 export default function Home(props: Props) {
   const { initialEdges, initialNodes, initialJNodes, prompts, placeholder } = props;
 
@@ -16,6 +27,8 @@ export default function Home(props: Props) {
   const setPrompts = usePromptStore((state) => state.setPrompts);
   const updateNodes = useNodeStore((state) => state.updateNodes);
   const selected = useHistoryStore((state) => state.selected);
+
+  const { classes } = useStyles();
 
   // Store initial values in store
   useEffect(() => {
@@ -25,16 +38,18 @@ export default function Home(props: Props) {
 
   // Update nodes when selected updates
   useEffect(() => {
-    console.log('selected', selected);
-    updateNodes(selected?.paths ?? []);
+    updateNodes(selected?.paths.filter((path) => path.enabled) ?? []);
   }, [selected, updateNodes]);
 
   return (
     <ReactFlowProvider>
-      <AppShell navbar={<LeftPanel />}>
-        <Graph />
-        <PromptBar placeholder={placeholder} />
-      </AppShell>
+      <Flex className={classes.container}>
+        <LeftPanel />
+        <Flex className={classes.rightContainer}>
+          <Graph />
+          <PromptBar placeholder={placeholder} />
+        </Flex>
+      </Flex>
     </ReactFlowProvider>
   );
 }

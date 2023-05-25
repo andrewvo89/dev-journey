@@ -9,6 +9,36 @@
       "careers": []
     }
   },
+  "sass": {
+    "id": "sass",
+    "name": "Sass",
+    "dependencies": [
+      "css"
+    ],
+    "attributes": {
+      "careers": []
+    }
+  },
+  "less": {
+    "id": "less",
+    "name": "Less",
+    "dependencies": [
+      "css"
+    ],
+    "attributes": {
+      "careers": []
+    }
+  },
+  "tailwind": {
+    "id": "tailwind",
+    "name": "Tailwind CSS",
+    "dependencies": [
+      "css"
+    ],
+    "attributes": {
+      "careers": []
+    }
+  },
   "html": {
     "id": "html",
     "name": "HTML",
@@ -53,6 +83,28 @@
       ]
     }
   },
+  "php": {
+    "id": "php",
+    "name": "PHP",
+    "dependencies": [
+      "root"
+    ],
+    "attributes": {
+      "careers": [
+        "backend"
+      ]
+    }
+  },
+  "laravel": {
+    "id": "laravel",
+    "name": "Laravel",
+    "dependencies": [
+      "php"
+    ],
+    "attributes": {
+      "careers": []
+    }
+  },
   "rust": {
     "id": "rust",
     "name": "Rust",
@@ -77,11 +129,108 @@
       ]
     }
   },
+  "python": {
+    "id": "python",
+    "name": "Python",
+    "dependencies": [
+      "root"
+    ],
+    "attributes": {
+      "careers": [
+        "backend"
+      ]
+    }
+  },
+  "django": {
+    "id": "django",
+    "name": "Django",
+    "dependencies": [
+      "python"
+    ],
+    "attributes": {
+      "careers": []
+    }
+  },
   "react": {
     "id": "react",
     "name": "React",
     "dependencies": [
       "javascript"
+    ],
+    "attributes": {
+      "careers": [
+        "frontend"
+      ]
+    }
+  },
+  "reactnative": {
+    "id": "reactnative",
+    "name": "React Native",
+    "dependencies": [
+      "react"
+    ],
+    "attributes": {
+      "careers": [
+        "mobile"
+      ]
+    }
+  },
+  "swift": {
+    "id": "swift",
+    "name": "Swift",
+    "dependencies": [
+      "root"
+    ],
+    "attributes": {
+      "careers": [
+        "mobile",
+        "ios"
+      ]
+    }
+  },
+  "kotlin": {
+    "id": "kotlin",
+    "name": "Kotlin",
+    "dependencies": [
+      "root"
+    ],
+    "attributes": {
+      "careers": [
+        "mobile",
+        "android"
+      ]
+    }
+  },
+  "dart": {
+    "id": "dart",
+    "name": "Dart",
+    "dependencies": [
+      "root"
+    ],
+    "attributes": {
+      "careers": [
+        "mobile",
+        "backend"
+      ]
+    }
+  },
+  "flutter": {
+    "id": "flutter",
+    "name": "Flutter",
+    "dependencies": [
+      "dart"
+    ],
+    "attributes": {
+      "careers": [
+        "mobile"
+      ]
+    }
+  },
+  "angular": {
+    "id": "angular",
+    "name": "Angular",
+    "dependencies": [
+      "typescript"
     ],
     "attributes": {
       "careers": [
@@ -137,11 +286,35 @@
       ]
     }
   },
+  "nuxt": {
+    "id": "nuxt",
+    "name": "Nuxt",
+    "dependencies": [
+      "vue"
+    ],
+    "attributes": {
+      "careers": [
+        "frontend"
+      ]
+    }
+  },
   "svelte": {
     "id": "svelte",
     "name": "Svelte",
     "dependencies": [
       "javascript"
+    ],
+    "attributes": {
+      "careers": [
+        "frontend"
+      ]
+    }
+  },
+  "sveltekit": {
+    "id": "sveltekit",
+    "name": "SvelteKit",
+    "dependencies": [
+      "svelte"
     ],
     "attributes": {
       "careers": [
@@ -161,15 +334,100 @@
       ]
     }
   },
-  "deno": {
-    "id": "deno",
-    "name": "Deno",
+  "express": {
+    "id": "express",
+    "name": "Express",
     "dependencies": [
       "nodejs"
     ],
     "attributes": {
+      "careers": []
+    }
+  },
+  "deno": {
+    "id": "deno",
+    "name": "Deno",
+    "dependencies": [
+      "nodejs",
+      "typescript"
+    ],
+    "attributes": {
       "careers": [
         "backend"
+      ]
+    }
+  },
+  "rest": {
+    "id": "rest",
+    "name": "REST",
+    "dependencies": [
+      "root"
+    ],
+    "attributes": {
+      "careers": [
+        "backend",
+        "api"
+      ]
+    }
+  },
+  "graphql": {
+    "id": "graphql",
+    "name": "GraphQL",
+    "dependencies": [
+      "root"
+    ],
+    "attributes": {
+      "careers": [
+        "backend",
+        "api"
+      ]
+    }
+  },
+  "mysql": {
+    "id": "mysql",
+    "name": "MySQL",
+    "dependencies": [
+      "root"
+    ],
+    "attributes": {
+      "careers": [
+        "database"
+      ]
+    }
+  },
+  "postgress": {
+    "id": "postgress",
+    "name": "PostgreSQL",
+    "dependencies": [
+      "root"
+    ],
+    "attributes": {
+      "careers": [
+        "database"
+      ]
+    }
+  },
+  "mongodb": {
+    "id": "mongodb",
+    "name": "MongoDB",
+    "dependencies": [
+      "root"
+    ],
+    "attributes": {
+      "careers": [
+        "database"
+      ]
+    }
+  },
+  "redis": {
+    "id": "redis",
+    "name": "Redis",
+    "dependencies": [
+      "root"
+    ],
+    "attributes": {
+      "careers": [
+        "database"
       ]
     }
   }

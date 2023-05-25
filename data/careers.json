@@ -7,12 +7,28 @@
     "id": "backend",
     "name": "Backend developer"
   },
+  "api": {
+    "id": "api",
+    "name": "API developer"
+  },
   "devops": {
     "id": "devops",
     "name": "DevOps engineer"
   },
-  "database_administrator": {
-    "id": "database_administrator",
+  "databaseadmin": {
+    "id": "database",
     "name": "Database administrator"
+  },
+  "mobile": {
+    "id": "mobile",
+    "name": "Mobile developer"
+  },
+  "ios": {
+    "id": "ios",
+    "name": "iOS developer"
+  },
+  "android": {
+    "id": "android",
+    "name": "Android developer"
   }
 }

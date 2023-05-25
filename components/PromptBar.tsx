@@ -14,7 +14,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const useStyles = createStyles((theme, props: { isLoading: boolean }) => ({
   autocomplete: {
-    position: 'sticky',
+    position: 'absolute',
     bottom: 32,
     width: '50%',
     boxShadow: theme.shadows.md,

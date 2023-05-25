@@ -1,8 +1,8 @@
 import { Flex, createStyles } from '@mantine/core';
-import { NodeTypes, ReactFlow, Rect, useReactFlow } from 'reactflow';
+import { NodeTypes, ReactFlow, useReactFlow } from 'reactflow';
+import { getBoundsOfNodes, isJnodeNodeType } from 'utils/flow';
 
 import JNodeType from 'components/JNodeType';
-import { isJnodeNodeType } from 'utils/flow';
 import { shallow } from 'zustand/shallow';
 import { useEffect } from 'react';
 import { useNodeStore } from 'store/nodes';
@@ -10,6 +10,7 @@ import { useNodeStore } from 'store/nodes';
 const useStyles = createStyles(() => ({
   container: {
     height: '100vh',
+    flex: 1,
   },
 }));
 
@@ -29,7 +30,7 @@ export function Graph() {
   );
 
   const { classes } = useStyles();
-  const { fitView, fitBounds } = useReactFlow();
+  const { fitView, fitBounds, zoomOut } = useReactFlow();
 
   useEffect(() => {
     const nodesOnPath = nodes.filter((node) => isJnodeNodeType(node) && node.data.isOnPath);
@@ -37,26 +38,9 @@ export function Graph() {
       fitView({ duration: 1000 });
       return;
     }
-    const bounds = nodesOnPath.reduce<Rect>(
-      (acc, node) => {
-        if (node.position.x < acc.x) {
-          acc.x = node.position.x;
-        }
-        if (node.position.y < acc.y) {
-          acc.y = node.position.y;
-        }
-        if (node.width && node.position.x + node.width > acc.width) {
-          acc.width = node.position.x + node.width;
-        }
-        if (node.height && node.position.y + node.height > acc.height) {
-          acc.height = node.position.y + node.height;
-        }
-        return acc;
-      },
-      { x: 0, y: 0, width: 0, height: 0 },
-    );
+    const bounds = getBoundsOfNodes(nodesOnPath);
     fitBounds(bounds, { duration: 1000 });
-  }, [nodes, fitView, fitBounds]);
+  }, [nodes, fitView, fitBounds, zoomOut]);
 
   return (
     <Flex className={classes.container}>
@@ -65,7 +49,17 @@ export function Graph() {
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
-        onInit={(i) => i.fitView({ duration: 1000 })}
+        onInit={({ fitBounds, fitView }) => {
+          const root = nodes.find((node) => node.id === 'root');
+          if (!root?.width || !root?.height) {
+            fitView({ duration: 1000 });
+            return;
+          }
+          fitBounds(
+            { x: root.position.x, y: root.position.y, width: root.width, height: root.height },
+            { duration: 1000 },
+          );
+        }}
         proOptions={{ hideAttribution: true }}
         nodeTypes={nodeTypes}
       />

@@ -45,7 +45,6 @@ export const useNodeStore = create<NodeState>()((set) => ({
         new Map(),
       );
 
-      console.log('paths', paths);
       const nodeIdsOnPath = new Set<string>();
       for (const path of paths) {
         for (const routes of path.routes) {
@@ -54,7 +53,6 @@ export const useNodeStore = create<NodeState>()((set) => ({
           }
         }
       }
-      console.log('nodesOnPath', nodeIdsOnPath);
       return jnodesToFlow(Array.from(state.jnodes.values()), nodeIdsOnPath, nodeSettingsMap);
     }),
 }));

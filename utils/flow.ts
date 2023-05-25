@@ -1,5 +1,5 @@
 import { ClientJNode, JNode } from 'types/common';
-import { Edge, Node, Position } from 'reactflow';
+import { Edge, Node, Position, Rect } from 'reactflow';
 import { JNodeTypeData, jnodeProps } from 'types/flow';
 
 import dagre from 'dagre';
@@ -130,4 +130,25 @@ export function highlightManyEdges(edges: Edge[], paths: JNode[][][]): Edge[] {
 
 export function isJnodeNodeType(node: Node): node is Node<JNodeTypeData> {
   return node.type === 'jnode';
+}
+
+export function getBoundsOfNodes(nodes: Node[]): Rect {
+  return nodes.reduce<Rect>(
+    (acc, node) => {
+      if (node.position.x < acc.x) {
+        acc.x = node.position.x;
+      }
+      if (node.position.y < acc.y) {
+        acc.y = node.position.y;
+      }
+      if (node.width && node.position.x + node.width > acc.width) {
+        acc.width = node.position.x + node.width;
+      }
+      if (node.height && node.position.y + node.height > acc.height) {
+        acc.height = node.position.y + node.height;
+      }
+      return acc;
+    },
+    { x: Infinity, y: Infinity, width: 0, height: 0 },
+  );
 }
