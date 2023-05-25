@@ -1,12 +1,14 @@
 import { Autocomplete, Loader, createStyles } from '@mantine/core';
+import { ClientJNode, ClientPrompt, Path } from 'types/common';
 import { useEffect, useRef, useState } from 'react';
 
-import { ClientPrompt } from 'types/common';
 import dayjs from 'dayjs';
+import { getPathsToNode } from 'utils/jnodes';
 import { promptResponseSchema } from 'schemas/common';
 import { shallow } from 'zustand/shallow';
 import { useHistoryStore } from 'store/history';
 import { useInputRefStore } from 'store/input-ref';
+import { useNodeStore } from 'store/nodes';
 import { usePromptStore } from 'store/prompt';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -56,13 +58,29 @@ export default function PromptBar(props: Props) {
     shallow,
   );
 
+  const jnodes = useNodeStore((state) => state.jnodes);
+
   const itemSelectedHandler = async (prompt: ClientPrompt) => {
     setIsLoading(true);
     try {
       const res = await fetch(`/api/prompts/${prompt.value}`, { method: 'POST' });
       const jsonResponse = await res.json();
       const { goalIds } = promptResponseSchema.parse(jsonResponse);
-      const paths = goalIds.reduce((map, goalId) => ({ ...map, [goalId]: true }), {});
+
+      const goalJNodes = goalIds.reduce<ClientJNode[]>((list, id) => {
+        const found = jnodes.get(id);
+        if (found) {
+          list.push(found);
+        }
+        return list;
+      }, []);
+
+      const paths = goalJNodes.map<Path>((goalJNode) => ({
+        goalId: goalJNode.id,
+        enabled: true,
+        routes: getPathsToNode(goalJNode, jnodes),
+      }));
+
       addJourney({ id: uuidv4(), createdAt: dayjs().toISOString(), paths, prompt });
     } catch (error) {
       console.error(error);

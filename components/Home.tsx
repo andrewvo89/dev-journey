@@ -14,7 +14,7 @@ export default function Home(props: Props) {
 
   const initFlow = useNodeStore((state) => state.initFlow);
   const setPrompts = usePromptStore((state) => state.setPrompts);
-  const updateNodesWithGoals = useNodeStore((state) => state.updateNodesWithGoals);
+  const updateNodes = useNodeStore((state) => state.updateNodes);
   const selected = useHistoryStore((state) => state.selected);
 
   // Store initial values in store
@@ -25,16 +25,9 @@ export default function Home(props: Props) {
 
   // Update nodes when selected updates
   useEffect(() => {
-    if (!selected) {
-      updateNodesWithGoals([]);
-      return;
-    }
-    const goalIds = Object.entries(selected.paths).reduce<string[]>(
-      (list, [key, value]) => (value ? [...list, key] : list),
-      [],
-    );
-    updateNodesWithGoals(goalIds);
-  }, [selected, updateNodesWithGoals]);
+    console.log('selected', selected);
+    updateNodes(selected?.paths ?? []);
+  }, [selected, updateNodes]);
 
   return (
     <ReactFlowProvider>

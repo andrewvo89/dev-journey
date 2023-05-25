@@ -63,19 +63,13 @@ export default function HistoryListItem(props: Props) {
 
   const jnodes = useNodeStore((state) => state.jnodes);
 
-  const { updateNodesWithGoals } = useNodeStore(
-    (state) => ({ updateNodesWithGoals: state.updateNodesWithGoals }),
-    shallow,
-  );
-
   useEffect(() => {
     if (!isSelected) {
       setIsOpen(false);
       setDeleteMode(false);
       return;
     }
-    // updateNodesWithGoals(Array.from(paths));
-  }, [isSelected, updateNodesWithGoals]);
+  }, [isSelected]);
 
   const promptClickHandler = () => {
     setSelected(journey);
@@ -145,19 +139,19 @@ export default function HistoryListItem(props: Props) {
         opened={isOpen}
         onChange={expandHandler}
       >
-        {Object.keys(journey.paths).length > 1 && (
+        {journey.paths.length > 1 && (
           <Stack className={classes.switchContainer}>
-            {Object.entries(journey.paths).map(([goalId, selected]) => {
-              const found = jnodes.get(goalId);
+            {journey.paths.map((path) => {
+              const found = jnodes.get(path.goalId);
               if (!found) {
                 return null;
               }
               return (
                 <Switch
-                  key={goalId}
+                  key={path.goalId}
                   label={found.name}
-                  value={goalId}
-                  checked={selected}
+                  value={path.goalId}
+                  checked={path.enabled}
                   onChange={(e) => switchToggleHandler(e)}
                 />
               );

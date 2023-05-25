@@ -74,31 +74,31 @@ function isLeafNode(node: ClientJNode, jnodes: ClientJNode[]): boolean {
 
 export function jnodesToFlow(
   jnodes: ClientJNode[],
-  nodesOnPath: Set<ClientJNode>,
+  nodesIdsOnPath: Set<string>,
   maintainSettings: Map<string, Partial<Node>>,
 ): { nodes: Node<JNodeTypeData>[]; edges: Edge[] } {
-  const noNodesOnPath = nodesOnPath.size === 0;
+  const noNodesOnPath = nodesIdsOnPath.size === 0;
 
   const nodes = jnodes.map<Node<JNodeTypeData>>((jnode) => ({
     id: jnode.id,
     position: { x: 0, y: 0 },
     data: {
       label: jnode.name,
-      isOnPath: nodesOnPath.has(jnode),
+      isOnPath: nodesIdsOnPath.has(jnode.id),
       isLeafNode: isLeafNode(jnode, jnodes),
       noNodesOnPath,
     },
     type: 'jnode',
     width: jnodeProps.dimensions.width,
     height: jnodeProps.dimensions.height,
-    ...maintainSettings.get(jnode.id),
+    ...maintainSettings?.get(jnode.id),
   }));
 
   const edges = jnodes.reduce<Edge[]>(
     (list, jnode) => [
       ...list,
       ...jnode.dependencies.map<Edge>((depId) => {
-        const nodeIsOnPath = nodesOnPath.has(jnode);
+        const nodeIsOnPath = nodesIdsOnPath.has(jnode.id);
         const edge: Edge = {
           id: `${jnode.id}-${depId}`,
           source: depId,

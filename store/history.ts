@@ -7,8 +7,8 @@ type HistoryState = {
   addJourney: (journey: Journey) => void;
   removeJourney: (journey: Journey) => void;
   setJourney: (journey: Journey) => void;
-  selectPath: (journey: Journey, path: string) => void;
-  deselectPath: (journey: Journey, path: string) => void;
+  selectPath: (journey: Journey, pathId: string) => void;
+  deselectPath: (journey: Journey, pathId: string) => void;
   selected: Journey | null;
   setSelected: (journey: Journey | null) => void;
   clearHistory: () => void;
@@ -32,23 +32,17 @@ export const useHistoryStore = create<HistoryState>()(
         set((state) => ({ journeys: state.journeys.filter((j) => j.id !== journey.id), selected: null })),
       setJourney: (journey) =>
         set((state) => ({ journeys: state.journeys.map((j) => (j.id === journey.id ? journey : j)) })),
-      selectPath: (journey, path) =>
+      selectPath: (journey, pathId) =>
         set((state) => {
-          const newPaths = Object.entries(journey.paths).reduce(
-            (obj, [key, value]) => ({ ...obj, [key]: path === key ? true : value }),
-            {},
-          );
+          const newPaths = journey.paths.map((path) => (path.goalId === pathId ? { ...path, enabled: true } : path));
           const newJourney = { ...journey, paths: newPaths };
           const newJourneys = state.journeys.map((j) => (j.id === journey.id ? newJourney : j));
           const newSelected = state.selected?.id === newJourney.id ? newJourney : state.selected;
           return { journeys: newJourneys, selected: newSelected };
         }),
-      deselectPath: (journey, path) =>
+      deselectPath: (journey, pathId) =>
         set((state) => {
-          const newPaths = Object.entries(journey.paths).reduce(
-            (obj, [key, value]) => ({ ...obj, [key]: path === key ? false : value }),
-            {},
-          );
+          const newPaths = journey.paths.map((path) => (path.goalId === pathId ? { ...path, enabled: false } : path));
           const newJourney = { ...journey, paths: newPaths };
           const newJourneys = state.journeys.map((j) => (j.id === journey.id ? newJourney : j));
           const newSelected = state.selected?.id === newJourney.id ? newJourney : state.selected;

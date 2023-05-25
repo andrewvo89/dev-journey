@@ -1,9 +1,8 @@
+import { ClientJNode, Path } from 'types/common';
 import { Edge, Node, OnEdgesChange, OnNodesChange, applyEdgeChanges, applyNodeChanges } from 'reactflow';
 
-import { ClientJNode } from 'types/common';
 import { JNodeTypeData } from 'types/flow';
 import { create } from 'zustand';
-import { getPathsToNode } from 'utils/jnodes';
 import { jnodesToFlow } from 'utils/flow';
 
 type NodeState = {
@@ -13,7 +12,7 @@ type NodeState = {
   initFlow: (jnodes: ClientJNode[], nodes: Node<JNodeTypeData>[], edges: Edge[]) => void;
   onNodesChange: OnNodesChange;
   onEdgesChange: OnEdgesChange;
-  updateNodesWithGoals: (goalIds: string[]) => void;
+  updateNodes: (paths: Path[]) => void;
 };
 
 export const useNodeStore = create<NodeState>()((set) => ({
@@ -34,7 +33,7 @@ export const useNodeStore = create<NodeState>()((set) => ({
     set((state) => ({
       edges: applyEdgeChanges(changes, state.edges),
     })),
-  updateNodesWithGoals: (goalIds) =>
+  updateNodes: (paths) =>
     set((state) => {
       const nodeSettingsMap = state.nodes.reduce<Map<string, Partial<Node>>>(
         (map, node) =>
@@ -46,25 +45,16 @@ export const useNodeStore = create<NodeState>()((set) => ({
         new Map(),
       );
 
-      const goalJNodes = goalIds.reduce<ClientJNode[]>((list, id) => {
-        const found = state.jnodes.get(id);
-        if (found) {
-          list.push(found);
-        }
-        return list;
-      }, []);
-
-      const journeys = goalJNodes.map((goalJNode) => getPathsToNode(goalJNode, state.jnodes));
-      const nodesOnPath = new Set<ClientJNode>();
-      for (const journey of journeys) {
-        for (const paths of journey) {
-          for (const jnode of paths) {
-            nodesOnPath.add(jnode);
+      console.log('paths', paths);
+      const nodeIdsOnPath = new Set<string>();
+      for (const path of paths) {
+        for (const routes of path.routes) {
+          for (const jnode of routes) {
+            nodeIdsOnPath.add(jnode.id);
           }
         }
       }
-
-      const { edges, nodes } = jnodesToFlow(Array.from(state.jnodes.values()), nodesOnPath, nodeSettingsMap);
-      return { nodes, edges };
+      console.log('nodesOnPath', nodeIdsOnPath);
+      return jnodesToFlow(Array.from(state.jnodes.values()), nodeIdsOnPath, nodeSettingsMap);
     }),
 }));
