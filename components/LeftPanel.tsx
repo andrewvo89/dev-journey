@@ -1,10 +1,12 @@
 import { Button, Divider, Navbar, Text, Title, createStyles } from '@mantine/core';
 
 import HistoryList from 'components/HistoryList';
+import { IconPlus } from '@tabler/icons-react';
 import { modals } from '@mantine/modals';
 import { shallow } from 'zustand/shallow';
 import { useHistoryStore } from 'store/history';
 import { useHydratedStore } from 'hooks/useHydratedStore';
+import { useInputRefStore } from 'store/input-ref';
 
 const useStyles = createStyles((theme) => ({
   navbar: {
@@ -26,7 +28,8 @@ export default function LeftPanel() {
     shallow,
   );
   const journeys = useHydratedStore(useHistoryStore, (state) => state.journeys);
-  const disableClearHistory = journeys?.length === 0;
+  const inputRef = useInputRefStore((state) => state.inputRef);
+  const noHistory = journeys?.length === 0;
 
   const outsideClickHandler = () => {
     setSelected(null);
@@ -41,6 +44,12 @@ export default function LeftPanel() {
       onConfirm: clearHistory,
     });
 
+  const newJourneyCLickHandler = () => {
+    if (inputRef) {
+      inputRef.focus();
+    }
+  };
+
   return (
     <Navbar className={classes.navbar} width={{ base: 300 }}>
       <Navbar.Section>
@@ -48,10 +57,15 @@ export default function LeftPanel() {
       </Navbar.Section>
       <Divider my='sm' />
       <Navbar.Section grow onClick={outsideClickHandler}>
+        {noHistory && (
+          <Button fullWidth leftIcon={<IconPlus size='1rem' />} onClick={newJourneyCLickHandler}>
+            Start new journey
+          </Button>
+        )}
         <HistoryList />
       </Navbar.Section>
       <Navbar.Section>
-        <Button disabled={disableClearHistory} fullWidth variant='light' onClick={clearHistoryClickHandler}>
+        <Button disabled={noHistory} fullWidth variant='light' onClick={clearHistoryClickHandler}>
           Clear history
         </Button>
       </Navbar.Section>

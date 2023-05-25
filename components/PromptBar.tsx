@@ -1,11 +1,12 @@
 import { Autocomplete, Loader, createStyles } from '@mantine/core';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { ClientPrompt } from 'types/common';
 import dayjs from 'dayjs';
 import { promptResponseSchema } from 'schemas/common';
 import { shallow } from 'zustand/shallow';
 import { useHistoryStore } from 'store/history';
+import { useInputRefStore } from 'store/input-ref';
 import { usePromptStore } from 'store/prompt';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -36,6 +37,14 @@ export default function PromptBar(props: Props) {
   const { placeholder } = props;
   const [isLoading, setIsLoading] = useState(false);
   const { classes } = useStyles({ isLoading });
+  const ref = useRef<HTMLInputElement>(null);
+
+  const setInputRef = useInputRefStore((state) => state.setInputRef);
+
+  useEffect(() => {
+    // Happens after first render when UI assigns the ref
+    setInputRef(ref.current);
+  }, [setInputRef]);
 
   const { prompt, setPrompt, prompts } = usePromptStore(
     (state) => ({ prompt: state.prompt, setPrompt: state.setPrompt, prompts: state.prompts }),
@@ -68,7 +77,9 @@ export default function PromptBar(props: Props) {
 
   return (
     <Autocomplete
+      ref={ref}
       classNames={{ root: classes.autocomplete, input: classes.input }}
+      hoverOnSearchChange
       placeholder={placeholder}
       data={prompts}
       value={prompt}

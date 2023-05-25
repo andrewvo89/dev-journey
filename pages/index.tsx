@@ -11,15 +11,6 @@ import placeholdersJSON from 'data/placeholders.json';
 import rootJSON from 'data/root.json';
 import techJSON from 'data/tech.json';
 
-const tech = techJSONSchema.parse(techJSON);
-const root = techJSONSchema.parse(rootJSON);
-const placeholders = placeholdersJSONSchema.parse(placeholdersJSON);
-
-const placeholder = placeholders[Math.floor(Math.random() * placeholders.length)];
-const initialJNodes = [...Object.values(root), ...Object.values(tech).sort((a, b) => a.name.localeCompare(b.name))];
-const { nodes, edges } = jnodesToFlow(initialJNodes, new Set(), new Map());
-const { nodes: initialNodes, edges: initialEdges } = getLayoutedElements(nodes, edges, 'LR');
-
 export type Props = {
   placeholder: string;
   prompts: ClientPrompt[];
@@ -28,7 +19,15 @@ export type Props = {
   initialJNodes: JNode[];
 };
 
+const tech = techJSONSchema.parse(techJSON);
+const root = techJSONSchema.parse(rootJSON);
+const placeholders = placeholdersJSONSchema.parse(placeholdersJSON);
+const initialJNodes = [...Object.values(root), ...Object.values(tech).sort((a, b) => a.name.localeCompare(b.name))];
+const { nodes, edges } = jnodesToFlow(initialJNodes, new Set(), new Map());
+const { nodes: initialNodes, edges: initialEdges } = getLayoutedElements(nodes, edges, 'LR');
+
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
+  const placeholder = placeholders[Math.floor(Math.random() * placeholders.length)];
   return { props: { placeholder, prompts: clientPrompts, initialNodes, initialEdges, initialJNodes } };
 };
 

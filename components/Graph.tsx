@@ -29,7 +29,7 @@ export function Graph() {
   );
 
   const { classes } = useStyles();
-  const { setCenter, fitView } = useReactFlow();
+  const { fitView, fitBounds } = useReactFlow();
 
   useEffect(() => {
     const nodesOnPath = nodes.filter((node) => isJnodeNodeType(node) && node.data.isOnPath);
@@ -55,8 +55,8 @@ export function Graph() {
       },
       { x: 0, y: 0, width: 0, height: 0 },
     );
-    setCenter(bounds.x + bounds.width / 2, bounds.y + bounds.height / 2, { duration: 1000, zoom: 0.9 });
-  }, [setCenter, nodes, fitView]);
+    fitBounds(bounds, { duration: 1000 });
+  }, [nodes, fitView, fitBounds]);
 
   return (
     <Flex className={classes.container}>
