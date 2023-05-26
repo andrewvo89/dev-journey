@@ -67,7 +67,14 @@
       "root"
     ],
     "pathways": [],
-    "resources": [],
+    "resources": [
+      {
+        "url": "https://www.codecademy.com/learn/learn-html",
+        "name": "Codecademy - Learn HTML",
+        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
+        "type": "course"
+      }
+    ],
     "attributes": {
       "group": "frontend",
       "careers": []
@@ -89,7 +96,80 @@
       "vue",
       "solidjs"
     ],
-    "resources": [],
+    "resources": [
+      {
+        "url": "https://www.codecademy.com/learn/learn-html",
+        "name": "Codecademy - Learn HTML",
+        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
+        "type": "course"
+      },
+      {
+        "url": "https://www.codecademy.com/learn/learn-html",
+        "name": "Codecademy - Learn HTML",
+        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
+        "type": "course"
+      },
+      {
+        "url": "https://www.codecademy.com/learn/learn-html",
+        "name": "Codecademy - Learn HTML",
+        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
+        "type": "course"
+      },
+      {
+        "url": "https://www.codecademy.com/learn/learn-html",
+        "name": "Codecademy - Learn HTML",
+        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
+        "type": "course"
+      },
+      {
+        "url": "https://www.codecademy.com/learn/learn-html",
+        "name": "Codecademy - Learn HTML",
+        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
+        "type": "course"
+      },
+      {
+        "url": "https://www.codecademy.com/learn/learn-html",
+        "name": "Codecademy - Learn HTML",
+        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
+        "type": "course"
+      },
+      {
+        "url": "https://www.codecademy.com/learn/learn-html",
+        "name": "Codecademy - Learn HTML",
+        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
+        "type": "course"
+      },
+      {
+        "url": "https://www.codecademy.com/learn/learn-html",
+        "name": "Codecademy - Learn HTML",
+        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
+        "type": "course"
+      },
+      {
+        "url": "https://www.codecademy.com/learn/learn-html",
+        "name": "Codecademy - Learn HTML",
+        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
+        "type": "course"
+      },
+      {
+        "url": "https://www.codecademy.com/learn/learn-html",
+        "name": "Codecademy - Learn HTML",
+        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
+        "type": "course"
+      },
+      {
+        "url": "https://www.codecademy.com/learn/learn-html",
+        "name": "Codecademy - Learn HTML",
+        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
+        "type": "course"
+      },
+      {
+        "url": "https://www.codecademy.com/learn/learn-html",
+        "name": "Codecademy - Learn HTML",
+        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
+        "type": "course"
+      }
+    ],
     "attributes": {
       "group": "frontend",
       "careers": []

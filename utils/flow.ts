@@ -87,7 +87,7 @@ export function jnodesToFlow(
     return {
       id: jnode.id,
       position: { x: 0, y: 0 },
-      data: { label: jnode.name, isOnPath, isLeafNode, noNodesOnPath, isOnOptionalPath },
+      data: { jnode, isOnPath, isLeafNode, noNodesOnPath, isOnOptionalPath },
       type: 'jnode',
       width: jnodeProps.dimensions.width,
       height: jnodeProps.dimensions.height,

@@ -1,3 +1,5 @@
+import { JNode } from 'types/common';
+
 export type NodeTypeProps = {
   type: 'jnode';
   dimensions: {
@@ -15,7 +17,7 @@ export const jnodeProps: NodeTypeProps = {
 };
 
 export type JNodeTypeData = {
-  label: string;
+  jnode: JNode;
   isOnPath: boolean;
   isLeafNode: boolean;
   noNodesOnPath: boolean;

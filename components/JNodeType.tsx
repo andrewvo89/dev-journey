@@ -1,6 +1,6 @@
+import { Badge, Paper, Text, createStyles } from '@mantine/core';
 import { Handle, NodeProps } from 'reactflow';
 import { JNodeTypeData, jnodeProps } from 'types/flow';
-import { Paper, Text, createStyles } from '@mantine/core';
 
 import { Fragment } from 'react';
 import { useHistoryStore } from 'store/history';
@@ -30,12 +30,21 @@ const useStyles = createStyles((theme, { keepAlive, isOptional, isOnPath }: Styl
       backgroundColor: isOnPath ? theme.colors.blue[6] : theme.colors.gray[6],
     },
   },
+  badge: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    transform: 'translate(50%, -50%)',
+    border: `1px solid ${isOnPath || isOptional ? theme.colors.blue[6] : theme.colors.gray[6]}`,
+    color: theme.colors.gray[isOptional ? 6 : 7],
+    backgroundColor: theme.white,
+  },
 }));
 
 export default function JNodeType(props: NodeProps<JNodeTypeData>) {
   const {
     id,
-    data: { label, isOnPath, isLeafNode, noNodesOnPath, isOnOptionalPath },
+    data: { jnode, isOnPath, isLeafNode, noNodesOnPath, isOnOptionalPath },
     sourcePosition,
     targetPosition,
   } = props;
@@ -56,7 +65,12 @@ export default function JNodeType(props: NodeProps<JNodeTypeData>) {
       {sourcePosition && !isLeafNode && <Handle type='source' position={sourcePosition} className={classes.handle} />}
       {targetPosition && !isRoot && <Handle type='target' position={targetPosition} className={classes.handle} />}
       <Paper shadow='sm' className={classes.paper}>
-        <Text>{label}</Text>
+        {jnode.resources.length > 0 && (
+          <Badge className={classes.badge} size='lg'>
+            {jnode.resources.length}
+          </Badge>
+        )}
+        <Text>{jnode.name}</Text>
       </Paper>
     </Fragment>
   );
