@@ -2,6 +2,7 @@
   "css": {
     "id": "css",
     "name": "CSS",
+    "type": "language",
     "dependencies": [
       "html"
     ],
@@ -19,6 +20,7 @@
   "sass": {
     "id": "sass",
     "name": "Sass",
+    "type": "framework",
     "dependencies": [
       "css"
     ],
@@ -32,6 +34,7 @@
   "less": {
     "id": "less",
     "name": "Less",
+    "type": "framework",
     "dependencies": [
       "css"
     ],
@@ -45,6 +48,7 @@
   "tailwind": {
     "id": "tailwind",
     "name": "Tailwind CSS",
+    "type": "framework",
     "dependencies": [
       "css"
     ],
@@ -58,6 +62,7 @@
   "html": {
     "id": "html",
     "name": "HTML",
+    "type": "language",
     "dependencies": [
       "root"
     ],
@@ -71,12 +76,19 @@
   "javascript": {
     "id": "javascript",
     "name": "JavaScript",
+    "type": "language",
     "dependencies": [
       "html",
       "css",
       "root"
     ],
-    "pathways": [],
+    "pathways": [
+      "react",
+      "svelte",
+      "angular",
+      "vue",
+      "solidjs"
+    ],
     "resources": [],
     "attributes": {
       "group": "frontend",
@@ -86,6 +98,7 @@
   "typescript": {
     "id": "typescript",
     "name": "TypeScript",
+    "type": "language",
     "dependencies": [
       "javascript"
     ],
@@ -99,6 +112,7 @@
   "golang": {
     "id": "golang",
     "name": "Golang",
+    "type": "language",
     "dependencies": [
       "root"
     ],
@@ -114,10 +128,13 @@
   "php": {
     "id": "php",
     "name": "PHP",
+    "type": "language",
     "dependencies": [
       "root"
     ],
-    "pathways": [],
+    "pathways": [
+      "laravel"
+    ],
     "resources": [],
     "attributes": {
       "group": "backend",
@@ -129,6 +146,7 @@
   "laravel": {
     "id": "laravel",
     "name": "Laravel",
+    "type": "framework",
     "dependencies": [
       "php"
     ],
@@ -142,6 +160,7 @@
   "rust": {
     "id": "rust",
     "name": "Rust",
+    "type": "language",
     "dependencies": [
       "root"
     ],
@@ -157,6 +176,7 @@
   "java": {
     "id": "java",
     "name": "Java",
+    "type": "language",
     "dependencies": [
       "root"
     ],
@@ -172,10 +192,13 @@
   "python": {
     "id": "python",
     "name": "Python",
+    "type": "language",
     "dependencies": [
       "root"
     ],
-    "pathways": [],
+    "pathways": [
+      "django"
+    ],
     "resources": [],
     "attributes": {
       "group": "backend",
@@ -187,6 +210,7 @@
   "django": {
     "id": "django",
     "name": "Django",
+    "type": "framework",
     "dependencies": [
       "python"
     ],
@@ -200,6 +224,7 @@
   "react": {
     "id": "react",
     "name": "React",
+    "type": "library",
     "dependencies": [
       "javascript"
     ],
@@ -216,9 +241,26 @@
       ]
     }
   },
+  "solidjs": {
+    "id": "solidjs",
+    "name": "SolidJS",
+    "type": "library",
+    "dependencies": [
+      "javascript"
+    ],
+    "pathways": [],
+    "resources": [],
+    "attributes": {
+      "group": "frontend",
+      "careers": [
+        "frontend"
+      ]
+    }
+  },
   "reactnative": {
     "id": "reactnative",
     "name": "React Native",
+    "type": "framework",
     "dependencies": [
       "react"
     ],
@@ -234,6 +276,7 @@
   "swift": {
     "id": "swift",
     "name": "Swift",
+    "type": "language",
     "dependencies": [
       "root"
     ],
@@ -250,6 +293,7 @@
   "kotlin": {
     "id": "kotlin",
     "name": "Kotlin",
+    "type": "language",
     "dependencies": [
       "root"
     ],
@@ -266,10 +310,13 @@
   "dart": {
     "id": "dart",
     "name": "Dart",
+    "type": "language",
     "dependencies": [
       "root"
     ],
-    "pathways": [],
+    "pathways": [
+      "flutter"
+    ],
     "resources": [],
     "attributes": {
       "group": "mobile",
@@ -282,6 +329,7 @@
   "flutter": {
     "id": "flutter",
     "name": "Flutter",
+    "type": "framework",
     "dependencies": [
       "dart"
     ],
@@ -297,6 +345,7 @@
   "angular": {
     "id": "angular",
     "name": "Angular",
+    "type": "framework",
     "dependencies": [
       "typescript"
     ],
@@ -312,6 +361,7 @@
   "nextjs": {
     "id": "nextjs",
     "name": "Next.js",
+    "type": "framework",
     "dependencies": [
       "react"
     ],
@@ -325,6 +375,7 @@
   "remix": {
     "id": "remix",
     "name": "Remix",
+    "type": "framework",
     "dependencies": [
       "react"
     ],
@@ -338,6 +389,7 @@
   "astro": {
     "id": "astro",
     "name": "Astro",
+    "type": "framework",
     "dependencies": [
       "react"
     ],
@@ -351,6 +403,7 @@
   "vue": {
     "id": "vue",
     "name": "Vue.js",
+    "type": "library",
     "dependencies": [
       "javascript"
     ],
@@ -368,6 +421,7 @@
   "nuxt": {
     "id": "nuxt",
     "name": "Nuxt",
+    "type": "framework",
     "dependencies": [
       "vue"
     ],
@@ -381,6 +435,7 @@
   "svelte": {
     "id": "svelte",
     "name": "Svelte",
+    "type": "library",
     "dependencies": [
       "javascript"
     ],
@@ -398,6 +453,7 @@
   "sveltekit": {
     "id": "sveltekit",
     "name": "SvelteKit",
+    "type": "framework",
     "dependencies": [
       "svelte"
     ],
@@ -411,6 +467,7 @@
   "nodejs": {
     "id": "nodejs",
     "name": "Node.js",
+    "type": "language",
     "dependencies": [
       "javascript"
     ],
@@ -426,6 +483,7 @@
   "express": {
     "id": "express",
     "name": "Express",
+    "type": "framework",
     "dependencies": [
       "nodejs"
     ],
@@ -439,6 +497,7 @@
   "deno": {
     "id": "deno",
     "name": "Deno",
+    "type": "language",
     "dependencies": [
       "nodejs",
       "typescript"
@@ -455,6 +514,7 @@
   "rest": {
     "id": "rest",
     "name": "REST",
+    "type": "language",
     "dependencies": [
       "root"
     ],
@@ -471,6 +531,7 @@
   "graphql": {
     "id": "graphql",
     "name": "GraphQL",
+    "type": "language",
     "dependencies": [
       "root"
     ],
@@ -487,6 +548,7 @@
   "mysql": {
     "id": "mysql",
     "name": "MySQL",
+    "type": "language",
     "dependencies": [
       "root"
     ],
@@ -502,6 +564,7 @@
   "postgress": {
     "id": "postgress",
     "name": "PostgreSQL",
+    "type": "language",
     "dependencies": [
       "root"
     ],
@@ -517,6 +580,7 @@
   "mongodb": {
     "id": "mongodb",
     "name": "MongoDB",
+    "type": "language",
     "dependencies": [
       "root"
     ],
@@ -532,6 +596,7 @@
   "redis": {
     "id": "redis",
     "name": "Redis",
+    "type": "language",
     "dependencies": [
       "root"
     ],

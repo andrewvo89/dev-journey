@@ -71,7 +71,10 @@ export default function HistoryListItem(props: Props) {
     }
   }, [isSelected]);
 
-  const promptClickHandler = () => {
+  const linkClickHandler = () => {
+    if (isSelected) {
+      return;
+    }
     setSelected(journey);
   };
 
@@ -114,7 +117,7 @@ export default function HistoryListItem(props: Props) {
         }}
         component='li'
         active={isSelected}
-        onClick={promptClickHandler}
+        onClick={linkClickHandler}
         label={
           <Group position='apart' noWrap>
             <Text truncate>{journey.prompt.label}</Text>
@@ -152,7 +155,7 @@ export default function HistoryListItem(props: Props) {
                   label={found.name}
                   value={path.desId}
                   checked={path.enabled}
-                  onChange={(e) => switchToggleHandler(e)}
+                  onChange={switchToggleHandler}
                 />
               );
             })}

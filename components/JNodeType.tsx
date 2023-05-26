@@ -8,10 +8,10 @@ import { useHistoryStore } from 'store/history';
 type StyleProps = {
   keepAlive: boolean;
   isOptional: boolean;
-  isGoalNode: boolean;
+  isOnPath: boolean;
 };
 
-const useStyles = createStyles((theme, { keepAlive, isOptional, isGoalNode }: StyleProps) => ({
+const useStyles = createStyles((theme, { keepAlive, isOptional, isOnPath }: StyleProps) => ({
   paper: {
     width: jnodeProps.dimensions.width,
     height: jnodeProps.dimensions.height,
@@ -21,18 +21,21 @@ const useStyles = createStyles((theme, { keepAlive, isOptional, isGoalNode }: St
     opacity: keepAlive ? 1 : 0.2,
     borderWidth: 1,
     borderStyle: isOptional ? 'dashed' : 'solid',
-    borderColor: isGoalNode || isOptional ? theme.colors.blue[6] : theme.colors.gray[6],
+    borderColor: isOnPath || isOptional ? theme.colors.blue[6] : theme.colors.gray[6],
     color: theme.colors.gray[isOptional ? 6 : 7],
   },
   handle: {
-    opacity: keepAlive ? 1 : 0.1,
+    '&&': {
+      opacity: keepAlive ? 1 : 0.1,
+      backgroundColor: isOnPath ? theme.colors.blue[6] : theme.colors.gray[6],
+    },
   },
 }));
 
 export default function JNodeType(props: NodeProps<JNodeTypeData>) {
   const {
     id,
-    data: { label, isOnPath, isLeafNode, noNodesOnPath, isOnOptionalPath, isGoalNode },
+    data: { label, isOnPath, isLeafNode, noNodesOnPath, isOnOptionalPath },
     sourcePosition,
     targetPosition,
   } = props;
@@ -44,7 +47,7 @@ export default function JNodeType(props: NodeProps<JNodeTypeData>) {
   const { classes } = useStyles({
     keepAlive,
     isOptional: isOnOptionalPath && !isOnPath,
-    isGoalNode: isGoalNode && !noNodesOnPath,
+    isOnPath,
   });
   const isRoot = id === 'root';
 

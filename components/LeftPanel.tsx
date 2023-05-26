@@ -46,7 +46,7 @@ export default function LeftPanel() {
       onConfirm: clearHistory,
     });
 
-  const newJourneyCLickHandler = () => {
+  const newJourneyClickHandler = () => {
     if (inputRef) {
       inputRef.focus();
     }
@@ -57,14 +57,14 @@ export default function LeftPanel() {
       <Navbar.Section>
         <Group position='apart'>
           <Title order={2}>Dev Journey</Title>
-          <Menu>
+          <Menu width={200}>
             <Menu.Target>
               <ActionIcon color='dark' variant='transparent'>
                 <IconDotsVertical />
               </ActionIcon>
             </Menu.Target>
             <Menu.Dropdown>
-              <Menu.Item onClick={newJourneyCLickHandler}>New journey</Menu.Item>
+              <Menu.Item onClick={newJourneyClickHandler}>New journey</Menu.Item>
               <Menu.Item onClick={clearHistoryClickHandler} disabled={noHistory}>
                 Clear history
               </Menu.Item>
@@ -75,7 +75,7 @@ export default function LeftPanel() {
       <Divider my='sm' />
       <Navbar.Section grow onClick={outsideClickHandler}>
         {noHistory && (
-          <Button fullWidth leftIcon={<IconPlus size='1rem' />} onClick={newJourneyCLickHandler}>
+          <Button fullWidth leftIcon={<IconPlus size='1rem' />} onClick={newJourneyClickHandler}>
             Start new journey
           </Button>
         )}
@@ -83,19 +83,10 @@ export default function LeftPanel() {
       </Navbar.Section>
       <Navbar.Section>
         <Group position='center' spacing='xs'>
-          {/* <Anchor href='mailto:info@devjourney.com' color='dimmed' size='sm'>
-            devjourney@andrewvo.co
-          </Anchor>
-          <Text align='center' color='dimmed' size='sm'>
-            •
-          </Text> */}
           <Text align='center' color='dimmed' size='sm'>
             Version {packageJSON.version}
           </Text>
         </Group>
-        {/* <Text align='center' color='dimmed' size='sm'>
-          Copyright © {dayjs().format('YYYY')}
-        </Text> */}
       </Navbar.Section>
     </Navbar>
   );

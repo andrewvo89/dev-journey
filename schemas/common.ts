@@ -19,6 +19,21 @@ export const resourceSchema = z.object({
 export const jnodeSchema = z.object({
   id: z.string(),
   name: z.string(),
+  type: z.union([
+    z.literal('root'),
+    z.literal('language'),
+    z.literal('framework'),
+    z.literal('meta_framework'),
+    z.literal('library'),
+    z.literal('platform'),
+    z.literal('methodology'),
+    z.literal('tool'),
+    z.literal('concept'),
+    z.literal('paradigm'),
+    z.literal('career'),
+    z.literal('other'),
+    z.literal('goal'),
+  ]),
   dependencies: z.array(z.string()),
   pathways: z.array(z.string()),
   attributes: z.object({

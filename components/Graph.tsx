@@ -19,15 +19,7 @@ const nodeTypes: NodeTypes = {
 };
 
 export function Graph() {
-  const { edges, nodes, onEdgesChange, onNodesChange } = useNodeStore(
-    (state) => ({
-      nodes: state.nodes,
-      edges: state.edges,
-      onNodesChange: state.onNodesChange,
-      onEdgesChange: state.onEdgesChange,
-    }),
-    shallow,
-  );
+  const { edges, nodes } = useNodeStore((state) => ({ nodes: state.nodes, edges: state.edges }), shallow);
 
   const { classes } = useStyles();
   const { fitView, fitBounds, zoomOut } = useReactFlow();
@@ -47,8 +39,6 @@ export function Graph() {
       <ReactFlow
         nodes={nodes}
         edges={edges}
-        onNodesChange={onNodesChange}
-        onEdgesChange={onEdgesChange}
         onInit={({ fitBounds, fitView }) => {
           const root = nodes.find((node) => node.id === 'root');
           if (!root?.width || !root?.height) {
@@ -62,6 +52,12 @@ export function Graph() {
         }}
         proOptions={{ hideAttribution: true }}
         nodeTypes={nodeTypes}
+        edgesFocusable={false}
+        edgesUpdatable={false}
+        elementsSelectable={false}
+        nodesConnectable={false}
+        nodesDraggable={false}
+        nodesFocusable={false}
       />
     </Flex>
   );

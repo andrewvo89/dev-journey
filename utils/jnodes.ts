@@ -1,4 +1,4 @@
-import { ClientJNode, Path } from 'types/common';
+import { ClientJNode } from 'types/common';
 
 export function getPathsToJnode(
   sourceJnodeId: string,
@@ -30,12 +30,4 @@ export function resolveNodeIdsToJNodes(nodeIds: string[], jnodesMap: Map<string,
     }
     return list;
   }, []);
-}
-
-export function getJnodePath(sourceJnode: string, targetJnode: ClientJNode, jnodesMap: Map<string, ClientJNode>): Path {
-  return {
-    desId: targetJnode.id,
-    enabled: true,
-    routes: getPathsToJnode(sourceJnode, targetJnode, jnodesMap),
-  };
 }

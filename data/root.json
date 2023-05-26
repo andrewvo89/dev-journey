@@ -2,6 +2,7 @@
   "root": {
     "id": "root",
     "name": "Start of journey",
+    "type": "root",
     "dependencies": [],
     "pathways": [],
     "resources": [],

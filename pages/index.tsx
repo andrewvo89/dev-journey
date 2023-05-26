@@ -29,7 +29,7 @@ const initialJNodes = [
   ),
 ];
 
-const { nodes, edges } = jnodesToFlow(initialJNodes, new Set(), new Set(), new Set(), new Map());
+const { nodes, edges } = jnodesToFlow(initialJNodes, new Set(), new Set(), new Map());
 const { nodes: initialNodes, edges: initialEdges } = getLayoutedElements(nodes, edges, 'LR');
 
 export const getServerSideProps: GetServerSideProps<Props> = async () => {

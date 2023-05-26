@@ -76,7 +76,6 @@ export function jnodesToFlow(
   jnodes: ClientJNode[],
   nodesIdsOnPath: Set<string>,
   optionalIdsOnPath: Set<string>,
-  desIds: Set<string>,
   maintainSettings: Map<string, Partial<Node>>,
 ): { nodes: Node<JNodeTypeData>[]; edges: Edge[] } {
   const noNodesOnPath = nodesIdsOnPath.size === 0;
@@ -85,11 +84,10 @@ export function jnodesToFlow(
     const isOnPath = nodesIdsOnPath.has(jnode.id);
     const isOnOptionalPath = optionalIdsOnPath.has(jnode.id);
     const isLeafNode = getIsLeafNode(jnode, jnodes);
-    const isGoalNode = desIds.has(jnode.id);
     return {
       id: jnode.id,
       position: { x: 0, y: 0 },
-      data: { label: jnode.name, isOnPath, isLeafNode, noNodesOnPath, isOnOptionalPath, isGoalNode },
+      data: { label: jnode.name, isOnPath, isLeafNode, noNodesOnPath, isOnOptionalPath },
       type: 'jnode',
       width: jnodeProps.dimensions.width,
       height: jnodeProps.dimensions.height,

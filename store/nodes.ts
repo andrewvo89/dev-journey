@@ -1,5 +1,5 @@
-import { ClientJNode, Path } from 'types/common';
-import { Edge, Node, OnEdgesChange, OnNodesChange, applyEdgeChanges, applyNodeChanges } from 'reactflow';
+import { ClientJNode, DestinationPath } from 'types/common';
+import { Edge, Node } from 'reactflow';
 
 import { JNodeTypeData } from 'types/flow';
 import { create } from 'zustand';
@@ -10,9 +10,9 @@ type NodeState = {
   nodes: Node<JNodeTypeData>[];
   edges: Edge[];
   initFlow: (jnodes: ClientJNode[], nodes: Node<JNodeTypeData>[], edges: Edge[]) => void;
-  onNodesChange: OnNodesChange;
-  onEdgesChange: OnEdgesChange;
-  updateNodes: (goalPaths: Path[], optionalPaths: Path[]) => void;
+  // onNodesChange: OnNodesChange;
+  // onEdgesChange: OnEdgesChange;
+  updateNodes: (desPaths: DestinationPath[], optPaths: DestinationPath[]) => void;
 };
 
 export const useNodeStore = create<NodeState>()((set) => ({
@@ -25,18 +25,8 @@ export const useNodeStore = create<NodeState>()((set) => ({
       nodes,
       edges,
     }),
-  onNodesChange: (changes) =>
-    set((state) => ({
-      nodes: applyNodeChanges(changes, state.nodes),
-    })),
-  onEdgesChange: (changes) =>
-    set((state) => ({
-      edges: applyEdgeChanges(changes, state.edges),
-    })),
   updateNodes: (desPaths, optPaths) =>
     set((state) => {
-      const desIds = new Set(desPaths.map((path) => path.desId));
-
       const nodeSettingsMap = state.nodes.reduce<Map<string, Partial<Node>>>(
         (map, node) =>
           map.set(node.id, {
@@ -48,7 +38,13 @@ export const useNodeStore = create<NodeState>()((set) => ({
       );
 
       const nodeIdsOnPath = new Set<string>();
-      for (const path of desPaths) {
+      const [enabled, disabled] = desPaths.reduce<[DestinationPath[], string[]]>(
+        ([enabled, disabled], path) =>
+          path.enabled ? [[...enabled, path], disabled] : [enabled, [...disabled, path.desId]],
+        [[], []],
+      );
+
+      for (const path of enabled) {
         for (const routes of path.routes) {
           for (const jnode of routes) {
             nodeIdsOnPath.add(jnode.id);
@@ -58,12 +54,16 @@ export const useNodeStore = create<NodeState>()((set) => ({
 
       const optionalIdsOnPath = new Set<string>();
       for (const path of optPaths) {
+        if (disabled.includes(path.routes[0][0].id)) {
+          continue;
+        }
         for (const routes of path.routes) {
           for (const jnode of routes) {
             optionalIdsOnPath.add(jnode.id);
           }
         }
       }
-      return jnodesToFlow(Array.from(state.jnodes.values()), nodeIdsOnPath, optionalIdsOnPath, desIds, nodeSettingsMap);
+
+      return jnodesToFlow(Array.from(state.jnodes.values()), nodeIdsOnPath, optionalIdsOnPath, nodeSettingsMap);
     }),
 }));

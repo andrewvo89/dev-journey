@@ -1,6 +1,6 @@
 import { Autocomplete, Loader, createStyles } from '@mantine/core';
-import { ClientPrompt, Path } from 'types/common';
-import { getJnodePath, resolveNodeIdsToJNodes } from 'utils/jnodes';
+import { ClientPrompt, DestinationPath, OptionalPath } from 'types/common';
+import { getDestinationPath, getPathsToJnode, resolveNodeIdsToJNodes } from 'utils/jnodes';
 import { useEffect, useRef, useState } from 'react';
 
 import dayjs from 'dayjs';
@@ -72,15 +72,22 @@ export default function PromptBar(props: Props) {
         jnodes,
       );
 
-      const desPaths = desJnodes.map<Path>((jnode) => getJnodePath('root', jnode, jnodes));
+      const desPaths = desJnodes.map<DestinationPath>((jnode) => ({
+        desId: jnode.id,
+        enabled: true,
+        routes: getPathsToJnode('root', jnode, jnodes),
+      }));
 
-      const optPaths = desJnodes.reduce<Path[]>((list, jnode) => {
-        const newList = jnode.pathways.reduce<Path[]>((list, pathway) => {
+      const optPaths = desJnodes.reduce<OptionalPath[]>((list, jnode) => {
+        const newList = jnode.pathways.reduce<OptionalPath[]>((list, pathway) => {
           const pathwayJnode = jnodes.get(pathway);
           if (!pathwayJnode) {
             return list;
           }
-          const path = getJnodePath(jnode.id, pathwayJnode, jnodes);
+          const path: OptionalPath = {
+            desId: pathway,
+            routes: getPathsToJnode(jnode.id, pathwayJnode, jnodes),
+          };
           return [...list, path];
         }, []);
         return [...list, ...newList];

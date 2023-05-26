@@ -17,16 +17,21 @@ export type ClientJNode = Omit<JNode, 'attributes'>;
 
 export type Route = ClientJNode[];
 
-export type Path = {
+export type DestinationPath = {
   desId: string;
   routes: Route[];
   enabled: boolean;
+};
+
+export type OptionalPath = {
+  desId: string;
+  routes: Route[];
 };
 
 export type Journey = {
   id: string;
   createdAt: string;
   prompt: ClientPrompt;
-  desPaths: Path[];
-  optPaths: Path[];
+  desPaths: DestinationPath[];
+  optPaths: OptionalPath[];
 };
