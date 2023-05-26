@@ -38,6 +38,7 @@ const useStyles = createStyles((theme, { keepAlive, isOptional, isOnPath }: Styl
     border: `1px solid ${isOnPath || isOptional ? theme.colors.blue[6] : theme.colors.gray[6]}`,
     color: theme.colors.gray[isOptional ? 6 : 7],
     backgroundColor: theme.white,
+    zIndex: 1,
   },
 }));
 

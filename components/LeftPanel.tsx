@@ -1,5 +1,5 @@
 import { ActionIcon, Button, Divider, Group, Menu, Navbar, Text, Title, createStyles } from '@mantine/core';
-import { IconDotsVertical, IconPlus } from '@tabler/icons-react';
+import { IconDotsVertical, IconPlus, IconTrashX } from '@tabler/icons-react';
 
 import HistoryList from 'components/HistoryList';
 import { modals } from '@mantine/modals';
@@ -64,8 +64,10 @@ export default function LeftPanel() {
               </ActionIcon>
             </Menu.Target>
             <Menu.Dropdown>
-              <Menu.Item onClick={newJourneyClickHandler}>New journey</Menu.Item>
-              <Menu.Item onClick={clearHistoryClickHandler} disabled={noHistory}>
+              <Menu.Item onClick={newJourneyClickHandler} icon={<IconPlus size='1.25em' />}>
+                New journey
+              </Menu.Item>
+              <Menu.Item onClick={clearHistoryClickHandler} icon={<IconTrashX size='1.25em' />} disabled={noHistory}>
                 Clear history
               </Menu.Item>
             </Menu.Dropdown>
