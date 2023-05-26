@@ -1,4 +1,4 @@
-import { Autocomplete, Loader, createStyles } from '@mantine/core';
+import { Autocomplete, CloseButton, Loader, createStyles } from '@mantine/core';
 import { ClientPrompt, DestinationPath, OptionalPath } from 'types/common';
 import { getDestinationPath, getPathsToJnode, resolveNodeIdsToJNodes } from 'utils/jnodes';
 import { useEffect, useRef, useState } from 'react';
@@ -105,6 +105,13 @@ export default function PromptBar(props: Props) {
     setPrompt(selected?.prompt.label ?? '');
   }, [selected, setPrompt]);
 
+  const clearClickHandler = () => {
+    setPrompt('');
+    if (ref.current) {
+      ref.current.focus();
+    }
+  };
+
   return (
     <Autocomplete
       ref={ref}
@@ -119,7 +126,9 @@ export default function PromptBar(props: Props) {
       dropdownPosition='flip'
       switchDirectionOnFlip
       readOnly={isLoading}
-      rightSection={isLoading ? <Loader size='sm' /> : undefined}
+      rightSection={
+        isLoading ? <Loader size='sm' /> : <CloseButton variant='transparent' size='lg' onClick={clearClickHandler} />
+      }
       size='lg'
     />
   );
