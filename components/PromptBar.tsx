@@ -1,6 +1,6 @@
 import { Autocomplete, CloseButton, Loader, createStyles } from '@mantine/core';
 import { ClientPrompt, DestinationPath, OptionalPath } from 'types/common';
-import { getDestinationPath, getPathsToJnode, resolveNodeIdsToJNodes } from 'utils/jnodes';
+import { getPathsToJnode, resolveNodeIdsToJNodes } from 'utils/jnodes';
 import { useEffect, useRef, useState } from 'react';
 
 import dayjs from 'dayjs';

@@ -1,4 +1,4 @@
-import { ClientJNode, DestinationPath } from 'types/common';
+import { ClientJNode, DestinationPath, OptionalPath } from 'types/common';
 import { Edge, Node } from 'reactflow';
 
 import { JNodeTypeData } from 'types/flow';
@@ -12,7 +12,7 @@ type NodeState = {
   initFlow: (jnodes: ClientJNode[], nodes: Node<JNodeTypeData>[], edges: Edge[]) => void;
   // onNodesChange: OnNodesChange;
   // onEdgesChange: OnEdgesChange;
-  updateNodes: (desPaths: DestinationPath[], optPaths: DestinationPath[]) => void;
+  updateNodes: (desPaths: DestinationPath[], optPaths: OptionalPath[]) => void;
 };
 
 export const useNodeStore = create<NodeState>()((set) => ({
