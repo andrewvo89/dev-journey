@@ -1,8 +1,9 @@
-import { Button, Divider, Navbar, Text, Title, createStyles } from '@mantine/core';
+import { ActionIcon, Button, Divider, Group, Menu, Navbar, Text, Title, createStyles } from '@mantine/core';
+import { IconDotsVertical, IconPlus } from '@tabler/icons-react';
 
 import HistoryList from 'components/HistoryList';
-import { IconPlus } from '@tabler/icons-react';
 import { modals } from '@mantine/modals';
+import packageJSON from 'package.json';
 import { shallow } from 'zustand/shallow';
 import { useHistoryStore } from 'store/history';
 import { useHydratedStore } from 'hooks/useHydratedStore';
@@ -23,6 +24,7 @@ const useStyles = createStyles((theme) => ({
 
 export default function LeftPanel() {
   const { classes } = useStyles();
+
   const { setSelected, clearHistory } = useHistoryStore(
     (state) => ({ setSelected: state.setSelected, clearHistory: state.clearHistory }),
     shallow,
@@ -53,7 +55,22 @@ export default function LeftPanel() {
   return (
     <Navbar className={classes.navbar} width={{ base: 300 }}>
       <Navbar.Section>
-        <Title order={2}>Dev Journey</Title>
+        <Group position='apart'>
+          <Title order={2}>Dev Journey</Title>
+          <Menu>
+            <Menu.Target>
+              <ActionIcon color='dark' variant='transparent'>
+                <IconDotsVertical />
+              </ActionIcon>
+            </Menu.Target>
+            <Menu.Dropdown>
+              <Menu.Item onClick={newJourneyCLickHandler}>New journey</Menu.Item>
+              <Menu.Item onClick={clearHistoryClickHandler} disabled={noHistory}>
+                Clear history
+              </Menu.Item>
+            </Menu.Dropdown>
+          </Menu>
+        </Group>
       </Navbar.Section>
       <Divider my='sm' />
       <Navbar.Section grow onClick={outsideClickHandler}>
@@ -65,9 +82,20 @@ export default function LeftPanel() {
         <HistoryList />
       </Navbar.Section>
       <Navbar.Section>
-        <Button disabled={noHistory} fullWidth variant='light' onClick={clearHistoryClickHandler}>
-          Clear history
-        </Button>
+        <Group position='center' spacing='xs'>
+          {/* <Anchor href='mailto:info@devjourney.com' color='dimmed' size='sm'>
+            devjourney@andrewvo.co
+          </Anchor>
+          <Text align='center' color='dimmed' size='sm'>
+            •
+          </Text> */}
+          <Text align='center' color='dimmed' size='sm'>
+            Version {packageJSON.version}
+          </Text>
+        </Group>
+        {/* <Text align='center' color='dimmed' size='sm'>
+          Copyright © {dayjs().format('YYYY')}
+        </Text> */}
       </Navbar.Section>
     </Navbar>
   );

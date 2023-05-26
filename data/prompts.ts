@@ -10,7 +10,7 @@ const techPrompts = techList.map<Prompt>((jnode) => ({
   id: jnode.id,
   prompt: `I want to learn ${jnode.name}`,
   response: async () => ({
-    goalIds: [jnode.id],
+    destinations: [{ id: jnode.id, pathways: jnode.pathways }],
   }),
 }));
 
@@ -18,9 +18,12 @@ const careers = careerJSONSchema.parse(careersJSON);
 const careerPrompts = Object.values(careers).map<Prompt>((career) => ({
   id: career.id,
   prompt: `I want to be a ${career.name.toLowerCase()}`,
-  response: async () => ({
-    goalIds: techList.filter((t) => t.attributes.careers.includes(career.id)).map((t) => t.id),
-  }),
+  response: async () => {
+    const goalJnodes = techList.filter((t) => t.attributes.careers.includes(career.id));
+    return {
+      destinations: goalJnodes.map((jnode) => ({ id: jnode.id, pathways: jnode.pathways })),
+    };
+  },
 }));
 
 export const prompts: Prompt[] = [...techPrompts, ...careerPrompts];

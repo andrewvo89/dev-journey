@@ -68,50 +68,60 @@ export const highlightEdges = (edges: Edge[], jnodes: JNode[]): Edge[] => {
   return Array.from(updatedEdges.values());
 };
 
-function isLeafNode(node: ClientJNode, jnodes: ClientJNode[]): boolean {
-  return jnodes.every((jnode) => !jnode.dependencies.includes(node.id));
+function getIsLeafNode(jnode: ClientJNode, jnodes: ClientJNode[]): boolean {
+  return jnodes.every((j) => !j.dependencies.includes(jnode.id));
 }
 
 export function jnodesToFlow(
   jnodes: ClientJNode[],
   nodesIdsOnPath: Set<string>,
+  optionalIdsOnPath: Set<string>,
+  desIds: Set<string>,
   maintainSettings: Map<string, Partial<Node>>,
 ): { nodes: Node<JNodeTypeData>[]; edges: Edge[] } {
   const noNodesOnPath = nodesIdsOnPath.size === 0;
 
-  const nodes = jnodes.map<Node<JNodeTypeData>>((jnode) => ({
-    id: jnode.id,
-    position: { x: 0, y: 0 },
-    data: {
-      label: jnode.name,
-      isOnPath: nodesIdsOnPath.has(jnode.id),
-      isLeafNode: isLeafNode(jnode, jnodes),
-      noNodesOnPath,
-    },
-    type: 'jnode',
-    width: jnodeProps.dimensions.width,
-    height: jnodeProps.dimensions.height,
-    ...maintainSettings?.get(jnode.id),
-  }));
+  const nodes = jnodes.map<Node<JNodeTypeData>>((jnode) => {
+    const isOnPath = nodesIdsOnPath.has(jnode.id);
+    const isOnOptionalPath = optionalIdsOnPath.has(jnode.id);
+    const isLeafNode = getIsLeafNode(jnode, jnodes);
+    const isGoalNode = desIds.has(jnode.id);
+    return {
+      id: jnode.id,
+      position: { x: 0, y: 0 },
+      data: { label: jnode.name, isOnPath, isLeafNode, noNodesOnPath, isOnOptionalPath, isGoalNode },
+      type: 'jnode',
+      width: jnodeProps.dimensions.width,
+      height: jnodeProps.dimensions.height,
+      ...maintainSettings?.get(jnode.id),
+    };
+  });
 
   const edges = jnodes.reduce<Edge[]>(
     (list, jnode) => [
       ...list,
       ...jnode.dependencies.map<Edge>((depId) => {
         const nodeIsOnPath = nodesIdsOnPath.has(jnode.id);
+        const isOptional = optionalIdsOnPath.has(jnode.id);
+        const fadeOpacity = !isOptional && !nodeIsOnPath && !noNodesOnPath;
+
         const edge: Edge = {
           id: `${jnode.id}-${depId}`,
           source: depId,
           target: jnode.id,
           type: 'default',
-          animated: nodeIsOnPath,
+          // animated: nodeIsOnPath,
         };
+
+        if (isOptional) {
+          edge.style = { stroke: '#228be6', strokeDasharray: '2.5,2.5' };
+        }
 
         if (nodeIsOnPath) {
           edge.style = { stroke: '#228be6' };
         }
 
-        if (!noNodesOnPath && !nodeIsOnPath) {
+        if (fadeOpacity) {
           edge.style = { opacity: 0.2 };
         }
 

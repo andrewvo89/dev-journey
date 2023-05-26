@@ -28,6 +28,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     return;
   }
 
-  const { goalIds } = await prompt.response();
-  res.status(200).json({ goalIds });
+  const { destinations } = await prompt.response();
+  res.status(200).json({ destinations });
 }

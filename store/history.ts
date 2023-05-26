@@ -34,7 +34,7 @@ export const useHistoryStore = create<HistoryState>()(
         set((state) => ({ journeys: state.journeys.map((j) => (j.id === journey.id ? journey : j)) })),
       selectPath: (journey, pathId) =>
         set((state) => {
-          const newPaths = journey.paths.map((path) => (path.goalId === pathId ? { ...path, enabled: true } : path));
+          const newPaths = journey.desPaths.map((path) => (path.desId === pathId ? { ...path, enabled: true } : path));
           const newJourney = { ...journey, paths: newPaths };
           const newJourneys = state.journeys.map((j) => (j.id === journey.id ? newJourney : j));
           const newSelected = state.selected?.id === newJourney.id ? newJourney : state.selected;
@@ -42,7 +42,7 @@ export const useHistoryStore = create<HistoryState>()(
         }),
       deselectPath: (journey, pathId) =>
         set((state) => {
-          const newPaths = journey.paths.map((path) => (path.goalId === pathId ? { ...path, enabled: false } : path));
+          const newPaths = journey.desPaths.map((path) => (path.desId === pathId ? { ...path, enabled: false } : path));
           const newJourney = { ...journey, paths: newPaths };
           const newJourneys = state.journeys.map((j) => (j.id === journey.id ? newJourney : j));
           const newSelected = state.selected?.id === newJourney.id ? newJourney : state.selected;

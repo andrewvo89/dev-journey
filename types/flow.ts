@@ -19,4 +19,6 @@ export type JNodeTypeData = {
   isOnPath: boolean;
   isLeafNode: boolean;
   noNodesOnPath: boolean;
+  isOnOptionalPath: boolean;
+  isGoalNode: boolean;
 };

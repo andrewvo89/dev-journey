@@ -38,7 +38,11 @@ export default function Home(props: Props) {
 
   // Update nodes when selected updates
   useEffect(() => {
-    updateNodes(selected?.paths.filter((path) => path.enabled) ?? []);
+    if (!selected) {
+      updateNodes([], []);
+      return;
+    }
+    updateNodes(selected.desPaths, selected.optPaths);
   }, [selected, updateNodes]);
 
   return (

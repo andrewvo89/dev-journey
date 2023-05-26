@@ -1,9 +1,9 @@
 import { Autocomplete, Loader, createStyles } from '@mantine/core';
-import { ClientJNode, ClientPrompt, Path } from 'types/common';
+import { ClientPrompt, Path } from 'types/common';
+import { getJnodePath, resolveNodeIdsToJNodes } from 'utils/jnodes';
 import { useEffect, useRef, useState } from 'react';
 
 import dayjs from 'dayjs';
-import { getPathsToNode } from 'utils/jnodes';
 import { promptResponseSchema } from 'schemas/common';
 import { shallow } from 'zustand/shallow';
 import { useHistoryStore } from 'store/history';
@@ -65,23 +65,28 @@ export default function PromptBar(props: Props) {
     try {
       const res = await fetch(`/api/prompts/${prompt.value}`, { method: 'POST' });
       const jsonResponse = await res.json();
-      const { goalIds } = promptResponseSchema.parse(jsonResponse);
+      const { destinations } = promptResponseSchema.parse(jsonResponse);
 
-      const goalJNodes = goalIds.reduce<ClientJNode[]>((list, id) => {
-        const found = jnodes.get(id);
-        if (found) {
-          list.push(found);
-        }
-        return list;
+      const desJnodes = resolveNodeIdsToJNodes(
+        destinations.map((des) => des.id),
+        jnodes,
+      );
+
+      const desPaths = desJnodes.map<Path>((jnode) => getJnodePath('root', jnode, jnodes));
+
+      const optPaths = desJnodes.reduce<Path[]>((list, jnode) => {
+        const newList = jnode.pathways.reduce<Path[]>((list, pathway) => {
+          const pathwayJnode = jnodes.get(pathway);
+          if (!pathwayJnode) {
+            return list;
+          }
+          const path = getJnodePath(jnode.id, pathwayJnode, jnodes);
+          return [...list, path];
+        }, []);
+        return [...list, ...newList];
       }, []);
 
-      const paths = goalJNodes.map<Path>((goalJNode) => ({
-        goalId: goalJNode.id,
-        enabled: true,
-        routes: getPathsToNode(goalJNode, jnodes),
-      }));
-
-      addJourney({ id: uuidv4(), createdAt: dayjs().toISOString(), paths, prompt });
+      addJourney({ id: uuidv4(), createdAt: dayjs().toISOString(), desPaths, optPaths, prompt });
     } catch (error) {
       console.error(error);
     } finally {

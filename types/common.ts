@@ -13,12 +13,12 @@ export type ClientPrompt = {
   label: string;
 };
 
-export type ClientJNode = Pick<JNode, 'id' | 'name' | 'dependencies'>;
+export type ClientJNode = Omit<JNode, 'attributes'>;
 
 export type Route = ClientJNode[];
 
 export type Path = {
-  goalId: string;
+  desId: string;
   routes: Route[];
   enabled: boolean;
 };
@@ -27,5 +27,6 @@ export type Journey = {
   id: string;
   createdAt: string;
   prompt: ClientPrompt;
-  paths: Path[];
+  desPaths: Path[];
+  optPaths: Path[];
 };

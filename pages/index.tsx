@@ -22,8 +22,14 @@ export type Props = {
 const tech = techJSONSchema.parse(techJSON);
 const root = techJSONSchema.parse(rootJSON);
 const placeholders = placeholdersJSONSchema.parse(placeholdersJSON);
-const initialJNodes = [...Object.values(root), ...Object.values(tech).sort((a, b) => a.name.localeCompare(b.name))];
-const { nodes, edges } = jnodesToFlow(initialJNodes, new Set(), new Map());
+const initialJNodes = [
+  ...Object.values(root),
+  ...Object.values(tech).sort(
+    (a, b) => a.attributes.group.localeCompare(b.attributes.group) || a.name.localeCompare(b.name),
+  ),
+];
+
+const { nodes, edges } = jnodesToFlow(initialJNodes, new Set(), new Set(), new Set(), new Map());
 const { nodes: initialNodes, edges: initialEdges } = getLayoutedElements(nodes, edges, 'LR');
 
 export const getServerSideProps: GetServerSideProps<Props> = async () => {

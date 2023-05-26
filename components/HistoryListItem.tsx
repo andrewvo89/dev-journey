@@ -139,18 +139,18 @@ export default function HistoryListItem(props: Props) {
         opened={isOpen}
         onChange={expandHandler}
       >
-        {journey.paths.length > 1 && (
+        {journey.desPaths.length > 1 && (
           <Stack className={classes.switchContainer}>
-            {journey.paths.map((path) => {
-              const found = jnodes.get(path.goalId);
+            {journey.desPaths.map((path) => {
+              const found = jnodes.get(path.desId);
               if (!found) {
                 return null;
               }
               return (
                 <Switch
-                  key={path.goalId}
+                  key={path.desId}
                   label={found.name}
-                  value={path.goalId}
+                  value={path.desId}
                   checked={path.enabled}
                   onChange={(e) => switchToggleHandler(e)}
                 />

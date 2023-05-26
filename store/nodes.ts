@@ -12,7 +12,7 @@ type NodeState = {
   initFlow: (jnodes: ClientJNode[], nodes: Node<JNodeTypeData>[], edges: Edge[]) => void;
   onNodesChange: OnNodesChange;
   onEdgesChange: OnEdgesChange;
-  updateNodes: (paths: Path[]) => void;
+  updateNodes: (goalPaths: Path[], optionalPaths: Path[]) => void;
 };
 
 export const useNodeStore = create<NodeState>()((set) => ({
@@ -33,8 +33,10 @@ export const useNodeStore = create<NodeState>()((set) => ({
     set((state) => ({
       edges: applyEdgeChanges(changes, state.edges),
     })),
-  updateNodes: (paths) =>
+  updateNodes: (desPaths, optPaths) =>
     set((state) => {
+      const desIds = new Set(desPaths.map((path) => path.desId));
+
       const nodeSettingsMap = state.nodes.reduce<Map<string, Partial<Node>>>(
         (map, node) =>
           map.set(node.id, {
@@ -46,13 +48,22 @@ export const useNodeStore = create<NodeState>()((set) => ({
       );
 
       const nodeIdsOnPath = new Set<string>();
-      for (const path of paths) {
+      for (const path of desPaths) {
         for (const routes of path.routes) {
           for (const jnode of routes) {
             nodeIdsOnPath.add(jnode.id);
           }
         }
       }
-      return jnodesToFlow(Array.from(state.jnodes.values()), nodeIdsOnPath, nodeSettingsMap);
+
+      const optionalIdsOnPath = new Set<string>();
+      for (const path of optPaths) {
+        for (const routes of path.routes) {
+          for (const jnode of routes) {
+            optionalIdsOnPath.add(jnode.id);
+          }
+        }
+      }
+      return jnodesToFlow(Array.from(state.jnodes.values()), nodeIdsOnPath, optionalIdsOnPath, desIds, nodeSettingsMap);
     }),
 }));

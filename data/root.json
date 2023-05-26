@@ -3,7 +3,10 @@
     "id": "root",
     "name": "Start of journey",
     "dependencies": [],
+    "pathways": [],
+    "resources": [],
     "attributes": {
+      "group": "root",
       "careers": []
     }
   }
