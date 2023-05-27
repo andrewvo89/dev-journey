@@ -7,29 +7,36 @@ import techJSON from 'data/tech.json';
 
 const tech = techJSONSchema.parse(techJSON);
 const techList = Object.values(tech);
-const techPrompts = techList.map<Prompt>((jnode) => ({
-  id: jnode.id,
-  prompt: `I want to learn ${jnode.name}`,
-  response: async () => ({
-    destinations: [{ id: jnode.id, pathways: jnode.pathways }],
-  }),
-}));
+const techPrompts = techList
+  .sort((a, b) => a.name.localeCompare(b.name))
+  .map<Prompt>((jnode) => ({
+    id: jnode.id,
+    priority: 4,
+    prompt: `I want to learn ${jnode.name}`,
+    response: async () => ({
+      destinations: [{ id: jnode.id, pathways: jnode.pathways }],
+    }),
+  }));
 
 const careers = careerJSONSchema.parse(careersJSON);
-const careerPrompts = Object.values(careers).map<Prompt>((career) => ({
-  id: career.id,
-  prompt: `I want to be a ${career.name.toLowerCase()}`,
-  response: async () => {
-    const goalJnodes = techList.filter((t) => t.attributes.careers.includes(career.id));
-    return {
-      destinations: goalJnodes.map((jnode) => ({ id: jnode.id, pathways: jnode.pathways })),
-    };
-  },
-}));
+const careerPrompts = Object.values(careers)
+  .sort((a, b) => a.name.localeCompare(b.name))
+  .map<Prompt>((career) => ({
+    id: career.id,
+    priority: 3,
+    prompt: `I want to be a ${career.name}`,
+    response: async () => {
+      const goalJnodes = techList.filter((t) => t.attributes.careers.includes(career.id));
+      return {
+        destinations: goalJnodes.map((jnode) => ({ id: jnode.id, pathways: jnode.pathways })),
+      };
+    },
+  }));
 
 const languagePrompt: Prompt = {
-  id: 'language',
+  id: 'programming_language',
   prompt: 'I want to learn a programming language',
+  priority: 1,
   response: async () => ({
     destinations: techList
       .filter((t) => t.type === 'language')
@@ -38,8 +45,9 @@ const languagePrompt: Prompt = {
 };
 
 const javascriptFramwork: Prompt = {
-  id: 'language',
+  id: 'javascript_framework',
   prompt: 'I want to learn a JavaScript library/framework',
+  priority: 2,
   response: async () => {
     const jsJnode = jnodeSchema.parse(techJSON.javascript);
     return {
@@ -50,7 +58,9 @@ const javascriptFramwork: Prompt = {
   },
 };
 
-export const prompts: Prompt[] = [...techPrompts, ...careerPrompts, languagePrompt, javascriptFramwork];
+export const prompts: Prompt[] = [...techPrompts, ...careerPrompts, languagePrompt, javascriptFramwork].sort(
+  (a, b) => a.priority - b.priority,
+);
 
 export const promptsMap = prompts.reduce<Record<string, Prompt>>(
   (obj, prompt) => ({ ...obj, [prompt.id]: prompt }),

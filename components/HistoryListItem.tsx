@@ -109,7 +109,7 @@ export default function HistoryListItem(props: Props) {
   };
 
   return (
-    <Tooltip label={journey.prompt.label} key={journey.id} openDelay={500}>
+    <Tooltip label={journey.prompt.label} openDelay={500}>
       <NavLink
         classNames={{
           children: classes.listItemChildren,

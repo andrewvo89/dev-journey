@@ -53,11 +53,10 @@ export default function PromptBar(props: Props) {
     shallow,
   );
 
-  const { addJourney, selected } = useHistoryStore(
-    (state) => ({ addJourney: state.addJourney, selected: state.selected }),
+  const { addJourney, selected, setSelected } = useHistoryStore(
+    (state) => ({ addJourney: state.addJourney, selected: state.selected, setSelected: state.setSelected }),
     shallow,
   );
-
   const jnodes = useNodeStore((state) => state.jnodes);
 
   const itemSelectedHandler = async (prompt: ClientPrompt) => {
@@ -106,7 +105,7 @@ export default function PromptBar(props: Props) {
   }, [selected, setPrompt]);
 
   const clearClickHandler = () => {
-    setPrompt('');
+    setSelected(null);
     if (ref.current) {
       ref.current.focus();
     }
@@ -116,6 +115,7 @@ export default function PromptBar(props: Props) {
     <Autocomplete
       ref={ref}
       classNames={{ root: classes.autocomplete, input: classes.input }}
+      size='lg'
       hoverOnSearchChange
       placeholder={placeholder}
       data={prompts}
@@ -129,7 +129,6 @@ export default function PromptBar(props: Props) {
       rightSection={
         isLoading ? <Loader size='sm' /> : <CloseButton variant='transparent' size='lg' onClick={clearClickHandler} />
       }
-      size='lg'
     />
   );
 }

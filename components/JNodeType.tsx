@@ -1,46 +1,10 @@
-import { Badge, Paper, Text, createStyles } from '@mantine/core';
+import { Badge, Paper, Text } from '@mantine/core';
 import { Handle, NodeProps } from 'reactflow';
-import { JNodeTypeData, jnodeProps } from 'types/flow';
 
 import { Fragment } from 'react';
+import { JNodeTypeData } from 'types/flow';
 import { useHistoryStore } from 'store/history';
-
-type StyleProps = {
-  keepAlive: boolean;
-  isOptional: boolean;
-  isOnPath: boolean;
-};
-
-const useStyles = createStyles((theme, { keepAlive, isOptional, isOnPath }: StyleProps) => ({
-  paper: {
-    width: jnodeProps.dimensions.width,
-    height: jnodeProps.dimensions.height,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    opacity: keepAlive ? 1 : 0.2,
-    borderWidth: 1,
-    borderStyle: isOptional ? 'dashed' : 'solid',
-    borderColor: isOnPath || isOptional ? theme.colors.blue[6] : theme.colors.gray[6],
-    color: theme.colors.gray[isOptional ? 6 : 7],
-  },
-  handle: {
-    '&&': {
-      opacity: keepAlive ? 1 : 0.1,
-      backgroundColor: isOnPath ? theme.colors.blue[6] : theme.colors.gray[6],
-    },
-  },
-  badge: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    transform: 'translate(50%, -50%)',
-    border: `1px solid ${isOnPath || isOptional ? theme.colors.blue[6] : theme.colors.gray[6]}`,
-    color: theme.colors.gray[isOptional ? 6 : 7],
-    backgroundColor: theme.white,
-    zIndex: 1,
-  },
-}));
+import { useNodeStyles } from 'styles/node';
 
 export default function JNodeType(props: NodeProps<JNodeTypeData>) {
   const {
@@ -54,10 +18,11 @@ export default function JNodeType(props: NodeProps<JNodeTypeData>) {
 
   const keepAlive = isOnPath || isOnOptionalPath || noNodesOnPath || !selected;
 
-  const { classes } = useStyles({
+  const { classes } = useNodeStyles({
     keepAlive,
     isOptional: isOnOptionalPath && !isOnPath,
     isOnPath,
+    type: jnode.type,
   });
   const isRoot = id === 'root';
 

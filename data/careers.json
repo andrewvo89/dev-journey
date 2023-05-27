@@ -1,33 +1,33 @@
 {
-  "frontend": {
+  "frontend_developer": {
     "id": "frontend",
-    "name": "Frontend developer"
+    "name": "Frontend Developer"
   },
-  "backend": {
+  "backend_developer": {
     "id": "backend",
-    "name": "Backend developer"
+    "name": "Backend Developer"
   },
-  "api": {
+  "api_developer": {
     "id": "api",
-    "name": "API developer"
+    "name": "API Developer"
   },
-  "devops": {
+  "devops_engineer": {
     "id": "devops",
-    "name": "DevOps engineer"
+    "name": "DevOps Engineer"
   },
-  "databaseadmin": {
+  "database_engineer": {
     "id": "database",
-    "name": "Database administrator"
+    "name": "Database Engineer"
   },
-  "mobile": {
+  "mobile_developer": {
     "id": "mobile",
     "name": "Mobile developer"
   },
-  "ios": {
+  "ios_developer": {
     "id": "ios",
     "name": "iOS developer"
   },
-  "android": {
+  "android_developer": {
     "id": "android",
     "name": "Android developer"
   }

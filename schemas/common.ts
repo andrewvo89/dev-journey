@@ -46,5 +46,6 @@ export const jnodeSchema = z.object({
 export const promptSchema = z.object({
   id: z.string(),
   prompt: z.string(),
+  priority: z.number(),
   response: z.function().returns(z.promise(promptResponseSchema)),
 });

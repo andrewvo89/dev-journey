@@ -1,4 +1,16 @@
-import { ActionIcon, Button, Divider, Group, Menu, Navbar, Text, Title, createStyles } from '@mantine/core';
+import {
+  ActionIcon,
+  Button,
+  Container,
+  Divider,
+  Group,
+  Menu,
+  Navbar,
+  ScrollArea,
+  Text,
+  Title,
+  createStyles,
+} from '@mantine/core';
 import { IconDotsVertical, IconPlus, IconTrashX } from '@tabler/icons-react';
 
 import HistoryList from 'components/HistoryList';
@@ -19,6 +31,16 @@ const useStyles = createStyles((theme) => ({
       width: 150,
     },
     padding: 8,
+  },
+  historySection: {
+    padding: 0,
+    width: 283,
+    [theme.fn.smallerThan('md')]: {
+      width: 193,
+    },
+    [theme.fn.smallerThan('sm')]: {
+      width: 133,
+    },
   },
 }));
 
@@ -75,13 +97,15 @@ export default function LeftPanel() {
         </Group>
       </Navbar.Section>
       <Divider my='sm' />
-      <Navbar.Section grow onClick={outsideClickHandler}>
-        {noHistory && (
-          <Button fullWidth leftIcon={<IconPlus size='1rem' />} onClick={newJourneyClickHandler}>
-            Start new journey
-          </Button>
-        )}
-        <HistoryList />
+      <Navbar.Section component={ScrollArea} grow onClick={outsideClickHandler} className={classes.historySection}>
+        <Container className={classes.historySection}>
+          {noHistory && (
+            <Button fullWidth leftIcon={<IconPlus size='1rem' />} onClick={newJourneyClickHandler}>
+              Start new journey
+            </Button>
+          )}
+          <HistoryList />
+        </Container>
       </Navbar.Section>
       <Navbar.Section>
         <Group position='center' spacing='xs'>
