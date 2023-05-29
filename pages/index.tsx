@@ -20,6 +20,7 @@ export type Props = {
 };
 
 const tech = techJSONSchema.parse(techJSON);
+console.log('tech', tech);
 const root = techJSONSchema.parse(rootJSON);
 const placeholders = placeholdersJSONSchema.parse(placeholdersJSON);
 const initialJNodes = [

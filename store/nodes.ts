@@ -4,6 +4,7 @@ import { Edge, Node } from 'reactflow';
 import { JNodeTypeData } from 'types/flow';
 import { create } from 'zustand';
 import { jnodesToFlow } from 'utils/flow';
+import { resolveNodeIdsToJNodes } from 'utils/jnodes';
 
 type NodeState = {
   jnodes: Map<string, ClientJNode>;
@@ -38,13 +39,10 @@ export const useNodeStore = create<NodeState>()((set) => ({
       );
 
       const nodeIdsOnPath = new Set<string>();
-      const [enabled, disabled] = desPaths.reduce<[DestinationPath[], string[]]>(
-        ([enabled, disabled], path) =>
-          path.enabled ? [[...enabled, path], disabled] : [enabled, [...disabled, path.desId]],
-        [[], []],
-      );
+      const enabledPaths = desPaths.filter((path) => path.enabled);
+      const enablePathIds = enabledPaths.map((path) => path.desId);
 
-      for (const path of enabled) {
+      for (const path of enabledPaths) {
         for (const routes of path.routes) {
           for (const jnode of routes) {
             nodeIdsOnPath.add(jnode.id);
@@ -54,7 +52,7 @@ export const useNodeStore = create<NodeState>()((set) => ({
 
       const optionalIdsOnPath = new Set<string>();
       for (const path of optPaths) {
-        if (disabled.includes(path.routes[0][0].id)) {
+        if (!enablePathIds.includes(path.routes[0][0].id)) {
           continue;
         }
         for (const routes of path.routes) {

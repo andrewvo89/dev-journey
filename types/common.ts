@@ -1,8 +1,10 @@
-import { jnodeSchema, promptResponseSchema, promptSchema } from 'schemas/common';
+import { jnodeSchema, jnodeTypeSchema, promptResponseSchema, promptSchema } from 'schemas/common';
 
 import { z } from 'zod';
 
 export type JNode = z.infer<typeof jnodeSchema>;
+
+export type JNodeType = z.infer<typeof jnodeTypeSchema>;
 
 export type Prompt = z.infer<typeof promptSchema>;
 

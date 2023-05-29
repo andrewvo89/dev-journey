@@ -1,10 +1,10 @@
-import { JNode } from 'types/common';
+import { JNodeType } from 'types/common';
 import { createStyles } from '@mantine/core';
-import { getNodeColor } from 'utils/node';
 import { jnodeProps } from 'types/flow';
+import { jnodeTypeMap } from 'utils/node';
 
 type Props = {
-  type: JNode['type'];
+  type: JNodeType;
   keepAlive: boolean;
   isOptional: boolean;
   isOnPath: boolean;
@@ -12,7 +12,6 @@ type Props = {
 
 export const useNodeStyles = createStyles((theme, props: Props) => {
   const { keepAlive, isOptional, isOnPath, type } = props;
-  const backgroundColor = getNodeColor(type, theme);
 
   return {
     paper: {
@@ -26,7 +25,7 @@ export const useNodeStyles = createStyles((theme, props: Props) => {
       borderStyle: isOptional ? 'dashed' : 'solid',
       borderColor: isOnPath || isOptional ? theme.colors.blue[6] : theme.colors.gray[6],
       color: theme.colors.gray[0],
-      backgroundColor,
+      backgroundColor: theme.colors[jnodeTypeMap[type].color][5],
     },
     handle: {
       '&&': {
