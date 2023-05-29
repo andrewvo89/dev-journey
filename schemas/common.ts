@@ -2,7 +2,6 @@ import { z } from 'zod';
 
 export const destinationSchema = z.object({
   id: z.string(),
-  pathways: z.array(z.string()),
 });
 
 export const promptResponseSchema = z.object({
@@ -21,6 +20,7 @@ export const jnodeTypeSchema = z.union([
   z.literal('language'),
   z.literal('framework'),
   z.literal('meta_framework'),
+  z.literal('software'),
   z.literal('library'),
   z.literal('platform'),
   z.literal('methodology'),
@@ -35,7 +35,6 @@ export const jnodeSchema = z.object({
   name: z.string(),
   type: jnodeTypeSchema,
   dependencies: z.array(z.string()),
-  pathways: z.array(z.string()),
   attributes: z.object({
     group: z.string(),
     careers: z.array(z.string()),

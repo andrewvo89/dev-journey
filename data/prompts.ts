@@ -14,7 +14,7 @@ const techPrompts = techList
     priority: 4,
     prompt: `I want to learn ${jnode.name}`,
     response: async () => ({
-      destinations: [{ id: jnode.id, pathways: jnode.pathways }],
+      destinations: [{ id: jnode.id }],
     }),
   }));
 
@@ -28,7 +28,7 @@ const careerPrompts = Object.values(careers)
     response: async () => {
       const goalJnodes = techList.filter((t) => t.attributes.careers.includes(career.id));
       return {
-        destinations: goalJnodes.map((jnode) => ({ id: jnode.id, pathways: jnode.pathways })),
+        destinations: goalJnodes.map((jnode) => ({ id: jnode.id })),
       };
     },
   }));
@@ -38,9 +38,7 @@ const languagePrompt: Prompt = {
   prompt: 'I want to learn a programming language',
   priority: 1,
   response: async () => ({
-    destinations: techList
-      .filter((t) => t.type === 'language')
-      .map((language) => ({ id: language.id, pathways: language.pathways })),
+    destinations: techList.filter((t) => t.type === 'language').map((language) => ({ id: language.id })),
   }),
 };
 
@@ -52,8 +50,8 @@ const javascriptFramwork: Prompt = {
     const jsJnode = jnodeSchema.parse(techJSON.javascript);
     return {
       destinations: techList
-        .filter((t) => jsJnode.pathways.includes(t.id))
-        .map((language) => ({ id: language.id, pathways: language.pathways })),
+        .filter((t) => t.dependencies.includes(jsJnode.id))
+        .map((language) => ({ id: language.id })),
     };
   },
 };

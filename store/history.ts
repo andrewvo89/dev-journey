@@ -30,20 +30,20 @@ export const useHistoryStore = create<HistoryState>()(
         set((state) => ({ journeys: state.journeys.filter((j) => j.id !== journey.id), selected: null })),
       selectPath: (journey, pathId) =>
         set((state) => {
-          const newDesPaths = journey.desPaths.map((path) =>
-            path.desId === pathId ? { ...path, enabled: true } : path,
+          const newDesPaths = journey.destinations.map((path) =>
+            path.id === pathId ? { ...path, enabled: true } : path,
           );
-          const newJourney: Journey = { ...journey, desPaths: newDesPaths };
+          const newJourney: Journey = { ...journey, destinations: newDesPaths };
           const newJourneys = state.journeys.map((j) => (j.id === journey.id ? newJourney : j));
           const newSelected = state.selected?.id === newJourney.id ? newJourney : state.selected;
           return { journeys: newJourneys, selected: newSelected };
         }),
       deselectPath: (journey, pathId) =>
         set((state) => {
-          const newDesPaths = journey.desPaths.map((path) =>
-            path.desId === pathId ? { ...path, enabled: false } : path,
+          const newDesPaths = journey.destinations.map((path) =>
+            path.id === pathId ? { ...path, enabled: false } : path,
           );
-          const newJourney: Journey = { ...journey, desPaths: newDesPaths };
+          const newJourney: Journey = { ...journey, destinations: newDesPaths };
           const newJourneys = state.journeys.map((j) => (j.id === journey.id ? newJourney : j));
           const newSelected = state.selected?.id === newJourney.id ? newJourney : state.selected;
           return { journeys: newJourneys, selected: newSelected };

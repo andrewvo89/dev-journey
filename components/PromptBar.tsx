@@ -1,14 +1,12 @@
 import { Autocomplete, CloseButton, Loader, createStyles } from '@mantine/core';
-import { ClientPrompt, DestinationPath, OptionalPath } from 'types/common';
-import { getPathsToJnode, resolveNodeIdsToJNodes } from 'utils/jnodes';
 import { useEffect, useRef, useState } from 'react';
 
+import { ClientPrompt } from 'types/common';
 import dayjs from 'dayjs';
 import { promptResponseSchema } from 'schemas/common';
 import { shallow } from 'zustand/shallow';
 import { useHistoryStore } from 'store/history';
 import { useInputRefStore } from 'store/input-ref';
-import { useNodeStore } from 'store/nodes';
 import { usePromptStore } from 'store/prompt';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -57,7 +55,6 @@ export default function PromptBar(props: Props) {
     (state) => ({ addJourney: state.addJourney, selected: state.selected, setSelected: state.setSelected }),
     shallow,
   );
-  const jnodes = useNodeStore((state) => state.jnodes);
 
   const itemSelectedHandler = async (prompt: ClientPrompt) => {
     setIsLoading(true);
@@ -66,33 +63,12 @@ export default function PromptBar(props: Props) {
       const jsonResponse = await res.json();
       const { destinations } = promptResponseSchema.parse(jsonResponse);
 
-      const desJnodes = resolveNodeIdsToJNodes(
-        destinations.map((des) => des.id),
-        jnodes,
-      );
-
-      const desPaths = desJnodes.map<DestinationPath>((jnode) => ({
-        desId: jnode.id,
-        enabled: true,
-        routes: getPathsToJnode('root', jnode, jnodes),
-      }));
-
-      const optPaths = desJnodes.reduce<OptionalPath[]>((list, jnode) => {
-        const newList = jnode.pathways.reduce<OptionalPath[]>((list, pathway) => {
-          const pathwayJnode = jnodes.get(pathway);
-          if (!pathwayJnode) {
-            return list;
-          }
-          const path: OptionalPath = {
-            desId: pathway,
-            routes: getPathsToJnode(jnode.id, pathwayJnode, jnodes),
-          };
-          return [...list, path];
-        }, []);
-        return [...list, ...newList];
-      }, []);
-
-      addJourney({ id: uuidv4(), createdAt: dayjs().toISOString(), desPaths, optPaths, prompt });
+      addJourney({
+        id: uuidv4(),
+        createdAt: dayjs().toISOString(),
+        destinations: destinations.map((destination) => ({ id: destination.id, enabled: true })),
+        prompt,
+      });
     } catch (error) {
       console.error(error);
     } finally {
@@ -106,9 +82,6 @@ export default function PromptBar(props: Props) {
 
   const clearClickHandler = () => {
     setSelected(null);
-    if (ref.current) {
-      ref.current.focus();
-    }
   };
 
   return (

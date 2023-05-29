@@ -6,11 +6,6 @@
     "dependencies": [
       "html"
     ],
-    "pathways": [
-      "sass",
-      "less",
-      "tailwind"
-    ],
     "resources": [],
     "attributes": {
       "group": "frontend",
@@ -24,7 +19,6 @@
     "dependencies": [
       "css"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "frontend",
@@ -38,7 +32,6 @@
     "dependencies": [
       "css"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "frontend",
@@ -52,7 +45,6 @@
     "dependencies": [
       "css"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "frontend",
@@ -66,7 +58,6 @@
     "dependencies": [
       "root"
     ],
-    "pathways": [],
     "resources": [
       {
         "url": "https://www.codecademy.com/learn/learn-html",
@@ -88,13 +79,6 @@
       "html",
       "css",
       "root"
-    ],
-    "pathways": [
-      "react",
-      "svelte",
-      "angular",
-      "vue",
-      "solidjs"
     ],
     "resources": [
       {
@@ -182,7 +166,6 @@
     "dependencies": [
       "javascript"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "frontend",
@@ -196,7 +179,6 @@
     "dependencies": [
       "root"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "backend",
@@ -211,9 +193,6 @@
     "type": "language",
     "dependencies": [
       "root"
-    ],
-    "pathways": [
-      "laravel"
     ],
     "resources": [],
     "attributes": {
@@ -230,7 +209,6 @@
     "dependencies": [
       "php"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "backend",
@@ -242,9 +220,8 @@
     "name": "Rust",
     "type": "language",
     "dependencies": [
-      "root"
+      "functional_programming"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "backend",
@@ -260,7 +237,6 @@
     "dependencies": [
       "root"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "backend",
@@ -277,9 +253,6 @@
     "dependencies": [
       "root"
     ],
-    "pathways": [
-      "django"
-    ],
     "resources": [],
     "attributes": {
       "group": "backend",
@@ -295,7 +268,6 @@
     "dependencies": [
       "python"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "backend",
@@ -307,12 +279,8 @@
     "name": "React",
     "type": "library",
     "dependencies": [
-      "javascript"
-    ],
-    "pathways": [
-      "nextjs",
-      "remix",
-      "astro"
+      "javascript",
+      "typescript"
     ],
     "resources": [],
     "attributes": {
@@ -329,7 +297,6 @@
     "dependencies": [
       "javascript"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "frontend",
@@ -345,7 +312,6 @@
     "dependencies": [
       "react"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "mobile",
@@ -361,7 +327,6 @@
     "dependencies": [
       "root"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "mobile",
@@ -378,7 +343,6 @@
     "dependencies": [
       "root"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "mobile",
@@ -394,9 +358,6 @@
     "type": "language",
     "dependencies": [
       "root"
-    ],
-    "pathways": [
-      "flutter"
     ],
     "resources": [],
     "attributes": {
@@ -414,7 +375,6 @@
     "dependencies": [
       "dart"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "mobile",
@@ -430,7 +390,6 @@
     "dependencies": [
       "typescript"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "frontend",
@@ -446,7 +405,6 @@
     "dependencies": [
       "react"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "frontend",
@@ -460,7 +418,6 @@
     "dependencies": [
       "react"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "frontend",
@@ -474,7 +431,6 @@
     "dependencies": [
       "react"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "frontend",
@@ -487,9 +443,6 @@
     "type": "library",
     "dependencies": [
       "javascript"
-    ],
-    "pathways": [
-      "nuxt"
     ],
     "resources": [],
     "attributes": {
@@ -506,7 +459,6 @@
     "dependencies": [
       "vue"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "frontend",
@@ -519,9 +471,6 @@
     "type": "library",
     "dependencies": [
       "javascript"
-    ],
-    "pathways": [
-      "sveltekit"
     ],
     "resources": [],
     "attributes": {
@@ -538,7 +487,6 @@
     "dependencies": [
       "svelte"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "frontend",
@@ -552,7 +500,6 @@
     "dependencies": [
       "javascript"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "backend",
@@ -568,7 +515,6 @@
     "dependencies": [
       "nodejs"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "backend",
@@ -583,7 +529,6 @@
       "nodejs",
       "typescript"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "backend",
@@ -599,7 +544,6 @@
     "dependencies": [
       "root"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "api",
@@ -616,7 +560,6 @@
     "dependencies": [
       "root"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "api",
@@ -626,14 +569,56 @@
       ]
     }
   },
+  "curl": {
+    "id": "curl",
+    "name": "cURL",
+    "type": "tool",
+    "dependencies": [
+      "graphql",
+      "rest"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "api",
+      "careers": []
+    }
+  },
+  "postman": {
+    "id": "postman",
+    "name": "Postman",
+    "type": "tool",
+    "dependencies": [
+      "graphql",
+      "rest"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "api",
+      "careers": []
+    }
+  },
+  "sql": {
+    "id": "sql",
+    "name": "SQL",
+    "type": "language",
+    "dependencies": [
+      "relational"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "database",
+      "careers": [
+        "database"
+      ]
+    }
+  },
   "mysql": {
     "id": "mysql",
     "name": "MySQL",
-    "type": "language",
+    "type": "software",
     "dependencies": [
-      "root"
+      "sql"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "database",
@@ -645,11 +630,10 @@
   "postgress": {
     "id": "postgress",
     "name": "PostgreSQL",
-    "type": "language",
+    "type": "software",
     "dependencies": [
-      "root"
+      "sql"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "database",
@@ -663,9 +647,8 @@
     "name": "MongoDB",
     "type": "language",
     "dependencies": [
-      "root"
+      "no_sql"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "database",
@@ -679,15 +662,53 @@
     "name": "Redis",
     "type": "language",
     "dependencies": [
-      "root"
+      "no_sql"
     ],
-    "pathways": [],
     "resources": [],
     "attributes": {
       "group": "database",
       "careers": [
         "database"
       ]
+    }
+  },
+  "functional_programming": {
+    "id": "functional_programming",
+    "name": "Functional Programming",
+    "type": "paradigm",
+    "dependencies": [
+      "root"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "paradigm",
+      "careers": []
+    }
+  },
+  "no_sql": {
+    "id": "no_sql",
+    "name": "No SQL Database",
+    "type": "paradigm",
+    "dependencies": [
+      "root"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "paradigm",
+      "careers": []
+    }
+  },
+  "relational": {
+    "id": "relational",
+    "name": "Relational Database",
+    "type": "paradigm",
+    "dependencies": [
+      "root"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "paradigm",
+      "careers": []
     }
   }
 }

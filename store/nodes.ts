@@ -1,19 +1,17 @@
-import { ClientJNode, DestinationPath, OptionalPath } from 'types/common';
+import { ClientJNode, Destination, DestinationWithRoutes } from 'types/common';
 import { Edge, Node } from 'reactflow';
+import { getPathsToJnode, resolveNodeIdsToJNodes } from 'utils/jnodes';
 
 import { JNodeTypeData } from 'types/flow';
 import { create } from 'zustand';
 import { jnodesToFlow } from 'utils/flow';
-import { resolveNodeIdsToJNodes } from 'utils/jnodes';
 
 type NodeState = {
   jnodes: Map<string, ClientJNode>;
   nodes: Node<JNodeTypeData>[];
   edges: Edge[];
   initFlow: (jnodes: ClientJNode[], nodes: Node<JNodeTypeData>[], edges: Edge[]) => void;
-  // onNodesChange: OnNodesChange;
-  // onEdgesChange: OnEdgesChange;
-  updateNodes: (desPaths: DestinationPath[], optPaths: OptionalPath[]) => void;
+  updateNodes: (destinations: Destination[]) => void;
 };
 
 export const useNodeStore = create<NodeState>()((set) => ({
@@ -26,8 +24,12 @@ export const useNodeStore = create<NodeState>()((set) => ({
       nodes,
       edges,
     }),
-  updateNodes: (desPaths, optPaths) =>
+  updateNodes: (destinations) =>
     set((state) => {
+      // Convert map to array
+      const jnodesList = Array.from(state.jnodes.values());
+
+      // Create a map of node settings to maintain the position of nodes
       const nodeSettingsMap = state.nodes.reduce<Map<string, Partial<Node>>>(
         (map, node) =>
           map.set(node.id, {
@@ -38,30 +40,33 @@ export const useNodeStore = create<NodeState>()((set) => ({
         new Map(),
       );
 
-      const nodeIdsOnPath = new Set<string>();
-      const enabledPaths = desPaths.filter((path) => path.enabled);
-      const enablePathIds = enabledPaths.map((path) => path.desId);
+      const enabledDesIds = destinations.filter((des) => des.enabled).map((des) => des.id);
 
-      for (const path of enabledPaths) {
-        for (const routes of path.routes) {
-          for (const jnode of routes) {
-            nodeIdsOnPath.add(jnode.id);
-          }
-        }
-      }
+      // Determine routes for all destination nodes
+      const destinationWithRoutes = resolveNodeIdsToJNodes(enabledDesIds, state.jnodes).map<DestinationWithRoutes>(
+        (jnode) => ({
+          id: jnode.id,
+          enabled: true,
+          routes: getPathsToJnode('root', jnode, state.jnodes),
+        }),
+      );
 
-      const optionalIdsOnPath = new Set<string>();
-      for (const path of optPaths) {
-        if (!enablePathIds.includes(path.routes[0][0].id)) {
-          continue;
-        }
-        for (const routes of path.routes) {
-          for (const jnode of routes) {
-            optionalIdsOnPath.add(jnode.id);
-          }
-        }
-      }
+      // Get unique node ids on path
+      const nodeIdsOnPath = destinationWithRoutes.reduce<Set<string>>((set, path) => {
+        const newSet = new Set(set);
+        path.routes.flatMap((route) => route.map((jnode) => jnode.id)).forEach((id) => newSet.add(id));
+        return newSet;
+      }, new Set());
 
-      return jnodesToFlow(Array.from(state.jnodes.values()), nodeIdsOnPath, optionalIdsOnPath, nodeSettingsMap);
+      // Get unique optional node ids on path
+      const optionalIdsOnPath = jnodesList.reduce<Set<string>>((set, jnode) => {
+        const newSet = new Set(set);
+        if (jnode.dependencies.some((dep) => enabledDesIds.includes(dep))) {
+          return newSet.add(jnode.id);
+        }
+        return newSet;
+      }, new Set());
+
+      return jnodesToFlow(jnodesList, nodeIdsOnPath, optionalIdsOnPath, nodeSettingsMap);
     }),
 }));
