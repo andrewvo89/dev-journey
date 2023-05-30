@@ -1,0 +1,57 @@
+{
+  "no_sql": {
+    "id": "no_sql",
+    "name": "No SQL Database",
+    "type": "paradigm",
+    "dependencies": [
+      "database_development"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "paradigm",
+      "careers": []
+    }
+  },
+  "relational": {
+    "id": "relational",
+    "name": "Relational Database",
+    "type": "paradigm",
+    "dependencies": [
+      "database_development"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "paradigm",
+      "careers": []
+    }
+  },
+  "functional_programming": {
+    "id": "functional_programming",
+    "name": "Functional Programming",
+    "type": "paradigm",
+    "dependencies": [
+      "backend_development"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "paradigm",
+      "careers": []
+    }
+  },
+  "rest": {
+    "id": "rest",
+    "name": "REST",
+    "type": "paradigm",
+    "dependencies": [
+      "api_development"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "api",
+      "careers": [
+        "backend",
+        "api"
+      ]
+    }
+  }
+}

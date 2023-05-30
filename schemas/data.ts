@@ -8,6 +8,6 @@ export const careerJSONSchema = z.record(
   }),
 );
 
-export const techJSONSchema = z.record(jnodeSchema);
+export const jnodeJSONSchema = z.record(jnodeSchema);
 
 export const placeholdersJSONSchema = z.string().array().min(1);

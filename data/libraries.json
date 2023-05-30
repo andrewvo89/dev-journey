@@ -1,0 +1,89 @@
+{
+  "svelte": {
+    "id": "svelte",
+    "name": "Svelte",
+    "type": "library",
+    "dependencies": [
+      "javascript"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "frontend",
+      "careers": [
+        "frontend"
+      ]
+    }
+  },
+  "vue": {
+    "id": "vue",
+    "name": "Vue.js",
+    "type": "library",
+    "dependencies": [
+      "javascript"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "frontend",
+      "careers": [
+        "frontend"
+      ]
+    }
+  },
+  "solidjs": {
+    "id": "solidjs",
+    "name": "SolidJS",
+    "type": "library",
+    "dependencies": [
+      "javascript"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "frontend",
+      "careers": [
+        "frontend"
+      ]
+    }
+  },
+  "react": {
+    "id": "react",
+    "name": "React",
+    "type": "library",
+    "dependencies": [
+      "javascript",
+      "typescript"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "frontend",
+      "careers": [
+        "frontend"
+      ]
+    }
+  },
+  "sass": {
+    "id": "sass",
+    "name": "Sass",
+    "type": "framework",
+    "dependencies": [
+      "css"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "frontend",
+      "careers": []
+    }
+  },
+  "less": {
+    "id": "less",
+    "name": "Less",
+    "type": "framework",
+    "dependencies": [
+      "css"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "frontend",
+      "careers": []
+    }
+  }
+}

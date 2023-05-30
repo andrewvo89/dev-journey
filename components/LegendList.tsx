@@ -1,7 +1,10 @@
-import { Group, Paper, Stack, Text, createStyles } from '@mantine/core';
+import { IconCrown, IconRocket } from '@tabler/icons-react';
+import { Stack, createStyles } from '@mantine/core';
 
 import { JNodeType } from 'types/common';
-import LegentListItem from 'components/LegendListItem';
+import { LegendBorderListItem } from 'components/LegendBorderListItem';
+import { LegendIconListItem } from 'components/LegendIconListItem';
+import LegendTypeListItem from 'components/LegendTypeListItem';
 import { useMemo } from 'react';
 import { useNodeStore } from 'store/nodes';
 
@@ -9,35 +12,51 @@ const useStyles = createStyles((theme) => ({
   keyName: {
     whiteSpace: 'nowrap',
   },
-  onPath: {
-    // backgroundColor: `${theme.colors[props.color][5]}`,
-    // opacity: isOptional ? 0.6 : keepAlive ? 1 : 0.2,
+  borderLegend: {
     borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: theme.colors.blue[6],
     width: '1rem',
     height: '1rem',
   },
-  futurePath: {
-    // backgroundColor: `${theme.colors[props.color][5]}`,
-    // opacity: isOptional ? 0.6 : keepAlive ? 1 : 0.2,
-    borderWidth: 1,
+  onPath: {
+    borderColor: theme.colors.blue[6],
+    borderStyle: 'solid',
+  },
+  extendedPath: {
     borderStyle: 'dashed',
     borderColor: theme.colors.blue[6],
-    width: '1rem',
-    height: '1rem',
   },
   notOnPath: {
-    // backgroundColor: `${theme.colors[props.color][5]}`,
-    // opacity: isOptional ? 0.6 : keepAlive ? 1 : 0.2,
-    borderWidth: 1,
     borderStyle: 'solid',
     borderColor: theme.colors.gray[6],
-    width: '1rem',
-    height: '1rem',
     opacity: 0.2,
   },
 }));
+
+const iconLegends: { name: string; icon: JSX.Element }[] = [
+  { name: 'Destination', icon: <IconCrown /> },
+  { name: 'Next step', icon: <IconRocket /> },
+];
+
+const borderLegends: { name: string; paperClassName: 'onPath' | 'notOnPath' | 'extendedPath' }[] = [
+  { name: 'On path', paperClassName: 'onPath' },
+  { name: 'Not on path', paperClassName: 'notOnPath' },
+  { name: 'Extended path', paperClassName: 'extendedPath' },
+];
+
+const typesOrder: Record<JNodeType, number> = {
+  root: 0,
+  tool: 1,
+  language: 2,
+  database: 3,
+  framework: 4,
+  meta_framework: 5,
+  software: 6,
+  library: 7,
+  platform: 8,
+  paradigm: 9,
+  field: 10,
+  career: 11,
+};
 
 export function LegendList() {
   const nodes = useNodeStore((state) => state.nodes);
@@ -49,21 +68,26 @@ export function LegendList() {
 
   return (
     <Stack>
-      <Group noWrap grow={false}>
-        <Paper shadow='sm' className={classes.onPath}></Paper>
-        <Text className={classes.keyName}>On path</Text>
-      </Group>
-      <Group noWrap grow={false}>
-        <Paper shadow='sm' className={classes.notOnPath}></Paper>
-        <Text className={classes.keyName}>Not on path</Text>
-      </Group>
-      <Group noWrap grow={false}>
-        <Paper shadow='sm' className={classes.futurePath}></Paper>
-        <Text className={classes.keyName}>Future path</Text>
-      </Group>
-      {Array.from(uniqueTypes).map((type) => (
-        <LegentListItem key={type} type={type} />
+      {iconLegends.map((legend) => (
+        <LegendIconListItem
+          key={legend.name}
+          classNames={{ text: classes.keyName }}
+          icon={legend.icon}
+          name={legend.name}
+        />
       ))}
+      {borderLegends.map((legend) => (
+        <LegendBorderListItem
+          key={legend.name}
+          name={legend.name}
+          classNames={{ text: classes.keyName, paper: `${classes.borderLegend} ${classes[legend.paperClassName]}` }}
+        />
+      ))}
+      {Array.from(uniqueTypes)
+        .sort((a, b) => typesOrder[a] - typesOrder[b])
+        .map((type) => (
+          <LegendTypeListItem key={type} type={type} />
+        ))}
     </Stack>
   );
 }

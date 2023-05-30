@@ -1,0 +1,67 @@
+{
+  "frontend_development": {
+    "id": "frontend_development",
+    "name": "Frontend Development",
+    "type": "field",
+    "dependencies": [
+      "root"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "frontend",
+      "careers": []
+    }
+  },
+  "backend_development": {
+    "id": "backend_development",
+    "name": "Backend Development",
+    "type": "field",
+    "dependencies": [
+      "root"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "backend",
+      "careers": []
+    }
+  },
+  "mobile_development": {
+    "id": "mobile_development",
+    "name": "Mobile Development",
+    "type": "field",
+    "dependencies": [
+      "root"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "mobile",
+      "careers": []
+    }
+  },
+  "api_development": {
+    "id": "api_development",
+    "name": "API Development",
+    "type": "field",
+    "dependencies": [
+      "root"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "api",
+      "careers": []
+    }
+  },
+  "database_development": {
+    "id": "database_development",
+    "name": "Database Development",
+    "type": "field",
+    "dependencies": [
+      "root"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "database",
+      "careers": []
+    }
+  }
+}

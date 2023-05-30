@@ -72,22 +72,29 @@ function getIsLeafNode(jnode: ClientJNode, jnodes: ClientJNode[]): boolean {
   return jnodes.every((j) => !j.dependencies.includes(jnode.id));
 }
 
-export function jnodesToFlow(
-  jnodes: ClientJNode[],
-  nodesIdsOnPath: Set<string>,
-  optionalIdsOnPath: Set<string>,
-  maintainSettings: Map<string, Partial<Node>>,
-): { nodes: Node<JNodeTypeData>[]; edges: Edge[] } {
-  const noNodesOnPath = nodesIdsOnPath.size === 0;
+type JnodesToFlowParams = {
+  jnodes: ClientJNode[];
+  destinationIds: string[];
+  nodesIdsOnPath: string[];
+  optionalIdsOnPath: string[];
+  maintainSettings: Map<string, Partial<Node>>;
+};
+
+export function jnodesToFlow(params: JnodesToFlowParams): { nodes: Node<JNodeTypeData>[]; edges: Edge[] } {
+  const { jnodes, destinationIds, nodesIdsOnPath, optionalIdsOnPath, maintainSettings } = params;
+
+  const noNodesOnPath = nodesIdsOnPath.length === 0;
 
   const nodes = jnodes.map<Node<JNodeTypeData>>((jnode) => {
-    const isOnPath = nodesIdsOnPath.has(jnode.id);
-    const isOnOptionalPath = optionalIdsOnPath.has(jnode.id);
+    const isOnPath = nodesIdsOnPath.includes(jnode.id);
+    const isOnOptionalPath = optionalIdsOnPath.includes(jnode.id);
     const isLeafNode = getIsLeafNode(jnode, jnodes);
+    const isDesNode = destinationIds.includes(jnode.id);
+
     return {
       id: jnode.id,
       position: { x: 0, y: 0 },
-      data: { jnode, isOnPath, isLeafNode, noNodesOnPath, isOnOptionalPath },
+      data: { jnode, isOnPath, isLeafNode, noNodesOnPath, isOnOptionalPath, isDesNode },
       type: 'jnode',
       width: jnodeProps.dimensions.width,
       height: jnodeProps.dimensions.height,
@@ -99,8 +106,8 @@ export function jnodesToFlow(
     (list, jnode) => [
       ...list,
       ...jnode.dependencies.map<Edge>((depId) => {
-        const nodeIsOnPath = nodesIdsOnPath.has(jnode.id);
-        const isOptional = optionalIdsOnPath.has(jnode.id);
+        const nodeIsOnPath = nodesIdsOnPath.includes(jnode.id);
+        const isOptional = optionalIdsOnPath.includes(jnode.id);
         const fadeOpacity = !isOptional && !nodeIsOnPath && !noNodesOnPath;
 
         const edge: Edge = {
@@ -108,7 +115,6 @@ export function jnodesToFlow(
           source: depId,
           target: jnode.id,
           type: 'default',
-          // animated: nodeIsOnPath,
         };
 
         if (isOptional) {

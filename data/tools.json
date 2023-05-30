@@ -1,0 +1,30 @@
+{
+  "curl": {
+    "id": "curl",
+    "name": "cURL",
+    "type": "tool",
+    "dependencies": [
+      "graphql",
+      "rest"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "api",
+      "careers": []
+    }
+  },
+  "postman": {
+    "id": "postman",
+    "name": "Postman",
+    "type": "tool",
+    "dependencies": [
+      "graphql",
+      "rest"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "api",
+      "careers": []
+    }
+  }
+}

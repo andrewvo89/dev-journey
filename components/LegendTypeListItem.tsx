@@ -22,7 +22,7 @@ type Props = {
   type: JNodeType;
 };
 
-export default function LegentListItem(props: Props) {
+export default function LegendTypeListItem(props: Props) {
   const { type } = props;
   const { label, color } = jnodeTypeMap[type];
   const { classes } = useStyles({ color });

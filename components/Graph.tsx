@@ -56,7 +56,7 @@ export function Graph() {
         edgesUpdatable={false}
         elementsSelectable={false}
         nodesConnectable={false}
-        nodesDraggable={false}
+        // nodesDraggable={false}
         nodesFocusable={false}
       />
     </Flex>

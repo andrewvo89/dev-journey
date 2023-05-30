@@ -1,12 +1,29 @@
 import { ClientPrompt, Prompt } from 'types/common';
-import { careerJSONSchema, techJSONSchema } from 'schemas/data';
+import { careerJSONSchema, jnodeJSONSchema } from 'schemas/data';
 
 import careersJSON from 'data/careers.json';
+import databasesJSON from 'data/databases.json';
+import fieldsJSON from 'data/fields.json';
+import frameworksJSON from 'data/frameworks.json';
 import { jnodeSchema } from 'schemas/common';
-import techJSON from 'data/tech.json';
+import languagesJSON from 'data/languages.json';
+import librariesJSON from 'data/libraries.json';
+import paradigmsJSON from 'data/paradigms.json';
+import rootJSON from 'data/root.json';
+import toolsJSON from 'data/tools.json';
 
-const tech = techJSONSchema.parse(techJSON);
-const techList = Object.values(tech);
+const jnodeJSONs = jnodeJSONSchema.parse({
+  ...databasesJSON,
+  ...fieldsJSON,
+  ...frameworksJSON,
+  ...languagesJSON,
+  ...librariesJSON,
+  ...paradigmsJSON,
+  ...rootJSON,
+  ...toolsJSON,
+});
+
+const techList = Object.values(jnodeJSONs);
 const techPrompts = techList
   .sort((a, b) => a.name.localeCompare(b.name))
   .map<Prompt>((jnode) => ({
@@ -47,7 +64,7 @@ const javascriptFramwork: Prompt = {
   prompt: 'I want to learn a JavaScript library/framework',
   priority: 2,
   response: async () => {
-    const jsJnode = jnodeSchema.parse(techJSON.javascript);
+    const jsJnode = jnodeSchema.parse(languagesJSON.javascript);
     return {
       destinations: techList
         .filter((t) => t.dependencies.includes(jsJnode.id))

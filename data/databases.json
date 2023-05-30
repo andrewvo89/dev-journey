@@ -1,0 +1,62 @@
+{
+  "mysql": {
+    "id": "mysql",
+    "name": "MySQL",
+    "type": "database",
+    "dependencies": [
+      "sql"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "database",
+      "careers": [
+        "database"
+      ]
+    }
+  },
+  "postgress": {
+    "id": "postgress",
+    "name": "PostgreSQL",
+    "type": "database",
+    "dependencies": [
+      "sql"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "database",
+      "careers": [
+        "database"
+      ]
+    }
+  },
+  "mongodb": {
+    "id": "mongodb",
+    "name": "MongoDB",
+    "type": "database",
+    "dependencies": [
+      "no_sql"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "database",
+      "careers": [
+        "database"
+      ]
+    }
+  },
+  "redis": {
+    "id": "redis",
+    "name": "Redis",
+    "type": "database",
+    "dependencies": [
+      "no_sql"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "database",
+      "careers": [
+        "database"
+      ]
+    }
+  }
+}

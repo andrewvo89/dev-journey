@@ -1,5 +1,6 @@
-import { Badge, Paper, Text } from '@mantine/core';
+import { Badge, Paper, Text, ThemeIcon } from '@mantine/core';
 import { Handle, NodeProps } from 'reactflow';
+import { IconCrown, IconRocket } from '@tabler/icons-react';
 
 import { Fragment } from 'react';
 import { JNodeTypeData } from 'types/flow';
@@ -8,8 +9,7 @@ import { useNodeStyles } from 'styles/node';
 
 export default function JNodeType(props: NodeProps<JNodeTypeData>) {
   const {
-    id,
-    data: { jnode, isOnPath, isLeafNode, noNodesOnPath, isOnOptionalPath },
+    data: { jnode, isOnPath, isOnOptionalPath, isLeafNode, noNodesOnPath, isDesNode },
     sourcePosition,
     targetPosition,
   } = props;
@@ -20,17 +20,28 @@ export default function JNodeType(props: NodeProps<JNodeTypeData>) {
 
   const { classes } = useNodeStyles({
     keepAlive,
-    isOptional: isOnOptionalPath && !isOnPath,
+    isOptional: isOnOptionalPath,
     isOnPath,
     type: jnode.type,
   });
-  const isRoot = id === 'root';
 
   return (
     <Fragment>
       {sourcePosition && !isLeafNode && <Handle type='source' position={sourcePosition} className={classes.handle} />}
-      {targetPosition && !isRoot && <Handle type='target' position={targetPosition} className={classes.handle} />}
-      <Paper shadow='sm' className={classes.paper}>
+      {targetPosition && jnode.dependencies.length > 0 && (
+        <Handle type='target' position={targetPosition} className={classes.handle} />
+      )}
+      <Paper shadow='sm' className={`${classes.paper} nodrag`}>
+        {isDesNode && (
+          <ThemeIcon className={classes.crownIcon}>
+            <IconCrown />
+          </ThemeIcon>
+        )}
+        {isOnOptionalPath && (
+          <ThemeIcon className={classes.forkIcon}>
+            <IconRocket />
+          </ThemeIcon>
+        )}
         {jnode.resources.length > 0 && (
           <Badge className={classes.badge} size='lg'>
             {jnode.resources.length}

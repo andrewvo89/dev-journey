@@ -43,5 +43,17 @@ export const useNodeStyles = createStyles((theme, props: Props) => {
       backgroundColor: theme.white,
       zIndex: 1,
     },
+    crownIcon: {
+      width: '2rem',
+      height: '2rem',
+      position: 'absolute',
+      left: '-1rem',
+    },
+    forkIcon: {
+      width: '2rem',
+      height: '2rem',
+      position: 'absolute',
+      left: '-1rem',
+    },
   };
 });

@@ -17,16 +17,16 @@ export const resourceSchema = z.object({
 
 export const jnodeTypeSchema = z.union([
   z.literal('root'),
+  z.literal('tool'),
   z.literal('language'),
+  z.literal('database'),
   z.literal('framework'),
   z.literal('meta_framework'),
   z.literal('software'),
   z.literal('library'),
   z.literal('platform'),
-  z.literal('methodology'),
-  z.literal('tool'),
-  z.literal('concept'),
   z.literal('paradigm'),
+  z.literal('field'),
   z.literal('career'),
 ]);
 

@@ -59,14 +59,19 @@ export const useNodeStore = create<NodeState>()((set) => ({
       }, new Set());
 
       // Get unique optional node ids on path
-      const optionalIdsOnPath = jnodesList.reduce<Set<string>>((set, jnode) => {
-        const newSet = new Set(set);
+      const optionalIdsOnPath = jnodesList.reduce<string[]>((list, jnode) => {
         if (jnode.dependencies.some((dep) => enabledDesIds.includes(dep))) {
-          return newSet.add(jnode.id);
+          return [...list, jnode.id];
         }
-        return newSet;
-      }, new Set());
+        return list;
+      }, []);
 
-      return jnodesToFlow(jnodesList, nodeIdsOnPath, optionalIdsOnPath, nodeSettingsMap);
+      return jnodesToFlow({
+        jnodes: jnodesList,
+        destinationIds: enabledDesIds,
+        nodesIdsOnPath: Array.from(nodeIdsOnPath),
+        optionalIdsOnPath,
+        maintainSettings: nodeSettingsMap,
+      });
     }),
 }));

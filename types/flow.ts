@@ -18,6 +18,7 @@ export const jnodeProps: NodeTypeProps = {
 
 export type JNodeTypeData = {
   jnode: JNode;
+  isDesNode: boolean;
   isOnPath: boolean;
   isLeafNode: boolean;
   noNodesOnPath: boolean;

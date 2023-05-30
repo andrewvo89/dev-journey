@@ -1,0 +1,136 @@
+{
+  "express": {
+    "id": "express",
+    "name": "Express",
+    "type": "framework",
+    "dependencies": [
+      "nodejs"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "backend",
+      "careers": []
+    }
+  },
+  "angular": {
+    "id": "angular",
+    "name": "Angular",
+    "type": "framework",
+    "dependencies": [
+      "typescript"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "frontend",
+      "careers": []
+    }
+  },
+  "sveltekit": {
+    "id": "sveltekit",
+    "name": "SvelteKit",
+    "type": "framework",
+    "dependencies": [
+      "svelte"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "frontend",
+      "careers": []
+    }
+  },
+  "nuxt": {
+    "id": "nuxt",
+    "name": "Nuxt",
+    "type": "framework",
+    "dependencies": [
+      "vue"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "frontend",
+      "careers": []
+    }
+  },
+  "astro": {
+    "id": "astro",
+    "name": "Astro",
+    "type": "framework",
+    "dependencies": [
+      "react"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "frontend",
+      "careers": []
+    }
+  },
+  "flutter": {
+    "id": "flutter",
+    "name": "Flutter",
+    "type": "framework",
+    "dependencies": [
+      "dart"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "mobile",
+      "careers": [
+        "mobile"
+      ]
+    }
+  },
+  "react_native": {
+    "id": "react_native",
+    "name": "React Native",
+    "type": "framework",
+    "dependencies": [
+      "react"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "mobile",
+      "careers": [
+        "mobile"
+      ]
+    }
+  },
+  "django": {
+    "id": "django",
+    "name": "Django",
+    "type": "framework",
+    "dependencies": [
+      "python"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "backend",
+      "careers": []
+    }
+  },
+  "laravel": {
+    "id": "laravel",
+    "name": "Laravel",
+    "type": "framework",
+    "dependencies": [
+      "php"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "backend",
+      "careers": []
+    }
+  },
+  "tailwind": {
+    "id": "tailwind",
+    "name": "Tailwind CSS",
+    "type": "framework",
+    "dependencies": [
+      "css"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "frontend",
+      "careers": []
+    }
+  }
+}

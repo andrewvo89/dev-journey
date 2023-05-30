@@ -2,14 +2,20 @@ import { ClientPrompt, JNode } from 'types/common';
 import { Edge, Node } from 'reactflow';
 import type { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next';
 import { getLayoutedElements, jnodesToFlow } from 'utils/flow';
-import { placeholdersJSONSchema, techJSONSchema } from 'schemas/data';
+import { jnodeJSONSchema, placeholdersJSONSchema } from 'schemas/data';
 
 import Home from 'components/Home';
 import { JNodeTypeData } from 'types/flow';
 import { clientPrompts } from 'data/prompts';
+import databasesJSON from 'data/databases.json';
+import fieldsJSON from 'data/fields.json';
+import frameworksJSON from 'data/frameworks.json';
+import languagesJSON from 'data/languages.json';
+import librariesJSON from 'data/libraries.json';
+import paradigmsJSON from 'data/paradigms.json';
 import placeholdersJSON from 'data/placeholders.json';
 import rootJSON from 'data/root.json';
-import techJSON from 'data/tech.json';
+import toolsJSON from 'data/tools.json';
 
 export type Props = {
   placeholder: string;
@@ -19,18 +25,29 @@ export type Props = {
   initialJNodes: JNode[];
 };
 
-const tech = techJSONSchema.parse(techJSON);
-console.log('tech', tech);
-const root = techJSONSchema.parse(rootJSON);
-const placeholders = placeholdersJSONSchema.parse(placeholdersJSON);
-const initialJNodes = [
-  ...Object.values(root),
-  ...Object.values(tech).sort(
-    (a, b) => a.attributes.group.localeCompare(b.attributes.group) || a.name.localeCompare(b.name),
-  ),
-];
+const jnodeJSONs = jnodeJSONSchema.parse({
+  ...databasesJSON,
+  ...fieldsJSON,
+  ...frameworksJSON,
+  ...languagesJSON,
+  ...librariesJSON,
+  ...paradigmsJSON,
+  ...rootJSON,
+  ...toolsJSON,
+});
 
-const { nodes, edges } = jnodesToFlow(initialJNodes, new Set(), new Set(), new Map());
+const placeholders = placeholdersJSONSchema.parse(placeholdersJSON);
+const initialJNodes = Object.values(jnodeJSONs).sort(
+  (a, b) => a.attributes.group.localeCompare(b.attributes.group) || a.name.localeCompare(b.name),
+);
+
+const { nodes, edges } = jnodesToFlow({
+  jnodes: initialJNodes,
+  destinationIds: [],
+  maintainSettings: new Map(),
+  nodesIdsOnPath: [],
+  optionalIdsOnPath: [],
+});
 const { nodes: initialNodes, edges: initialEdges } = getLayoutedElements(nodes, edges, 'LR');
 
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
