@@ -145,26 +145,29 @@ export function isJnodeNodeType(node: Node): node is Node<JNodeTypeData> {
   return node.type === 'jnode';
 }
 
-export function getBoundsOfNodes(nodes: Node[], excludeIds: string[]): Rect {
-  return nodes.reduce<Rect>(
+export function getBoundsOfNodes(
+  nodes: Node[],
+  excludeIds: string[],
+): { xMin: number; yMin: number; xMax: number; yMax: number } {
+  return nodes.reduce<{ xMin: number; yMin: number; xMax: number; yMax: number }>(
     (bounds, node) => {
-      if (excludeIds.includes(node.id)) {
+      if (excludeIds.includes(node.id) || !node.width || !node.height) {
         return bounds;
       }
-      if (node.position.x < bounds.x) {
-        bounds.x = node.position.x;
+      if (node.position.x < bounds.xMin) {
+        bounds.xMin = node.position.x;
       }
-      if (node.position.y < bounds.y) {
-        bounds.y = node.position.y;
+      if (node.position.y < bounds.yMin) {
+        bounds.yMin = node.position.y;
       }
-      if (node.width && node.position.x + node.width > bounds.width) {
-        bounds.width = node.position.x + node.width;
+      if (node.position.x + node.width > bounds.xMax) {
+        bounds.xMax = node.position.x + node.width;
       }
-      if (node.height && node.position.y + node.height > bounds.height) {
-        bounds.height = node.position.y + node.height;
+      if (node.position.y + node.height > bounds.yMax) {
+        bounds.yMax = node.position.y + node.height;
       }
       return bounds;
     },
-    { x: Infinity, y: Infinity, width: 0, height: 0 },
+    { xMin: Infinity, yMin: Infinity, xMax: 0, yMax: 0 },
   );
 }

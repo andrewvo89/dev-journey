@@ -25,13 +25,16 @@ export function Graph() {
   const { fitView, fitBounds, zoomOut } = useReactFlow();
 
   useEffect(() => {
-    const nodesOnPath = nodes.filter((node) => isJnodeNodeType(node) && node.data.isOnPath);
+    const nodesOnPath = nodes.filter((node) => isJnodeNodeType(node) && node.data.isDesNode);
     if (nodesOnPath.length === 0) {
       fitView({ duration: 1000 });
       return;
     }
-    const bounds = getBoundsOfNodes(nodesOnPath, []);
-    fitBounds(bounds, { duration: 1000 });
+    const bounds = getBoundsOfNodes(nodesOnPath, ['root']);
+    const padding = 100;
+    const width = bounds.xMax - bounds.xMin + padding;
+    const height = bounds.yMax - bounds.yMin + padding;
+    fitBounds({ x: bounds.xMin, y: bounds.yMin, width, height }, { duration: 1000 });
   }, [nodes, fitView, fitBounds, zoomOut]);
 
   return (
@@ -56,8 +59,8 @@ export function Graph() {
         edgesUpdatable={false}
         elementsSelectable={false}
         nodesConnectable={false}
-        // nodesDraggable={false}
         nodesFocusable={false}
+        minZoom={0.01}
       />
     </Flex>
   );
