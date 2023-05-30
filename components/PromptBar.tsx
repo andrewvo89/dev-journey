@@ -21,9 +21,8 @@ const useStyles = createStyles((theme, props: { isLoading: boolean }) => ({
     margin: 'auto',
   },
   input: {
-    backgroundColor: props.isLoading ? '#f1f3f5' : undefined,
-    color: props.isLoading ? '#909296' : undefined,
-    opacity: props.isLoading ? 0.6 : undefined,
+    backgroundColor: props.isLoading ? theme.colors.gray[0] : undefined,
+    color: props.isLoading ? theme.colors.dark[2] : undefined,
     cursor: props.isLoading ? 'not-allowed' : undefined,
     pointer: props.isLoading ? 'events:none' : undefined,
   },
@@ -56,18 +55,18 @@ export default function PromptBar(props: Props) {
     shallow,
   );
 
-  const itemSelectedHandler = async (prompt: ClientPrompt) => {
+  const itemSelectedHandler = async (selectedPrompt: ClientPrompt) => {
     setIsLoading(true);
+    setPrompt(selectedPrompt.label);
     try {
-      const res = await fetch(`/api/prompts/${prompt.value}`, { method: 'POST' });
+      const res = await fetch(`/api/prompts/${selectedPrompt.value}`, { method: 'POST' });
       const jsonResponse = await res.json();
       const { destinations } = promptResponseSchema.parse(jsonResponse);
-
       addJourney({
         id: uuidv4(),
         createdAt: dayjs().toISOString(),
         destinations: destinations.map((destination) => ({ id: destination.id, enabled: true })),
-        prompt,
+        prompt: selectedPrompt,
       });
     } catch (error) {
       console.error(error);

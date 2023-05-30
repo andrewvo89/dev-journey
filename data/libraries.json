@@ -60,29 +60,42 @@
       ]
     }
   },
-  "sass": {
-    "id": "sass",
-    "name": "Sass",
-    "type": "framework",
+  "numpy": {
+    "id": "numpy",
+    "name": "NumPy",
+    "type": "library",
     "dependencies": [
-      "css"
+      "python"
     ],
     "resources": [],
     "attributes": {
-      "group": "frontend",
+      "group": "backend",
       "careers": []
     }
   },
-  "less": {
-    "id": "less",
-    "name": "Less",
-    "type": "framework",
+  "pandas": {
+    "id": "pandas",
+    "name": "Pandas",
+    "type": "library",
     "dependencies": [
-      "css"
+      "python"
     ],
     "resources": [],
     "attributes": {
-      "group": "frontend",
+      "group": "backend",
+      "careers": []
+    }
+  },
+  "pytorch": {
+    "id": "pytorch",
+    "name": "PyTorch",
+    "type": "library",
+    "dependencies": [
+      "python"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "backend",
       "careers": []
     }
   }

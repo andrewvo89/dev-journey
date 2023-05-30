@@ -30,7 +30,7 @@ export function Graph() {
       fitView({ duration: 1000 });
       return;
     }
-    const bounds = getBoundsOfNodes(nodesOnPath);
+    const bounds = getBoundsOfNodes(nodesOnPath, []);
     fitBounds(bounds, { duration: 1000 });
   }, [nodes, fitView, fitBounds, zoomOut]);
 

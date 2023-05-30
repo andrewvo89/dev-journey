@@ -17,7 +17,7 @@
     "name": "HTML",
     "type": "language",
     "dependencies": [
-      "frontend_development"
+      "web_browser"
     ],
     "resources": [
       {
@@ -37,10 +37,9 @@
     "name": "JavaScript",
     "type": "language",
     "dependencies": [
-      "html",
       "css",
-      "frontend_development",
-      "backend_development"
+      "nodejs",
+      "desktop_development"
     ],
     "resources": [
       {
@@ -184,7 +183,8 @@
     "name": "Java",
     "type": "language",
     "dependencies": [
-      "backend_development",
+      "jre",
+      "jdk",
       "mobile_development"
     ],
     "resources": [],
@@ -224,37 +224,6 @@
       "careers": [
         "mobile",
         "android"
-      ]
-    }
-  },
-  "nodejs": {
-    "id": "nodejs",
-    "name": "Node.js",
-    "type": "language",
-    "dependencies": [
-      "javascript"
-    ],
-    "resources": [],
-    "attributes": {
-      "group": "backend",
-      "careers": [
-        "backend"
-      ]
-    }
-  },
-  "deno": {
-    "id": "deno",
-    "name": "Deno",
-    "type": "language",
-    "dependencies": [
-      "nodejs",
-      "typescript"
-    ],
-    "resources": [],
-    "attributes": {
-      "group": "backend",
-      "careers": [
-        "backend"
       ]
     }
   },

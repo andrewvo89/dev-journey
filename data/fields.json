@@ -63,5 +63,44 @@
       "group": "database",
       "careers": []
     }
+  },
+  "desktop_development": {
+    "id": "desktop_development",
+    "name": "Desktop Development",
+    "type": "field",
+    "dependencies": [
+      "root"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "desktop",
+      "careers": []
+    }
+  },
+  "devops": {
+    "id": "devops",
+    "name": "DevOps",
+    "type": "field",
+    "dependencies": [
+      "root"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "devops",
+      "careers": []
+    }
+  },
+  "cloud_infrastructure": {
+    "id": "cloud_infrastructure",
+    "name": "Cloud Infrastructure",
+    "type": "field",
+    "dependencies": [
+      "root"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "cloud",
+      "careers": []
+    }
   }
 }

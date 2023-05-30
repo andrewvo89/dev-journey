@@ -9,7 +9,9 @@ import { jnodeSchema } from 'schemas/common';
 import languagesJSON from 'data/languages.json';
 import librariesJSON from 'data/libraries.json';
 import paradigmsJSON from 'data/paradigms.json';
+import platformsJSON from 'data/platforms.json';
 import rootJSON from 'data/root.json';
+import softwareJSON from 'data/software.json';
 import toolsJSON from 'data/tools.json';
 
 const jnodeJSONs = jnodeJSONSchema.parse({
@@ -19,7 +21,9 @@ const jnodeJSONs = jnodeJSONSchema.parse({
   ...languagesJSON,
   ...librariesJSON,
   ...paradigmsJSON,
+  ...platformsJSON,
   ...rootJSON,
+  ...softwareJSON,
   ...toolsJSON,
 });
 

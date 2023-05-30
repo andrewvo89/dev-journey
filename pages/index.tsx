@@ -14,7 +14,9 @@ import languagesJSON from 'data/languages.json';
 import librariesJSON from 'data/libraries.json';
 import paradigmsJSON from 'data/paradigms.json';
 import placeholdersJSON from 'data/placeholders.json';
+import platformsJSON from 'data/platforms.json';
 import rootJSON from 'data/root.json';
+import softwareJSON from 'data/software.json';
 import toolsJSON from 'data/tools.json';
 
 export type Props = {
@@ -32,7 +34,9 @@ const jnodeJSONs = jnodeJSONSchema.parse({
   ...languagesJSON,
   ...librariesJSON,
   ...paradigmsJSON,
+  ...platformsJSON,
   ...rootJSON,
+  ...softwareJSON,
   ...toolsJSON,
 });
 

@@ -102,12 +102,12 @@ export function jnodesToFlow(params: JnodesToFlowParams): { nodes: Node<JNodeTyp
     };
   });
 
-  const edges = jnodes.reduce<Edge[]>(
-    (list, jnode) => [
+  const edges = jnodes.reduce<Edge[]>((list, jnode) => {
+    const nodeIsOnPath = nodesIdsOnPath.includes(jnode.id);
+    return [
       ...list,
       ...jnode.dependencies.map<Edge>((depId) => {
-        const nodeIsOnPath = nodesIdsOnPath.includes(jnode.id);
-        const isOptional = optionalIdsOnPath.includes(jnode.id);
+        const isOptional = optionalIdsOnPath.includes(jnode.id) && destinationIds.includes(depId);
         const fadeOpacity = !isOptional && !nodeIsOnPath && !noNodesOnPath;
 
         const edge: Edge = {
@@ -131,9 +131,8 @@ export function jnodesToFlow(params: JnodesToFlowParams): { nodes: Node<JNodeTyp
 
         return edge;
       }),
-    ],
-    [],
-  );
+    ];
+  }, []);
 
   return { nodes, edges };
 }
@@ -146,22 +145,25 @@ export function isJnodeNodeType(node: Node): node is Node<JNodeTypeData> {
   return node.type === 'jnode';
 }
 
-export function getBoundsOfNodes(nodes: Node[]): Rect {
+export function getBoundsOfNodes(nodes: Node[], excludeIds: string[]): Rect {
   return nodes.reduce<Rect>(
-    (acc, node) => {
-      if (node.position.x < acc.x) {
-        acc.x = node.position.x;
+    (bounds, node) => {
+      if (excludeIds.includes(node.id)) {
+        return bounds;
       }
-      if (node.position.y < acc.y) {
-        acc.y = node.position.y;
+      if (node.position.x < bounds.x) {
+        bounds.x = node.position.x;
       }
-      if (node.width && node.position.x + node.width > acc.width) {
-        acc.width = node.position.x + node.width;
+      if (node.position.y < bounds.y) {
+        bounds.y = node.position.y;
       }
-      if (node.height && node.position.y + node.height > acc.height) {
-        acc.height = node.position.y + node.height;
+      if (node.width && node.position.x + node.width > bounds.width) {
+        bounds.width = node.position.x + node.width;
       }
-      return acc;
+      if (node.height && node.position.y + node.height > bounds.height) {
+        bounds.height = node.position.y + node.height;
+      }
+      return bounds;
     },
     { x: Infinity, y: Infinity, width: 0, height: 0 },
   );

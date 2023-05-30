@@ -1,0 +1,67 @@
+{
+  "amazon_web_services": {
+    "id": "amazon_web_services",
+    "name": "Amazon Web Services",
+    "type": "platform",
+    "dependencies": [
+      "cloud_infrastructure"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "cloud",
+      "careers": []
+    }
+  },
+  "microsoft_azure": {
+    "id": "microsoft_azure",
+    "name": "Microsoft Azure",
+    "type": "platform",
+    "dependencies": [
+      "cloud_infrastructure"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "cloud",
+      "careers": []
+    }
+  },
+  "google_cloud_platform": {
+    "id": "google_cloud_platform",
+    "name": "Google Cloud Platform",
+    "type": "platform",
+    "dependencies": [
+      "cloud_infrastructure"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "cloud",
+      "careers": []
+    }
+  },
+  "firebase": {
+    "id": "firebase",
+    "name": "Firebase",
+    "type": "platform",
+    "dependencies": [
+      "cloud_infrastructure"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "cloud",
+      "careers": []
+    }
+  },
+  "heroku": {
+    "id": "heroku",
+    "name": "Heroku",
+    "type": "platform",
+    "dependencies": [
+      "cloud_infrastructure"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "cloud",
+      "careers": []
+    }
+  }
+}

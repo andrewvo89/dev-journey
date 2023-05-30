@@ -107,6 +107,19 @@
       "careers": []
     }
   },
+  "flask": {
+    "id": "flask",
+    "name": "Flask",
+    "type": "framework",
+    "dependencies": [
+      "python"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "backend",
+      "careers": []
+    }
+  },
   "laravel": {
     "id": "laravel",
     "name": "Laravel",
@@ -126,6 +139,48 @@
     "type": "framework",
     "dependencies": [
       "css"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "frontend",
+      "careers": []
+    }
+  },
+  "electron": {
+    "id": "electron",
+    "name": "Electron",
+    "type": "framework",
+    "dependencies": [
+      "desktop_development",
+      "javascript"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "frontend",
+      "careers": []
+    }
+  },
+  "tauri": {
+    "id": "tauri",
+    "name": "Tauri",
+    "type": "framework",
+    "dependencies": [
+      "desktop_development",
+      "javascript"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "frontend",
+      "careers": []
+    }
+  },
+  "ionic": {
+    "id": "ionic",
+    "name": "Ionic",
+    "type": "framework",
+    "dependencies": [
+      "mobile_development",
+      "javascript"
     ],
     "resources": [],
     "attributes": {

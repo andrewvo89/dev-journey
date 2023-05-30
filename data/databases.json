@@ -58,5 +58,82 @@
         "database"
       ]
     }
+  },
+  "sqlite": {
+    "id": "sqlite",
+    "name": "SQLite",
+    "type": "database",
+    "dependencies": [
+      "sql"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "database",
+      "careers": [
+        "database"
+      ]
+    }
+  },
+  "microsoft_sql_server": {
+    "id": "microsoft_sql_server",
+    "name": "Microsoft SQL Sever",
+    "type": "database",
+    "dependencies": [
+      "sql"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "database",
+      "careers": [
+        "database"
+      ]
+    }
+  },
+  "firestore": {
+    "id": "firestore",
+    "name": "Firestore",
+    "type": "database",
+    "dependencies": [
+      "firebase",
+      "no_sql"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "database",
+      "careers": [
+        "database"
+      ]
+    }
+  },
+  "elasticsearch": {
+    "id": "elasticsearch",
+    "name": "Elasticsearch",
+    "type": "database",
+    "dependencies": [
+      "no_sql"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "database",
+      "careers": [
+        "database"
+      ]
+    }
+  },
+  "dynamodb": {
+    "id": "dynamodb",
+    "name": "DynamoDB",
+    "type": "database",
+    "dependencies": [
+      "no_sql",
+      "amazon_web_services"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "database",
+      "careers": [
+        "database"
+      ]
+    }
   }
 }

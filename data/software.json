@@ -1,0 +1,76 @@
+{
+  "web_browser": {
+    "id": "web_browser",
+    "name": "Web Browser",
+    "type": "software",
+    "dependencies": [
+      "frontend_development"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "frontend",
+      "careers": []
+    }
+  },
+  "nodejs": {
+    "id": "nodejs",
+    "name": "Node.js",
+    "type": "software",
+    "dependencies": [
+      "backend_development"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "backend",
+      "careers": [
+        "backend"
+      ]
+    }
+  },
+  "deno": {
+    "id": "deno",
+    "name": "Deno",
+    "type": "software",
+    "dependencies": [
+      "nodejs",
+      "typescript"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "backend",
+      "careers": [
+        "backend"
+      ]
+    }
+  },
+  "jre": {
+    "id": "jre",
+    "name": "Java Runtime Environment",
+    "type": "software",
+    "dependencies": [
+      "backend_development"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "backend",
+      "careers": [
+        "backend"
+      ]
+    }
+  },
+  "jdk": {
+    "id": "jdk",
+    "name": "Java Development Kit",
+    "type": "software",
+    "dependencies": [
+      "backend_development"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "backend",
+      "careers": [
+        "backend"
+      ]
+    }
+  }
+}

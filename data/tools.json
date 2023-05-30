@@ -26,5 +26,109 @@
       "group": "api",
       "careers": []
     }
+  },
+  "less": {
+    "id": "less",
+    "name": "Less",
+    "type": "tool",
+    "dependencies": [
+      "css"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "frontend",
+      "careers": []
+    }
+  },
+  "sass": {
+    "id": "sass",
+    "name": "Sass",
+    "type": "tool",
+    "dependencies": [
+      "css"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "frontend",
+      "careers": []
+    }
+  },
+  "vite": {
+    "id": "vite",
+    "name": "Vite",
+    "type": "tool",
+    "dependencies": [
+      "javascript"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "frontend",
+      "careers": []
+    }
+  },
+  "docker": {
+    "id": "docker",
+    "name": "Docker",
+    "type": "tool",
+    "dependencies": [
+      "devops"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "devops",
+      "careers": []
+    }
+  },
+  "kubernetes": {
+    "id": "kubernetes",
+    "name": "Kubernetes",
+    "type": "tool",
+    "dependencies": [
+      "devops"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "devops",
+      "careers": []
+    }
+  },
+  "terraform": {
+    "id": "terraform",
+    "name": "Terraform",
+    "type": "tool",
+    "dependencies": [
+      "devops"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "devops",
+      "careers": []
+    }
+  },
+  "npm": {
+    "id": "npm",
+    "name": "NPM",
+    "type": "tool",
+    "dependencies": [
+      "nodejs"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "backend",
+      "careers": []
+    }
+  },
+  "yarn": {
+    "id": "yarn",
+    "name": "Yarn",
+    "type": "tool",
+    "dependencies": [
+      "nodejs"
+    ],
+    "resources": [],
+    "attributes": {
+      "group": "backend",
+      "careers": []
+    }
   }
 }
