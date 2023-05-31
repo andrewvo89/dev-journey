@@ -6,7 +6,13 @@
     "dependencies": [
       "javascript"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "frontend",
       "careers": [
@@ -21,7 +27,13 @@
     "dependencies": [
       "javascript"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "frontend",
       "careers": [
@@ -36,7 +48,13 @@
     "dependencies": [
       "javascript"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "frontend",
       "careers": [
@@ -52,7 +70,29 @@
       "javascript",
       "typescript"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [
+        {
+          "url": "https://medium.com/@ramdhasm5/mastering-useeffect-in-react-js-a-concise-guide-with-examples-590ec93413c6",
+          "name": "Mastering useEffect in React.js: A Concise Guide with Examples",
+          "author": "Ramdhas M"
+        },
+        {
+          "url": "https://hardyian.medium.com/introduction-to-usestate-and-useeffect-in-react-2d106b1d2932",
+          "name": "Introduction to useState and useEffect in React",
+          "author": "ian hardy"
+        },
+        {
+          "url": "https://camjackson.net/post/9-things-every-reactjs-beginner-should-know",
+          "name": "9 things every React.js beginner should know",
+          "author": "Cam Jackson"
+        }
+      ],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "frontend",
       "careers": [
@@ -67,7 +107,13 @@
     "dependencies": [
       "python"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "backend",
       "careers": []
@@ -80,7 +126,13 @@
     "dependencies": [
       "python"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "backend",
       "careers": []
@@ -93,7 +145,13 @@
     "dependencies": [
       "python"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "backend",
       "careers": []

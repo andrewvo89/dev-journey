@@ -1,6 +1,6 @@
 import { DefaultMantineColor, Group, Paper, Text, createStyles } from '@mantine/core';
 
-import { JNodeType } from 'types/common';
+import { JNodeType } from 'types/jnode';
 import { jnodeTypeMap } from 'utils/node';
 
 type StyleProps = {

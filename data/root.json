@@ -4,7 +4,13 @@
     "name": "Start of journey",
     "type": "root",
     "dependencies": [],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "root",
       "careers": []

@@ -6,7 +6,13 @@
     "dependencies": [
       "database_development"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "paradigm",
       "careers": []
@@ -19,7 +25,13 @@
     "dependencies": [
       "database_development"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "paradigm",
       "careers": []
@@ -32,7 +44,13 @@
     "dependencies": [
       "backend_development"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "paradigm",
       "careers": []
@@ -45,7 +63,13 @@
     "dependencies": [
       "api_development"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "api",
       "careers": [

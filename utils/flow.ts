@@ -1,7 +1,8 @@
-import { ClientJNode, JNode } from 'types/common';
-import { Edge, Node, Position, Rect } from 'reactflow';
+import { Edge, Node, Position } from 'reactflow';
 import { JNodeTypeData, jnodeProps } from 'types/flow';
 
+import { ClientJNode } from 'types/common';
+import { JNode } from 'types/jnode';
 import dagre from 'dagre';
 
 export function getLayoutedElements<TData>(nodes: Node<TData>[], edges: Edge[], direction = 'TB') {

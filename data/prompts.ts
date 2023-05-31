@@ -5,7 +5,7 @@ import careersJSON from 'data/careers.json';
 import databasesJSON from 'data/databases.json';
 import fieldsJSON from 'data/fields.json';
 import frameworksJSON from 'data/frameworks.json';
-import { jnodeSchema } from 'schemas/common';
+import { jnodeSchema } from 'schemas/jnode';
 import languagesJSON from 'data/languages.json';
 import librariesJSON from 'data/libraries.json';
 import paradigmsJSON from 'data/paradigms.json';

@@ -6,7 +6,13 @@
     "dependencies": [
       "html"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "frontend",
       "careers": []
@@ -19,14 +25,13 @@
     "dependencies": [
       "web_browser"
     ],
-    "resources": [
-      {
-        "url": "https://www.codecademy.com/learn/learn-html",
-        "name": "Codecademy - Learn HTML",
-        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
-        "type": "course"
-      }
-    ],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "frontend",
       "careers": []
@@ -41,80 +46,13 @@
       "nodejs",
       "desktop_development"
     ],
-    "resources": [
-      {
-        "url": "https://www.codecademy.com/learn/learn-html",
-        "name": "Codecademy - Learn HTML",
-        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
-        "type": "course"
-      },
-      {
-        "url": "https://www.codecademy.com/learn/learn-html",
-        "name": "Codecademy - Learn HTML",
-        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
-        "type": "course"
-      },
-      {
-        "url": "https://www.codecademy.com/learn/learn-html",
-        "name": "Codecademy - Learn HTML",
-        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
-        "type": "course"
-      },
-      {
-        "url": "https://www.codecademy.com/learn/learn-html",
-        "name": "Codecademy - Learn HTML",
-        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
-        "type": "course"
-      },
-      {
-        "url": "https://www.codecademy.com/learn/learn-html",
-        "name": "Codecademy - Learn HTML",
-        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
-        "type": "course"
-      },
-      {
-        "url": "https://www.codecademy.com/learn/learn-html",
-        "name": "Codecademy - Learn HTML",
-        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
-        "type": "course"
-      },
-      {
-        "url": "https://www.codecademy.com/learn/learn-html",
-        "name": "Codecademy - Learn HTML",
-        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
-        "type": "course"
-      },
-      {
-        "url": "https://www.codecademy.com/learn/learn-html",
-        "name": "Codecademy - Learn HTML",
-        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
-        "type": "course"
-      },
-      {
-        "url": "https://www.codecademy.com/learn/learn-html",
-        "name": "Codecademy - Learn HTML",
-        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
-        "type": "course"
-      },
-      {
-        "url": "https://www.codecademy.com/learn/learn-html",
-        "name": "Codecademy - Learn HTML",
-        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
-        "type": "course"
-      },
-      {
-        "url": "https://www.codecademy.com/learn/learn-html",
-        "name": "Codecademy - Learn HTML",
-        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
-        "type": "course"
-      },
-      {
-        "url": "https://www.codecademy.com/learn/learn-html",
-        "name": "Codecademy - Learn HTML",
-        "description": "Start at the beginning by learning HTML basics — an important foundation for building and editing web pages.",
-        "type": "course"
-      }
-    ],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "frontend",
       "careers": []
@@ -127,7 +65,13 @@
     "dependencies": [
       "javascript"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "frontend",
       "careers": []
@@ -140,7 +84,13 @@
     "dependencies": [
       "backend_development"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "backend",
       "careers": [
@@ -155,7 +105,13 @@
     "dependencies": [
       "backend_development"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "backend",
       "careers": [
@@ -170,7 +126,13 @@
     "dependencies": [
       "backend_development"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "backend",
       "careers": [
@@ -187,7 +149,13 @@
       "jdk",
       "mobile_development"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "backend",
       "careers": [
@@ -203,7 +171,13 @@
     "dependencies": [
       "backend_development"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "backend",
       "careers": [
@@ -218,7 +192,13 @@
     "dependencies": [
       "mobile_development"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "mobile",
       "careers": [
@@ -234,7 +214,13 @@
     "dependencies": [
       "relational"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "database",
       "careers": [
@@ -249,7 +235,13 @@
     "dependencies": [
       "api_development"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "api",
       "careers": [
@@ -265,7 +257,13 @@
     "dependencies": [
       "mobile_development"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "mobile",
       "careers": [
@@ -281,7 +279,13 @@
     "dependencies": [
       "mobile_development"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "mobile",
       "careers": [

@@ -6,7 +6,13 @@
     "dependencies": [
       "root"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "frontend",
       "careers": []
@@ -19,7 +25,13 @@
     "dependencies": [
       "root"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "backend",
       "careers": []
@@ -32,7 +44,13 @@
     "dependencies": [
       "root"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "mobile",
       "careers": []
@@ -45,7 +63,13 @@
     "dependencies": [
       "root"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "api",
       "careers": []
@@ -58,7 +82,13 @@
     "dependencies": [
       "root"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "database",
       "careers": []
@@ -71,7 +101,13 @@
     "dependencies": [
       "root"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "desktop",
       "careers": []
@@ -84,7 +120,13 @@
     "dependencies": [
       "root"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "devops",
       "careers": []
@@ -97,7 +139,13 @@
     "dependencies": [
       "root"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "cloud",
       "careers": []

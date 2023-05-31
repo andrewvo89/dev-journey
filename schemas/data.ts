@@ -1,4 +1,4 @@
-import { jnodeSchema } from 'schemas/common';
+import { jnodeSchema } from 'schemas/jnode';
 import { z } from 'zod';
 
 export const careerJSONSchema = z.record(

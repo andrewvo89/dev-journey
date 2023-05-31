@@ -6,7 +6,13 @@
     "dependencies": [
       "sql"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "database",
       "careers": [
@@ -21,7 +27,13 @@
     "dependencies": [
       "sql"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "database",
       "careers": [
@@ -36,7 +48,13 @@
     "dependencies": [
       "no_sql"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "database",
       "careers": [
@@ -51,7 +69,13 @@
     "dependencies": [
       "no_sql"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "database",
       "careers": [
@@ -66,7 +90,13 @@
     "dependencies": [
       "sql"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "database",
       "careers": [
@@ -81,7 +111,13 @@
     "dependencies": [
       "sql"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "database",
       "careers": [
@@ -97,7 +133,13 @@
       "firebase",
       "no_sql"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "database",
       "careers": [
@@ -112,7 +154,13 @@
     "dependencies": [
       "no_sql"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "database",
       "careers": [
@@ -128,7 +176,13 @@
       "no_sql",
       "amazon_web_services"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "database",
       "careers": [

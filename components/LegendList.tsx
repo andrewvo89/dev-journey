@@ -1,12 +1,12 @@
 import { IconCrown, IconRocket } from '@tabler/icons-react';
 import { Stack, createStyles } from '@mantine/core';
 
-import { JNodeType } from 'types/common';
+import { JNodeType } from 'types/jnode';
 import { LegendBorderListItem } from 'components/LegendBorderListItem';
 import { LegendIconListItem } from 'components/LegendIconListItem';
 import LegendTypeListItem from 'components/LegendTypeListItem';
 import { useMemo } from 'react';
-import { useNodeStore } from 'store/nodes';
+import { useNodeStore } from 'store/node';
 
 const useStyles = createStyles((theme) => ({
   keyName: {

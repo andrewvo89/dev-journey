@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { shallow } from 'zustand/shallow';
 import { useHistoryStore } from 'store/history';
-import { useNodeStore } from 'store/nodes';
+import { useNodeStore } from 'store/node';
 
 dayjs.extend(relativeTime);
 

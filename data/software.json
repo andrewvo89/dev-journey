@@ -6,7 +6,13 @@
     "dependencies": [
       "frontend_development"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "frontend",
       "careers": []
@@ -19,7 +25,13 @@
     "dependencies": [
       "backend_development"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "backend",
       "careers": [
@@ -35,7 +47,13 @@
       "nodejs",
       "typescript"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "backend",
       "careers": [
@@ -50,7 +68,13 @@
     "dependencies": [
       "backend_development"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "backend",
       "careers": [
@@ -65,7 +89,13 @@
     "dependencies": [
       "backend_development"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "backend",
       "careers": [

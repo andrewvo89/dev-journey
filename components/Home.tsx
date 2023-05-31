@@ -7,7 +7,7 @@ import { Props } from 'pages';
 import { ReactFlowProvider } from 'reactflow';
 import { useEffect } from 'react';
 import { useHistoryStore } from 'store/history';
-import { useNodeStore } from 'store/nodes';
+import { useNodeStore } from 'store/node';
 import { usePromptStore } from 'store/prompt';
 
 const useStyles = createStyles(() => ({

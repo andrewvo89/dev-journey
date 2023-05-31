@@ -1,4 +1,4 @@
-import { JNode } from 'types/common';
+import { JNode } from 'types/jnode';
 
 export type NodeTypeProps = {
   type: 'jnode';

@@ -6,7 +6,13 @@
     "dependencies": [
       "cloud_infrastructure"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "cloud",
       "careers": []
@@ -19,7 +25,13 @@
     "dependencies": [
       "cloud_infrastructure"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "cloud",
       "careers": []
@@ -32,7 +44,13 @@
     "dependencies": [
       "cloud_infrastructure"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "cloud",
       "careers": []
@@ -45,7 +63,13 @@
     "dependencies": [
       "cloud_infrastructure"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "cloud",
       "careers": []
@@ -58,7 +82,13 @@
     "dependencies": [
       "cloud_infrastructure"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "cloud",
       "careers": []

@@ -1,5 +1,5 @@
 import { DefaultMantineColor } from '@mantine/core';
-import { JNodeType } from 'types/common';
+import { JNodeType } from 'types/jnode';
 
 export const jnodeTypeMap: Record<JNodeType, { label: string; color: DefaultMantineColor }> = {
   root: { label: 'Start of journey', color: 'blue' },

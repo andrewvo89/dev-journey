@@ -7,7 +7,13 @@
       "graphql",
       "rest"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "api",
       "careers": []
@@ -21,7 +27,13 @@
       "graphql",
       "rest"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "api",
       "careers": []
@@ -34,7 +46,13 @@
     "dependencies": [
       "css"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "frontend",
       "careers": []
@@ -47,7 +65,13 @@
     "dependencies": [
       "css"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "frontend",
       "careers": []
@@ -60,7 +84,13 @@
     "dependencies": [
       "javascript"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "frontend",
       "careers": []
@@ -73,7 +103,13 @@
     "dependencies": [
       "devops"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "devops",
       "careers": []
@@ -86,7 +122,13 @@
     "dependencies": [
       "devops"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "devops",
       "careers": []
@@ -99,7 +141,13 @@
     "dependencies": [
       "devops"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "devops",
       "careers": []
@@ -112,7 +160,13 @@
     "dependencies": [
       "nodejs"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "backend",
       "careers": []
@@ -125,7 +179,13 @@
     "dependencies": [
       "nodejs"
     ],
-    "resources": [],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    },
     "attributes": {
       "group": "backend",
       "careers": []

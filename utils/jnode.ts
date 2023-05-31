@@ -1,11 +1,11 @@
 import { ClientJNode } from 'types/common';
 
-export function getPathsToJnode(
+export function getRoutesToJnode(
   sourceJnodeId: string,
   targetJnode: ClientJNode,
   jnodesMap: Map<string, ClientJNode>,
 ): ClientJNode[][] {
-  const parentPaths = targetJnode.dependencies.reduce<ClientJNode[][]>((list, depId) => {
+  const parentRoutes = targetJnode.dependencies.reduce<ClientJNode[][]>((list, depId) => {
     const dependency = jnodesMap.get(depId);
     if (!dependency) {
       return list;
@@ -13,13 +13,13 @@ export function getPathsToJnode(
     if (dependency.id === sourceJnodeId) {
       return [...list, [dependency]];
     }
-    const paths = getPathsToJnode(sourceJnodeId, dependency, jnodesMap);
-    if (paths.length === 0) {
+    const routes = getRoutesToJnode(sourceJnodeId, dependency, jnodesMap);
+    if (routes.length === 0) {
       return [...list, [dependency]];
     }
-    return [...list, ...paths];
+    return [...list, ...routes];
   }, []);
-  return parentPaths.map((path) => [...path, targetJnode]);
+  return parentRoutes.map((path) => [...path, targetJnode]);
 }
 
 export function resolveNodeIdsToJNodes(nodeIds: string[], jnodesMap: Map<string, ClientJNode>): ClientJNode[] {

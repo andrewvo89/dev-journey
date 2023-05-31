@@ -1,13 +1,15 @@
-import { ActionIcon, Badge, Paper, Text, ThemeIcon, createStyles } from '@mantine/core';
+import { ActionIcon, Badge, Paper, Text, ThemeIcon, Title, createStyles, useMantineTheme } from '@mantine/core';
+import { Fragment, useMemo } from 'react';
 import { Handle, NodeProps } from 'reactflow';
 import { IconCrown, IconRocket } from '@tabler/icons-react';
 import { JNodeTypeData, jnodeProps } from 'types/flow';
 
-import { Fragment } from 'react';
-import { JNodeType } from 'types/common';
+import { JNodeType } from 'types/jnode';
+import ResourceModalContent from 'components/ResourceModalContent';
 import { jnodeTypeMap } from 'utils/node';
+import { modals } from '@mantine/modals';
 import { useHistoryStore } from 'store/history';
-import { useNodeStore } from 'store/nodes';
+import { useNodeStore } from 'store/node';
 
 type StyleProps = {
   type: JNodeType;
@@ -26,12 +28,18 @@ export const useStyles = createStyles((theme, props: StyleProps) => {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      opacity: isOptional ? 0.6 : keepAlive ? 1 : 0.2,
+      opacity: isOptional ? 0.75 : keepAlive ? 1 : 0.2,
       borderWidth: 1,
       borderStyle: isOptional ? 'dashed' : 'solid',
       borderColor: isOnPath || isOptional ? theme.colors.blue[6] : theme.colors.gray[6],
       color: theme.colors.gray[0],
       backgroundColor: theme.colors[jnodeTypeMap[type].color][5],
+      boxShadow: keepAlive ? theme.shadows.sm : undefined,
+      transition: 'all .2s ease-in-out',
+      ':hover': {
+        boxShadow: keepAlive ? theme.shadows.xl : undefined,
+        transform: keepAlive ? 'scale(1.1)' : undefined,
+      },
     },
     handle: {
       '&&': {
@@ -64,7 +72,7 @@ export const useStyles = createStyles((theme, props: StyleProps) => {
   };
 });
 
-export default function JNodeType(props: NodeProps<JNodeTypeData>) {
+export default function JNodeTypeNode(props: NodeProps<JNodeTypeData>) {
   const {
     id,
     data: { jnode, isOnPath, isOnOptionalPath, isLeafNode, noNodesOnPath, isDesNode },
@@ -74,6 +82,7 @@ export default function JNodeType(props: NodeProps<JNodeTypeData>) {
 
   const selected = useHistoryStore((state) => state.selected);
   const updateNodes = useNodeStore((state) => state.updateNodes);
+  const theme = useMantineTheme();
 
   const isOptional = isOnOptionalPath && !isDesNode;
   const keepAlive = isOnPath || isOnOptionalPath || noNodesOnPath || !selected;
@@ -85,12 +94,35 @@ export default function JNodeType(props: NodeProps<JNodeTypeData>) {
     type: jnode.type,
   });
 
-  const rocketButtonClickHandler = () => {
+  const rocketButtonClickHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.stopPropagation();
     updateNodes([{ id, enabled: true }]);
   };
 
-  // generate a number between 1 an 100
-  const random = Math.floor(Math.random() * 100) + 1;
+  const cardClickHandler = () => {
+    if (!keepAlive) {
+      return;
+    }
+
+    modals.open({
+      size: 'xl',
+      overlayProps: {
+        color: theme.colors.gray[2],
+        opacity: 0.55,
+        blur: 3,
+      },
+      title: <Title>{jnode.name}</Title>,
+      closeButtonProps: {
+        size: 'xl',
+      },
+      children: <ResourceModalContent resources={jnode.resources} />,
+    });
+  };
+
+  const resourceCount = useMemo(
+    () => Object.values(jnode.resources).reduce((count, resourceType) => count + resourceType.length, 0),
+    [jnode.resources],
+  );
 
   return (
     <Fragment>
@@ -98,7 +130,7 @@ export default function JNodeType(props: NodeProps<JNodeTypeData>) {
       {targetPosition && jnode.dependencies.length > 0 && (
         <Handle type='target' position={targetPosition} className={classes.handle} />
       )}
-      <Paper shadow='sm' className={`${classes.paper} nodrag`}>
+      <Paper className={classes.paper} onClick={cardClickHandler}>
         {isDesNode && (
           <ThemeIcon className={classes.crownIcon}>
             <IconCrown />
@@ -109,14 +141,11 @@ export default function JNodeType(props: NodeProps<JNodeTypeData>) {
             <IconRocket />
           </ActionIcon>
         )}
-        {/* {jnode.resources.length > 0 && (
+        {resourceCount > 0 && (
           <Badge className={classes.badge} size='lg'>
-            {jnode.resources.length}
+            {resourceCount}
           </Badge>
-        )} */}
-        <Badge className={classes.badge} size='lg'>
-          {random}
-        </Badge>
+        )}
         <Text>{jnode.name}</Text>
       </Paper>
     </Fragment>

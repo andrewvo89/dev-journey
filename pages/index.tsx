@@ -1,10 +1,11 @@
-import { ClientPrompt, JNode } from 'types/common';
 import { Edge, Node } from 'reactflow';
 import type { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next';
 import { getLayoutedElements, jnodesToFlow } from 'utils/flow';
 import { jnodeJSONSchema, placeholdersJSONSchema } from 'schemas/data';
 
+import { ClientPrompt } from 'types/common';
 import Home from 'components/Home';
+import { JNode } from 'types/jnode';
 import { JNodeTypeData } from 'types/flow';
 import { clientPrompts } from 'data/prompts';
 import databasesJSON from 'data/databases.json';

@@ -1,6 +1,6 @@
 import { ClientJNode, Destination, DestinationWithRoutes } from 'types/common';
 import { Edge, Node } from 'reactflow';
-import { getPathsToJnode, resolveNodeIdsToJNodes } from 'utils/jnodes';
+import { getRoutesToJnode, resolveNodeIdsToJNodes } from 'utils/jnode';
 
 import { JNodeTypeData } from 'types/flow';
 import { create } from 'zustand';
@@ -47,7 +47,7 @@ export const useNodeStore = create<NodeState>()((set) => ({
         (jnode) => ({
           id: jnode.id,
           enabled: true,
-          routes: getPathsToJnode('root', jnode, state.jnodes),
+          routes: getRoutesToJnode('root', jnode, state.jnodes),
         }),
       );
 
