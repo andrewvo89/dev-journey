@@ -1,14 +1,7 @@
-import { Accordion, Stack, Table, Text, Tooltip, createStyles } from '@mantine/core';
+import { Accordion, Stack, Text } from '@mantine/core';
 
+import ResourceTable from 'components/ResourceTable';
 import { Resources } from 'types/jnode';
-
-const useStyles = createStyles(() => ({
-  row: {
-    ':hover': {
-      cursor: 'pointer',
-    },
-  },
-}));
 
 type Props = {
   resources: Resources;
@@ -21,12 +14,6 @@ export default function ResourceModalContent(props: Props) {
   const coursesCount = resources.courses.length;
   const articlesCount = resources.articles.length;
   const booksCount = resources.books.length;
-
-  const { classes } = useStyles();
-
-  const tableRowClickHandler = (url: string) => {
-    window.open(url, '_blank', 'noreferrer');
-  };
 
   return (
     <Stack>
@@ -58,24 +45,13 @@ export default function ResourceModalContent(props: Props) {
             {articlesCount === 0 ? (
               <Text>Suggest an article...</Text>
             ) : (
-              <Table highlightOnHover>
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Author</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {resources.articles.map((article) => (
-                    <Tooltip key={article.url} label={article.url} openDelay={500}>
-                      <tr className={classes.row} onClick={() => tableRowClickHandler(article.url)}>
-                        <td>{article.name}</td>
-                        <td>{article.author}</td>
-                      </tr>
-                    </Tooltip>
-                  ))}
-                </tbody>
-              </Table>
+              <ResourceTable
+                data={resources.articles}
+                fieldMappings={[
+                  { key: 'name', heading: 'Name' },
+                  { key: 'author', heading: 'Author' },
+                ]}
+              />
             )}
           </Accordion.Panel>
         </Accordion.Item>

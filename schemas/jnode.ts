@@ -15,8 +15,9 @@ export const courseResourceSchema = z.object({
   platform: z.string(),
   author: z.string(),
   duration: z.number(),
+  price: z.number().or(z.null()),
 });
-
+3;
 export const documentationResourceSchema = z.object({
   url: z.string(),
   name: z.string(),
@@ -36,6 +37,7 @@ export const bookResourceSchema = z.object({
   description: z.string(),
   author: z.string(),
   pages: z.number(),
+  price: z.number().or(z.null()),
 });
 
 export const jnodeTypeSchema = z.union([

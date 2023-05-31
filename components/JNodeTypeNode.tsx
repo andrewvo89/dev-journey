@@ -113,7 +113,7 @@ export default function JNodeTypeNode(props: NodeProps<JNodeTypeData>) {
       },
       title: <Title>{jnode.name}</Title>,
       closeButtonProps: {
-        size: 'xl',
+        size: 'lg',
       },
       children: <ResourceModalContent resources={jnode.resources} />,
     });
