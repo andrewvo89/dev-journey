@@ -96,7 +96,7 @@ export function jnodesToFlow(params: JnodesToFlowParams): { nodes: Node<JNodeTyp
       id: jnode.id,
       position: { x: 0, y: 0 },
       data: { jnode, isOnPath, isLeafNode, noNodesOnPath, isOnOptionalPath, isDesNode },
-      type: 'jnode',
+      type: jnode.type === 'root' ? 'root' : 'jnode',
       width: jnodeProps.dimensions.width,
       height: jnodeProps.dimensions.height,
       ...maintainSettings?.get(jnode.id),

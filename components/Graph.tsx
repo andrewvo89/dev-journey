@@ -2,7 +2,8 @@ import { Flex, createStyles } from '@mantine/core';
 import { NodeTypes, ReactFlow, useReactFlow } from 'reactflow';
 import { getBoundsOfNodes, isJnodeNodeType } from 'utils/flow';
 
-import JNodeTypeNode from 'components/JNodeTypeNode';
+import JNodeTypeNode from 'components/Nodes/JNodeTypeNode';
+import RootNode from 'components/Nodes/RootNode';
 import { shallow } from 'zustand/shallow';
 import { useEffect } from 'react';
 import { useNodeStore } from 'store/node';
@@ -16,6 +17,7 @@ const useStyles = createStyles(() => ({
 
 const nodeTypes: NodeTypes = {
   jnode: JNodeTypeNode,
+  root: RootNode,
 };
 
 export function Graph() {
