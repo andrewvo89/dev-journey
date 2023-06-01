@@ -69,6 +69,12 @@ export const useStyles = createStyles((theme, props: StyleProps) => {
       position: 'absolute',
       left: '-1rem',
     },
+    overlay: {
+      zIndex: 1001,
+    },
+    inner: {
+      zIndex: 1002,
+    },
   };
 });
 
@@ -105,6 +111,10 @@ export default function JNodeTypeNode(props: NodeProps<JNodeTypeData>) {
     }
 
     modals.open({
+      classNames: {
+        overlay: classes.overlay,
+        inner: classes.inner,
+      },
       size: 'xl',
       overlayProps: {
         color: theme.colors.gray[2],

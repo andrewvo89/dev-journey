@@ -2,12 +2,19 @@ import { Accordion, Stack, Text, createStyles } from '@mantine/core';
 import { NarrowResourceType, Resource, Resources } from 'types/jnode';
 import ResourceTable, { FieldMap } from 'components/ResourceTable';
 
+import dayjs from 'dayjs';
+import duration from 'dayjs/plugin/duration';
+import { toReadableHours } from 'utils/common';
+
+dayjs.extend(duration);
+
 type ResourceMap<TType extends Resource['type']> = {
   id: keyof Resources;
   heading: string;
   emptyDataMessage: string;
   fieldMappings: FieldMap<NarrowResourceType<TType>>[];
   type: TType;
+  initalSort: keyof NarrowResourceType<TType>;
 };
 
 const documentation: ResourceMap<'documentation'> = {
@@ -19,6 +26,7 @@ const documentation: ResourceMap<'documentation'> = {
     { key: 'author', heading: 'Author' },
   ],
   type: 'documentation',
+  initalSort: 'name',
 };
 
 const videos: ResourceMap<'video'> = {
@@ -31,13 +39,11 @@ const videos: ResourceMap<'video'> = {
     {
       key: 'duration',
       heading: 'Duration',
-      transform: (value) => {
-        const hours = parseFloat(String(value));
-        return `${hours} ${hours === 1 ? 'hour' : 'hours'}`;
-      },
+      transform: (value) => `${toReadableHours(parseFloat(String(value)))}`,
     },
   ],
   type: 'video',
+  initalSort: 'name',
 };
 
 const courses: ResourceMap<'course'> = {
@@ -50,14 +56,12 @@ const courses: ResourceMap<'course'> = {
     {
       key: 'duration',
       heading: 'Duration',
-      transform: (value) => {
-        const hours = parseFloat(String(value));
-        return `${hours} ${hours === 1 ? 'hour' : 'hours'}`;
-      },
+      transform: (value) => `${toReadableHours(parseFloat(String(value)))}`,
     },
     { key: 'platform', heading: 'Platform' },
   ],
   type: 'course',
+  initalSort: 'name',
 };
 
 const articles: ResourceMap<'article'> = {
@@ -69,6 +73,7 @@ const articles: ResourceMap<'article'> = {
     { key: 'author', heading: 'Author' },
   ],
   type: 'article',
+  initalSort: 'name',
 };
 
 const books: ResourceMap<'book'> = {
@@ -81,6 +86,7 @@ const books: ResourceMap<'book'> = {
     { key: 'pages', heading: 'Pages' },
   ],
   type: 'book',
+  initalSort: 'name',
 };
 
 type AccordionPanelProps<TType extends Resource['type']> = {
@@ -106,7 +112,7 @@ function AccordionItem<T extends Resource['type']>(props: AccordionPanelProps<T>
             {map.emptyDataMessage}
           </Text>
         ) : (
-          <ResourceTable data={data} fieldMappings={map.fieldMappings} />
+          <ResourceTable data={data} fieldMappings={map.fieldMappings} initialSort={map.initalSort} />
         )}
       </Accordion.Panel>
     </Accordion.Item>
@@ -126,8 +132,10 @@ export default function ResourceModalContent(props: Props) {
   const { classes } = useStyles();
 
   return (
-    <Stack>
-      {description ? description.split('\n').map((line) => <Text key={line}>{line}</Text>) : <Text>{fallback}</Text>}
+    <Stack spacing='2rem'>
+      <Stack>
+        {description ? description.split('\n').map((line) => <Text key={line}>{line}</Text>) : <Text>{fallback}</Text>}
+      </Stack>
       <Accordion variant='separated' classNames={{ content: classes.accordianContent }}>
         {[articles, books, courses, documentation, videos].map((map) => (
           <AccordionItem key={map.id} data={resources[map.id]} map={map} />

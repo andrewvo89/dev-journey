@@ -16,6 +16,11 @@ const useStyles = createStyles((theme) => ({
       padding: 0,
     },
   },
+  heading: {
+    fontWeight: 500,
+    fontSize: theme.fontSizes.sm,
+    whiteSpace: 'nowrap',
+  },
   control: {
     width: '100%',
     padding: `${theme.spacing.xs} ${theme.spacing.md}`,
@@ -37,14 +42,15 @@ export type FieldMap<T extends Resource> = {
 };
 
 type Props<T extends Resource> = {
+  initialSort: keyof T;
   fieldMappings: FieldMap<T>[];
   data: T[];
 };
 
 export default function ResourceTable<T extends Resource>(props: Props<T>) {
-  const { fieldMappings, data } = props;
+  const { fieldMappings, data, initialSort } = props;
   const { classes } = useStyles();
-  const [sortBy, setSortBy] = useState<keyof T | null>(null);
+  const [sortBy, setSortBy] = useState<keyof T>(initialSort);
   const [reverseSortDirection, setReverseSortDirection] = useState(false);
 
   const setSorting = (field: keyof T) => {
@@ -62,6 +68,16 @@ export default function ResourceTable<T extends Resource>(props: Props<T>) {
       return data;
     }
     return [...data].sort((a, b) => {
+      const aValue = a[sortBy];
+      const bValue = b[sortBy];
+
+      if (typeof aValue === 'number' && typeof bValue === 'number') {
+        if (reverseSortDirection) {
+          return bValue - aValue;
+        }
+        return aValue - bValue;
+      }
+
       if (reverseSortDirection) {
         return String(b[sortBy]).localeCompare(String(a[sortBy]));
       }
@@ -79,10 +95,8 @@ export default function ResourceTable<T extends Resource>(props: Props<T>) {
             return (
               <th key={field.key.toString()} className={classes.th}>
                 <UnstyledButton onClick={() => setSorting(field.key)} className={classes.control}>
-                  <Group position='apart'>
-                    <Text fw={500} fz='sm'>
-                      {field.heading}
-                    </Text>
+                  <Group position='apart' noWrap>
+                    <Text className={classes.heading}>{field.heading}</Text>
                     <Center className={classes.icon}>
                       <Icon size='0.9rem' stroke={1.5} />
                     </Center>

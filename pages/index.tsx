@@ -1,11 +1,10 @@
+import { ClientJNode, ClientPrompt } from 'types/common';
 import { Edge, Node } from 'reactflow';
 import type { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next';
 import { getLayoutedElements, jnodesToFlow } from 'utils/flow';
 import { jnodeJSONSchema, placeholdersJSONSchema } from 'schemas/data';
 
-import { ClientPrompt } from 'types/common';
 import Home from 'components/Home';
-import { JNode } from 'types/jnode';
 import { JNodeTypeData } from 'types/flow';
 import { clientPrompts } from 'data/prompts';
 import databasesJSON from 'data/databases.json';
@@ -25,7 +24,7 @@ export type Props = {
   prompts: ClientPrompt[];
   initialNodes: Node<JNodeTypeData>[];
   initialEdges: Edge[];
-  initialJNodes: JNode[];
+  initialJNodes: ClientJNode[];
 };
 
 const jnodeJSONs = jnodeJSONSchema.parse({
@@ -42,9 +41,16 @@ const jnodeJSONs = jnodeJSONSchema.parse({
 });
 
 const placeholders = placeholdersJSONSchema.parse(placeholdersJSON);
-const initialJNodes = Object.values(jnodeJSONs).sort(
-  (a, b) => a.attributes.group.localeCompare(b.attributes.group) || a.name.localeCompare(b.name),
-);
+const initialJNodes = Object.values(jnodeJSONs)
+  .sort((a, b) => a.attributes.group.localeCompare(b.attributes.group) || a.name.localeCompare(b.name))
+  .map<ClientJNode>((jnode) => ({
+    dependencies: jnode.dependencies,
+    description: jnode.description,
+    id: jnode.id,
+    name: jnode.name,
+    resources: jnode.resources,
+    type: jnode.type,
+  }));
 
 const { nodes, edges } = jnodesToFlow({
   jnodes: initialJNodes,

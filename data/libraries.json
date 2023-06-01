@@ -146,7 +146,7 @@
           "name": "React - The Complete Guide (incl Hooks, React Router, Redux)",
           "author": "Maximilian Schwarzmüller",
           "platform": "Udemy",
-          "duration": 48,
+          "duration": 2899,
           "type": "course"
         },
         {
@@ -154,7 +154,7 @@
           "name": "Modern React with Redux",
           "author": "Stephen Grider",
           "platform": "Udemy",
-          "duration": 37.5,
+          "duration": 2255,
           "type": "course"
         },
         {
@@ -162,7 +162,7 @@
           "name": "React Basics",
           "author": "Meta",
           "platform": "Coursera",
-          "duration": 26,
+          "duration": 1560,
           "type": "course"
         },
         {
@@ -170,7 +170,7 @@
           "name": "Advanced React",
           "author": "Meta",
           "platform": "Coursera",
-          "duration": 26,
+          "duration": 1560,
           "type": "course"
         },
         {
@@ -178,7 +178,7 @@
           "name": "Complete React Developer in 2023 (w/ Redux, Hooks, GraphQL)",
           "author": "Andrei Neagoie, Yihua Zhang",
           "platform": "Zero To Mastery Academy",
-          "duration": 42.5,
+          "duration": 2550,
           "type": "course"
         },
         {
@@ -186,7 +186,7 @@
           "name": "React: Getting Started",
           "author": "Samer Buna",
           "platform": "Pluralsight",
-          "duration": 4,
+          "duration": 242,
           "type": "course"
         },
         {
@@ -202,7 +202,7 @@
           "name": "Intermediate React, v5",
           "author": "Brian Holt",
           "platform": "Frontend Masters",
-          "duration": 6,
+          "duration": 366,
           "type": "course"
         },
         {
@@ -210,7 +210,7 @@
           "name": "Advanced React Patterns",
           "author": "Kent C. Dodds",
           "platform": "Frontend Masters",
-          "duration": 3.5,
+          "duration": 204,
           "type": "course"
         },
         {
@@ -218,7 +218,7 @@
           "name": "Testing React Applications, v2",
           "author": "Kent C. Dodds",
           "platform": "Frontend Masters",
-          "duration": 4,
+          "duration": 251,
           "type": "course"
         },
         {
@@ -226,7 +226,7 @@
           "name": "React and TypeScript, v2",
           "author": "Steve Kinney",
           "platform": "Frontend Masters",
-          "duration": 4.5,
+          "duration": 271,
           "type": "course"
         }
       ],
@@ -249,28 +249,28 @@
           "url": "https://youtu.be/SqcY0GlETPk",
           "name": "React Tutorial for Beginners",
           "author": "Programming with Mosh",
-          "duration": 1.33,
+          "duration": 80,
           "type": "video"
         },
         {
           "url": "https://youtu.be/bMknfKXIFA8",
           "name": "React Course - Beginner's Tutorial for React JavaScript Library [2022]",
           "author": "freeCodeCamp.org",
-          "duration": 12,
+          "duration": 715,
           "type": "video"
         },
         {
           "url": "https://youtu.be/b9eMGE7QtTk",
           "name": "React JS Full Course 2023 | Build an App and Master React in 1 Hour",
           "author": "JavaScript Mastery",
-          "duration": 1,
+          "duration": 71,
           "type": "video"
         },
         {
           "url": "https://youtu.be/w7ejDZ8SWv8",
           "name": "React JS Crash Course",
           "author": "Traversy Media",
-          "duration": 2,
+          "duration": 108,
           "type": "video"
         },
         {
@@ -298,14 +298,14 @@
           "url": "https://youtu.be/0mVbNp1ol_w",
           "name": "ReactJS Tutorial for Beginners - Full Course in 20 Hours [2022]",
           "author": "Clever Programmer",
-          "duration": 19.5,
+          "duration": 1169,
           "type": "video"
         },
         {
           "url": "https://youtu.be/Dorf8i6lCuk",
           "name": "React Crash Course for Beginners 2021 - Learn ReactJS from Scratch in this 100% Free Tutorial!",
           "author": "Academind",
-          "duration": 4,
+          "duration": 231,
           "type": "video"
         }
       ]
