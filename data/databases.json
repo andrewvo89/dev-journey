@@ -1,6 +1,7 @@
 {
   "mysql": {
     "id": "mysql",
+    "description": "",
     "name": "MySQL",
     "type": "database",
     "dependencies": [
@@ -22,6 +23,7 @@
   },
   "postgress": {
     "id": "postgress",
+    "description": "",
     "name": "PostgreSQL",
     "type": "database",
     "dependencies": [
@@ -43,6 +45,7 @@
   },
   "mongodb": {
     "id": "mongodb",
+    "description": "",
     "name": "MongoDB",
     "type": "database",
     "dependencies": [
@@ -64,6 +67,7 @@
   },
   "redis": {
     "id": "redis",
+    "description": "",
     "name": "Redis",
     "type": "database",
     "dependencies": [
@@ -85,6 +89,7 @@
   },
   "sqlite": {
     "id": "sqlite",
+    "description": "",
     "name": "SQLite",
     "type": "database",
     "dependencies": [
@@ -106,6 +111,7 @@
   },
   "microsoft_sql_server": {
     "id": "microsoft_sql_server",
+    "description": "",
     "name": "Microsoft SQL Sever",
     "type": "database",
     "dependencies": [
@@ -127,6 +133,7 @@
   },
   "firestore": {
     "id": "firestore",
+    "description": "",
     "name": "Firestore",
     "type": "database",
     "dependencies": [
@@ -149,6 +156,7 @@
   },
   "elasticsearch": {
     "id": "elasticsearch",
+    "description": "",
     "name": "Elasticsearch",
     "type": "database",
     "dependencies": [
@@ -170,6 +178,7 @@
   },
   "dynamodb": {
     "id": "dynamodb",
+    "description": "",
     "name": "DynamoDB",
     "type": "database",
     "dependencies": [

@@ -30,9 +30,10 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-type FieldMap<T extends Resource> = {
+export type FieldMap<T extends Resource> = {
   key: keyof T;
   heading: string;
+  transform?: (value: T[keyof T]) => string;
 };
 
 type Props<T extends Resource> = {
@@ -97,7 +98,7 @@ export default function ResourceTable<T extends Resource>(props: Props<T>) {
           <Tooltip key={item.url} label={item.url} openDelay={500}>
             <tr className={classes.tr} onClick={() => tableRowClickHandler(item.url)}>
               {fieldMappings.map((field) => (
-                <td key={field.key.toString()}>{String(item[field.key])}</td>
+                <td key={field.key.toString()}>{field.transform?.(item[field.key]) ?? String(item[field.key])}</td>
               ))}
             </tr>
           </Tooltip>

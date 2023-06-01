@@ -1,6 +1,7 @@
 {
   "curl": {
     "id": "curl",
+    "description": "",
     "name": "cURL",
     "type": "tool",
     "dependencies": [
@@ -21,6 +22,7 @@
   },
   "postman": {
     "id": "postman",
+    "description": "",
     "name": "Postman",
     "type": "tool",
     "dependencies": [
@@ -41,6 +43,7 @@
   },
   "less": {
     "id": "less",
+    "description": "",
     "name": "Less",
     "type": "tool",
     "dependencies": [
@@ -60,6 +63,7 @@
   },
   "sass": {
     "id": "sass",
+    "description": "",
     "name": "Sass",
     "type": "tool",
     "dependencies": [
@@ -79,6 +83,7 @@
   },
   "vite": {
     "id": "vite",
+    "description": "",
     "name": "Vite",
     "type": "tool",
     "dependencies": [
@@ -98,6 +103,7 @@
   },
   "docker": {
     "id": "docker",
+    "description": "",
     "name": "Docker",
     "type": "tool",
     "dependencies": [
@@ -117,6 +123,7 @@
   },
   "kubernetes": {
     "id": "kubernetes",
+    "description": "",
     "name": "Kubernetes",
     "type": "tool",
     "dependencies": [
@@ -136,6 +143,7 @@
   },
   "terraform": {
     "id": "terraform",
+    "description": "",
     "name": "Terraform",
     "type": "tool",
     "dependencies": [
@@ -155,6 +163,7 @@
   },
   "npm": {
     "id": "npm",
+    "description": "",
     "name": "NPM",
     "type": "tool",
     "dependencies": [
@@ -174,6 +183,7 @@
   },
   "yarn": {
     "id": "yarn",
+    "description": "",
     "name": "Yarn",
     "type": "tool",
     "dependencies": [

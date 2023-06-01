@@ -1,6 +1,7 @@
 {
   "amazon_web_services": {
     "id": "amazon_web_services",
+    "description": "",
     "name": "Amazon Web Services",
     "type": "platform",
     "dependencies": [
@@ -20,6 +21,7 @@
   },
   "microsoft_azure": {
     "id": "microsoft_azure",
+    "description": "",
     "name": "Microsoft Azure",
     "type": "platform",
     "dependencies": [
@@ -39,6 +41,7 @@
   },
   "google_cloud_platform": {
     "id": "google_cloud_platform",
+    "description": "",
     "name": "Google Cloud Platform",
     "type": "platform",
     "dependencies": [
@@ -58,6 +61,7 @@
   },
   "firebase": {
     "id": "firebase",
+    "description": "",
     "name": "Firebase",
     "type": "platform",
     "dependencies": [
@@ -77,6 +81,7 @@
   },
   "heroku": {
     "id": "heroku",
+    "description": "",
     "name": "Heroku",
     "type": "platform",
     "dependencies": [

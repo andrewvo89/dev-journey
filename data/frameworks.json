@@ -1,6 +1,7 @@
 {
   "express": {
     "id": "express",
+    "description": "",
     "name": "Express",
     "type": "framework",
     "dependencies": [
@@ -20,6 +21,7 @@
   },
   "angular": {
     "id": "angular",
+    "description": "",
     "name": "Angular",
     "type": "framework",
     "dependencies": [
@@ -39,6 +41,7 @@
   },
   "sveltekit": {
     "id": "sveltekit",
+    "description": "",
     "name": "SvelteKit",
     "type": "framework",
     "dependencies": [
@@ -58,6 +61,7 @@
   },
   "nuxt": {
     "id": "nuxt",
+    "description": "",
     "name": "Nuxt",
     "type": "framework",
     "dependencies": [
@@ -77,6 +81,7 @@
   },
   "astro": {
     "id": "astro",
+    "description": "",
     "name": "Astro",
     "type": "framework",
     "dependencies": [
@@ -96,6 +101,7 @@
   },
   "flutter": {
     "id": "flutter",
+    "description": "",
     "name": "Flutter",
     "type": "framework",
     "dependencies": [
@@ -117,6 +123,7 @@
   },
   "react_native": {
     "id": "react_native",
+    "description": "",
     "name": "React Native",
     "type": "framework",
     "dependencies": [
@@ -138,6 +145,7 @@
   },
   "django": {
     "id": "django",
+    "description": "",
     "name": "Django",
     "type": "framework",
     "dependencies": [
@@ -157,6 +165,7 @@
   },
   "flask": {
     "id": "flask",
+    "description": "",
     "name": "Flask",
     "type": "framework",
     "dependencies": [
@@ -176,6 +185,7 @@
   },
   "laravel": {
     "id": "laravel",
+    "description": "",
     "name": "Laravel",
     "type": "framework",
     "dependencies": [
@@ -195,6 +205,7 @@
   },
   "tailwind": {
     "id": "tailwind",
+    "description": "",
     "name": "Tailwind CSS",
     "type": "framework",
     "dependencies": [
@@ -214,6 +225,7 @@
   },
   "electron": {
     "id": "electron",
+    "description": "",
     "name": "Electron",
     "type": "framework",
     "dependencies": [
@@ -234,6 +246,7 @@
   },
   "tauri": {
     "id": "tauri",
+    "description": "",
     "name": "Tauri",
     "type": "framework",
     "dependencies": [
@@ -254,6 +267,7 @@
   },
   "ionic": {
     "id": "ionic",
+    "description": "",
     "name": "Ionic",
     "type": "framework",
     "dependencies": [

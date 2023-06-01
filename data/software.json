@@ -1,6 +1,7 @@
 {
   "web_browser": {
     "id": "web_browser",
+    "description": "",
     "name": "Web Browser",
     "type": "software",
     "dependencies": [
@@ -20,6 +21,7 @@
   },
   "nodejs": {
     "id": "nodejs",
+    "description": "",
     "name": "Node.js",
     "type": "software",
     "dependencies": [
@@ -41,6 +43,7 @@
   },
   "deno": {
     "id": "deno",
+    "description": "",
     "name": "Deno",
     "type": "software",
     "dependencies": [
@@ -63,6 +66,7 @@
   },
   "jre": {
     "id": "jre",
+    "description": "",
     "name": "Java Runtime Environment",
     "type": "software",
     "dependencies": [
@@ -84,6 +88,7 @@
   },
   "jdk": {
     "id": "jdk",
+    "description": "",
     "name": "Java Development Kit",
     "type": "software",
     "dependencies": [

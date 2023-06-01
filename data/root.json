@@ -1,6 +1,7 @@
 {
   "root": {
     "id": "root",
+    "description": "",
     "name": "Start of journey",
     "type": "root",
     "dependencies": [],

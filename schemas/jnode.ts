@@ -3,41 +3,40 @@ import { z } from 'zod';
 export const videoResourceSchema = z.object({
   url: z.string(),
   name: z.string(),
-  description: z.string(),
   author: z.string(),
   duration: z.number(),
+  type: z.literal('video'),
 });
 
 export const courseResourceSchema = z.object({
   url: z.string(),
   name: z.string(),
-  description: z.string(),
   platform: z.string(),
   author: z.string(),
   duration: z.number(),
-  price: z.number().or(z.null()),
+  type: z.literal('course'),
 });
-3;
+
 export const documentationResourceSchema = z.object({
   url: z.string(),
   name: z.string(),
-  description: z.string(),
   author: z.string(),
+  type: z.literal('documentation'),
 });
 
 export const articleResourceSchema = z.object({
   url: z.string(),
   name: z.string(),
   author: z.string(),
+  type: z.literal('article'),
 });
 
 export const bookResourceSchema = z.object({
   url: z.string(),
   name: z.string(),
-  description: z.string(),
   author: z.string(),
   pages: z.number(),
-  price: z.number().or(z.null()),
+  type: z.literal('book'),
 });
 
 export const jnodeTypeSchema = z.union([
@@ -66,6 +65,7 @@ export const resourcesSchema = z.object({
 export const jnodeSchema = z.object({
   id: z.string(),
   name: z.string(),
+  description: z.string(),
   type: jnodeTypeSchema,
   dependencies: z.array(z.string()),
   attributes: z.object({

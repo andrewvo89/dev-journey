@@ -1,6 +1,7 @@
 {
   "css": {
     "id": "css",
+    "description": "",
     "name": "CSS",
     "type": "language",
     "dependencies": [
@@ -20,6 +21,7 @@
   },
   "html": {
     "id": "html",
+    "description": "",
     "name": "HTML",
     "type": "language",
     "dependencies": [
@@ -39,6 +41,7 @@
   },
   "javascript": {
     "id": "javascript",
+    "description": "",
     "name": "JavaScript",
     "type": "language",
     "dependencies": [
@@ -60,6 +63,7 @@
   },
   "typescript": {
     "id": "typescript",
+    "description": "",
     "name": "TypeScript",
     "type": "language",
     "dependencies": [
@@ -79,6 +83,7 @@
   },
   "golang": {
     "id": "golang",
+    "description": "",
     "name": "Golang",
     "type": "language",
     "dependencies": [
@@ -100,6 +105,7 @@
   },
   "php": {
     "id": "php",
+    "description": "",
     "name": "PHP",
     "type": "language",
     "dependencies": [
@@ -121,6 +127,7 @@
   },
   "rust": {
     "id": "rust",
+    "description": "",
     "name": "Rust",
     "type": "language",
     "dependencies": [
@@ -142,6 +149,7 @@
   },
   "java": {
     "id": "java",
+    "description": "",
     "name": "Java",
     "type": "language",
     "dependencies": [
@@ -166,6 +174,7 @@
   },
   "python": {
     "id": "python",
+    "description": "",
     "name": "Python",
     "type": "language",
     "dependencies": [
@@ -187,6 +196,7 @@
   },
   "kotlin": {
     "id": "kotlin",
+    "description": "",
     "name": "Kotlin",
     "type": "language",
     "dependencies": [
@@ -209,6 +219,7 @@
   },
   "sql": {
     "id": "sql",
+    "description": "",
     "name": "SQL",
     "type": "language",
     "dependencies": [
@@ -230,6 +241,7 @@
   },
   "graphql": {
     "id": "graphql",
+    "description": "",
     "name": "GraphQL",
     "type": "language",
     "dependencies": [
@@ -252,6 +264,7 @@
   },
   "dart": {
     "id": "dart",
+    "description": "",
     "name": "Dart",
     "type": "language",
     "dependencies": [
@@ -274,6 +287,7 @@
   },
   "swift": {
     "id": "swift",
+    "description": "",
     "name": "Swift",
     "type": "language",
     "dependencies": [

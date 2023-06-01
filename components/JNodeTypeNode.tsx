@@ -115,7 +115,7 @@ export default function JNodeTypeNode(props: NodeProps<JNodeTypeData>) {
       closeButtonProps: {
         size: 'lg',
       },
-      children: <ResourceModalContent resources={jnode.resources} />,
+      children: <ResourceModalContent description={jnode.description} resources={jnode.resources} />,
     });
   };
 
@@ -130,7 +130,7 @@ export default function JNodeTypeNode(props: NodeProps<JNodeTypeData>) {
       {targetPosition && jnode.dependencies.length > 0 && (
         <Handle type='target' position={targetPosition} className={classes.handle} />
       )}
-      <Paper className={classes.paper} onClick={cardClickHandler}>
+      <Paper className={[classes.paper, 'nodrag'].join(' ')} onClick={cardClickHandler}>
         {isDesNode && (
           <ThemeIcon className={classes.crownIcon}>
             <IconCrown />

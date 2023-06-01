@@ -25,14 +25,8 @@ export function MiddleSection(props: Props) {
   const { classes } = useStyles();
 
   return (
-    <Accordion
-      multiple
-      defaultValue={['history', 'key']}
-      classNames={{
-        content: classes.accordianPanel,
-      }}
-    >
-      <Accordion.Item value='key'>
+    <Accordion multiple defaultValue={['history']} classNames={{ content: classes.accordianPanel }}>
+      <Accordion.Item value='legend'>
         <Accordion.Control icon={<IconKey />}>Legend</Accordion.Control>
         <Accordion.Panel className={classes.accordianPanel}>
           <LegendList />

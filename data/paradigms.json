@@ -1,6 +1,7 @@
 {
   "no_sql": {
     "id": "no_sql",
+    "description": "",
     "name": "No SQL Database",
     "type": "paradigm",
     "dependencies": [
@@ -20,6 +21,7 @@
   },
   "relational": {
     "id": "relational",
+    "description": "",
     "name": "Relational Database",
     "type": "paradigm",
     "dependencies": [
@@ -39,6 +41,7 @@
   },
   "functional_programming": {
     "id": "functional_programming",
+    "description": "",
     "name": "Functional Programming",
     "type": "paradigm",
     "dependencies": [
@@ -58,6 +61,7 @@
   },
   "rest": {
     "id": "rest",
+    "description": "",
     "name": "REST",
     "type": "paradigm",
     "dependencies": [
