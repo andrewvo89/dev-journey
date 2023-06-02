@@ -13,10 +13,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "cloud",
-      "careers": []
     }
   },
   "microsoft_azure": {
@@ -33,10 +29,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "cloud",
-      "careers": []
     }
   },
   "google_cloud_platform": {
@@ -53,10 +45,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "cloud",
-      "careers": []
     }
   },
   "firebase": {
@@ -73,10 +61,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "cloud",
-      "careers": []
     }
   },
   "heroku": {
@@ -93,10 +77,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "cloud",
-      "careers": []
     }
   }
 }

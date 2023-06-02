@@ -13,10 +13,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "frontend",
-      "careers": []
     }
   },
   "nodejs": {
@@ -33,12 +29,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "backend",
-      "careers": [
-        "backend"
-      ]
     }
   },
   "deno": {
@@ -56,12 +46,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "backend",
-      "careers": [
-        "backend"
-      ]
     }
   },
   "jre": {
@@ -78,12 +62,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "backend",
-      "careers": [
-        "backend"
-      ]
     }
   },
   "jdk": {
@@ -100,12 +78,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "backend",
-      "careers": [
-        "backend"
-      ]
     }
   }
 }

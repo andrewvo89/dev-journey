@@ -68,9 +68,5 @@ export const jnodeSchema = z.object({
   description: z.string(),
   type: jnodeTypeSchema,
   dependencies: z.array(z.string()),
-  attributes: z.object({
-    group: z.string(),
-    careers: z.array(z.string()),
-  }),
   resources: resourcesSchema,
 });

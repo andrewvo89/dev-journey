@@ -1,7 +1,6 @@
 import { Edge, Node, Position } from 'reactflow';
 import { JNodeTypeData, jnodeProps } from 'types/flow';
 
-import { ClientJNode } from 'types/common';
 import { JNode } from 'types/jnode';
 import dagre from 'dagre';
 
@@ -60,7 +59,7 @@ export const highlightEdges = (edges: Edge[], jnodes: JNode[]): Edge[] => {
       target: nextNode.id,
       animated: true,
       style: { stroke: '#228be6' },
-      type: 'default',
+      type: 'fallback',
     });
 
     return newMap;
@@ -69,12 +68,12 @@ export const highlightEdges = (edges: Edge[], jnodes: JNode[]): Edge[] => {
   return Array.from(updatedEdges.values());
 };
 
-function getIsLeafNode(jnode: ClientJNode, jnodes: ClientJNode[]): boolean {
+function getIsLeafNode(jnode: JNode, jnodes: JNode[]): boolean {
   return jnodes.every((j) => !j.dependencies.includes(jnode.id));
 }
 
 type JnodesToFlowParams = {
-  jnodes: ClientJNode[];
+  jnodes: JNode[];
   destinationIds: string[];
   nodesIdsOnPath: string[];
   optionalIdsOnPath: string[];
@@ -96,7 +95,7 @@ export function jnodesToFlow(params: JnodesToFlowParams): { nodes: Node<JNodeTyp
       id: jnode.id,
       position: { x: 0, y: 0 },
       data: { jnode, isOnPath, isLeafNode, noNodesOnPath, isOnOptionalPath, isDesNode },
-      type: jnode.type === 'root' ? 'root' : 'jnode',
+      type: jnode.type === 'root' ? 'root' : 'fallback',
       width: jnodeProps.dimensions.width,
       height: jnodeProps.dimensions.height,
       ...maintainSettings?.get(jnode.id),
@@ -115,7 +114,7 @@ export function jnodesToFlow(params: JnodesToFlowParams): { nodes: Node<JNodeTyp
           id: `${jnode.id}-${depId}`,
           source: depId,
           target: jnode.id,
-          type: 'default',
+          type: 'fallback',
         };
 
         if (isOptional) {
@@ -143,7 +142,7 @@ export function highlightManyEdges(edges: Edge[], paths: JNode[][][]): Edge[] {
 }
 
 export function isJnodeNodeType(node: Node): node is Node<JNodeTypeData> {
-  return node.type === 'jnode';
+  return node.type === 'fallback' || node.type === 'root';
 }
 
 export function getBoundsOfNodes(

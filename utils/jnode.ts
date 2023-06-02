@@ -1,11 +1,7 @@
-import { ClientJNode } from 'types/common';
+import { JNode } from 'types/jnode';
 
-export function getRoutesToJnode(
-  sourceJnodeId: string,
-  targetJnode: ClientJNode,
-  jnodesMap: Map<string, ClientJNode>,
-): ClientJNode[][] {
-  const parentRoutes = targetJnode.dependencies.reduce<ClientJNode[][]>((list, depId) => {
+export function getRoutesToJnode(sourceJnodeId: string, targetJnode: JNode, jnodesMap: Map<string, JNode>): JNode[][] {
+  const parentRoutes = targetJnode.dependencies.reduce<JNode[][]>((list, depId) => {
     const dependency = jnodesMap.get(depId);
     if (!dependency) {
       return list;
@@ -22,8 +18,8 @@ export function getRoutesToJnode(
   return parentRoutes.map((path) => [...path, targetJnode]);
 }
 
-export function resolveNodeIdsToJNodes(nodeIds: string[], jnodesMap: Map<string, ClientJNode>): ClientJNode[] {
-  return nodeIds.reduce<ClientJNode[]>((list, id) => {
+export function resolveNodeIdsToJNodes(nodeIds: string[], jnodesMap: Map<string, JNode>): JNode[] {
+  return nodeIds.reduce<JNode[]>((list, id) => {
     const found = jnodesMap.get(id);
     if (found) {
       list.push(found);

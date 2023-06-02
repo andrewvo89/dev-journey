@@ -12,9 +12,7 @@ export type ClientPrompt = {
   label: string;
 };
 
-export type ClientJNode = Omit<JNode, 'attributes'>;
-
-export type Route = ClientJNode[];
+export type Route = JNode[];
 
 export type Destination = {
   id: string;

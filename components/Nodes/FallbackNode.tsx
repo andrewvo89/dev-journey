@@ -1,18 +1,16 @@
-import { ActionIcon, Badge, Paper, Text, ThemeIcon, Title, createStyles, useMantineTheme } from '@mantine/core';
+import { ActionIcon, Badge, Paper, Text, ThemeIcon, Title, useMantineTheme } from '@mantine/core';
 import { Fragment, useMemo } from 'react';
 import { Handle, NodeProps } from 'reactflow';
 import { IconCrown, IconRocket } from '@tabler/icons-react';
-import { JNodeTypeData, jnodeProps } from 'types/flow';
 
-import { JNodeType } from 'types/jnode';
+import { JNodeTypeData } from 'types/flow';
 import ResourceModalContent from 'components/ResourceModalContent';
-import { jnodeTypeMap } from 'utils/node';
 import { modals } from '@mantine/modals';
 import { useHistoryStore } from 'store/history';
 import { useNodeStore } from 'store/node';
 import { useStyles } from 'styles/node';
 
-export default function JNodeTypeNode(props: NodeProps<JNodeTypeData>) {
+export default function FallbackNode(props: NodeProps<JNodeTypeData>) {
   const {
     id,
     data: { jnode, isOnPath, isOnOptionalPath, isLeafNode, noNodesOnPath, isDesNode },
@@ -28,6 +26,11 @@ export default function JNodeTypeNode(props: NodeProps<JNodeTypeData>) {
   const keepAlive = isOnPath || isOnOptionalPath || noNodesOnPath || !selected;
 
   const { classes } = useStyles({ keepAlive, isOptional, isOnPath, type: jnode.type });
+
+  const resourceCount = useMemo(
+    () => Object.values(jnode.resources).reduce((count, resourceType) => count + resourceType.length, 0),
+    [jnode.resources],
+  );
 
   const rocketButtonClickHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.stopPropagation();
@@ -54,14 +57,15 @@ export default function JNodeTypeNode(props: NodeProps<JNodeTypeData>) {
       closeButtonProps: {
         size: 'lg',
       },
-      children: <ResourceModalContent description={jnode.description} resources={jnode.resources} />,
+      children: (
+        <ResourceModalContent
+          description={jnode.description}
+          resources={jnode.resources}
+          resourceCount={resourceCount}
+        />
+      ),
     });
   };
-
-  const resourceCount = useMemo(
-    () => Object.values(jnode.resources).reduce((count, resourceType) => count + resourceType.length, 0),
-    [jnode.resources],
-  );
 
   return (
     <Fragment>
@@ -85,7 +89,9 @@ export default function JNodeTypeNode(props: NodeProps<JNodeTypeData>) {
             {resourceCount}
           </Badge>
         )}
-        <Text>{jnode.name}</Text>
+        <Text align='center' lh='1.25'>
+          {jnode.name}
+        </Text>
       </Paper>
     </Fragment>
   );

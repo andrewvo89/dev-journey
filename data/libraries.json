@@ -13,12 +13,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "frontend",
-      "careers": [
-        "frontend"
-      ]
     }
   },
   "vue": {
@@ -35,12 +29,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "frontend",
-      "careers": [
-        "frontend"
-      ]
     }
   },
   "solidjs": {
@@ -57,12 +45,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "frontend",
-      "careers": [
-        "frontend"
-      ]
     }
   },
   "react": {
@@ -309,12 +291,6 @@
           "type": "video"
         }
       ]
-    },
-    "attributes": {
-      "group": "frontend",
-      "careers": [
-        "frontend"
-      ]
     }
   },
   "numpy": {
@@ -331,10 +307,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "backend",
-      "careers": []
     }
   },
   "pandas": {
@@ -351,10 +323,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "backend",
-      "careers": []
     }
   },
   "pytorch": {
@@ -371,10 +339,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "backend",
-      "careers": []
     }
   }
 }

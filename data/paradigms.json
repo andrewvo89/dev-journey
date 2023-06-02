@@ -1,6 +1,6 @@
 {
-  "no_sql": {
-    "id": "no_sql",
+  "nosql": {
+    "id": "nosql",
     "description": "",
     "name": "No SQL Database",
     "type": "paradigm",
@@ -13,10 +13,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "paradigm",
-      "careers": []
     }
   },
   "relational": {
@@ -33,10 +29,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "paradigm",
-      "careers": []
     }
   },
   "functional_programming": {
@@ -53,10 +45,22 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "paradigm",
-      "careers": []
+    }
+  },
+  "oop_programming": {
+    "id": "oop_programming",
+    "description": "",
+    "name": "Object Oriented Programming",
+    "type": "paradigm",
+    "dependencies": [
+      "backend_development"
+    ],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
     }
   },
   "rest": {
@@ -73,13 +77,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "api",
-      "careers": [
-        "backend",
-        "api"
-      ]
     }
   }
 }

@@ -1,7 +1,7 @@
 import { JNode } from 'types/jnode';
 
 export type NodeTypeProps = {
-  type: 'jnode';
+  type: 'fallback';
   dimensions: {
     width: 200;
     height: 50;
@@ -9,7 +9,7 @@ export type NodeTypeProps = {
 };
 
 export const jnodeProps: NodeTypeProps = {
-  type: 'jnode',
+  type: 'fallback',
   dimensions: {
     width: 200,
     height: 50,

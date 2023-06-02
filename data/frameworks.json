@@ -13,10 +13,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "backend",
-      "careers": []
     }
   },
   "angular": {
@@ -33,10 +29,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "frontend",
-      "careers": []
     }
   },
   "sveltekit": {
@@ -53,10 +45,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "frontend",
-      "careers": []
     }
   },
   "nuxt": {
@@ -73,10 +61,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "frontend",
-      "careers": []
     }
   },
   "astro": {
@@ -93,10 +77,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "frontend",
-      "careers": []
     }
   },
   "flutter": {
@@ -113,12 +93,22 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "mobile",
-      "careers": [
-        "mobile"
-      ]
+    }
+  },
+  "nextjs": {
+    "id": "nextjs",
+    "description": "",
+    "name": "Next.js",
+    "type": "framework",
+    "dependencies": [
+      "react"
+    ],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
     }
   },
   "react_native": {
@@ -135,12 +125,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "mobile",
-      "careers": [
-        "mobile"
-      ]
     }
   },
   "django": {
@@ -157,10 +141,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "backend",
-      "careers": []
     }
   },
   "flask": {
@@ -177,10 +157,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "backend",
-      "careers": []
     }
   },
   "laravel": {
@@ -197,10 +173,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "backend",
-      "careers": []
     }
   },
   "tailwind": {
@@ -217,10 +189,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "frontend",
-      "careers": []
     }
   },
   "electron": {
@@ -238,10 +206,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "frontend",
-      "careers": []
     }
   },
   "tauri": {
@@ -259,10 +223,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "frontend",
-      "careers": []
     }
   },
   "ionic": {
@@ -280,10 +240,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "frontend",
-      "careers": []
     }
   }
 }

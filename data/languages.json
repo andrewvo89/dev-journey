@@ -13,10 +13,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "frontend",
-      "careers": []
     }
   },
   "html": {
@@ -33,10 +29,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "frontend",
-      "careers": []
     }
   },
   "javascript": {
@@ -55,10 +47,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "frontend",
-      "careers": []
     }
   },
   "typescript": {
@@ -75,10 +63,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "frontend",
-      "careers": []
     }
   },
   "golang": {
@@ -95,12 +79,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "backend",
-      "careers": [
-        "backend"
-      ]
     }
   },
   "php": {
@@ -109,7 +87,7 @@
     "name": "PHP",
     "type": "language",
     "dependencies": [
-      "backend_development"
+      "oop_programming"
     ],
     "resources": {
       "articles": [],
@@ -117,12 +95,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "backend",
-      "careers": [
-        "backend"
-      ]
     }
   },
   "rust": {
@@ -131,7 +103,7 @@
     "name": "Rust",
     "type": "language",
     "dependencies": [
-      "backend_development"
+      "functional_programming"
     ],
     "resources": {
       "articles": [],
@@ -139,12 +111,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "backend",
-      "careers": [
-        "backend"
-      ]
     }
   },
   "java": {
@@ -163,13 +129,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "backend",
-      "careers": [
-        "backend",
-        "android"
-      ]
     }
   },
   "python": {
@@ -186,12 +145,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "backend",
-      "careers": [
-        "backend"
-      ]
     }
   },
   "kotlin": {
@@ -208,13 +161,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "mobile",
-      "careers": [
-        "mobile",
-        "android"
-      ]
     }
   },
   "sql": {
@@ -231,12 +177,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "database",
-      "careers": [
-        "database"
-      ]
     }
   },
   "graphql": {
@@ -253,13 +193,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "api",
-      "careers": [
-        "backend",
-        "api"
-      ]
     }
   },
   "dart": {
@@ -276,13 +209,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "mobile",
-      "careers": [
-        "mobile",
-        "backend"
-      ]
     }
   },
   "swift": {
@@ -299,13 +225,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "mobile",
-      "careers": [
-        "mobile",
-        "ios"
-      ]
     }
   }
 }

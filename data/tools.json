@@ -14,10 +14,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "api",
-      "careers": []
     }
   },
   "postman": {
@@ -35,10 +31,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "api",
-      "careers": []
     }
   },
   "less": {
@@ -55,10 +47,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "frontend",
-      "careers": []
     }
   },
   "sass": {
@@ -75,10 +63,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "frontend",
-      "careers": []
     }
   },
   "vite": {
@@ -95,10 +79,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "frontend",
-      "careers": []
     }
   },
   "docker": {
@@ -115,10 +95,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "devops",
-      "careers": []
     }
   },
   "kubernetes": {
@@ -135,10 +111,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "devops",
-      "careers": []
     }
   },
   "terraform": {
@@ -155,10 +127,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "devops",
-      "careers": []
     }
   },
   "npm": {
@@ -175,10 +143,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "backend",
-      "careers": []
     }
   },
   "yarn": {
@@ -195,10 +159,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "backend",
-      "careers": []
     }
   }
 }

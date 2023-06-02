@@ -13,12 +13,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "database",
-      "careers": [
-        "database"
-      ]
     }
   },
   "postgress": {
@@ -35,12 +29,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "database",
-      "careers": [
-        "database"
-      ]
     }
   },
   "mongodb": {
@@ -49,7 +37,7 @@
     "name": "MongoDB",
     "type": "database",
     "dependencies": [
-      "no_sql"
+      "nosql"
     ],
     "resources": {
       "articles": [],
@@ -57,12 +45,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "database",
-      "careers": [
-        "database"
-      ]
     }
   },
   "redis": {
@@ -71,7 +53,7 @@
     "name": "Redis",
     "type": "database",
     "dependencies": [
-      "no_sql"
+      "nosql"
     ],
     "resources": {
       "articles": [],
@@ -79,12 +61,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "database",
-      "careers": [
-        "database"
-      ]
     }
   },
   "sqlite": {
@@ -101,12 +77,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "database",
-      "careers": [
-        "database"
-      ]
     }
   },
   "microsoft_sql_server": {
@@ -123,12 +93,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "database",
-      "careers": [
-        "database"
-      ]
     }
   },
   "firestore": {
@@ -138,7 +102,7 @@
     "type": "database",
     "dependencies": [
       "firebase",
-      "no_sql"
+      "nosql"
     ],
     "resources": {
       "articles": [],
@@ -146,12 +110,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "database",
-      "careers": [
-        "database"
-      ]
     }
   },
   "elasticsearch": {
@@ -160,7 +118,7 @@
     "name": "Elasticsearch",
     "type": "database",
     "dependencies": [
-      "no_sql"
+      "nosql"
     ],
     "resources": {
       "articles": [],
@@ -168,12 +126,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "database",
-      "careers": [
-        "database"
-      ]
     }
   },
   "dynamodb": {
@@ -182,7 +134,7 @@
     "name": "DynamoDB",
     "type": "database",
     "dependencies": [
-      "no_sql",
+      "nosql",
       "amazon_web_services"
     ],
     "resources": {
@@ -191,12 +143,6 @@
       "courses": [],
       "documentation": [],
       "videos": []
-    },
-    "attributes": {
-      "group": "database",
-      "careers": [
-        "database"
-      ]
     }
   }
 }
