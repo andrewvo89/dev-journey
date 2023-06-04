@@ -11,7 +11,7 @@ import librariesJSON from 'data/libraries.json';
 import paradigmsJSON from 'data/paradigms.json';
 import platformsJSON from 'data/platforms.json';
 import rootJSON from 'data/root.json';
-import softwareJSON from 'data/software.json';
+import runtimeJSON from 'data/runtime.json';
 import toolsJSON from 'data/tools.json';
 
 const jnodeJSONs = jnodeJSONSchema.parse({
@@ -23,7 +23,7 @@ const jnodeJSONs = jnodeJSONSchema.parse({
   ...paradigmsJSON,
   ...platformsJSON,
   ...rootJSON,
-  ...softwareJSON,
+  ...runtimeJSON,
   ...toolsJSON,
 });
 
@@ -37,7 +37,7 @@ const techPrompts = techList
       'library',
       'meta_framework',
       'platform',
-      'software',
+      'runtime',
       'tool',
     ];
     return allowedTypes.includes(t.type);

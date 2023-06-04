@@ -75,6 +75,66 @@
           "name": "9 things every React.js beginner should know",
           "author": "Cam Jackson",
           "type": "article"
+        },
+        {
+          "url": "https://javascript.plainenglish.io/5-react-design-patterns-you-should-know-629030e2e2c7",
+          "name": "5 React Design Patterns You Should Know",
+          "author": "Al - @naucode",
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@obrm770/best-practices-and-design-patterns-in-react-js-for-high-quality-applications-6b203be747fb",
+          "name": "Best Practices and Design Patterns in React.js for High-Quality Applications",
+          "author": "Ori Baram",
+          "type": "article"
+        },
+        {
+          "url": "https://blog.devgenius.io/structure-your-react-apps-like-its-2030-aef02097cb3",
+          "name": "Structure Your React Apps Like It’s 2030",
+          "author": "Rehan Pinjari",
+          "type": "article"
+        },
+        {
+          "url": "https://yosua-halim.medium.com/10-react-anti-patterns-you-should-know-300256bfb007",
+          "name": "10 React Anti-patterns you should know",
+          "author": "Yosua Halim",
+          "type": "article"
+        },
+        {
+          "url": "https://javascript.plainenglish.io/11-mistakes-to-avoid-when-using-react-in-2022-d93d26c46181",
+          "name": "11 Mistakes to Avoid When Using React",
+          "author": "Chris1993",
+          "type": "article"
+        },
+        {
+          "url": "https://levelup.gitconnected.com/react-best-practices-for-software-design-and-architecture-87903cce7a9a",
+          "name": "React Best Practices for Software Design and Architecture",
+          "author": "Imran Farooq",
+          "type": "article"
+        },
+        {
+          "url": "https://trekinbami.medium.com/using-environment-variables-in-react-6b0a99d83cf5",
+          "name": "Using environment variables in React",
+          "author": "Sam Pakvis",
+          "type": "article"
+        },
+        {
+          "url": "https://levelup.gitconnected.com/react-code-conventions-and-best-practices-433e23ed69aa",
+          "name": "React code conventions and best practices",
+          "author": "Gaspar Nagy",
+          "type": "article"
+        },
+        {
+          "url": "https://medium.datadriveninvestor.com/8-react-open-source-projects-to-learn-and-become-a-react-js-developer-8376107730c4",
+          "name": "8 React Open-Source projects to learn and become a React.js Developer",
+          "author": "Muhammad Adeel",
+          "type": "article"
+        },
+        {
+          "url": "https://kusham1998.medium.com/8-mistakes-every-junior-react-developer-makes-7ceace725d36",
+          "name": "8 Mistakes every junior React developer makes",
+          "author": "Kushan Madhusanka",
+          "type": "article"
         }
       ],
       "books": [

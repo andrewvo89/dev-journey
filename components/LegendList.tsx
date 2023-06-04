@@ -43,20 +43,20 @@ const borderLegends: { name: string; paperClassName: 'onPath' | 'notOnPath' | 'e
   { name: 'Extended path', paperClassName: 'extendedPath' },
 ];
 
-const typesOrder: Record<JNodeType, number> = {
-  root: 0,
-  tool: 1,
-  language: 2,
-  database: 3,
-  framework: 4,
-  meta_framework: 5,
-  software: 6,
-  library: 7,
-  platform: 8,
-  paradigm: 9,
-  field: 10,
-  career: 11,
-};
+const typesOrder: JNodeType[] = [
+  'root',
+  'tool',
+  'runtime',
+  'language',
+  'database',
+  'framework',
+  'meta_framework',
+  'library',
+  'platform',
+  'paradigm',
+  'field',
+  'career',
+];
 
 export function LegendList() {
   const nodes = useNodeStore((state) => state.nodes);
@@ -84,7 +84,7 @@ export function LegendList() {
         />
       ))}
       {Array.from(uniqueTypes)
-        .sort((a, b) => typesOrder[a] - typesOrder[b])
+        .sort((a, b) => typesOrder.indexOf(a) - typesOrder.indexOf(b))
         .map((type) => (
           <LegendTypeListItem key={type} type={type} />
         ))}

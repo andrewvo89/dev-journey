@@ -9,7 +9,7 @@ export const jnodeTypeMap: Record<JNodeType, { label: string; color: DefaultMant
   library: { label: 'Library', color: 'violet' },
   framework: { label: 'Framework', color: 'pink' },
   meta_framework: { label: 'Meta Framework', color: 'grape' },
-  software: { label: 'Software', color: 'orange' },
+  runtime: { label: 'Runtime', color: 'orange' },
   paradigm: { label: 'Paradigm', color: 'lime' },
   platform: { label: 'Platform', color: 'green' },
   field: { label: 'Field', color: 'indigo' },

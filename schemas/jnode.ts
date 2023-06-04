@@ -46,7 +46,7 @@ export const jnodeTypeSchema = z.union([
   z.literal('database'),
   z.literal('framework'),
   z.literal('meta_framework'),
-  z.literal('software'),
+  z.literal('runtime'),
   z.literal('library'),
   z.literal('platform'),
   z.literal('paradigm'),

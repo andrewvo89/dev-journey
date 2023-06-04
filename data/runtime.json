@@ -1,0 +1,440 @@
+{
+  "web_browser": {
+    "id": "web_browser",
+    "description": "",
+    "name": "Web Browser",
+    "type": "runtime",
+    "dependencies": [
+      "frontend_development"
+    ],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    }
+  },
+  "nodejs": {
+    "id": "nodejs",
+    "description": "",
+    "name": "Node.js",
+    "type": "runtime",
+    "dependencies": [
+      "backend_development"
+    ],
+    "resources": {
+      "articles": [
+        {
+          "url": "https://medium.com/@appiahyoofi/goodbye-node-js-9e2f71f5e430",
+          "name": "Goodbye Node JS",
+          "author": "Appiahyoofi",
+          "type": "article"
+        },
+        {
+          "url": "https://levelup.gitconnected.com/set-up-and-run-a-simple-node-server-project-38b403a3dc09",
+          "name": "Set Up and Run a Simple Node Server Project",
+          "author": "Kris",
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@ben.dev.io/clean-architecture-in-node-js-39c3358d46f3",
+          "name": "Clean Architecture in Node.js",
+          "author": "Ben Mishali",
+          "type": "article"
+        },
+        {
+          "url": "https://javascript.plainenglish.io/nodejs-developer-roadmap-2023-4e2fccc0ff54",
+          "name": "Node.js Developer Roadmap 2023",
+          "author": "Melih Yumak",
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@dash.ps/backend-roadmap-to-master-nodejs-c508742ab74f",
+          "name": "Backend Roadmap to Master NodeJS",
+          "author": "Dash ICT",
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@kalkidant/7-node-js-best-practices-2023-37063634eef",
+          "name": "Node JS Best Practices — 2023",
+          "author": "Kal",
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@tony.infisical/why-you-should-stop-using-env-files-in-node-js-f62fffecf5a3",
+          "name": "Stop Using .env Files in Node.js",
+          "author": "Tony",
+          "type": "article"
+        },
+        {
+          "url": "https://hackernoon.com/19-things-i-learnt-reading-the-nodejs-docs-8a2dcc7f307f?ref=refind",
+          "name": "19 things I learnt reading the NodeJSdocs",
+          "author": "David Gilbertson",
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/s/silicon-satire/i-peeked-into-my-node-modules-directory-and-you-wont-believe-what-happened-next-b89f63d21558",
+          "name": "What Happened When I Peeked Into My Node_Modules Directory",
+          "author": "Jordan Scales",
+          "type": "article"
+        },
+        {
+          "url": "https://www.digitalocean.com/community/tutorials/how-to-use-multithreading-in-node-js?ref=refind",
+          "name": "How To Use Multithreading in Node.js",
+          "author": "Stanley Ulili",
+          "type": "article"
+        },
+        {
+          "url": "https://www.smashingmagazine.com/2018/06/nodejs-tools-techniques-performance-servers/?ref=refind",
+          "name": "Keeping Node.js Fast: Tools, Techniques, And Tips For Making High-Performance Node.js Servers",
+          "author": "David Mark Clements",
+          "type": "article"
+        },
+        {
+          "url": "https://stackabuse.com/guide-to-handlebars-templating-engine-for-node/",
+          "name": "Guide to Handlebars: Templating Engine for Node/JavaScript",
+          "author": "Janith Kasun",
+          "type": "article"
+        },
+        {
+          "url": "https://blog.bitsrc.io/23-insanely-useful-nodejs-libraries-you-should-know-in-2020-5a9b570d5416",
+          "name": "23 Insanely Useful NodeJs Libraries You Should Know in 2020",
+          "author": "Lokender Singh",
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@Luna-Rojas/nodejs-19-is-here-3-features-that-will-blow-your-mind-565572086f77",
+          "name": "NodeJS 19 is HERE! 3 Features that will blow your mind",
+          "author": "Luna Rojas",
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@ben.dev.io/best-practices-for-building-large-scale-node-js-applications-b45ab29b757a",
+          "name": "Best Practices for Building Large-Scale Node.js Applications",
+          "author": "Ben Mishali",
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@kumuthini.program/how-does-nodejs-handle-multiple-requests-97a2b094e762",
+          "name": "How does NodeJS handle multiple requests?",
+          "author": "Kumuthini Ashokkumar",
+          "type": "article"
+        },
+        {
+          "url": "https://mobileappcircular.com/top-10-node-js-libraries-to-optimize-your-application-performance-30cff34bcbdc",
+          "name": "Top 10 Node.js Libraries to Optimize Your Code and Simplify Development",
+          "author": "Adarsh Dayanand",
+          "type": "article"
+        }
+      ],
+      "books": [
+        {
+          "url": "https://www.sitepoint.com/premium/books/node-js-novice-to-ninja/",
+          "name": "Node.js: Novice to Ninja",
+          "author": "Craig Buckler",
+          "pages": 410,
+          "type": "book"
+        },
+        {
+          "url": "https://freecontent.manning.com/free-ebook-get-programming-with-nodejs/",
+          "name": "Get Programming with Node.js",
+          "author": "Jonathan Wexler",
+          "pages": 480,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/learning-node-2nd/9781491943113/",
+          "name": "Learning Node, 2nd Edition",
+          "author": "Shelley Powers",
+          "pages": 288,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/web-development-with/9781492053507/",
+          "name": "Web Development with Node and Express, 2nd Edition",
+          "author": "Ethan Brown",
+          "pages": 330,
+          "type": "book"
+        },
+        {
+          "url": "https://www.packtpub.com/product/nodejs-web-development-fifth-edition/9781838987572",
+          "name": "Node.js Web Development - Fifth Edition",
+          "author": "David Herron",
+          "pages": 760,
+          "type": "book"
+        },
+        {
+          "url": "https://www.packtpub.com/product/node-cookbook-fourth-edition/9781838558758",
+          "name": "Node Cookbook - Fourth Edition",
+          "author": "Bethany Griggs",
+          "pages": 512,
+          "type": "book"
+        },
+        {
+          "url": "https://www.packtpub.com/product/nodejs-design-patterns-second-edition/9781785885587",
+          "name": "Node.js Design Patterns - Second Edition",
+          "author": "Mario Casciaro",
+          "pages": 526,
+          "type": "book"
+        },
+        {
+          "url": "https://www.packtpub.com/product/advanced-nodejs-development/9781788393935",
+          "name": "Advanced Node.js Development",
+          "author": "Andrew Mead",
+          "pages": 592,
+          "type": "book"
+        }
+      ],
+      "courses": [
+        {
+          "url": "https://www.udemy.com/course/the-complete-nodejs-developer-course-2/",
+          "name": "The Complete Node.js Developer Course (3rd Edition)",
+          "author": "Andrew Mead",
+          "platform": "Udemy",
+          "duration": 2103,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/advanced-node-for-developers/",
+          "name": "Node JS: Advanced Concepts",
+          "author": "Stephen Grider",
+          "platform": "Udemy",
+          "duration": 968,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/nodejs-the-complete-guide/",
+          "name": "NodeJS - The Complete Guide (MVC, REST APIs, GraphQL, Deno)",
+          "author": "Maximilian Schwarzmüller",
+          "platform": "Udemy",
+          "duration": 2431,
+          "type": "course"
+        },
+        {
+          "url": "https://www.pluralsight.com/courses/nodejs-getting-started",
+          "name": "Node.js: Getting Started",
+          "author": "Samer Buna",
+          "platform": "Pluralsight",
+          "duration": 209,
+          "type": "course"
+        },
+        {
+          "url": "https://www.pluralsight.com/courses/nodejs-advanced",
+          "name": "Advanced Node.js 12",
+          "author": "Samer Buna",
+          "platform": "Pluralsight",
+          "duration": 225,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/nodejs-express-mongodb-bootcamp/",
+          "name": "Node.js, Express, MongoDB & More: The Complete Bootcamp 2023",
+          "author": "Jonas Schmedtmann",
+          "platform": "Udemy",
+          "duration": 2532,
+          "type": "course"
+        },
+        {
+          "url": "https://zerotomastery.io/courses/learn-node-js/",
+          "name": "Complete Node.js Developer in 2023",
+          "author": "Adam Odziemkowski , Andrei Neagoie",
+          "platform": "Zero to Mastery",
+          "duration": 2880,
+          "type": "course"
+        },
+        {
+          "url": "https://www.educative.io/courses/learn-nodejs-complete-course-for-beginners",
+          "name": "Learn Node.js - Complete Course for Beginners",
+          "author": "Educative",
+          "platform": "Educative",
+          "duration": 420,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/nodejs-api-masterclass/",
+          "name": "Node.js API Masterclass With Express & MongoDB",
+          "author": "Brad Traversy",
+          "platform": "Udemy",
+          "duration": 723,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/angular-2-and-nodejs-the-practical-guide/",
+          "name": "Angular & NodeJS - The MEAN Stack Guide",
+          "author": "Maximilian Schwarzmüller",
+          "platform": "Udemy",
+          "duration": 764,
+          "type": "course"
+        },
+        {
+          "url": "https://www.coursera.org/learn/developing-backend-apps-with-nodejs-and-express",
+          "name": "Developing Backend Apps with Node.js and Express",
+          "author": "Upkar Lidder, Sachin Jambur",
+          "platform": "Coursera",
+          "duration": 720,
+          "type": "course"
+        },
+        {
+          "url": "https://www.coursera.org/learn/building-modern-node-applications-on-aws",
+          "name": "Building Modern Node Applications on AWS",
+          "author": "Morgan Willis, Seph Robinson",
+          "platform": "Coursera",
+          "duration": 1020,
+          "type": "course"
+        },
+        {
+          "url": "https://www.coursera.org/learn/node-js",
+          "name": "Developing Cloud Apps with Node.js and React",
+          "author": "Upkar Lidder, Sachin Jambur",
+          "platform": "Coursera",
+          "duration": 960,
+          "type": "course"
+        },
+        {
+          "url": "https://www.codecademy.com/learn/learn-node-js",
+          "name": "Learn Node.js",
+          "author": "Codecademy",
+          "platform": "Codecademy",
+          "duration": 420,
+          "type": "course"
+        }
+      ],
+      "documentation": [
+        {
+          "url": "https://nodejs.org/en/docs/",
+          "name": "Node.js Documentation",
+          "author": "Node.js Foundation",
+          "type": "documentation"
+        },
+        {
+          "url": "https://nodejs.org/api/",
+          "name": "Node.js API Documentation",
+          "author": "Node.js Foundation",
+          "type": "documentation"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://youtu.be/Oe421EPjeBE",
+          "name": "Node.js and Express.js - Full Course",
+          "author": "freeCodeCamp.org",
+          "duration": 496,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/ENrzD9HAZK4",
+          "name": "Node.js Ultimate Beginner’s Guide in 7 Easy Steps",
+          "author": "Fireship",
+          "duration": 16,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/uEVmD6n8Il0",
+          "name": "7 Ways to Deploy a Node.js App",
+          "author": "Fireship",
+          "duration": 553,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/f2EqECiTBL8",
+          "name": "Node.js Full Course for Beginners | Complete All-in-One Tutorial | 7 Hours",
+          "author": "Dave Gray",
+          "duration": 410,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/RLtyhwFtXQA",
+          "name": "Learn Node.js - Full Tutorial for Beginners",
+          "author": "freeCodeCamp.org",
+          "duration": 134,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/CELj-DCB0go",
+          "name": "Node.js Tutorial | Node.js Tutorial For Beginners | Learn Node.js | NodeJS Tutorial | Simplilearn",
+          "author": "Simplilearn",
+          "duration": 239,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/fBNz5xF-Kx4",
+          "name": "Node.js Crash Course",
+          "author": "Traversy Media",
+          "duration": 90,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/fUJ3ULyyA-Y",
+          "name": "Node.js 101 Crash Course: Learn Node.js (6 HOURS!) + Build Your First Project | Zero To Mastery",
+          "author": "Zero To Mastery",
+          "duration": 385,
+          "type": "video"
+        },
+        {
+          "url": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jsz4LDYc6kv3ymONOKxwBU",
+          "name": "Node.js Crash Course Tutorial",
+          "author": "The Net Ninja",
+          "duration": 284,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/TlB_eWDSMt4",
+          "name": "Node.js Tutorial for Beginners: Learn Node in 1 Hour",
+          "author": "Programming with Mosh",
+          "duration": 78,
+          "type": "video"
+        }
+      ]
+    }
+  },
+  "deno": {
+    "id": "deno",
+    "description": "",
+    "name": "Deno",
+    "type": "runtime",
+    "dependencies": [
+      "nodejs",
+      "typescript"
+    ],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    }
+  },
+  "jre": {
+    "id": "jre",
+    "description": "",
+    "name": "Java Runtime Environment",
+    "type": "runtime",
+    "dependencies": [
+      "backend_development"
+    ],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    }
+  },
+  "jdk": {
+    "id": "jdk",
+    "description": "",
+    "name": "Java Development Kit",
+    "type": "runtime",
+    "dependencies": [
+      "backend_development"
+    ],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    }
+  }
+}

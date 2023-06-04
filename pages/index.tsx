@@ -17,7 +17,7 @@ import paradigmsJSON from 'data/paradigms.json';
 import placeholdersJSON from 'data/placeholders.json';
 import platformsJSON from 'data/platforms.json';
 import rootJSON from 'data/root.json';
-import softwareJSON from 'data/software.json';
+import runtimeJSON from 'data/runtime.json';
 import toolsJSON from 'data/tools.json';
 
 export type Props = {
@@ -37,7 +37,7 @@ const jnodeJSONs = jnodeJSONSchema.parse({
   ...paradigmsJSON,
   ...platformsJSON,
   ...rootJSON,
-  ...softwareJSON,
+  ...runtimeJSON,
   ...toolsJSON,
 });
 
