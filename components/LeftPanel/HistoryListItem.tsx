@@ -111,11 +111,10 @@ export default function HistoryListItem(props: Props) {
   return (
     <Tooltip label={journey.prompt.label} openDelay={500}>
       <NavLink
-        classNames={{
-          children: classes.listItemChildren,
-          root: classes.listItemRoot,
-        }}
         component='li'
+        role='listitem'
+        aria-label='History item'
+        classNames={{ children: classes.listItemChildren, root: classes.listItemRoot }}
         active={isSelected}
         onClick={linkClickHandler}
         label={

@@ -105,7 +105,7 @@ export default function PromptBar(props: Props) {
       readOnly={isLoading}
       rightSection={
         isLoading ? (
-          <Loader size='sm' role='alert' aria-label='Loading spinner' />
+          <Loader size='sm' role='alert' aria-label='Loading result' aria-live='assertive' />
         ) : (
           <CloseButton role='button' aria-label='Clear' variant='transparent' size='lg' onClick={clearClickHandler} />
         )

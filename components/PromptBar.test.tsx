@@ -173,9 +173,10 @@ test('loading spinner shows during api call', async () => {
 
   user.click(screen.getAllByRole('option')[2]);
   const spinner = await waitFor(() => {
-    return screen.getByLabelText('Loading spinner');
+    return screen.getByLabelText('Loading result');
   });
   expect(spinner.getAttribute('role')).toBe('alert');
+  expect(spinner.getAttribute('aria-live')).toBe('assertive');
 });
 
 test('Destinations are transformed with enabled status', () => {

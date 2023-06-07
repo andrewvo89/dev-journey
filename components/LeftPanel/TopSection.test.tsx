@@ -1,10 +1,9 @@
-import { act, render, screen, within } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import { expect, test, vi } from 'vitest';
 
 import AppWrapper from 'components/AppWrapper';
 import { Journey } from 'types/common';
 import { TopSection } from 'components/LeftPanel/TopSection';
-import exp from 'constants';
 import { faker } from '@faker-js/faker';
 import { useHistoryStore } from 'store/history';
 import { useInputRefStore } from 'store/input-ref';
