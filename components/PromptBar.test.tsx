@@ -9,8 +9,6 @@ import { useHistoryStore } from 'store/history';
 import { usePromptStore } from 'store/prompt';
 import userEvent from '@testing-library/user-event';
 
-vi.mock('zustand');
-
 test('should render', () => {
   render(<PromptBar placeholder={faker.lorem.sentence()} />, { wrapper: AppWrapper });
   expect(screen.getByRole('combobox', { name: 'Prompt bar' })).toBeInTheDocument();
@@ -70,7 +68,7 @@ test('prompt bar text is bound when user chooses an auto select item', async () 
 
   expect(useHistoryStore.getState().selected).toBeFalsy();
   await user.click(options[2]);
-  expect(useHistoryStore.getState().selected).toBeInTheDocument();
+  expect(useHistoryStore.getState().selected?.prompt).toStrictEqual({ label: prompts[2], value: prompts[2] });
 
   expect(input.getAttribute('value')).toBe(prompts[2]);
 }, 10000);
@@ -100,11 +98,10 @@ test('api is called when user selects a drop down item', async () => {
   expect(mockFetch).toBeCalledWith(`/api/prompts/${prompts[2]}`, { method: 'POST' });
 });
 
-test.only('application does not crash when api call fails', async () => {
+test('application does not crash when api call fails', async () => {
   const user = userEvent.setup({ delay: null });
-
-  const mockFetch = vi.fn().mockRejectedValue(new Error('test error'));
-  global.fetch = mockFetch;
+  console.error = vi.fn();
+  global.fetch = vi.fn().mockRejectedValue(new Error('test error'));
   const prompts = [faker.lorem.sentence(), faker.lorem.sentence(), faker.lorem.sentence()];
   act(() => {
     const clientPrompts: ClientPrompt[] = prompts.map((prompt) => ({ label: prompt, value: prompt }));
@@ -120,10 +117,10 @@ test.only('application does not crash when api call fails', async () => {
   expect(options).toHaveLength(3);
   await user.click(options[2]);
 
-  expect(mockFetch).toThrowError(new Error('test error'));
+  expect(console.error).toHaveBeenCalledOnce();
 });
 
-test.only('clear button removes text from prompt bar and resets selected to null', async () => {
+test('clear button removes text from prompt bar and resets selected to null', async () => {
   const user = userEvent.setup({ delay: null });
 
   global.fetch = vi.fn().mockResolvedValue({
@@ -147,6 +144,7 @@ test.only('clear button removes text from prompt bar and resets selected to null
 
   const button = screen.getByLabelText('Clear');
   expect(button).toBeInTheDocument();
+  expect(button.getAttribute('role')).toBe('button');
   expect(input.getAttribute('value')).toBe(prompts[2]);
 
   await user.click(button);
@@ -174,7 +172,10 @@ test('loading spinner shows during api call', async () => {
   });
 
   user.click(screen.getAllByRole('option')[2]);
-  await waitFor(() => expect(screen.getByLabelText('Loading spinner')).toBeInTheDocument());
+  const spinner = await waitFor(() => {
+    return screen.getByLabelText('Loading spinner');
+  });
+  expect(spinner.getAttribute('role')).toBe('alert');
 });
 
 test('Destinations are transformed with enabled status', () => {

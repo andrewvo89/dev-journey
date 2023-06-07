@@ -18,10 +18,7 @@ const useStyles = createStyles(() => ({
 
 export function TopSection() {
   const { clearHistory, setSelected } = useHistoryStore(
-    (state) => ({
-      clearHistory: state.clearHistory,
-      setSelected: state.setSelected,
-    }),
+    (state) => ({ clearHistory: state.clearHistory, setSelected: state.setSelected }),
     shallow,
   );
   const journeys = useHydratedStore(useHistoryStore, (state) => state.journeys);
@@ -61,7 +58,7 @@ export function TopSection() {
       <Title order={2}>Dev Journey</Title>
       <Menu width={200}>
         <Menu.Target>
-          <ActionIcon color='dark' variant='transparent'>
+          <ActionIcon color='dark' variant='transparent' aria-label='Menu'>
             <IconDotsVertical />
           </ActionIcon>
         </Menu.Target>
@@ -72,7 +69,7 @@ export function TopSection() {
           <Menu.Item
             onClick={clearHistoryClickHandler}
             icon={<IconTrashX size='1.25em' />}
-            disabled={journeys?.length === 0}
+            disabled={!journeys || journeys.length === 0}
           >
             Clear history
           </Menu.Item>

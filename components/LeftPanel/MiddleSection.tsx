@@ -33,20 +33,25 @@ export function MiddleSection() {
   return (
     <Accordion multiple defaultValue={['history']} classNames={{ content: classes.accordianPanel }}>
       <Accordion.Item value='legend'>
-        <Accordion.Control icon={<IconKey />}>Legend</Accordion.Control>
-        <Accordion.Panel className={classes.accordianPanel}>
+        <Accordion.Control aria-label='Legend' icon={<IconKey />}>
+          Legend
+        </Accordion.Control>
+        <Accordion.Panel aria-label='Legend' className={classes.accordianPanel}>
           <LegendList />
         </Accordion.Panel>
       </Accordion.Item>
       <Accordion.Item value='history'>
-        <Accordion.Control icon={<IconHistory />}>History</Accordion.Control>
-        <Accordion.Panel>
+        <Accordion.Control aria-label='History' icon={<IconHistory />}>
+          History
+        </Accordion.Control>
+        <Accordion.Panel aria-label='History' className={classes.accordianPanel}>
           <Container className={classes.historyContainer}>
-            {journeys?.length === 0 && (
-              <Button fullWidth leftIcon={<IconPlus size='1rem' />} onClick={newJourneyHandler}>
-                Start new journey
-              </Button>
-            )}
+            {!journeys ||
+              (journeys.length === 0 && (
+                <Button fullWidth leftIcon={<IconPlus size='1rem' />} onClick={newJourneyHandler}>
+                  Start new journey
+                </Button>
+              ))}
             <HistoryList />
           </Container>
         </Accordion.Panel>
