@@ -1,6 +1,6 @@
 import { Center, Flex, Loader, createStyles } from '@mantine/core';
 
-import HistoryListItem from 'components/HistoryListItem';
+import HistoryListItem from 'components/LeftPanel/HistoryListItem';
 import { useHistoryStore } from 'store/history';
 import { useHydratedStore } from 'hooks/useHydratedStore';
 

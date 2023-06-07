@@ -1,10 +1,11 @@
 import { Accordion, Button, Container, createStyles } from '@mantine/core';
 import { IconHistory, IconKey, IconPlus } from '@tabler/icons-react';
 
-import HistoryList from 'components/HistoryList';
+import HistoryList from 'components/LeftPanel/HistoryList';
 import { LegendList } from 'components/LegendList';
 import { useHistoryStore } from 'store/history';
 import { useHydratedStore } from 'hooks/useHydratedStore';
+import { useInputRefStore } from 'store/input-ref';
 
 const useStyles = createStyles(() => ({
   historyContainer: {
@@ -15,14 +16,19 @@ const useStyles = createStyles(() => ({
   },
 }));
 
-type Props = {
-  newJourneyHandler: () => void;
-};
-
-export function MiddleSection(props: Props) {
-  const { newJourneyHandler } = props;
+export function MiddleSection() {
   const journeys = useHydratedStore(useHistoryStore, (state) => state.journeys);
+  const inputRef = useInputRefStore((state) => state.inputRef);
+  const setSelected = useHistoryStore((state) => state.setSelected);
   const { classes } = useStyles();
+
+  const newJourneyHandler = () => {
+    if (!inputRef) {
+      return;
+    }
+    inputRef.focus();
+    setSelected(null);
+  };
 
   return (
     <Accordion multiple defaultValue={['history']} classNames={{ content: classes.accordianPanel }}>

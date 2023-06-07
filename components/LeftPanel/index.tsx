@@ -4,7 +4,6 @@ import BottomSection from 'components/LeftPanel/BottomSection';
 import { MiddleSection } from 'components/LeftPanel/MiddleSection';
 import { TopSection } from 'components/LeftPanel/TopSection';
 import { useHistoryStore } from 'store/history';
-import { useInputRefStore } from 'store/input-ref';
 
 const useStyles = createStyles((theme) => ({
   navbar: {
@@ -28,30 +27,27 @@ export default function LeftPanel() {
   const { classes } = useStyles();
 
   const setSelected = useHistoryStore((state) => state.setSelected);
-  const inputRef = useInputRefStore((state) => state.inputRef);
 
   const outsideClickHandler = () => {
     setSelected(null);
   };
 
-  const newJourneyHandler = () => {
-    if (!inputRef) {
-      return;
-    }
-    inputRef.focus();
-    setSelected(null);
-  };
-
   return (
-    <Navbar role='navigation' aria-label='sidebar' className={classes.navbar} width={{ base: 300 }}>
-      <Navbar.Section className={classes.topSection}>
-        <TopSection newJourneyHandler={newJourneyHandler} />
+    <Navbar role='navigation' aria-label='Sidebar' className={classes.navbar} width={{ base: 300 }}>
+      <Navbar.Section role='region' aria-label='Top section' className={classes.topSection}>
+        <TopSection />
       </Navbar.Section>
       <Divider />
-      <Navbar.Section grow onClick={outsideClickHandler} className={classes.middleSection}>
-        <MiddleSection newJourneyHandler={newJourneyHandler} />
+      <Navbar.Section
+        role='region'
+        aria-label='Middle section'
+        grow
+        onClick={outsideClickHandler}
+        className={classes.middleSection}
+      >
+        <MiddleSection />
       </Navbar.Section>
-      <Navbar.Section>
+      <Navbar.Section role='region' aria-label='Bottom section'>
         <BottomSection />
       </Navbar.Section>
     </Navbar>

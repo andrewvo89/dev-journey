@@ -1,6 +1,7 @@
+import '@testing-library/jest-dom';
+
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { vi } from 'vitest';
-
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
   value: vi.fn().mockImplementation((query) => ({

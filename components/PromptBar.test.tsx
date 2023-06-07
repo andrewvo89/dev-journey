@@ -13,13 +13,13 @@ vi.mock('zustand');
 
 test('should render', () => {
   render(<PromptBar placeholder={faker.lorem.sentence()} />, { wrapper: AppWrapper });
-  expect(screen.getByRole('combobox', { name: 'Prompt bar' })).toBeDefined();
+  expect(screen.getByRole('combobox', { name: 'Prompt bar' })).toBeInTheDocument();
 });
 
 test('should contain placeholder', () => {
   const placeholder = faker.lorem.sentence();
   render(<PromptBar placeholder={placeholder} />, { wrapper: AppWrapper });
-  expect(screen.getByPlaceholderText(placeholder)).toBeDefined();
+  expect(screen.getByPlaceholderText(placeholder)).toBeInTheDocument();
 });
 
 test('should contain prompt value from selected history journey', () => {
@@ -70,7 +70,7 @@ test('prompt bar text is bound when user chooses an auto select item', async () 
 
   expect(useHistoryStore.getState().selected).toBeFalsy();
   await user.click(options[2]);
-  expect(useHistoryStore.getState().selected).toBeDefined();
+  expect(useHistoryStore.getState().selected).toBeInTheDocument();
 
   expect(input.getAttribute('value')).toBe(prompts[2]);
 }, 10000);
@@ -146,7 +146,7 @@ test.only('clear button removes text from prompt bar and resets selected to null
   await user.click(options[2]);
 
   const button = screen.getByLabelText('Clear');
-  expect(button).toBeDefined();
+  expect(button).toBeInTheDocument();
   expect(input.getAttribute('value')).toBe(prompts[2]);
 
   await user.click(button);
@@ -174,7 +174,7 @@ test('loading spinner shows during api call', async () => {
   });
 
   user.click(screen.getAllByRole('option')[2]);
-  await waitFor(() => expect(screen.getByLabelText('Loading spinner')).toBeDefined());
+  await waitFor(() => expect(screen.getByLabelText('Loading spinner')).toBeInTheDocument());
 });
 
 test('Destinations are transformed with enabled status', () => {

@@ -1,5 +1,5 @@
 import { expect, vi } from 'vitest';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import AppWrapper from 'components/AppWrapper';
 import { Destination } from 'types/common';
@@ -13,14 +13,14 @@ test('renders main container', () => {
   render(<Home prompts={[]} initialEdges={[]} initialJNodes={[]} initialNodes={[]} placeholder='' />, {
     wrapper: AppWrapper,
   });
-  expect(screen.getByRole('main', { name: 'Main container' })).toBeDefined();
+  expect(screen.getByRole('main', { name: 'Main container' })).toBeInTheDocument();
 });
 
 test('renders right container', () => {
   render(<Home prompts={[]} initialEdges={[]} initialJNodes={[]} initialNodes={[]} placeholder='' />, {
     wrapper: AppWrapper,
   });
-  expect(screen.getByRole('region', { name: 'Right container' })).toBeDefined();
+  expect(screen.getByRole('region', { name: 'Right container' })).toBeInTheDocument();
 });
 
 test('updates nodes with no destinations', () => {

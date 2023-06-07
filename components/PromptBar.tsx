@@ -107,14 +107,7 @@ export default function PromptBar(props: Props) {
         isLoading ? (
           <Loader size='sm' role='alert' aria-label='Loading spinner' />
         ) : (
-          <CloseButton
-            data-testid='clear-button'
-            role='button'
-            aria-label='Clear'
-            variant='transparent'
-            size='lg'
-            onClick={clearClickHandler}
-          />
+          <CloseButton role='button' aria-label='Clear' variant='transparent' size='lg' onClick={clearClickHandler} />
         )
       }
     />

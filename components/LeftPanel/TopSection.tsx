@@ -2,12 +2,10 @@ import { ActionIcon, Group, Menu, Text, Title, createStyles, useMantineTheme } f
 import { IconDotsVertical, IconPlus, IconTrashX } from '@tabler/icons-react';
 
 import { modals } from '@mantine/modals';
+import { shallow } from 'zustand/shallow';
 import { useHistoryStore } from 'store/history';
 import { useHydratedStore } from 'hooks/useHydratedStore';
-
-type Props = {
-  newJourneyHandler: () => void;
-};
+import { useInputRefStore } from 'store/input-ref';
 
 const useStyles = createStyles(() => ({
   overlay: {
@@ -18,10 +16,24 @@ const useStyles = createStyles(() => ({
   },
 }));
 
-export function TopSection(props: Props) {
-  const { newJourneyHandler } = props;
-  const clearHistory = useHistoryStore((state) => state.clearHistory);
+export function TopSection() {
+  const { clearHistory, setSelected } = useHistoryStore(
+    (state) => ({
+      clearHistory: state.clearHistory,
+      setSelected: state.setSelected,
+    }),
+    shallow,
+  );
   const journeys = useHydratedStore(useHistoryStore, (state) => state.journeys);
+  const inputRef = useInputRefStore((state) => state.inputRef);
+
+  const newJourneyHandler = () => {
+    if (!inputRef) {
+      return;
+    }
+    inputRef.focus();
+    setSelected(null);
+  };
 
   const { classes } = useStyles();
   const theme = useMantineTheme();
