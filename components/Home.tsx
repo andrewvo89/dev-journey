@@ -4,7 +4,6 @@ import { Graph } from 'components/Graph';
 import LeftPanel from 'components/LeftPanel';
 import PromptBar from 'components/PromptBar';
 import { Props } from 'pages';
-import { ReactFlowProvider } from 'reactflow';
 import { useEffect } from 'react';
 import { useHistoryStore } from 'store/history';
 import { useNodeStore } from 'store/node';
@@ -46,14 +45,12 @@ export default function Home(props: Props) {
   }, [selected, updateNodes]);
 
   return (
-    <ReactFlowProvider>
-      <Flex className={classes.container}>
-        <LeftPanel />
-        <Flex className={classes.rightContainer}>
-          <Graph />
-          <PromptBar placeholder={placeholder} />
-        </Flex>
+    <Flex className={classes.container} role='main' aria-label='Main container'>
+      <LeftPanel />
+      <Flex className={classes.rightContainer} role='region' aria-label='Right container'>
+        <Graph />
+        <PromptBar placeholder={placeholder} />
       </Flex>
-    </ReactFlowProvider>
+    </Flex>
   );
 }

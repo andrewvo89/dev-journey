@@ -1,7 +1,7 @@
 import { ClientPrompt } from 'types/common';
 import { create } from 'zustand';
 
-type PrompState = {
+export type PrompState = {
   prompt: string;
   setPrompt: (prompt: string) => void;
   prompts: ClientPrompt[];

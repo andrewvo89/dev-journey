@@ -43,7 +43,7 @@ export default function LeftPanel() {
   };
 
   return (
-    <Navbar className={classes.navbar} width={{ base: 300 }}>
+    <Navbar role='navigation' aria-label='sidebar' className={classes.navbar} width={{ base: 300 }}>
       <Navbar.Section className={classes.topSection}>
         <TopSection newJourneyHandler={newJourneyHandler} />
       </Navbar.Section>

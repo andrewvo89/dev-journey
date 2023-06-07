@@ -1,7 +1,7 @@
 import { Autocomplete, CloseButton, Loader, createStyles } from '@mantine/core';
+import { ClientPrompt, PromptResponse } from 'types/common';
 import { useEffect, useRef, useState } from 'react';
 
-import { ClientPrompt } from 'types/common';
 import dayjs from 'dayjs';
 import { promptResponseSchema } from 'schemas/common';
 import { shallow } from 'zustand/shallow';
@@ -9,6 +9,10 @@ import { useHistoryStore } from 'store/history';
 import { useInputRefStore } from 'store/input-ref';
 import { usePromptStore } from 'store/prompt';
 import { v4 as uuidv4 } from 'uuid';
+
+export function transformDesintations(destinations: PromptResponse['destinations']) {
+  return destinations.map((destination) => ({ id: destination.id, enabled: true }));
+}
 
 const useStyles = createStyles((theme, props: { isLoading: boolean }) => ({
   autocomplete: {
@@ -65,7 +69,7 @@ export default function PromptBar(props: Props) {
       addJourney({
         id: uuidv4(),
         createdAt: dayjs().toISOString(),
-        destinations: destinations.map((destination) => ({ id: destination.id, enabled: true })),
+        destinations: transformDesintations(destinations),
         prompt: selectedPrompt,
       });
     } catch (error) {
@@ -85,6 +89,7 @@ export default function PromptBar(props: Props) {
 
   return (
     <Autocomplete
+      aria-label='Prompt bar'
       ref={ref}
       classNames={{ root: classes.autocomplete, input: classes.input }}
       size='lg'
@@ -99,7 +104,18 @@ export default function PromptBar(props: Props) {
       switchDirectionOnFlip
       readOnly={isLoading}
       rightSection={
-        isLoading ? <Loader size='sm' /> : <CloseButton variant='transparent' size='lg' onClick={clearClickHandler} />
+        isLoading ? (
+          <Loader size='sm' role='alert' aria-label='Loading spinner' />
+        ) : (
+          <CloseButton
+            data-testid='clear-button'
+            role='button'
+            aria-label='Clear'
+            variant='transparent'
+            size='lg'
+            onClick={clearClickHandler}
+          />
+        )
       }
     />
   );
