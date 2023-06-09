@@ -127,7 +127,7 @@ test('Clear history button opens a modal', async () => {
 
   const menuItem = screen.getByRole('menuitem', { name: 'Clear history' });
   await user.click(menuItem);
-  const modal = screen.getByLabelText('Confirmation');
+  const modal = screen.getByLabelText('Confirmation', { selector: 'section[role="dialog"][aria-modal="true"]' });
   expect(modal).toBeInTheDocument();
   expect(modal.getAttribute('role')).toBe('dialog');
 });

@@ -16,14 +16,14 @@ test('render loader when there are no journeys', () => {
   expect(spinner.getAttribute('aria-live')).toBe('assertive');
 });
 
-test('render list when journeys are available', () => {
+test('render menu when journeys are available', () => {
   render(<HistoryList />, { wrapper: AppWrapper });
-  const list = screen.getByLabelText('History');
-  expect(list).toBeInTheDocument();
-  expect(list.getAttribute('role')).toBe('list');
+  const menu = screen.getByLabelText('History', { selector: 'div[role="menu"]' });
+  expect(menu).toBeInTheDocument();
+  expect(menu.getAttribute('role')).toBe('menu');
 });
 
-test('should render a list item for each journey', () => {
+test('should render a menu item for each journey', () => {
   const prompt = faker.lorem.sentence();
   const journeys: Journey[] = [
     {
@@ -41,5 +41,5 @@ test('should render a list item for each journey', () => {
   ];
   vi.spyOn(useHydratedStore, 'useHydratedStore').mockImplementationOnce(() => journeys);
   render(<HistoryList />, { wrapper: AppWrapper });
-  expect(screen.getAllByRole('listitem', { name: 'History item' }).length).toBe(2);
+  expect(screen.getAllByRole('menuitem', { name: 'History item' }).length).toBe(2);
 });

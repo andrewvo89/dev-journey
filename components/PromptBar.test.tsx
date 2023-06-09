@@ -142,9 +142,7 @@ test('clear button removes text from prompt bar and resets selected to null', as
   expect(options).toHaveLength(3);
   await user.click(options[2]);
 
-  const button = screen.getByLabelText('Clear');
-  expect(button).toBeInTheDocument();
-  expect(button.getAttribute('role')).toBe('button');
+  const button = screen.getByLabelText('Clear', { selector: 'button[role="button"]' });
   expect(input.getAttribute('value')).toBe(prompts[2]);
 
   await user.click(button);
@@ -172,11 +170,9 @@ test('loading spinner shows during api call', async () => {
   });
 
   user.click(screen.getAllByRole('option')[2]);
-  const spinner = await waitFor(() => {
-    return screen.getByLabelText('Loading result');
+  await screen.findByLabelText('Loading result', {
+    selector: 'svg[role="alert"][aria-live="assertive"]',
   });
-  expect(spinner.getAttribute('role')).toBe('alert');
-  expect(spinner.getAttribute('aria-live')).toBe('assertive');
 });
 
 test('Destinations are transformed with enabled status', () => {

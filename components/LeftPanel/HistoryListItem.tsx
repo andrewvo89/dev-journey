@@ -102,9 +102,6 @@ export default function HistoryListItem(props: Props) {
   };
 
   const expandHandler = (newIsOpened: boolean) => {
-    if (!isSelected && isOpen) {
-      return;
-    }
     setIsOpen(newIsOpened);
   };
 
@@ -112,25 +109,28 @@ export default function HistoryListItem(props: Props) {
     <Tooltip label={journey.prompt.label} openDelay={500}>
       <NavLink
         component='li'
-        role='listitem'
+        role='menuitem'
         aria-label='History item'
+        aria-expanded={isOpen}
         classNames={{ children: classes.listItemChildren, root: classes.listItemRoot }}
         active={isSelected}
         onClick={linkClickHandler}
         label={
           <Group position='apart' noWrap>
-            <Text truncate>{journey.prompt.label}</Text>
+            <Text role='term' truncate>
+              {journey.prompt.label}
+            </Text>
             {isSelected && !deleteMode && (
-              <ActionIcon color='blue' onClick={removeClickHandler} size={20}>
+              <ActionIcon aria-label='Delete history item' color='blue' onClick={removeClickHandler} size={20}>
                 <IconTrashX />
               </ActionIcon>
             )}
-            {deleteMode && (
+            {isSelected && deleteMode && (
               <Group spacing={4} noWrap>
-                <ActionIcon color='blue' onClick={removeConfirmHandler} size={20}>
+                <ActionIcon aria-label='Confirm delete' color='blue' onClick={removeConfirmHandler} size={20}>
                   <IconCheck />
                 </ActionIcon>
-                <ActionIcon color='blue' onClick={removeCancelHandler} size={20}>
+                <ActionIcon aria-label='Cancel delete' color='blue' onClick={removeCancelHandler} size={20}>
                   <IconX />
                 </ActionIcon>
               </Group>
@@ -142,7 +142,7 @@ export default function HistoryListItem(props: Props) {
         onChange={expandHandler}
       >
         {journey.destinations.length > 1 && (
-          <Stack className={classes.switchContainer}>
+          <Stack className={classes.switchContainer} role='region' aria-label='Destinations'>
             {journey.destinations.map((path) => {
               const found = jnodes.get(path.id);
               if (!found) {
@@ -150,6 +150,9 @@ export default function HistoryListItem(props: Props) {
               }
               return (
                 <Switch
+                  role='switch'
+                  aria-label={found.name}
+                  aria-checked={path.enabled}
                   key={path.id}
                   label={found.name}
                   value={path.id}

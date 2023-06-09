@@ -45,7 +45,7 @@ export function Graph() {
         nodes={nodes}
         edges={edges}
         onInit={({ fitBounds, fitView }) => {
-          const root = nodes.find((node) => node.id === 'root');
+          const root = nodes.find((node) => node.type === 'root');
           if (!root?.width || !root?.height) {
             fitView({ duration: 1000 });
             return;
