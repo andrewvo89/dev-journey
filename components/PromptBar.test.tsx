@@ -1,6 +1,6 @@
 import { ClientPrompt, PromptResponse } from 'types/common';
 import PromptBar, { transformDesintations } from 'components/PromptBar';
-import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { expect, test, vi } from 'vitest';
 
 import AppWrapper from 'components/AppWrapper';
