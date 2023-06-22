@@ -1,8 +1,8 @@
 {
   "frontend_development": {
     "id": "frontend_development",
+    "title": "Frontend Development",
     "description": "",
-    "name": "Frontend Development",
     "type": "field",
     "dependencies": [
       "root"
@@ -17,8 +17,8 @@
   },
   "backend_development": {
     "id": "backend_development",
+    "title": "Backend Development",
     "description": "",
-    "name": "Backend Development",
     "type": "field",
     "dependencies": [
       "root"
@@ -33,8 +33,8 @@
   },
   "mobile_development": {
     "id": "mobile_development",
+    "title": "Mobile Development",
     "description": "",
-    "name": "Mobile Development",
     "type": "field",
     "dependencies": [
       "root"
@@ -49,8 +49,8 @@
   },
   "api_development": {
     "id": "api_development",
+    "title": "API Development",
     "description": "",
-    "name": "API Development",
     "type": "field",
     "dependencies": [
       "root"
@@ -65,8 +65,8 @@
   },
   "database_development": {
     "id": "database_development",
+    "title": "Database Development",
     "description": "",
-    "name": "Database Development",
     "type": "field",
     "dependencies": [
       "root"
@@ -81,8 +81,8 @@
   },
   "desktop_development": {
     "id": "desktop_development",
+    "title": "Desktop Development",
     "description": "",
-    "name": "Desktop Development",
     "type": "field",
     "dependencies": [
       "root"
@@ -97,8 +97,8 @@
   },
   "devops": {
     "id": "devops",
+    "title": "DevOps",
     "description": "",
-    "name": "DevOps",
     "type": "field",
     "dependencies": [
       "root"
@@ -113,8 +113,8 @@
   },
   "cloud_infrastructure": {
     "id": "cloud_infrastructure",
+    "title": "Cloud Infrastructure",
     "description": "",
-    "name": "Cloud Infrastructure",
     "type": "field",
     "dependencies": [
       "root"

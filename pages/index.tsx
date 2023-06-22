@@ -8,17 +8,17 @@ import Home from 'components/Home';
 import { JNode } from 'types/jnode';
 import { JNodeTypeData } from 'types/flow';
 import { clientPrompts } from 'data/prompts';
-import databasesJSON from 'data/databases.json';
-import fieldsJSON from 'data/fields.json';
-import frameworksJSON from 'data/frameworks.json';
-import languagesJSON from 'data/languages.json';
-import librariesJSON from 'data/libraries.json';
-import paradigmsJSON from 'data/paradigms.json';
+import databasesJSON from 'data/jnodes/databases.json';
+import fieldsJSON from 'data/jnodes/fields.json';
+import frameworksJSON from 'data/jnodes/frameworks.json';
+import languagesJSON from 'data/jnodes/languages.json';
+import librariesJSON from 'data/jnodes/libraries.json';
+import paradigmsJSON from 'data/jnodes/paradigms.json';
 import placeholdersJSON from 'data/placeholders.json';
-import platformsJSON from 'data/platforms.json';
-import rootJSON from 'data/root.json';
-import runtimeJSON from 'data/runtime.json';
-import toolsJSON from 'data/tools.json';
+import platformsJSON from 'data/jnodes/platforms.json';
+import rootJSON from 'data/jnodes/root.json';
+import runtimeJSON from 'data/jnodes/runtime.json';
+import toolsJSON from 'data/jnodes/tools.json';
 
 export type Props = {
   placeholder: string;
@@ -48,7 +48,7 @@ const initialJNodes = Object.values(jnodeJSONs)
     dependencies: jnode.dependencies,
     description: jnode.description,
     id: jnode.id,
-    name: jnode.name,
+    title: jnode.title,
     resources: jnode.resources,
     type: jnode.type,
   }));

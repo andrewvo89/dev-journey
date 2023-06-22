@@ -1,8 +1,8 @@
 {
   "curl": {
     "id": "curl",
+    "title": "cURL",
     "description": "",
-    "name": "cURL",
     "type": "tool",
     "dependencies": [
       "graphql",
@@ -18,8 +18,8 @@
   },
   "postman": {
     "id": "postman",
+    "title": "Postman",
     "description": "",
-    "name": "Postman",
     "type": "tool",
     "dependencies": [
       "graphql",
@@ -35,8 +35,8 @@
   },
   "less": {
     "id": "less",
+    "title": "Less",
     "description": "",
-    "name": "Less",
     "type": "tool",
     "dependencies": [
       "css"
@@ -51,8 +51,8 @@
   },
   "sass": {
     "id": "sass",
+    "title": "Sass",
     "description": "",
-    "name": "Sass",
     "type": "tool",
     "dependencies": [
       "css"
@@ -67,8 +67,8 @@
   },
   "vite": {
     "id": "vite",
+    "title": "Vite",
     "description": "",
-    "name": "Vite",
     "type": "tool",
     "dependencies": [
       "javascript"
@@ -83,8 +83,8 @@
   },
   "docker": {
     "id": "docker",
+    "title": "Docker",
     "description": "",
-    "name": "Docker",
     "type": "tool",
     "dependencies": [
       "devops"
@@ -99,8 +99,8 @@
   },
   "kubernetes": {
     "id": "kubernetes",
+    "title": "Kubernetes",
     "description": "",
-    "name": "Kubernetes",
     "type": "tool",
     "dependencies": [
       "devops"
@@ -115,8 +115,8 @@
   },
   "terraform": {
     "id": "terraform",
+    "title": "Terraform",
     "description": "",
-    "name": "Terraform",
     "type": "tool",
     "dependencies": [
       "devops"
@@ -131,8 +131,8 @@
   },
   "npm": {
     "id": "npm",
+    "title": "NPM",
     "description": "",
-    "name": "NPM",
     "type": "tool",
     "dependencies": [
       "nodejs"
@@ -147,8 +147,8 @@
   },
   "yarn": {
     "id": "yarn",
+    "title": "Yarn",
     "description": "",
-    "name": "Yarn",
     "type": "tool",
     "dependencies": [
       "nodejs"

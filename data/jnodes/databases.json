@@ -1,0 +1,1549 @@
+{
+  "mysql": {
+    "id": "mysql",
+    "title": "MySQL",
+    "description": "",
+    "type": "database",
+    "dependencies": [
+      "sql"
+    ],
+    "resources": {
+      "articles": [
+        {
+          "url": "https://medium.com/@dataanalyticsmentorr/20-easy-sql-commands-for-database-management-bd6df5cce0d2",
+          "title": "20 Easy SQL Commands for Database Management",
+          "authors": [
+            "Pankaj Shah | Data Analytics Mentor"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://luqmanshaban.medium.com/how-connect-to-mysql-database-with-sequelize-in-node-js-1ec1f05c0e6",
+          "title": "How connect to MySQL database with Sequelize in Node.js",
+          "authors": [
+            "Luqman Shaban"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@rileypredum/learn-the-most-popular-sql-database-flavor-to-grow-your-skills-888b45d714c0",
+          "title": "Learn The Most Popular SQL Database Flavor to Grow Your Skills",
+          "authors": [
+            "Riley Predum"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://towardsdatascience.com/how-to-work-with-json-data-in-mysql-11672e4da7e9",
+          "title": "How to work with JSON data in MySQL",
+          "authors": [
+            "Lynn Kwong"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@hnasr/postgres-vs-mysql-5fa3c588a94e",
+          "title": "Postgres vs MySQL",
+          "authors": [
+            "Hussein Nasser"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@avisaud1995/13-sql-statements-for-90-of-your-data-analysis-tasks-72e1a2b23af6",
+          "title": "13 SQL Statements for 90% of Your Data Analysis Tasks.",
+          "authors": [
+            "Abhishek Saud"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://towardsdatascience.com/connect-to-mysql-running-in-docker-container-from-a-local-machine-6d996c574e55",
+          "title": "Connect to MySQL running in Docker container from a local machine",
+          "authors": [
+            "Md Kamaruzzaman"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://gajus.medium.com/how-a-few-lines-of-code-reduced-database-load-by-a-few-million-queries-964d43ec668a",
+          "title": "How a few lines of code reduced database load by a few million queries",
+          "authors": [
+            "Gajus Kuizinas"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@amitkr209/design-build-a-sql-database-project-42cdac6b142",
+          "title": "Design & Build A SQL Database Project",
+          "authors": [
+            "Amit Kumar"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://sianloong90.medium.com/how-to-optimise-your-sql-database-to-handle-millions-of-records-part-2-604def543684",
+          "title": "How to optimise your SQL Database to handle millions of records – part 2",
+          "authors": [
+            "SianLoong"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://rajansahu713.medium.com/top-25-sql-questions-for-interview-9a28202dcd14",
+          "title": "Top 25 SQL Questions for Interview",
+          "authors": [
+            "Rajan Sahu"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://towardsdatascience.com/when-spreadsheets-arent-good-enough-a-lesson-in-relational-databases-2e5b0b847f5a",
+          "title": "When Spreadsheets Aren’t Good Enough: A Lesson in Relational Databases",
+          "authors": [
+            "Stephanie Lo"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://towardsdatascience.com/mysql-vs-oracle-sql-a97a7659f992",
+          "title": "MySQL vs Oracle SQL",
+          "authors": [
+            "Mike Wolfe"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://betterprogramming.pub/15-best-practices-for-sql-optimization-956759626321",
+          "title": "15 Best Practices for SQL Optimization",
+          "authors": [
+            "Dwen"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/learning-sql/how-to-find-and-remove-duplicates-with-sql-4ff6078c5e4f",
+          "title": "How to Find and Remove Duplicates with SQL",
+          "authors": [
+            "Data 4 Everyone!"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://betterprogramming.pub/how-to-deal-with-null-values-in-sql-the-right-way-69861f2debbf",
+          "title": "How to Deal With NULL Values in SQL the Right Way",
+          "authors": [
+            "Nabilah Abu Bakar"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://seanzhang-data.medium.com/sql-performance-tuning-d57c7740e6c7",
+          "title": "SQL Performance Tuning",
+          "authors": [
+            "Sean Zhang"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://naderfares.medium.com/top-20-sql-query-optimization-techniques-for-improved-performance-a3aa6a972079",
+          "title": "Top 20 SQL Query Optimization Techniques for Improved Performance",
+          "authors": [
+            "Nader Fares"
+          ],
+          "type": "article"
+        }
+      ],
+      "books": [
+        {
+          "url": "https://www.murach.com/shop/murach-s-mysql-3rd-edition-detail",
+          "title": "",
+          "authors": [],
+          "pages": 0,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/high-performance-mysql/9781449332471/",
+          "title": "High Performance MySQL, 3rd Edition",
+          "authors": [
+            "Baron Schwartz",
+            "Peter Zaitsev",
+            "Vadim Tkachenko"
+          ],
+          "pages": 827,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/mysql-crash-course/0672327120/",
+          "title": "MySQL® Crash Course",
+          "authors": [],
+          "pages": 320,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/learning-mysql-2nd/9781492085911/",
+          "title": "Learning MySQL, 2nd Edition",
+          "authors": [
+            "Vinicius M. Grippa",
+            "Sergey Kuzmichev"
+          ],
+          "pages": 632,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/mysql-concurrency-locking/9781484266526/",
+          "title": "MySQL Concurrency: Locking and Transactions for MySQL Developers and DBAs",
+          "authors": [
+            "Jesper Wisborg Krogh"
+          ],
+          "pages": 399,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/mysql-cookbook-4th/9781492093152/",
+          "title": "MySQL Cookbook, 4th Edition",
+          "authors": [
+            "Sveta Smirnova",
+            "Alkin Tezuysal"
+          ],
+          "pages": 850,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/mysql-and-json/9781260135459/",
+          "title": "MySQL and JSON: A Practical Programming Guide",
+          "authors": [
+            "David Stokes"
+          ],
+          "pages": 129,
+          "type": "book"
+        }
+      ],
+      "courses": [
+        {
+          "url": "https://www.coursera.org/learn/sql-practical-introduction-for-querying-databases",
+          "title": "SQL: A Practical Introduction for Querying Databases",
+          "platform": "Coursera",
+          "authors": [
+            "Rav Ahuja"
+          ],
+          "duration": 315,
+          "type": "course"
+        },
+        {
+          "url": "https://www.datacamp.com/courses/introduction-to-sql",
+          "title": "",
+          "platform": "",
+          "authors": [],
+          "duration": 0,
+          "type": "course"
+        },
+        {
+          "url": "https://www.datacamp.com/courses/joining-data-in-sql",
+          "title": "",
+          "platform": "",
+          "authors": [],
+          "duration": 0,
+          "type": "course"
+        },
+        {
+          "url": "https://www.datacamp.com/courses/intermediate-sql",
+          "title": "",
+          "platform": "",
+          "authors": [],
+          "duration": 0,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/the-ultimate-mysql-bootcamp-go-from-sql-beginner-to-expert/",
+          "title": "Build MySQL Databases Bootcamp (Beginner to Expert Course)",
+          "platform": "Udemy",
+          "authors": [
+            "Colt Steele"
+          ],
+          "duration": 2255,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/sql-mysql-for-data-analytics-and-business-intelligence/",
+          "title": "BI Analysis: MySQL for Data Analytics and Business Intelligence",
+          "platform": "Udemy",
+          "authors": [
+            "365 Careers"
+          ],
+          "duration": 716,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/sql-the-complete-developers-guide-mysql-postgresql/",
+          "title": "SQL - The Complete Developer's Guide (MySQL, PostgreSQL)",
+          "platform": "Udemy",
+          "authors": [
+            "Academind by Maximilian Schwarzmüller",
+            "Maximilian Schwarzmüller",
+            "Manuel Lorenz"
+          ],
+          "duration": 1183,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/complete-sql-bootcamp-with-mysql-php-python/",
+          "title": "SQL Bootcamp with MySQL, PHP & Python : 5 Courses in 1",
+          "platform": "Udemy",
+          "authors": [
+            "Creative Online School"
+          ],
+          "duration": 179,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/the-ultimate-mysql-crash-course-2021/",
+          "title": "The Ultimate MySQL Crash Course 2023",
+          "platform": "Udemy",
+          "authors": [
+            "Web Coding"
+          ],
+          "duration": 143,
+          "type": "course"
+        },
+        {
+          "url": "https://www.coursera.org/learn/database-structures-and-management-with-mysql",
+          "title": "Database Structures and Management with MySQL",
+          "platform": "Coursera",
+          "authors": [
+            "Taught by Meta Staff"
+          ],
+          "duration": 1237,
+          "type": "course"
+        },
+        {
+          "url": "https://www.coursera.org/learn/sql-for-data-science",
+          "title": "SQL for Data Science",
+          "platform": "Coursera",
+          "authors": [
+            "Sadie St. Lawrence"
+          ],
+          "duration": 691,
+          "type": "course"
+        },
+        {
+          "url": "https://www.coursera.org/learn/advanced-mysql-topics",
+          "title": "Advanced MySQL Topics",
+          "platform": "Coursera",
+          "authors": [
+            "Taught by Meta Staff"
+          ],
+          "duration": 715,
+          "type": "course"
+        },
+        {
+          "url": "https://www.pluralsight.com/courses/mysql-fundamentals-part1",
+          "title": "MySQL Fundamentals",
+          "platform": "Pluralsight",
+          "authors": [
+            "Pinal Dave"
+          ],
+          "duration": 158,
+          "type": "course"
+        }
+      ],
+      "documentation": [
+        {
+          "url": "https://dev.mysql.com/doc/",
+          "title": "",
+          "authors": [],
+          "type": "documentation"
+        },
+        {
+          "url": "https://docs.oracle.com/cd/E17952_01/index.html",
+          "title": "",
+          "authors": [],
+          "type": "documentation"
+        },
+        {
+          "url": "https://docs.digitalocean.com/products/databases/mysql/",
+          "title": "",
+          "authors": [],
+          "type": "documentation"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://youtu.be/Cz3WcZLRaWc",
+          "title": "MySQL - The Basics // Learn SQL in 23 Easy Steps",
+          "authors": [
+            "Fireship"
+          ],
+          "duration": 18,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/7S_tz1z_5bA",
+          "title": "MySQL Tutorial for Beginners [Full Course]",
+          "authors": [
+            "Programming with Mosh"
+          ],
+          "duration": 191,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/p3qvj9hO_Bo",
+          "title": "Learn SQL In 60 Minutes",
+          "authors": [
+            "Web Dev Simplified"
+          ],
+          "duration": 57,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/u96rVINbAUI",
+          "title": "How To Install MySQL (Server and Workbench)",
+          "authors": [
+            "Web Dev Simplified"
+          ],
+          "duration": 6,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/5OdVJbNCSso",
+          "title": "MySQL Full Course for free 🐬 (2023)",
+          "authors": [
+            "Bro Code"
+          ],
+          "duration": 180,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/HXV3zeQKqGY",
+          "title": "SQL Tutorial - Full Database Course for Beginners",
+          "authors": [
+            "freeCodeCamp.org"
+          ],
+          "duration": 261,
+          "type": "video"
+        }
+      ]
+    }
+  },
+  "postgress": {
+    "id": "postgress",
+    "title": "PostgreSQL",
+    "description": "",
+    "type": "database",
+    "dependencies": [
+      "sql"
+    ],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    }
+  },
+  "mongodb": {
+    "id": "mongodb",
+    "title": "MongoDB",
+    "description": "",
+    "type": "database",
+    "dependencies": [
+      "nosql"
+    ],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    }
+  },
+  "redis": {
+    "id": "redis",
+    "title": "Redis",
+    "description": "",
+    "type": "database",
+    "dependencies": [
+      "nosql"
+    ],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    }
+  },
+  "sqlite": {
+    "id": "sqlite",
+    "title": "SQLite",
+    "description": "",
+    "type": "database",
+    "dependencies": [
+      "sql"
+    ],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    }
+  },
+  "microsoft_sql_server": {
+    "id": "microsoft_sql_server",
+    "title": "Microsoft SQL Sever",
+    "description": "",
+    "type": "database",
+    "dependencies": [
+      "sql"
+    ],
+    "resources": {
+      "articles": [
+        {
+          "authors": [
+            "Kelechi Ogbogu"
+          ],
+          "title": "Data Cleaning and Preparation With SQL",
+          "type": "article",
+          "url": "https://medium.com/@kelechiogbogu/data-cleaning-and-preparation-with-sql-f5f7e539808"
+        }
+      ],
+      "books": [],
+      "courses": [
+        {
+          "url": "https://www.udemy.com/course/microsoft-sql-server-for-beginners/",
+          "title": "Microsoft SQL Server For Beginners",
+          "platform": "Udemy",
+          "authors": [
+            "Valiveti Sekhar"
+          ],
+          "duration": 211,
+          "type": "course"
+        }
+      ],
+      "documentation": [],
+      "videos": []
+    }
+  },
+  "firestore": {
+    "id": "firestore",
+    "title": "Firestore",
+    "description": "",
+    "type": "database",
+    "dependencies": [
+      "firebase",
+      "nosql"
+    ],
+    "resources": {
+      "articles": [
+        {
+          "url": "https://www.codemag.com/Article/1905071/Introduction-to-Cloud-Firestore",
+          "title": "",
+          "authors": [],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@supun.muthutantrige/a-practical-guideline-to-firestore-50281732bcbc",
+          "title": "A practical guideline to Firestore",
+          "authors": [
+            "Supun Muthutantrige"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://khreniak.medium.com/cloud-firestore-security-rules-basics-fac6b6bea18e",
+          "title": "Basic examples of using Cloud Firestore Security Rules",
+          "authors": [
+            "Kacper Hreniak"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/firebase-tips-tricks/how-to-update-an-array-of-objects-in-firestore-cdb611a56073",
+          "title": "How to update an array of objects in Firestore?",
+          "authors": [
+            "Alex Mamo"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/swlh/using-firestore-with-typescript-65bd2a602945",
+          "title": "Using Firestore With Typescript",
+          "authors": [
+            "Jamie Curnow"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/firebase-tips-tricks/how-to-secure-many-to-many-relationships-in-firestore-d19f972fd4d3",
+          "title": "How to model a many-to-many relationship in Firestore",
+          "authors": [
+            "Louis Coulet"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://saveyourtime.medium.com/firebase-cloud-firestore-add-set-update-delete-get-data-6da566513b1b",
+          "title": "[Firebase] Cloud Firestore — Add, Set, Update, Delete Get data",
+          "authors": [
+            "Aaron Lu"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/firebase-tips-tricks/how-to-count-documents-in-firestore-a0527f792d04",
+          "title": "How to count documents in Firestore",
+          "authors": [
+            "Louis Coulet"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@xathis/import-json-into-firebase-firestore-without-code-9084e919f54a",
+          "title": "Import JSON into Firebase Firestore without Code",
+          "authors": [
+            "Mathis"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://khreniak.medium.com/cloud-firestore-security-rules-basics-fac6b6bea18e",
+          "title": "Basic examples of using Cloud Firestore Security Rules",
+          "authors": [
+            "Kacper Hreniak"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://www.freecodecamp.org/news/firebase-firestore-crash-course/",
+          "title": "",
+          "authors": [],
+          "type": "article"
+        }
+      ],
+      "books": [
+        {
+          "url": "https://www.oreilly.com/library/view/firebase-cookbook/9781788296335/",
+          "title": "Firebase Cookbook",
+          "authors": [
+            "Houssem Yahiaoui"
+          ],
+          "pages": 288,
+          "type": "book"
+        },
+        {
+          "url": "https://www.scribd.com/book/384703902/Firebase-The-Ultimate-Step-By-Step-Guide",
+          "title": "",
+          "authors": [],
+          "pages": 0,
+          "type": "book"
+        },
+        {
+          "url": "https://www.roadtofirebase.com/",
+          "title": "",
+          "authors": [],
+          "pages": 0,
+          "type": "book"
+        }
+      ],
+      "courses": [
+        {
+          "url": "https://fireship.io/courses/firestore-data-modeling/",
+          "title": "",
+          "platform": "",
+          "authors": [],
+          "duration": 0,
+          "type": "course"
+        },
+        {
+          "url": "https://www.educative.io/courses/complete-guide-firebase-web",
+          "title": "",
+          "platform": "",
+          "authors": [],
+          "duration": 0,
+          "type": "course"
+        },
+        {
+          "url": "https://www.educative.io/courses/fullstack-web-apps-with-firebase",
+          "title": "",
+          "platform": "",
+          "authors": [],
+          "duration": 0,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/javascript-firebase-build-full-stack-web-apps-faster/",
+          "title": "Firebase 9 & JavaScript: Build Full-Stack Web Apps Faster",
+          "platform": "Udemy",
+          "authors": [
+            "Raja Tamil"
+          ],
+          "duration": 283,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/firebase-course/",
+          "title": "Firebase In Depth",
+          "platform": "Udemy",
+          "authors": [
+            "Angular University"
+          ],
+          "duration": 601,
+          "type": "course"
+        },
+        {
+          "url": "https://www.pluralsight.com/courses/firebase-fundamentals",
+          "title": "Firebase Fundamentals",
+          "platform": "Pluralsight",
+          "authors": [
+            "Joe Eames"
+          ],
+          "duration": 224,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/devslopes-firestore-ios/",
+          "title": "Firebase Firestore for iOS",
+          "platform": "Udemy",
+          "authors": [
+            "Devslopes by Mark Wahlbeck"
+          ],
+          "duration": 356,
+          "type": "course"
+        }
+      ],
+      "documentation": [
+        {
+          "url": "https://firebase.google.com/docs/firestore",
+          "title": "",
+          "authors": [],
+          "type": "documentation"
+        },
+        {
+          "url": "https://cloud.google.com/firestore/docs",
+          "title": "",
+          "authors": [],
+          "type": "documentation"
+        },
+        {
+          "url": "https://googleapis.dev/nodejs/firestore/latest/Firestore.html",
+          "title": "",
+          "authors": [],
+          "type": "documentation"
+        },
+        {
+          "url": "https://firebase.flutter.dev/docs/firestore/usage/",
+          "title": "",
+          "authors": [],
+          "type": "documentation"
+        },
+        {
+          "url": "https://rnfirebase.io/firestore/usage",
+          "title": "",
+          "authors": [],
+          "type": "documentation"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9itfjle0ji1xOZ2cjRGY_WB",
+          "title": "Firebase Firestore Tutorial",
+          "authors": [
+            "The Net Ninja"
+          ],
+          "duration": 65,
+          "type": "video"
+        },
+        {
+          "url": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jERUGvbudErNCeSZHWUVlb",
+          "title": "Firebase 9 Tutorial",
+          "authors": [
+            "The Net Ninja"
+          ],
+          "duration": 88,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/BjtxPj6jRM8",
+          "title": "Getting started with Cloud Firestore for the web",
+          "authors": [
+            "Firebase"
+          ],
+          "duration": 14,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/v_hR4K4auoQ",
+          "title": "What is a NoSQL Database? How is Cloud Firestore structured? | Get to know Cloud Firestore #1",
+          "authors": [
+            "Firebase"
+          ],
+          "duration": 16,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/35RlydUf6xo",
+          "title": "Firestore Data Modeling - Five Cool Techniques",
+          "authors": [
+            "Fireship"
+          ],
+          "duration": 12,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/IemOAESlWKw",
+          "title": "Firestore in a minute",
+          "authors": [
+            "Google Cloud Tech"
+          ],
+          "duration": 2,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/fgdpvwEWJ9M",
+          "title": "Firebase – Full Course for Beginners",
+          "authors": [
+            "freeCodeCamp.org"
+          ],
+          "duration": 225,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/b7PUm7LmAOw",
+          "title": "Firestore Security Rules - How to Hack a Firebase App",
+          "authors": [
+            "Fireship"
+          ],
+          "duration": 11,
+          "type": "video"
+        }
+      ]
+    }
+  },
+  "elasticsearch": {
+    "id": "elasticsearch",
+    "title": "Elasticsearch",
+    "description": "",
+    "type": "database",
+    "dependencies": [
+      "nosql"
+    ],
+    "resources": {
+      "articles": [
+        {
+          "url": "https://sukhadanand.medium.com/how-discord-indexes-billions-of-messages-f242e605e47c",
+          "title": "How Discord Indexes Billions Of Messages?",
+          "authors": [
+            "Sukhad Anand"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/geekculture/elasticsearch-architecture-1f40b93da719",
+          "title": "Elasticsearch Architecture",
+          "authors": [
+            "JIN"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://levelup.gitconnected.com/how-to-run-elasticsearch-8-on-docker-for-local-development-401fd3fff829",
+          "title": "How to Run Elasticsearch 8 on Docker for Local Development",
+          "authors": [
+            "Lynn Kwong"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/elucidata/how-to-build-a-scalable-backend-to-query-and-search-billions-of-records-16a532433fda",
+          "title": "How to build a scalable backend to query and search billions of records?",
+          "authors": [
+            "Saiful Khan"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/qonto-way/do-you-need-elasticsearch-when-you-have-postgresql-94ef69f5570f",
+          "title": "Do you need ElasticSearch when you have PostgreSQL?",
+          "authors": [
+            "mdebelle"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://towardsdatascience.com/getting-started-with-elasticsearch-in-python-c3598e718380",
+          "title": "Getting started with Elasticsearch in Python",
+          "authors": [
+            "Adnan Siddiqi"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://towardsdatascience.com/deep-dive-into-querying-elasticsearch-filter-vs-query-full-text-search-b861b06bd4c0",
+          "title": "Deep Dive into Querying Elasticsearch. Filter vs Query. Full text search",
+          "authors": [
+            "Artem"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://towardsdatascience.com/how-to-synchronize-elasticsearch-with-mysql-ed32fc57b339",
+          "title": "How to synchronize Elasticsearch with MySQL",
+          "authors": [
+            "Redouane Achouri"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@bhongaleprathamesh/elasticsearch-vs-opensearch-feature-comparison-and-considerations-cd9c990e1482",
+          "title": "Elasticsearch vs OpenSearch — Feature Comparison and Considerations !!",
+          "authors": [
+            "Prathamesh Sandesh Bhongale"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://www.elastic.co/blog/setting-up-elasticsearch-for-a-blog",
+          "title": "",
+          "authors": [],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/velotio-perspectives/elasticsearch-101-fundamentals-core-components-a1fdc6090a5e",
+          "title": "Elasticsearch 101: Fundamentals & Core Components",
+          "authors": [
+            "Velotio Technologies"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/expedia-group-tech/getting-started-with-elastic-search-6af62d7df8dd",
+          "title": "Getting Started with Elastic Search",
+          "authors": [
+            "Arjun Rajpal"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://www.knowi.com/blog/what-is-elastic-search/",
+          "title": "",
+          "authors": [],
+          "type": "article"
+        },
+        {
+          "url": "https://logz.io/blog/elasticsearch-tutorial/",
+          "title": "",
+          "authors": [],
+          "type": "article"
+        },
+        {
+          "url": "https://levelup.gitconnected.com/elastic-search-101-de7ef8aa2469",
+          "title": "Elastic Search 101: Getting Started with Elasticsearch",
+          "authors": [
+            "Cyber Drudge"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://towardsdatascience.com/an-overview-on-elasticsearch-and-its-usage-e26df1d1d24a",
+          "title": "An Overview on Elasticsearch and its usage",
+          "authors": [
+            "Giovanni Pagano Dritto"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://sematext.com/guides/elasticsearch/",
+          "title": "",
+          "authors": [],
+          "type": "article"
+        },
+        {
+          "url": "https://www.elastic.co/blog/a-practical-introduction-to-elasticsearch",
+          "title": "",
+          "authors": [],
+          "type": "article"
+        },
+        {
+          "url": "https://www.elastic.co/blog/setting-up-elasticsearch-for-a-blog",
+          "title": "",
+          "authors": [],
+          "type": "article"
+        },
+        {
+          "url": "https://www.elastic.co/blog/what-is-an-elasticsearch-index",
+          "title": "",
+          "authors": [],
+          "type": "article"
+        }
+      ],
+      "books": [
+        {
+          "url": "https://www.oreilly.com/library/view/elasticsearch-the-definitive/9781449358532/",
+          "title": "Elasticsearch: The Definitive Guide",
+          "authors": [
+            "Clinton Gormley",
+            "Zachary Tong"
+          ],
+          "pages": 690,
+          "type": "book"
+        },
+        {
+          "url": "https://www.packtpub.com/product/kibana-7-quick-start-guide/9781789804034",
+          "title": "Kibana 7 Quick Start Guide",
+          "authors": [
+            "Anurag Srivastava"
+          ],
+          "pages": 172,
+          "type": "book"
+        },
+        {
+          "url": "https://www.packtpub.com/product/advanced-elasticsearch-70/9781789957754",
+          "title": "Advanced Elasticsearch 7.0",
+          "authors": [
+            "Wai Tak Wong"
+          ],
+          "pages": 560,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/elasticsearch-indexing/9781783987023/",
+          "title": "Elasticsearch Indexing",
+          "authors": [
+            "Hüseyin Akdoğan"
+          ],
+          "pages": 176,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/elasticsearch-blueprints/9781783984923/",
+          "title": "Elasticsearch Blueprints",
+          "authors": [
+            "Vineeth Mohan"
+          ],
+          "pages": 192,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/elasticsearch-essentials/9781784391010/",
+          "title": "Elasticsearch Essentials",
+          "authors": [
+            "Bharvi Dixit"
+          ],
+          "pages": 240,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/mastering-elasticsearch-5x/9781786460189/",
+          "title": "Mastering Elasticsearch 5.x - Third Edition",
+          "authors": [
+            "Bharvi Dixit"
+          ],
+          "pages": 508,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/learning-elasticsearch/9781787128453/",
+          "title": "Learning Elasticsearch",
+          "authors": [
+            "Abhishek Andhavarapu"
+          ],
+          "pages": 404,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/elasticsearch-5x-cookbook/9781786465580/",
+          "title": "Elasticsearch 5.x Cookbook - Third Edition",
+          "authors": [
+            "Alberto Paro"
+          ],
+          "pages": 590,
+          "type": "book"
+        }
+      ],
+      "courses": [
+        {
+          "url": "https://www.udemy.com/course/elasticsearch-complete-guide/",
+          "title": "Elasticsearch Answers: The Complete Guide to Elasticsearch",
+          "platform": "Udemy",
+          "authors": [
+            "Bo Andersen"
+          ],
+          "duration": 752,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/elasticsearch-7-and-elastic-stack/",
+          "title": "Elasticsearch 7 and the Elastic Stack Training",
+          "platform": "Udemy",
+          "authors": [
+            "Sundog Education by Frank Kane",
+            "Frank Kane",
+            "Coralogix Ltd.",
+            "Sundog Education Team"
+          ],
+          "duration": 911,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/elasticsearch-logstash-kibana-learn-elasticsearch-search-server/",
+          "title": "ElasticSearch, LogStash, Kibana ELK #1 - Learn ElasticSearch",
+          "platform": "Udemy",
+          "authors": [
+            "TetraNoodle Team",
+            "Manuj Aggarwal"
+          ],
+          "duration": 205,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/elasticsearch-masterclass/",
+          "title": "Elasticsearch Masterclass [Incl., Elasticsearch 7 update]",
+          "platform": "Udemy",
+          "authors": [
+            "Vinoth Parthasarathy"
+          ],
+          "duration": 368,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/elasticsearch-in-action/",
+          "title": "Elasticsearch in Action",
+          "platform": "Udemy",
+          "authors": [
+            "Sezin Karli"
+          ],
+          "duration": 180,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/elasticsearch-and-kibana-tutorial-for-beginners/",
+          "title": "The Complete Elasticsearch and Kibana Tutorial for beginners",
+          "platform": "Udemy",
+          "authors": [
+            "Tutorial Drive"
+          ],
+          "duration": 180,
+          "type": "course"
+        },
+        {
+          "url": "https://www.pluralsight.com/courses/elastic-stack-getting-started",
+          "title": "Elastic Stack: Getting Started",
+          "platform": "Pluralsight",
+          "authors": [
+            "Aaron Rosenmund"
+          ],
+          "duration": 101,
+          "type": "course"
+        },
+        {
+          "url": "https://www.linkedin.com/learning/elasticsearch-essential-training-18773441",
+          "title": "Elasticsearch Essential Training Online Class | LinkedIn Learning, formerly Lynda.com",
+          "platform": "LinkedIn Learning",
+          "authors": [
+            "Ben Sullins"
+          ],
+          "duration": 100,
+          "type": "course"
+        },
+        {
+          "url": "https://www.linkedin.com/learning/learning-the-elastic-stack-2",
+          "title": "Learning the Elastic Stack Online Class | LinkedIn Learning, formerly Lynda.com",
+          "platform": "LinkedIn Learning",
+          "authors": [
+            "Josh Samuelson"
+          ],
+          "duration": 110,
+          "type": "course"
+        },
+        {
+          "url": "https://www.pluralsight.com/courses/administering-elasticsearch-cluster",
+          "title": "Administering an Elasticsearch Cluster",
+          "platform": "Pluralsight",
+          "authors": [],
+          "duration": 128,
+          "type": "course"
+        }
+      ],
+      "documentation": [
+        {
+          "url": "https://www.elastic.co/guide/index.html",
+          "title": "",
+          "authors": [],
+          "type": "documentation"
+        },
+        {
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html",
+          "title": "",
+          "authors": [],
+          "type": "documentation"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://youtu.be/C3tlMqaNSaI",
+          "title": "Elasticsearch Tutorial for Beginners | Learn the Elastic Stack Architecture | Frank Kane",
+          "authors": [
+            "Udemy"
+          ],
+          "duration": 27,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/gS_nHTWZEJ8",
+          "title": "Beginner's Crash Course to Elastic Stack -  Part 1: Intro to Elasticsearch and Kibana",
+          "authors": [
+            "Official Elastic Community"
+          ],
+          "duration": 57,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/ZP0NmfyfsoM",
+          "title": "What is Elasticsearch?",
+          "authors": [
+            "IBM Technology"
+          ],
+          "duration": 10,
+          "type": "video"
+        },
+        {
+          "url": "https://www.youtube.com/playlist?list=PL_mJOmq4zsHZYAyK606y7wjQtC0aoE6Es",
+          "title": "Beginner's Crash Course to Elastic Stack",
+          "authors": [
+            "Official Elastic Community"
+          ],
+          "duration": 310,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/DR-zJXxtefE",
+          "title": "Elasticsearch Tutorial for Beginners",
+          "authors": [
+            "freeCodeCamp.org"
+          ],
+          "duration": 19,
+          "type": "video"
+        }
+      ]
+    }
+  },
+  "dynamodb": {
+    "id": "dynamodb",
+    "title": "DynamoDB",
+    "description": "",
+    "type": "database",
+    "dependencies": [
+      "nosql",
+      "amazon_web_services"
+    ],
+    "resources": {
+      "articles": [
+        {
+          "url": "https://medium.com/edureka/amazon-dynamodb-tutorial-74d032bde759",
+          "title": "Amazon DynamoDB Tutorial — A Comprehensive Guide To DynamoDB",
+          "authors": [
+            "Vishal Padghan"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/expedia-group-tech/dynamodb-data-modeling-c4b02729ac08",
+          "title": "DynamoDB: Data Modeling",
+          "authors": [
+            "Sasidhar Sekar"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/swlh/data-modeling-in-aws-dynamodb-dcec6798e955",
+          "title": "Data Modeling in AWS DynamoDB",
+          "authors": [
+            "Jake Richards"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://awstip.com/what-ive-learned-from-using-aws-dynamodb-in-production-for-more-than-3-years-49a077886b5c",
+          "title": "",
+          "authors": [],
+          "type": "article"
+        },
+        {
+          "url": "https://levelup.gitconnected.com/dynamodb-5-specific-ways-to-supercharge-your-database-design-574ffb7f5b8a",
+          "title": "DynamoDB: 5 specific ways to supercharge your database design",
+          "authors": [
+            "Rawad Haber"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/analytics-vidhya/how-to-delete-huge-data-from-dynamodb-table-f3be586c011c",
+          "title": "How to delete huge data from DynamoDB table?",
+          "authors": [
+            "Satya Thirumani"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://collin-smith.medium.com/single-table-design-with-aws-dynamodb-and-the-inverted-index-185aa65c3a7c",
+          "title": "Single Table Design with AWS DynamoDB and the Inverted Index",
+          "authors": [
+            "Collin Smith"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/platform-engineer/running-aws-dynamodb-local-with-docker-compose-6f75850aba1e",
+          "title": "Running AWS DynamoDB Local with Docker-Compose",
+          "authors": [
+            "Thilina Ashen Gamage"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/event-driven-utopia/aws-dynamodb-streams-change-data-capture-for-dynamodb-tables-d4c92f9639d3",
+          "title": "AWS DynamoDB Streams — Change Data Capture for DynamoDB Tables",
+          "authors": [
+            "Dunith Dhanushka"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/cloud-native-the-gathering/querying-dynamodb-by-date-range-899b751a6ef2",
+          "title": "Querying DynamoDB by Date Range",
+          "authors": [
+            "Kathy Daniels"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://www.alexdebrie.com/posts/dynamodb-single-table/",
+          "title": "",
+          "authors": [],
+          "type": "article"
+        },
+        {
+          "url": "https://www.amazon.science/blog/lessons-learned-from-10-years-of-dynamodb",
+          "title": "",
+          "authors": [],
+          "type": "article"
+        },
+        {
+          "url": "https://dev.to/aws-builders/why-dynamodb-streams-is-very-useful-24e7",
+          "title": "",
+          "authors": [],
+          "type": "article"
+        },
+        {
+          "url": "https://dev.to/shavz/dynamodb-gotchas-bjm",
+          "title": "",
+          "authors": [],
+          "type": "article"
+        }
+      ],
+      "books": [
+        {
+          "url": "https://www.dynamodbbook.com/",
+          "title": "",
+          "authors": [],
+          "pages": 0,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/mastering-dynamodb/9781783551958/",
+          "title": "Mastering DynamoDB",
+          "authors": [
+            "Tanmay Deshpande"
+          ],
+          "pages": 236,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/dynamodb-cookbook/9781784393755/",
+          "title": "DynamoDB Cookbook",
+          "authors": [
+            "Tanmay Deshpande"
+          ],
+          "pages": 266,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/dynamodb-applied-design/9781783551897/",
+          "title": "DynamoDB Applied Design Patterns",
+          "authors": [
+            "Uchit Vyas",
+            "Prabhakaran Kuppusamy"
+          ],
+          "pages": 202,
+          "type": "book"
+        }
+      ],
+      "courses": [
+        {
+          "url": "https://acloudguru.com/course/amazon-dynamodb-deep-dive",
+          "title": "",
+          "platform": "",
+          "authors": [],
+          "duration": 0,
+          "type": "course"
+        },
+        {
+          "url": "https://explore.skillbuilder.aws/learn/course/external/view/elearning/1525/developing-with-amazon-dynamodb",
+          "title": "",
+          "platform": "",
+          "authors": [],
+          "duration": 0,
+          "type": "course"
+        },
+        {
+          "url": "https://www.coursera.org/learn/aws-dynamodb-fundamentals",
+          "title": "AWS DynamoDB Fundamentals",
+          "platform": "Coursera",
+          "authors": [
+            "Whizlabs Instructor"
+          ],
+          "duration": 1133,
+          "type": "course"
+        },
+        {
+          "url": "https://www.pluralsight.com/courses/aws-dynamodb-deep-dive-2019",
+          "title": "AWS DynamoDB Deep Dive",
+          "platform": "Pluralsight",
+          "authors": [
+            "Ivan Mushketyk"
+          ],
+          "duration": 367,
+          "type": "course"
+        },
+        {
+          "url": "https://www.pluralsight.com/courses/aws-dynamodb-getting-started",
+          "title": "AWS Developer: Getting Started with DynamoDB",
+          "platform": "Pluralsight",
+          "authors": [
+            "Abhaya Chauhan"
+          ],
+          "duration": 167,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/amazon-dynamodb-build-out-nosql-databases-in-the-aws-cloud/",
+          "title": "Amazon DynamoDB: Build out NoSQL Databases in the AWS Cloud",
+          "platform": "Udemy",
+          "authors": [
+            "AWS Data Consultant"
+          ],
+          "duration": 144,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/dynamodb-data-modeling/",
+          "title": "Amazon DynamoDB Data Modeling for Architects & Developers",
+          "platform": "Udemy",
+          "authors": [
+            "Rajeev Sakhuja"
+          ],
+          "duration": 386,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/dynamodb/",
+          "title": "AWS DynamoDB - The Complete Guide (Build 18+ Hands On Demos)",
+          "platform": "Udemy",
+          "authors": [
+            "Riyaz Sayyad | AWS Certified and SAP Certified Professional",
+            "RIZMAXed by Riyaz Sayyad"
+          ],
+          "duration": 993,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/the-complete-dynamodb-bootcamp/",
+          "title": "Amazon DynamoDB for Beginners: The Complete Bootcamp",
+          "platform": "Udemy",
+          "authors": [
+            "Ram Mohan"
+          ],
+          "duration": 201,
+          "type": "course"
+        }
+      ],
+      "documentation": [
+        {
+          "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide",
+          "title": "",
+          "authors": [],
+          "type": "documentation"
+        },
+        {
+          "url": "https://docs.aws.amazon.com/amazondynamodb/latest/APIReference",
+          "title": "",
+          "authors": [],
+          "type": "documentation"
+        },
+        {
+          "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/CheatSheet.html",
+          "title": "",
+          "authors": [],
+          "type": "documentation"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://youtu.be/2k2GINpO308",
+          "title": "AWS DynamoDB Tutorial For Beginners",
+          "authors": [
+            "Be A Better Dev"
+          ],
+          "duration": 39,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/2mVR_Qgx_RU",
+          "title": "AWS DynamoDB Tutorial | AWS Services | AWS Tutorial For Beginners | AWS Training Video | Simplilearn",
+          "authors": [
+            "Simplilearn"
+          ],
+          "duration": 10,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/XvD2FrS5yYM",
+          "title": "AWS DynamoDB Schema Design | How to choose the right key",
+          "authors": [
+            "Be A Better Dev"
+          ],
+          "duration": 13,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/OfZgHXsYqNE",
+          "title": "Amazon DynamoDB - A Crash Course (Demos Included)",
+          "authors": [
+            "Enlear Academy"
+          ],
+          "duration": 76,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/ummOosOW4lE",
+          "title": "DynamoDB: Its purpose, main features, and key concepts | Jason Hunter | AWS Events",
+          "authors": [
+            "AWS Events"
+          ],
+          "duration": 45,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/k0fcbRj_pZE",
+          "title": "AWS DynamoDB Tutorial | Amazon DynamoDB | AWS Tutorial for Beginners | Edureka",
+          "authors": [
+            "edureka!"
+          ],
+          "duration": 29,
+          "type": "video"
+        }
+      ]
+    }
+  }
+}

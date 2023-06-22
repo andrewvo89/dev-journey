@@ -19,7 +19,7 @@ export const mockJnodeType = () =>
 export const mockJnodes: JNode[] = [
   {
     id: 'root',
-    name: 'root',
+    title: 'root',
     dependencies: [],
     description: faker.lorem.paragraph(),
     resources: {
@@ -33,7 +33,7 @@ export const mockJnodes: JNode[] = [
   },
   {
     id: faker.string.uuid(),
-    name: faker.lorem.word(),
+    title: faker.lorem.word(),
     dependencies: ['root'],
     description: faker.lorem.paragraph(),
     resources: {
@@ -47,7 +47,7 @@ export const mockJnodes: JNode[] = [
   },
   {
     id: faker.string.uuid(),
-    name: faker.lorem.word(),
+    title: faker.lorem.word(),
     dependencies: ['root'],
     description: 'Start of the tree',
     resources: {

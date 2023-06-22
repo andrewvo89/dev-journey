@@ -53,7 +53,7 @@ export default function FallbackNode(props: NodeProps<JNodeTypeData>) {
         opacity: 0.55,
         blur: 3,
       },
-      title: <Title>{jnode.name}</Title>,
+      title: <Title>{jnode.title}</Title>,
       closeButtonProps: {
         size: 'lg',
       },
@@ -90,7 +90,7 @@ export default function FallbackNode(props: NodeProps<JNodeTypeData>) {
           </Badge>
         )}
         <Text align='center' lh='1.25'>
-          {jnode.name}
+          {jnode.title}
         </Text>
       </Paper>
     </Fragment>

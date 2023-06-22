@@ -26,7 +26,7 @@ export default function RootNode(props: NodeProps<JNodeTypeData>) {
     <Fragment>
       {sourcePosition && <Handle type='source' position={sourcePosition} className={classes.handle} />}
       <Paper className={[classes.paper, 'nodrag'].join(' ')} onClick={cardClickHandler}>
-        <Text>{jnode.name}</Text>
+        <Text>{jnode.title}</Text>
       </Paper>
     </Fragment>
   );

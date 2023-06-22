@@ -1,8 +1,8 @@
 {
   "svelte": {
     "id": "svelte",
+    "title": "Svelte",
     "description": "",
-    "name": "Svelte",
     "type": "library",
     "dependencies": [
       "javascript"
@@ -17,8 +17,8 @@
   },
   "vue": {
     "id": "vue",
+    "title": "Vue.js",
     "description": "",
-    "name": "Vue.js",
     "type": "library",
     "dependencies": [
       "javascript"
@@ -33,8 +33,8 @@
   },
   "solidjs": {
     "id": "solidjs",
+    "title": "SolidJS",
     "description": "",
-    "name": "SolidJS",
     "type": "library",
     "dependencies": [
       "javascript"
@@ -49,8 +49,8 @@
   },
   "react": {
     "id": "react",
+    "title": "React",
     "description": "React.js, often simply referred to as React, is an open-source JavaScript library for building user interfaces, particularly single-page applications (SPAs) where you need a fast, interactive user experience. It was developed by Facebook and has been maintained by Facebook and a community of individual developers and companies since it was first released in 2013.\nThe main idea behind React is to create reusable UI components, which helps in maintaining the code when working on large scale projects. React allows developers to create large web applications that can update and render efficiently in response to data changes, without requiring a page reload.",
-    "name": "React",
     "type": "library",
     "dependencies": [
       "javascript",
@@ -60,124 +60,161 @@
       "articles": [
         {
           "url": "https://medium.com/@ramdhasm5/mastering-useeffect-in-react-js-a-concise-guide-with-examples-590ec93413c6",
-          "name": "Mastering useEffect in React.js: A Concise Guide with Examples",
-          "author": "Ramdhas M",
+          "title": "Mastering useEffect in React.js: A Concise Guide with Examples",
+          "authors": [
+            "Ramdhas M"
+          ],
           "type": "article"
         },
         {
           "url": "https://hardyian.medium.com/introduction-to-usestate-and-useeffect-in-react-2d106b1d2932",
-          "name": "Introduction to useState and useEffect in React",
-          "author": "ian hardy",
+          "title": "Introduction to useState and useEffect in React",
+          "authors": [
+            "ian hardy"
+          ],
           "type": "article"
         },
         {
           "url": "https://camjackson.net/post/9-things-every-reactjs-beginner-should-know",
-          "name": "9 things every React.js beginner should know",
-          "author": "Cam Jackson",
+          "title": "9 things every React.js beginner should know",
+          "authors": [
+            "Cam Jackson"
+          ],
           "type": "article"
         },
         {
           "url": "https://javascript.plainenglish.io/5-react-design-patterns-you-should-know-629030e2e2c7",
-          "name": "5 React Design Patterns You Should Know",
-          "author": "Al - @naucode",
+          "title": "5 React Design Patterns You Should Know",
+          "authors": [
+            "Al - @naucode"
+          ],
           "type": "article"
         },
         {
           "url": "https://medium.com/@obrm770/best-practices-and-design-patterns-in-react-js-for-high-quality-applications-6b203be747fb",
-          "name": "Best Practices and Design Patterns in React.js for High-Quality Applications",
-          "author": "Ori Baram",
+          "title": "Best Practices and Design Patterns in React.js for High-Quality Applications",
+          "authors": [
+            "Ori Baram"
+          ],
           "type": "article"
         },
         {
           "url": "https://blog.devgenius.io/structure-your-react-apps-like-its-2030-aef02097cb3",
-          "name": "Structure Your React Apps Like It’s 2030",
-          "author": "Rehan Pinjari",
+          "title": "Structure Your React Apps Like It’s 2030",
+          "authors": [
+            "Rehan Pinjari"
+          ],
           "type": "article"
         },
         {
           "url": "https://yosua-halim.medium.com/10-react-anti-patterns-you-should-know-300256bfb007",
-          "name": "10 React Anti-patterns you should know",
-          "author": "Yosua Halim",
+          "title": "10 React Anti-patterns you should know",
+          "authors": [
+            "Yosua Halim"
+          ],
           "type": "article"
         },
         {
           "url": "https://javascript.plainenglish.io/11-mistakes-to-avoid-when-using-react-in-2022-d93d26c46181",
-          "name": "11 Mistakes to Avoid When Using React",
-          "author": "Chris1993",
+          "title": "11 Mistakes to Avoid When Using React",
+          "authors": [
+            "Chris1993"
+          ],
           "type": "article"
         },
         {
           "url": "https://levelup.gitconnected.com/react-best-practices-for-software-design-and-architecture-87903cce7a9a",
-          "name": "React Best Practices for Software Design and Architecture",
-          "author": "Imran Farooq",
+          "title": "React Best Practices for Software Design and Architecture",
+          "authors": [
+            "Imran Farooq"
+          ],
           "type": "article"
         },
         {
           "url": "https://trekinbami.medium.com/using-environment-variables-in-react-6b0a99d83cf5",
-          "name": "Using environment variables in React",
-          "author": "Sam Pakvis",
+          "title": "Using environment variables in React",
+          "authors": [
+            "Sam Pakvis"
+          ],
           "type": "article"
         },
         {
           "url": "https://levelup.gitconnected.com/react-code-conventions-and-best-practices-433e23ed69aa",
-          "name": "React code conventions and best practices",
-          "author": "Gaspar Nagy",
+          "title": "React code conventions and best practices",
+          "authors": [
+            "Gaspar Nagy"
+          ],
           "type": "article"
         },
         {
           "url": "https://medium.datadriveninvestor.com/8-react-open-source-projects-to-learn-and-become-a-react-js-developer-8376107730c4",
-          "name": "8 React Open-Source projects to learn and become a React.js Developer",
-          "author": "Muhammad Adeel",
+          "title": "8 React Open-Source projects to learn and become a React.js Developer",
+          "authors": [
+            "Muhammad Adeel"
+          ],
           "type": "article"
         },
         {
           "url": "https://kusham1998.medium.com/8-mistakes-every-junior-react-developer-makes-7ceace725d36",
-          "name": "8 Mistakes every junior React developer makes",
-          "author": "Kushan Madhusanka",
+          "title": "8 Mistakes every junior React developer makes",
+          "authors": [
+            "Kushan Madhusanka"
+          ],
           "type": "article"
         }
       ],
       "books": [
         {
           "url": "https://www.newline.co/fullstack-react?affiliate_id=934179955",
-          "name": "Fullstack React: The Complete Guide to ReactJS and Friends",
-          "author": "Anthony Accomazzo, Ari Lerner, Clay Allsopp, David Guttman, Nate Murray, Tyler McGinnis",
+          "title": "Fullstack React: The Complete Guide to ReactJS and Friends",
+          "authors": [
+            "Anthony Accomazzo, Ari Lerner, Clay Allsopp, David Guttman, Nate Murray, Tyler McGinnis"
+          ],
           "pages": 824,
-          "price": 39,
           "type": "book"
         },
         {
           "url": "https://ngninja.gumroad.com/l/html2react/ref?affiliate_id=172561523",
-          "name": "HTML to React: The Ultimate Guide",
-          "author": "ng-ninja",
+          "title": "HTML to React: The Ultimate Guide",
+          "authors": [
+            "ng-ninja"
+          ],
           "pages": 400,
           "type": "book"
         },
         {
           "url": "https://www.oreilly.com/library/view/learning-react/9781491954614/",
-          "name": "Learning React: Functional Web Development with React and Redux",
-          "author": "Alex Banks, Eve Porcello",
+          "title": "Learning React: Functional Web Development with React and Redux",
+          "authors": [
+            "Alex Banks, Eve Porcello"
+          ],
           "pages": 350,
           "type": "book"
         },
         {
           "url": "https://www.roadtoreact.com/",
-          "name": "The Road to React",
-          "author": "Robin Wieruch",
+          "title": "The Road to React",
+          "authors": [
+            "Robin Wieruch"
+          ],
           "pages": 246,
           "type": "book"
         },
         {
           "url": "https://www.oreilly.com/library/view/react-in-action/9781617293856/",
-          "name": "React in Action",
-          "author": "Mark Tielens Thomas",
+          "title": "React in Action",
+          "authors": [
+            "Mark Tielens Thomas"
+          ],
           "pages": 400,
           "type": "book"
         },
         {
           "url": "https://www.packtpub.com/product/learn-react-hooks/9781838641443",
-          "name": "Learn React Hooks",
-          "author": "Daniel Bugl",
+          "title": "Learn React Hooks",
+          "authors": [
+            "Daniel Bugl"
+          ],
           "pages": 426,
           "type": "book"
         }
@@ -185,89 +222,111 @@
       "courses": [
         {
           "url": "https://www.udemy.com/course/react-the-complete-guide-incl-redux/",
-          "name": "React - The Complete Guide (incl Hooks, React Router, Redux)",
-          "author": "Maximilian Schwarzmüller",
+          "title": "React - The Complete Guide (incl Hooks, React Router, Redux)",
           "platform": "Udemy",
+          "authors": [
+            "Maximilian Schwarzmüller"
+          ],
           "duration": 2899,
           "type": "course"
         },
         {
           "url": "https://www.udemy.com/course/react-redux/",
-          "name": "Modern React with Redux",
-          "author": "Stephen Grider",
+          "title": "Modern React with Redux",
           "platform": "Udemy",
+          "authors": [
+            "Stephen Grider"
+          ],
           "duration": 2255,
           "type": "course"
         },
         {
           "url": "https://www.coursera.org/learn/react-basics",
-          "name": "React Basics",
-          "author": "Meta",
+          "title": "React Basics",
           "platform": "Coursera",
-          "duration": 1560,
+          "authors": [
+            "Taught by Meta Staff"
+          ],
+          "duration": 896,
           "type": "course"
         },
         {
           "url": "https://www.coursera.org/learn/advanced-react",
-          "name": "Advanced React",
-          "author": "Meta",
+          "title": "Advanced React",
           "platform": "Coursera",
-          "duration": 1560,
+          "authors": [
+            "Taught by Meta Staff"
+          ],
+          "duration": 879,
           "type": "course"
         },
         {
           "url": "https://zerotomastery.io/courses/learn-react/",
-          "name": "Complete React Developer in 2023 (w/ Redux, Hooks, GraphQL)",
-          "author": "Andrei Neagoie, Yihua Zhang",
+          "title": "Complete React Developer in 2023 (w/ Redux, Hooks, GraphQL)",
           "platform": "Zero To Mastery Academy",
+          "authors": [
+            "Andrei Neagoie, Yihua Zhang"
+          ],
           "duration": 2550,
           "type": "course"
         },
         {
           "url": "https://www.pluralsight.com/courses/react-js-getting-started",
-          "name": "React: Getting Started",
-          "author": "Samer Buna",
+          "title": "React 17: Getting Started",
           "platform": "Pluralsight",
+          "authors": [
+            "Samer Buna"
+          ],
           "duration": 242,
           "type": "course"
         },
         {
           "url": "https://frontendmasters.com/courses/complete-react-v8/",
-          "name": "Complete Intro to React, v8",
-          "author": "Brian Holt",
+          "title": "Complete Intro to React, v8",
           "platform": "Frontend Masters",
+          "authors": [
+            "Brian Holt"
+          ],
           "duration": 6,
           "type": "course"
         },
         {
           "url": "https://frontendmasters.com/courses/intermediate-react-v5/",
-          "name": "Intermediate React, v5",
-          "author": "Brian Holt",
+          "title": "Intermediate React, v5",
           "platform": "Frontend Masters",
+          "authors": [
+            "Brian Holt"
+          ],
           "duration": 366,
           "type": "course"
         },
         {
           "url": "https://frontendmasters.com/courses/advanced-react-patterns/",
-          "name": "Advanced React Patterns",
-          "author": "Kent C. Dodds",
+          "title": "Advanced React Patterns",
           "platform": "Frontend Masters",
+          "authors": [
+            "Kent C. Dodds"
+          ],
           "duration": 204,
           "type": "course"
         },
         {
           "url": "https://frontendmasters.com/courses/testing-react/",
-          "name": "Testing React Applications, v2",
-          "author": "Kent C. Dodds",
+          "title": "Testing React Applications, v2",
           "platform": "Frontend Masters",
+          "authors": [
+            "Kent C. Dodds"
+          ],
           "duration": 251,
           "type": "course"
         },
         {
           "url": "https://frontendmasters.com/courses/react-typescript-v2/",
-          "name": "React and TypeScript, v2",
-          "author": "Steve Kinney",
+          "title": "React and TypeScript, v2",
           "platform": "Frontend Masters",
+          "authors": [
+            "Steve Kinney"
+          ],
           "duration": 271,
           "type": "course"
         }
@@ -275,79 +334,101 @@
       "documentation": [
         {
           "url": "https://react.dev/",
-          "name": "React Documentation",
-          "type": "documentation",
-          "author": "Facebook"
+          "title": "React Documentation",
+          "authors": [
+            "Facebook"
+          ],
+          "type": "documentation"
         },
         {
           "url": "https://legacy.reactjs.org/",
-          "name": "Legacy React Documentation",
-          "type": "documentation",
-          "author": "Facebook"
+          "title": "Legacy React Documentation",
+          "authors": [
+            "Facebook"
+          ],
+          "type": "documentation"
         }
       ],
       "videos": [
         {
           "url": "https://youtu.be/SqcY0GlETPk",
-          "name": "React Tutorial for Beginners",
-          "author": "Programming with Mosh",
-          "duration": 80,
+          "title": "React Tutorial for Beginners",
+          "authors": [
+            "Programming with Mosh"
+          ],
+          "duration": 81,
           "type": "video"
         },
         {
           "url": "https://youtu.be/bMknfKXIFA8",
-          "name": "React Course - Beginner's Tutorial for React JavaScript Library [2022]",
-          "author": "freeCodeCamp.org",
-          "duration": 715,
+          "title": "React Course - Beginner's Tutorial for React JavaScript Library [2022]",
+          "authors": [
+            "freeCodeCamp.org"
+          ],
+          "duration": 716,
           "type": "video"
         },
         {
           "url": "https://youtu.be/b9eMGE7QtTk",
-          "name": "React JS Full Course 2023 | Build an App and Master React in 1 Hour",
-          "author": "JavaScript Mastery",
-          "duration": 71,
+          "title": "React JS Full Course 2023 | Build an App and Master React in 1 Hour",
+          "authors": [
+            "JavaScript Mastery"
+          ],
+          "duration": 72,
           "type": "video"
         },
         {
           "url": "https://youtu.be/w7ejDZ8SWv8",
-          "name": "React JS Crash Course",
-          "author": "Traversy Media",
-          "duration": 108,
+          "title": "React JS Crash Course",
+          "authors": [
+            "Traversy Media"
+          ],
+          "duration": 109,
           "type": "video"
         },
         {
           "url": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9gZD-Tvwfod2gaISzfRiP9d",
-          "name": "Full Modern React Tutorial",
-          "author": "The Net Ninja",
-          "duration": 3,
+          "title": "Full Modern React Tutorial",
+          "authors": [
+            "The Net Ninja"
+          ],
+          "duration": 194,
           "type": "video"
         },
         {
           "url": "https://youtu.be/hQAHSlTtcmY",
-          "name": "Learn React In 30 Minutes",
-          "author": "Web Dev Simplified",
-          "duration": 0.5,
+          "title": "Learn React In 30 Minutes",
+          "authors": [
+            "Web Dev Simplified"
+          ],
+          "duration": 28,
           "type": "video"
         },
         {
           "url": "https://youtu.be/Tn6-PIqc4UM",
-          "name": "React in 100 Seconds",
-          "author": "Fireship",
-          "duration": 2,
+          "title": "React in 100 Seconds",
+          "authors": [
+            "Fireship"
+          ],
+          "duration": 3,
           "type": "video"
         },
         {
           "url": "https://youtu.be/0mVbNp1ol_w",
-          "name": "ReactJS Tutorial for Beginners - Full Course in 20 Hours [2022]",
-          "author": "Clever Programmer",
-          "duration": 1169,
+          "title": "ReactJS Tutorial for Beginners - Full Course in 20 Hours [2022]",
+          "authors": [
+            "Clever Programmer"
+          ],
+          "duration": 1170,
           "type": "video"
         },
         {
           "url": "https://youtu.be/Dorf8i6lCuk",
-          "name": "React Crash Course for Beginners 2021 - Learn ReactJS from Scratch in this 100% Free Tutorial!",
-          "author": "Academind",
-          "duration": 231,
+          "title": "React Crash Course for Beginners 2021 - Learn ReactJS from Scratch in this 100% Free Tutorial!",
+          "authors": [
+            "Academind"
+          ],
+          "duration": 232,
           "type": "video"
         }
       ]
@@ -355,8 +436,8 @@
   },
   "numpy": {
     "id": "numpy",
+    "title": "NumPy",
     "description": "",
-    "name": "NumPy",
     "type": "library",
     "dependencies": [
       "python"
@@ -371,8 +452,8 @@
   },
   "pandas": {
     "id": "pandas",
+    "title": "Pandas",
     "description": "",
-    "name": "Pandas",
     "type": "library",
     "dependencies": [
       "python"
@@ -387,8 +468,8 @@
   },
   "pytorch": {
     "id": "pytorch",
+    "title": "PyTorch",
     "description": "",
-    "name": "PyTorch",
     "type": "library",
     "dependencies": [
       "python"

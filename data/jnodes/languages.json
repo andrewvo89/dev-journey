@@ -1,11 +1,11 @@
 {
-  "express": {
-    "id": "express",
+  "css": {
+    "id": "css",
+    "title": "CSS",
     "description": "",
-    "name": "Express",
-    "type": "framework",
+    "type": "language",
     "dependencies": [
-      "nodejs"
+      "html"
     ],
     "resources": {
       "articles": [],
@@ -15,13 +15,13 @@
       "videos": []
     }
   },
-  "angular": {
-    "id": "angular",
+  "html": {
+    "id": "html",
+    "title": "HTML",
     "description": "",
-    "name": "Angular",
-    "type": "framework",
+    "type": "language",
     "dependencies": [
-      "typescript"
+      "web_browser"
     ],
     "resources": {
       "articles": [],
@@ -31,13 +31,15 @@
       "videos": []
     }
   },
-  "sveltekit": {
-    "id": "sveltekit",
+  "javascript": {
+    "id": "javascript",
+    "title": "JavaScript",
     "description": "",
-    "name": "SvelteKit",
-    "type": "framework",
+    "type": "language",
     "dependencies": [
-      "svelte"
+      "css",
+      "nodejs",
+      "desktop_development"
     ],
     "resources": {
       "articles": [],
@@ -47,157 +49,12 @@
       "videos": []
     }
   },
-  "nuxt": {
-    "id": "nuxt",
+  "typescript": {
+    "id": "typescript",
+    "title": "TypeScript",
     "description": "",
-    "name": "Nuxt",
-    "type": "framework",
+    "type": "language",
     "dependencies": [
-      "vue"
-    ],
-    "resources": {
-      "articles": [],
-      "books": [],
-      "courses": [],
-      "documentation": [],
-      "videos": []
-    }
-  },
-  "astro": {
-    "id": "astro",
-    "description": "",
-    "name": "Astro",
-    "type": "framework",
-    "dependencies": [
-      "react"
-    ],
-    "resources": {
-      "articles": [],
-      "books": [],
-      "courses": [],
-      "documentation": [],
-      "videos": []
-    }
-  },
-  "flutter": {
-    "id": "flutter",
-    "description": "",
-    "name": "Flutter",
-    "type": "framework",
-    "dependencies": [
-      "dart"
-    ],
-    "resources": {
-      "articles": [],
-      "books": [],
-      "courses": [],
-      "documentation": [],
-      "videos": []
-    }
-  },
-  "nextjs": {
-    "id": "nextjs",
-    "description": "",
-    "name": "Next.js",
-    "type": "framework",
-    "dependencies": [
-      "react"
-    ],
-    "resources": {
-      "articles": [],
-      "books": [],
-      "courses": [],
-      "documentation": [],
-      "videos": []
-    }
-  },
-  "react_native": {
-    "id": "react_native",
-    "description": "",
-    "name": "React Native",
-    "type": "framework",
-    "dependencies": [
-      "react"
-    ],
-    "resources": {
-      "articles": [],
-      "books": [],
-      "courses": [],
-      "documentation": [],
-      "videos": []
-    }
-  },
-  "django": {
-    "id": "django",
-    "description": "",
-    "name": "Django",
-    "type": "framework",
-    "dependencies": [
-      "python"
-    ],
-    "resources": {
-      "articles": [],
-      "books": [],
-      "courses": [],
-      "documentation": [],
-      "videos": []
-    }
-  },
-  "flask": {
-    "id": "flask",
-    "description": "",
-    "name": "Flask",
-    "type": "framework",
-    "dependencies": [
-      "python"
-    ],
-    "resources": {
-      "articles": [],
-      "books": [],
-      "courses": [],
-      "documentation": [],
-      "videos": []
-    }
-  },
-  "laravel": {
-    "id": "laravel",
-    "description": "",
-    "name": "Laravel",
-    "type": "framework",
-    "dependencies": [
-      "php"
-    ],
-    "resources": {
-      "articles": [],
-      "books": [],
-      "courses": [],
-      "documentation": [],
-      "videos": []
-    }
-  },
-  "tailwind": {
-    "id": "tailwind",
-    "description": "",
-    "name": "Tailwind CSS",
-    "type": "framework",
-    "dependencies": [
-      "css"
-    ],
-    "resources": {
-      "articles": [],
-      "books": [],
-      "courses": [],
-      "documentation": [],
-      "videos": []
-    }
-  },
-  "electron": {
-    "id": "electron",
-    "description": "",
-    "name": "Electron",
-    "type": "framework",
-    "dependencies": [
-      "desktop_development",
       "javascript"
     ],
     "resources": {
@@ -208,14 +65,13 @@
       "videos": []
     }
   },
-  "tauri": {
-    "id": "tauri",
+  "golang": {
+    "id": "golang",
+    "title": "Golang",
     "description": "",
-    "name": "Tauri",
-    "type": "framework",
+    "type": "language",
     "dependencies": [
-      "desktop_development",
-      "javascript"
+      "backend_development"
     ],
     "resources": {
       "articles": [],
@@ -225,14 +81,143 @@
       "videos": []
     }
   },
-  "ionic": {
-    "id": "ionic",
+  "php": {
+    "id": "php",
+    "title": "PHP",
     "description": "",
-    "name": "Ionic",
-    "type": "framework",
+    "type": "language",
     "dependencies": [
-      "mobile_development",
-      "javascript"
+      "oop_programming"
+    ],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    }
+  },
+  "rust": {
+    "id": "rust",
+    "title": "Rust",
+    "description": "",
+    "type": "language",
+    "dependencies": [
+      "functional_programming"
+    ],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    }
+  },
+  "java": {
+    "id": "java",
+    "title": "Java",
+    "description": "",
+    "type": "language",
+    "dependencies": [
+      "jre",
+      "jdk",
+      "mobile_development"
+    ],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    }
+  },
+  "python": {
+    "id": "python",
+    "title": "Python",
+    "description": "",
+    "type": "language",
+    "dependencies": [
+      "backend_development"
+    ],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    }
+  },
+  "kotlin": {
+    "id": "kotlin",
+    "title": "Kotlin",
+    "description": "",
+    "type": "language",
+    "dependencies": [
+      "mobile_development"
+    ],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    }
+  },
+  "sql": {
+    "id": "sql",
+    "title": "SQL",
+    "description": "",
+    "type": "language",
+    "dependencies": [
+      "relational"
+    ],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    }
+  },
+  "graphql": {
+    "id": "graphql",
+    "title": "GraphQL",
+    "description": "",
+    "type": "language",
+    "dependencies": [
+      "api_development"
+    ],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    }
+  },
+  "dart": {
+    "id": "dart",
+    "title": "Dart",
+    "description": "",
+    "type": "language",
+    "dependencies": [
+      "mobile_development"
+    ],
+    "resources": {
+      "articles": [],
+      "books": [],
+      "courses": [],
+      "documentation": [],
+      "videos": []
+    }
+  },
+  "swift": {
+    "id": "swift",
+    "title": "Swift",
+    "description": "",
+    "type": "language",
+    "dependencies": [
+      "mobile_development"
     ],
     "resources": {
       "articles": [],

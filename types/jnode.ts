@@ -5,6 +5,7 @@ import {
   documentationResourceSchema,
   jnodeSchema,
   jnodeTypeSchema,
+  jnodesMapSchema,
   resourcesSchema,
   videoResourceSchema,
 } from 'schemas/jnode';
@@ -40,3 +41,5 @@ export type NarrowResourceType<TType extends Resource['type']> = TType extends '
   : TType extends 'course'
   ? CourseResource
   : never;
+
+export type JnodesMap = z.infer<typeof jnodesMapSchema>;

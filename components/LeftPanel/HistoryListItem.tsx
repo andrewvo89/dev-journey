@@ -151,10 +151,10 @@ export default function HistoryListItem(props: Props) {
               return (
                 <Switch
                   role='switch'
-                  aria-label={found.name}
+                  aria-label={found.title}
                   aria-checked={path.enabled}
                   key={path.id}
-                  label={found.name}
+                  label={found.title}
                   value={path.id}
                   checked={path.enabled}
                   onChange={switchToggleHandler}

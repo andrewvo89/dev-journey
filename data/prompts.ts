@@ -1,18 +1,18 @@
 import { ClientPrompt, Prompt } from 'types/common';
 
 import { JNodeType } from 'types/jnode';
-import databasesJSON from 'data/databases.json';
-import fieldsJSON from 'data/fields.json';
-import frameworksJSON from 'data/frameworks.json';
+import databasesJSON from 'data/jnodes/databases.json';
+import fieldsJSON from 'data/jnodes/fields.json';
+import frameworksJSON from 'data/jnodes/frameworks.json';
 import { jnodeJSONSchema } from 'schemas/data';
 import { jnodeSchema } from 'schemas/jnode';
-import languagesJSON from 'data/languages.json';
-import librariesJSON from 'data/libraries.json';
-import paradigmsJSON from 'data/paradigms.json';
-import platformsJSON from 'data/platforms.json';
-import rootJSON from 'data/root.json';
-import runtimeJSON from 'data/runtime.json';
-import toolsJSON from 'data/tools.json';
+import languagesJSON from 'data/jnodes/languages.json';
+import librariesJSON from 'data/jnodes/libraries.json';
+import paradigmsJSON from 'data/jnodes/paradigms.json';
+import platformsJSON from 'data/jnodes/platforms.json';
+import rootJSON from 'data/jnodes/root.json';
+import runtimeJSON from 'data/jnodes/runtime.json';
+import toolsJSON from 'data/jnodes/tools.json';
 
 const jnodeJSONs = jnodeJSONSchema.parse({
   ...databasesJSON,
@@ -42,11 +42,11 @@ const techPrompts = techList
     ];
     return allowedTypes.includes(t.type);
   })
-  .sort((a, b) => a.name.localeCompare(b.name))
+  .sort((a, b) => a.title.localeCompare(b.title))
   .map<Prompt>((jnode) => ({
     id: jnode.id,
     priority: 4,
-    prompt: `I want to learn ${jnode.name}`,
+    prompt: `I want to learn ${jnode.title}`,
     response: async () => ({
       destinations: [{ id: jnode.id }],
     }),

@@ -23,11 +23,15 @@ const documentation: ResourceMap<'documentation'> = {
   heading: 'Documentation',
   emptyDataMessage: 'Suggest documentation...',
   fieldMappings: [
-    { key: 'name', heading: 'Name' },
-    { key: 'author', heading: 'Author' },
+    { key: 'title', heading: 'Title' },
+    {
+      key: 'authors',
+      heading: 'Authors',
+      transform: (value) => (Array.isArray(value) ? value.join(', ') : value.toString()),
+    },
   ],
   type: 'documentation',
-  initalSort: 'name',
+  initalSort: 'title',
 };
 
 const videos: ResourceMap<'video'> = {
@@ -35,8 +39,12 @@ const videos: ResourceMap<'video'> = {
   heading: 'Videos',
   emptyDataMessage: 'Suggest a video...',
   fieldMappings: [
-    { key: 'name', heading: 'Name' },
-    { key: 'author', heading: 'Author' },
+    { key: 'title', heading: 'Title' },
+    {
+      key: 'authors',
+      heading: 'Authors',
+      transform: (value) => (Array.isArray(value) ? value.join(', ') : value.toString()),
+    },
     {
       key: 'duration',
       heading: 'Duration',
@@ -44,7 +52,7 @@ const videos: ResourceMap<'video'> = {
     },
   ],
   type: 'video',
-  initalSort: 'name',
+  initalSort: 'title',
 };
 
 const courses: ResourceMap<'course'> = {
@@ -52,8 +60,12 @@ const courses: ResourceMap<'course'> = {
   heading: 'Courses',
   emptyDataMessage: 'Suggest a course...',
   fieldMappings: [
-    { key: 'name', heading: 'Name' },
-    { key: 'author', heading: 'Author' },
+    { key: 'title', heading: 'Title' },
+    {
+      key: 'authors',
+      heading: 'Authors',
+      transform: (value) => (Array.isArray(value) ? value.join(', ') : value.toString()),
+    },
     {
       key: 'duration',
       heading: 'Duration',
@@ -62,7 +74,7 @@ const courses: ResourceMap<'course'> = {
     { key: 'platform', heading: 'Platform' },
   ],
   type: 'course',
-  initalSort: 'name',
+  initalSort: 'title',
 };
 
 const articles: ResourceMap<'article'> = {
@@ -70,11 +82,15 @@ const articles: ResourceMap<'article'> = {
   heading: 'Articles',
   emptyDataMessage: 'Suggest an article...',
   fieldMappings: [
-    { key: 'name', heading: 'Name' },
-    { key: 'author', heading: 'Author' },
+    { key: 'title', heading: 'Title' },
+    {
+      key: 'authors',
+      heading: 'Authors',
+      transform: (value) => (Array.isArray(value) ? value.join(', ') : value.toString()),
+    },
   ],
   type: 'article',
-  initalSort: 'name',
+  initalSort: 'title',
 };
 
 const books: ResourceMap<'book'> = {
@@ -82,12 +98,16 @@ const books: ResourceMap<'book'> = {
   heading: 'Books',
   emptyDataMessage: 'Suggest a book...',
   fieldMappings: [
-    { key: 'name', heading: 'Name' },
-    { key: 'author', heading: 'Author' },
+    { key: 'title', heading: 'Title' },
+    {
+      key: 'authors',
+      heading: 'Authors',
+      transform: (value) => (Array.isArray(value) ? value.join(', ') : value.toString()),
+    },
     { key: 'pages', heading: 'Pages' },
   ],
   type: 'book',
-  initalSort: 'name',
+  initalSort: 'title',
 };
 
 type AccordionPanelProps<TType extends Resource['type']> = {

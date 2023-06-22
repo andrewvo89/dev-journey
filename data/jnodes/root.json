@@ -1,8 +1,8 @@
 {
   "root": {
     "id": "root",
+    "title": "Start of journey",
     "description": "",
-    "name": "Start of journey",
     "type": "root",
     "dependencies": [],
     "resources": {

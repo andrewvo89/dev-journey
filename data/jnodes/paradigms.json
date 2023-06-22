@@ -1,8 +1,8 @@
 {
   "nosql": {
     "id": "nosql",
+    "title": "No SQL Database",
     "description": "",
-    "name": "No SQL Database",
     "type": "paradigm",
     "dependencies": [
       "database_development"
@@ -17,8 +17,8 @@
   },
   "relational": {
     "id": "relational",
+    "title": "Relational Database",
     "description": "",
-    "name": "Relational Database",
     "type": "paradigm",
     "dependencies": [
       "database_development"
@@ -33,8 +33,8 @@
   },
   "functional_programming": {
     "id": "functional_programming",
+    "title": "Functional Programming",
     "description": "",
-    "name": "Functional Programming",
     "type": "paradigm",
     "dependencies": [
       "backend_development"
@@ -49,8 +49,8 @@
   },
   "oop_programming": {
     "id": "oop_programming",
+    "title": "Object Oriented Programming",
     "description": "",
-    "name": "Object Oriented Programming",
     "type": "paradigm",
     "dependencies": [
       "backend_development"
@@ -65,8 +65,8 @@
   },
   "rest": {
     "id": "rest",
+    "title": "REST",
     "description": "",
-    "name": "REST",
     "type": "paradigm",
     "dependencies": [
       "api_development"

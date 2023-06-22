@@ -1,8 +1,8 @@
 {
   "amazon_web_services": {
     "id": "amazon_web_services",
+    "title": "Amazon Web Services",
     "description": "",
-    "name": "Amazon Web Services",
     "type": "platform",
     "dependencies": [
       "cloud_infrastructure"
@@ -17,8 +17,8 @@
   },
   "microsoft_azure": {
     "id": "microsoft_azure",
+    "title": "Microsoft Azure",
     "description": "",
-    "name": "Microsoft Azure",
     "type": "platform",
     "dependencies": [
       "cloud_infrastructure"
@@ -33,8 +33,8 @@
   },
   "google_cloud_platform": {
     "id": "google_cloud_platform",
+    "title": "Google Cloud Platform",
     "description": "",
-    "name": "Google Cloud Platform",
     "type": "platform",
     "dependencies": [
       "cloud_infrastructure"
@@ -49,8 +49,8 @@
   },
   "firebase": {
     "id": "firebase",
+    "title": "Firebase",
     "description": "",
-    "name": "Firebase",
     "type": "platform",
     "dependencies": [
       "cloud_infrastructure"
@@ -65,8 +65,8 @@
   },
   "heroku": {
     "id": "heroku",
+    "title": "Heroku",
     "description": "",
-    "name": "Heroku",
     "type": "platform",
     "dependencies": [
       "cloud_infrastructure"

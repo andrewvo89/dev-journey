@@ -255,7 +255,7 @@ test('destination is toggled on and toggled off', async () => {
   });
   await user.click(screen.getByRole('menuitem', { name: 'History item' }));
 
-  let switchInput = screen.getByLabelText(mockJnodes[1].name, {
+  let switchInput = screen.getByLabelText(mockJnodes[1].title, {
     selector: 'input[type="checkbox"][role="switch"]',
   });
   expect(switchInput).toBeChecked();
@@ -263,7 +263,7 @@ test('destination is toggled on and toggled off', async () => {
   await userEvent.click(switchInput);
 
   rerender(<HistoryListItem journey={useHistoryStore.getState().journeys[0]} />);
-  switchInput = screen.getByLabelText(mockJnodes[1].name, {
+  switchInput = screen.getByLabelText(mockJnodes[1].title, {
     selector: 'input[type="checkbox"][role="switch"]',
   });
   expect(switchInput).not.toBeChecked();
@@ -271,7 +271,7 @@ test('destination is toggled on and toggled off', async () => {
   await userEvent.click(switchInput);
 
   rerender(<HistoryListItem journey={useHistoryStore.getState().journeys[0]} />);
-  switchInput = screen.getByLabelText(mockJnodes[1].name, {
+  switchInput = screen.getByLabelText(mockJnodes[1].title, {
     selector: 'input[type="checkbox"][role="switch"]',
   });
   expect(switchInput).toBeChecked();
