@@ -272,7 +272,9 @@
           "url": "https://www.pluralsight.com/courses/nodejs-getting-started",
           "title": "Node.js 12: Getting Started",
           "platform": "Pluralsight",
-          "authors": [],
+          "authors": [
+            "Samer Buna"
+          ],
           "duration": 209,
           "type": "course"
         },

@@ -6,6 +6,10 @@ import {
   jnodeSchema,
   jnodeTypeSchema,
   jnodesMapSchema,
+  partialResourcesSchema,
+  partialsMapSchema,
+  resourceSchema,
+  resourceTypeSchema,
   resourcesSchema,
   videoResourceSchema,
 } from 'schemas/jnode';
@@ -28,9 +32,11 @@ export type DocumentationResource = z.infer<typeof documentationResourceSchema>;
 
 export type ArticleResource = z.infer<typeof articleResourceSchema>;
 
-export type Resource = VideoResource | ArticleResource | BookResource | DocumentationResource | CourseResource;
+export type Resource = z.infer<typeof resourceSchema>;
 
-export type NarrowResourceType<TType extends Resource['type']> = TType extends 'book'
+export type ResourceType = z.infer<typeof resourceTypeSchema>;
+
+export type NarrowResourceType<TType extends ResourceType> = TType extends 'book'
   ? BookResource
   : TType extends 'article'
   ? ArticleResource
@@ -43,3 +49,7 @@ export type NarrowResourceType<TType extends Resource['type']> = TType extends '
   : never;
 
 export type JnodesMap = z.infer<typeof jnodesMapSchema>;
+
+export type PartialResources = z.infer<typeof partialResourcesSchema>;
+
+export type PartialResourcesMap = Record<ResourceType, PartialResources>;

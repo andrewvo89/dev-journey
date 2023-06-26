@@ -2,7 +2,7 @@ import { JNode } from 'types/jnode';
 import fs from 'fs';
 import path from 'path';
 
-async function run() {
+export async function main() {
   const jsonFiles = fs
     .readdirSync(path.join(__dirname, '..', 'jnodes'))
     .filter((f) => fs.statSync(path.join(__dirname, '..', 'jnodes', f)).isFile() && f.endsWith('.json'));
@@ -29,5 +29,3 @@ async function run() {
     }
   }
 }
-
-run();

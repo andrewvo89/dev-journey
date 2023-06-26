@@ -2,28 +2,22 @@ import { ArticleResource, BookResource, CourseResource, JnodesMap, Resource, Vid
 
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import axios from 'axios';
-import dayjs from 'dayjs';
+import { main as backup } from './backup';
 import fs from 'fs';
+import { isResourcePartial } from './utils';
 import { jnodesMapSchema } from '../../schemas/jnode';
 import path from 'path';
 import { produce } from 'immer';
 import puppeteer from 'puppeteer-extra';
-import timezone from 'dayjs/plugin/timezone';
-import utc from 'dayjs/plugin/utc';
-
-dayjs.extend(utc);
-dayjs.extend(timezone);
 
 puppeteer.use(StealthPlugin());
-const timeout = 5000;
 
 export async function main() {
+  backup();
+
   const jsonFiles = fs
     .readdirSync(path.join(__dirname, '..', 'jnodes'))
     .filter((f) => fs.statSync(path.join(__dirname, '..', 'jnodes', f)).isFile() && f.endsWith('.json'));
-
-  const backupFolder = dayjs().tz(process.env.TIMEZONE).format('YYYY-MM-DDTHH:mm:ssZ[Z]');
-  fs.mkdirSync(path.join(__dirname, '..', 'jnodes', 'backups', backupFolder), { recursive: true });
 
   const newJSONs = await Promise.all(
     jsonFiles.map((jsonFile) => {
@@ -52,25 +46,25 @@ async function scrapeAndPopulate(json: JnodesMap): Promise<JnodesMap> {
       produce(scrapeMap, (draft) => {
         const promises: Promise<Resource>[] = [];
         for (const article of jnode.resources.articles) {
-          if (article.title.length > 0) {
+          if (!isResourcePartial(article)) {
             continue;
           }
           promises.push(scrapeArticle(article.url));
         }
         for (const book of jnode.resources.books) {
-          if (book.title.length > 0) {
+          if (!isResourcePartial(book)) {
             continue;
           }
           promises.push(scrapeBook(book.url));
         }
         for (const course of jnode.resources.courses) {
-          if (course.title.length > 0) {
+          if (!isResourcePartial(course)) {
             continue;
           }
           promises.push(scrapeCourse(course.url));
         }
         for (const video of jnode.resources.videos) {
-          if (video.title.length > 0) {
+          if (!isResourcePartial(video)) {
             continue;
           }
           promises.push(scrapeVideo(video.url));
@@ -84,6 +78,13 @@ async function scrapeAndPopulate(json: JnodesMap): Promise<JnodesMap> {
     (prevJSON, [key, resources]) =>
       produce(prevJSON, (draft) => {
         const oldResources = draft[key].resources;
+        const scrapedResources = resources.filter((resource) => !isResourcePartial(resource));
+        if (scrapedResources.length > 0) {
+          console.info(
+            `Scraped the following resources for ${key}:`,
+            scrapedResources.map((r) => r.url),
+          );
+        }
         for (const resource of resources) {
           if (resource.type === 'book') {
             oldResources.books = oldResources.books.map((b) => (b.url === resource.url ? resource : b));
@@ -105,9 +106,24 @@ async function scrapeAndPopulate(json: JnodesMap): Promise<JnodesMap> {
 
 export async function scrapeArticle(url: string): Promise<ArticleResource> {
   try {
-    const mediumLike = ['levelup.gitconnected.com', 'medium.com', 'towardsdatascience.com', 'betterprogramming.pub'];
+    const mediumLike = [
+      'levelup.gitconnected.com',
+      'medium.com',
+      'towardsdatascience.com',
+      'betterprogramming.pub',
+      'engineering.universe.com',
+      'javascript.plainenglish.io',
+      'blog.exploratory.io',
+      'blog.meteor.com',
+      'engineering.peerislands.io',
+      'infosecwriteups.com',
+      'awstip.com',
+    ];
     if (mediumLike.some((s) => url.includes(s))) {
       return medium(url);
+    }
+    if (url.includes('dev.to')) {
+      return devto(url);
     }
     throw new Error('Unknown article platform');
   } catch {
@@ -122,6 +138,12 @@ export async function scrapeBook(url: string): Promise<BookResource> {
     }
     if (url.includes('oreilly.com')) {
       return oreilly(url);
+    }
+    if (url.includes('booktopia.com')) {
+      return booktopia(url);
+    }
+    if (url.includes('amazon.com')) {
+      return amazon(url);
     }
     throw new Error('Unknown book platform');
   } catch {
@@ -164,7 +186,7 @@ export async function scrapeVideo(url: string): Promise<VideoResource> {
 }
 
 async function oreilly(url: string): Promise<BookResource> {
-  const browser = await puppeteer.launch({ timeout, headless: 'new' });
+  const browser = await puppeteer.launch({ headless: 'new' });
 
   try {
     const page = await browser.newPage();
@@ -202,8 +224,47 @@ async function oreilly(url: string): Promise<BookResource> {
   }
 }
 
+async function amazon(url: string): Promise<BookResource> {
+  const browser = await puppeteer.launch({ headless: 'new' });
+
+  try {
+    const page = await browser.newPage();
+    await page.goto(url);
+    await page.setViewport({ width: 1080, height: 1024 });
+
+    const title = (await page.$eval('span#productTitle', (el) => el.textContent))?.trim() ?? '';
+    const authors = (await page.$$eval('span.author > a', (els) => els.map((el) => el.textContent))).reduce<string[]>(
+      (prev, curr) => (curr ? [...prev, curr] : prev),
+      [],
+    );
+    if (authors.length === 0) {
+      console.info('No authors', url);
+    }
+
+    const isbn = url.split('/dp/')[1].split('/')[0];
+    let pages = 0;
+    if (isbn) {
+      try {
+        const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`);
+        pages = response.data?.items?.[0]?.volumeInfo?.pageCount ?? 0;
+      } catch (error) {
+        pages = 0;
+      }
+    }
+    if (pages === 0) {
+      console.info('No pages', url);
+    }
+    return { title, authors, pages, type: 'book', url };
+  } catch (error) {
+    console.error(url, error);
+    throw error;
+  } finally {
+    await browser.close();
+  }
+}
+
 async function packetpub(url: string): Promise<BookResource> {
-  const browser = await puppeteer.launch({ timeout, headless: 'new' });
+  const browser = await puppeteer.launch({ headless: 'new' });
 
   try {
     const page = await browser.newPage();
@@ -238,8 +299,42 @@ async function packetpub(url: string): Promise<BookResource> {
   }
 }
 
+async function booktopia(url: string): Promise<BookResource> {
+  const browser = await puppeteer.launch({ headless: 'new' });
+
+  try {
+    const page = await browser.newPage();
+    await page.goto(url);
+    await page.setViewport({ width: 1080, height: 1024 });
+
+    const title = (await page.$eval('meta[property="og:title"]', (el) => el.content)) ?? '';
+    const authors = (
+      await page.$$eval('a[data-mh-ea="Author name"]', (els) => els.map((el) => el.textContent?.trim() ?? ''))
+    ).filter(Boolean);
+
+    if (authors.length === 0) {
+      console.info('No authors', url);
+    }
+
+    const pages = await page.$eval('span.visual-details-theme-b-item', (el) =>
+      parseInt(el.textContent?.split('Pages: ')[1].trim() ?? '0'),
+    );
+
+    if (pages === 0) {
+      console.info('No pages', url);
+    }
+
+    return { title, authors, pages, type: 'book', url };
+  } catch (error) {
+    console.error(url, error);
+    throw error;
+  } finally {
+    await browser.close();
+  }
+}
+
 async function medium(url: string): Promise<ArticleResource> {
-  const browser = await puppeteer.launch({ timeout, headless: 'new' });
+  const browser = await puppeteer.launch({ headless: 'new' });
 
   try {
     const page = await browser.newPage();
@@ -258,8 +353,29 @@ async function medium(url: string): Promise<ArticleResource> {
   }
 }
 
+async function devto(url: string): Promise<ArticleResource> {
+  const browser = await puppeteer.launch({ headless: 'new' });
+
+  try {
+    const page = await browser.newPage();
+    await page.goto(url);
+    await page.setViewport({ width: 1080, height: 1024 });
+
+    const title = (await page.$eval('meta[property="og:title"]', (el) => el.content)) ?? '';
+    const author =
+      (await page.$eval('article#article-show-container', (el) => el.getAttribute('data-author-name'))) ?? '';
+
+    return { authors: [author], title, type: 'article', url };
+  } catch (error) {
+    console.error(url, error);
+    throw error;
+  } finally {
+    await browser.close();
+  }
+}
+
 async function youtube(url: string): Promise<VideoResource> {
-  const browser = await puppeteer.launch({ timeout, headless: 'new' });
+  const browser = await puppeteer.launch({ headless: 'new' });
   try {
     const page = await browser.newPage();
     await page.goto(url);
@@ -283,7 +399,7 @@ async function youtube(url: string): Promise<VideoResource> {
 }
 
 async function youtube_playlist(url: string): Promise<VideoResource> {
-  const browser = await puppeteer.launch({ timeout, headless: 'new' });
+  const browser = await puppeteer.launch({ headless: 'new' });
   try {
     const page = await browser.newPage();
     await page.goto(url);
@@ -311,13 +427,13 @@ async function youtube_playlist(url: string): Promise<VideoResource> {
 }
 
 async function udemy(url: string): Promise<CourseResource> {
-  const browser = await puppeteer.launch({ timeout, headless: 'new' });
+  const browser = await puppeteer.launch({ headless: 'new' });
   try {
     const page = await browser.newPage();
     await page.goto(url);
     await page.setViewport({ width: 1080, height: 1024 });
 
-    await page.waitForSelector('div[data-purpose="curriculum-stats"]', { timeout });
+    await page.waitForSelector('div[data-purpose="curriculum-stats"]');
 
     const title = (await page.$eval('meta[name="title"]', (el) => el.content)) ?? '';
     const authors = (
@@ -338,21 +454,23 @@ async function udemy(url: string): Promise<CourseResource> {
 }
 
 async function pluralsight(url: string): Promise<CourseResource> {
-  const browser = await puppeteer.launch({ timeout, headless: 'new' });
+  const browser = await puppeteer.launch({ headless: 'new' });
   try {
     const page = await browser.newPage();
     await page.goto(url);
     await page.setViewport({ width: 1080, height: 1024 });
 
-    await page.waitForSelector('meta[property="og:title"]', { timeout });
+    await page.waitForSelector('meta[property="og:title"]');
 
     const title = (await page.$eval('meta[property="og:title"]', (el) => el.content)) ?? '';
     const authors = (await page.$$eval('div.author-name', (els) => els.map((el) => el.textContent?.trim()))).reduce<
       string[]
     >((prev, curr) => (curr ? [...prev, curr] : prev), []);
     const durationString = (await page.$eval('meta[name="duration"]', (el) => el.content)) ?? '';
-    const hours = parseInt(durationString.split('PT')[1].split('H')[0]);
-    const minutes = parseInt(durationString.split('H')[1].split('M')[0]);
+    const hours = durationString.includes('H') ? parseInt(durationString.split('PT')[1].split('H')[0]) : 0;
+    const minutes = durationString.includes('H')
+      ? parseInt(durationString.split('H')[1].split('M')[0])
+      : parseInt(durationString.split('PT')[1].split('M')[0]);
     return { authors, title, type: 'course', url, duration: hours * 60 + minutes, platform: 'Pluralsight' };
   } catch (error) {
     console.error(url, error);
@@ -363,13 +481,13 @@ async function pluralsight(url: string): Promise<CourseResource> {
 }
 
 async function coursera(url: string): Promise<CourseResource> {
-  const browser = await puppeteer.launch({ timeout, headless: 'new' });
+  const browser = await puppeteer.launch({ headless: 'new' });
   try {
     const page = await browser.newPage();
     await page.goto(url);
     await page.setViewport({ width: 1080, height: 1024 });
 
-    await page.waitForSelector('meta[property="og:title"][data-react-helmet="true"]', { timeout });
+    await page.waitForSelector('meta[property="og:title"][data-react-helmet="true"]');
 
     const title = (await page.$eval('meta[property="og:title"][data-react-helmet="true"]', (el) => el.content)) ?? '';
     const authors = (await page.$$eval('h3.instructor-name', (els) => els.map((el) => el.textContent?.trim()))).reduce<
@@ -390,7 +508,7 @@ async function coursera(url: string): Promise<CourseResource> {
 }
 
 async function linkedin(url: string): Promise<CourseResource> {
-  const browser = await puppeteer.launch({ timeout, headless: 'new' });
+  const browser = await puppeteer.launch({ headless: 'new' });
   try {
     const page = await browser.newPage();
     await page.goto(url);
@@ -418,9 +536,9 @@ async function linkedin(url: string): Promise<CourseResource> {
   }
 }
 
-// run();
-// export async function run2() {
-//   const resource = await packetpub('https://www.packtpub.com/product/the-kaggle-workbook/9781804611210');
-//   console.log('resource', resource);
-// }
-// run2();
+export async function test() {
+  const resource = await booktopia(
+    'https://www.booktopia.com.au/the-maudsley-prescribing-guidelines-in-psychiatry-david-m-taylor/book/9781119772224.html',
+  );
+  console.log('resource', resource);
+}

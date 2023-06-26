@@ -157,9 +157,11 @@
       "books": [
         {
           "url": "https://www.murach.com/shop/murach-s-mysql-3rd-edition-detail",
-          "title": "",
-          "authors": [],
-          "pages": 0,
+          "title": "Murach's MySQL, 3rd Edition",
+          "authors": [
+            "Joel Murach"
+          ],
+          "pages": 628,
           "type": "book"
         },
         {
@@ -176,7 +178,9 @@
         {
           "url": "https://www.oreilly.com/library/view/mysql-crash-course/0672327120/",
           "title": "MySQL® Crash Course",
-          "authors": [],
+          "authors": [
+            "Ben Forta"
+          ],
           "pages": 320,
           "type": "book"
         },
@@ -450,11 +454,630 @@
       "nosql"
     ],
     "resources": {
-      "articles": [],
-      "books": [],
-      "courses": [],
-      "documentation": [],
-      "videos": []
+      "articles": [
+        {
+          "url": "https://javascript.plainenglish.io/full-stack-mongodb-react-node-js-express-js-in-one-simple-app-6cc8ed6de274",
+          "title": "Let’s build a full stack MongoDB, React, Node and Express (MERN) app",
+          "authors": [
+            "jelo rivera"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/hackernoon/mongodb-vs-mysql-comparison-which-database-is-better-e714b699c38b",
+          "title": "MongoDB vs MySQL Comparison: Which Database is Better?",
+          "authors": [
+            "Yevheniia Korotia"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/mongoaudit/how-to-enable-authentication-on-mongodb-b9e8a924efac",
+          "title": "How to Enable Authentication on MongoDB",
+          "authors": [
+            "Stampery Inc."
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://levelup.gitconnected.com/fetch-api-data-with-axios-and-display-it-in-a-react-app-with-hooks-3f9c8fa89e7b",
+          "title": "Fetch API data with Axios and display it in a React app with hooks",
+          "authors": [
+            "JB"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/founding-ithaka/setting-up-and-connecting-to-a-remote-mongodb-database-5df754a4da89",
+          "title": "Setting up and connecting to a remote MongoDB database",
+          "authors": [
+            "Mithilesh Said"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/stackfame/run-mongodb-as-a-service-in-windows-b0acd3a4b712",
+          "title": "Run MongoDB as a Service in Windows",
+          "authors": [
+            "VithalReddy"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://tomanagle.medium.com/strongly-typed-models-with-mongoose-and-typescript-7bc2f7197722",
+          "title": "Strongly typed models with Mongoose and TypeScript",
+          "authors": [
+            "Tom Nagle"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://blog.exploratory.io/an-introduction-to-mongodb-query-for-beginners-bd463319aa4c",
+          "title": "An Introduction to MongoDB Query for Beginners",
+          "authors": [
+            "Kan Nishida"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@alvenw/how-to-store-images-to-mongodb-with-node-js-fb3905c37e6d",
+          "title": "How to store images to MongoDB with Node.js",
+          "authors": [
+            "alven"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://blog.meteor.com/mongodb-queries-dont-always-return-all-matching-documents-654b6594a827",
+          "title": "MongoDB queries don’t always return all matching documents!",
+          "authors": [
+            "David Glasser"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/createdd-notes/5-steps-to-build-a-rest-api-in-node-js-with-mongodb-e1f2113a39bd",
+          "title": "5 Steps to build a REST API in Node.js with MongoDB",
+          "authors": [
+            "Daniel Deutsch"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@agentwhs/complete-guide-for-typescript-for-mongoose-for-node-js-8cc0a7e470c1",
+          "title": "Complete guide for Typescript for Mongoose for Node.js",
+          "authors": [
+            "Hansen Wang"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/mongodb-cowboys/troubleshooting-mongodb-100-cpu-load-and-slow-queries-da622c6e1339",
+          "title": "Troubleshooting MongoDB 100% CPU load and slow queries",
+          "authors": [
+            "Igor Khomenko"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://towardsdatascience.com/how-to-deploy-a-mongodb-replica-set-using-docker-6d0b9ac00e49",
+          "title": "How to deploy a MongoDB Replica Set using Docker",
+          "authors": [
+            "Cristian Ramirez"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://rossbulat.medium.com/using-promises-async-await-with-mongodb-613ed8243900",
+          "title": "Using Promises, async / await with MongoDB",
+          "authors": [
+            "Ross Bulat"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@xoor/indexing-mongodb-with-elasticsearch-2c428b676343",
+          "title": "Indexing MongoDB with ElasticSearch",
+          "authors": [
+            "XOOR"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://engineering.universe.com/mongo-aggregations-in-5-minutes-b8e1d9c274bb",
+          "title": "Mongo Aggregations in 5 Minutes",
+          "authors": [
+            "Joshua Kelly"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://engineering.peerislands.io/mongodb-schema-design-aaecb48e0e4c",
+          "title": "MongoDB Schema Design : Guidelines",
+          "authors": [
+            "Rajesh Vinayagam"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://infosecwriteups.com/nosql-injection-8732c2140576",
+          "title": "NoSQL Injection",
+          "authors": [
+            "Fiddly Cookie"
+          ],
+          "type": "article"
+        }
+      ],
+      "books": [
+        {
+          "url": "https://www.amazon.com.au/MongoDB-Basics-David-Hows/dp/148420896X",
+          "title": "MongoDB Basics",
+          "authors": [
+            "Peter Membrey",
+            "David Hows",
+            "Eelco Plugge"
+          ],
+          "pages": 0,
+          "type": "book"
+        },
+        {
+          "url": "https://www.amazon.com/Beginning-Node-js-Express-MongoDB-Development/dp/1078379556",
+          "title": "Beginning Node.js, Express & MongoDB Development",
+          "authors": [
+            "Greg Lim"
+          ],
+          "pages": 152,
+          "type": "book"
+        },
+        {
+          "url": "https://www.amazon.com/Data-Modeling-MongoDB-Steve-Hoberman/dp/1935504703",
+          "title": "Data Modeling for MongoDB: Building Well-Designed and Supportable MongoDB Databases",
+          "authors": [
+            "Steve Hoberman"
+          ],
+          "pages": 0,
+          "type": "book"
+        },
+        {
+          "url": "https://www.amazon.com/NoSQL-MongoDB-Hours-Teach-Yourself/dp/0672337134",
+          "title": "NoSQL with MongoDB in 24 Hours, Sams Teach Yourself (Sams Teach Yourself in 24 Hours)",
+          "authors": [
+            "Brad Dayley"
+          ],
+          "pages": 542,
+          "type": "book"
+        },
+        {
+          "url": "https://www.amazon.com/Node-js-MongoDB-Native-Full-Stack-Fundamentals/dp/0997196688",
+          "title": "Node.js, MongoDB, React, React Native Full-Stack Fundamentals and Beyond",
+          "authors": [
+            "Eric Bush"
+          ],
+          "pages": 394,
+          "type": "book"
+        },
+        {
+          "url": "https://www.booktopia.com.au/mongodb-and-php-steve-francia/book/9781449314361.html",
+          "title": "MongoDB and PHP",
+          "authors": [
+            "Steve Francia"
+          ],
+          "pages": 50,
+          "type": "book"
+        },
+        {
+          "url": "https://www.booktopia.com/mongodb-the-definitive-guide-3e-shannon-bradshaw/book/9781491954461.html",
+          "title": "MongoDB: The Definitive Guide 3e",
+          "authors": [
+            "Shannon Bradshaw",
+            "Eoin Brazil",
+            "Kristina Chodorow"
+          ],
+          "pages": 425,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/mongodb-applied-design/9781449340056/",
+          "title": "MongoDB Applied Design Patterns",
+          "authors": [
+            "Rick Copeland"
+          ],
+          "pages": 176,
+          "type": "book"
+        },
+        {
+          "url": "https://www.packtpub.com/product/mastering-mongodb-4x-second-edition/9781789617870",
+          "title": "Mastering MongoDB 4.x - Second Edition",
+          "authors": [
+            "Alex Giamas"
+          ],
+          "pages": 394,
+          "type": "book"
+        },
+        {
+          "url": "https://www.packtpub.com/product/mongodb-fundamentals/9781839210648",
+          "title": "MongoDB Fundamentals",
+          "authors": [
+            "Amit Phaltankar",
+            "Juned Ahsan",
+            "Michael Harrison\nand 1 more"
+          ],
+          "pages": 748,
+          "type": "book"
+        }
+      ],
+      "courses": [
+        {
+          "url": "https://learn.mongodb.com/learning-paths/atlas-essentials",
+          "title": "",
+          "platform": "",
+          "authors": [],
+          "duration": 0,
+          "type": "course"
+        },
+        {
+          "url": "https://learn.mongodb.com/learning-paths/introduction-to-mongodb",
+          "title": "",
+          "platform": "",
+          "authors": [],
+          "duration": 0,
+          "type": "course"
+        },
+        {
+          "url": "https://learn.mongodb.com/learning-paths/mongodb-associate-database-administrator-path",
+          "title": "",
+          "platform": "",
+          "authors": [],
+          "duration": 0,
+          "type": "course"
+        },
+        {
+          "url": "https://learn.mongodb.com/learning-paths/mongodb-for-sql-professionals",
+          "title": "",
+          "platform": "",
+          "authors": [],
+          "duration": 0,
+          "type": "course"
+        },
+        {
+          "url": "https://learn.mongodb.com/learning-paths/mongodb-nodejs-developer-path",
+          "title": "",
+          "platform": "",
+          "authors": [],
+          "duration": 0,
+          "type": "course"
+        },
+        {
+          "url": "https://learn.mongodb.com/learning-paths/mongodb-python-developer-path",
+          "title": "",
+          "platform": "",
+          "authors": [],
+          "duration": 0,
+          "type": "course"
+        },
+        {
+          "url": "https://learn.mongodb.com/learning-paths/using-mongodb-with-csharp",
+          "title": "",
+          "platform": "",
+          "authors": [],
+          "duration": 0,
+          "type": "course"
+        },
+        {
+          "url": "https://learn.mongodb.com/learning-paths/using-mongodb-with-java",
+          "title": "",
+          "platform": "",
+          "authors": [],
+          "duration": 0,
+          "type": "course"
+        },
+        {
+          "url": "https://www.codecademy.com/learn/learn-mongodb",
+          "title": "",
+          "platform": "",
+          "authors": [],
+          "duration": 0,
+          "type": "course"
+        },
+        {
+          "url": "https://www.coursera.org/learn/introduction-to-mongodb",
+          "title": "Introduction to MongoDB",
+          "platform": "Coursera",
+          "authors": [
+            "MongoDB University",
+            "MongoDB for Academia"
+          ],
+          "duration": 1087,
+          "type": "course"
+        },
+        {
+          "url": "https://www.coursera.org/learn/mongodb-aggregation-framework",
+          "title": "MongoDB Aggregation Framework",
+          "platform": "Coursera",
+          "authors": [
+            "Nathan Leniz",
+            "Kirby Kohlmorgen"
+          ],
+          "duration": 1172,
+          "type": "course"
+        },
+        {
+          "url": "https://www.linkedin.com/learning/advanced-mongodb",
+          "title": "Advanced MongoDB Online Class | LinkedIn Learning, formerly Lynda.com",
+          "platform": "LinkedIn Learning",
+          "authors": [
+            "Naomi Pentrel"
+          ],
+          "duration": 145,
+          "type": "course"
+        },
+        {
+          "url": "https://www.linkedin.com/learning/introduction-to-mongodb-22120765",
+          "title": "Introduction to MongoDB Online Class | LinkedIn Learning, formerly Lynda.com",
+          "platform": "LinkedIn Learning",
+          "authors": [
+            "MongoDB"
+          ],
+          "duration": 107,
+          "type": "course"
+        },
+        {
+          "url": "https://www.linkedin.com/learning/learning-mongodb-17360744",
+          "title": "Learning MongoDB Online Class | LinkedIn Learning, formerly Lynda.com",
+          "platform": "LinkedIn Learning",
+          "authors": [
+            "Justin Jenkins"
+          ],
+          "duration": 145,
+          "type": "course"
+        },
+        {
+          "url": "https://www.linkedin.com/learning/mongodb-essential-training",
+          "title": "MongoDB Essential Training Online Class | LinkedIn Learning, formerly Lynda.com",
+          "platform": "LinkedIn Learning",
+          "authors": [
+            "Naomi Pentrel"
+          ],
+          "duration": 194,
+          "type": "course"
+        },
+        {
+          "url": "https://www.pluralsight.com/cloud-guru/courses/mongodb-deep-dive",
+          "title": "MongoDB Deep Dive",
+          "platform": "Pluralsight",
+          "authors": [],
+          "duration": 395,
+          "type": "course"
+        },
+        {
+          "url": "https://www.pluralsight.com/courses/code-school-the-magical-marvels-of-mongodb",
+          "title": "Code School: The Magical Marvels of MongoDB",
+          "platform": "Pluralsight",
+          "authors": [
+            "Joel Taylor"
+          ],
+          "duration": 56,
+          "type": "course"
+        },
+        {
+          "url": "https://www.pluralsight.com/courses/foundations-document-databases-mongodb",
+          "title": "Foundations of Document Databases with MongoDB",
+          "platform": "Pluralsight",
+          "authors": [
+            "Pinal Dave"
+          ],
+          "duration": 148,
+          "type": "course"
+        },
+        {
+          "url": "https://www.pluralsight.com/courses/fundamentals-mongoose-for-node-mongodb",
+          "title": "Fundamentals of Mongoose for Node and MongoDB",
+          "platform": "Pluralsight",
+          "authors": [
+            "Mark Scott"
+          ],
+          "duration": 116,
+          "type": "course"
+        },
+        {
+          "url": "https://www.pluralsight.com/courses/mongodb-introduction",
+          "title": "Introduction to MongoDB 2",
+          "platform": "Pluralsight",
+          "authors": [
+            "Nuri Halperin"
+          ],
+          "duration": 147,
+          "type": "course"
+        },
+        {
+          "url": "https://www.pluralsight.com/courses/querying-data-mongodb",
+          "title": "Querying Data from MongoDB",
+          "platform": "Pluralsight",
+          "authors": [
+            "Dan Geabunea"
+          ],
+          "duration": 105,
+          "type": "course"
+        },
+        {
+          "url": "https://www.pluralsight.com/courses/visualizing-data-with-mongodb-charts",
+          "title": "Visualizing Data with MongoDB Charts",
+          "platform": "Pluralsight",
+          "authors": [
+            "Deeksha Sharma"
+          ],
+          "duration": 68,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/introduction-to-the-mongodb/",
+          "title": "Introduction to the MongoDB",
+          "platform": "Udemy",
+          "authors": [
+            "Bogdan Stashchuk | Software Engineer, MBA, PhD"
+          ],
+          "duration": 93,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/learn-mongodb-leading-nosql-database-from-scratch/",
+          "title": "Learn MongoDB & Neo4j - Leading NoSQL Databases from scratch",
+          "platform": "Udemy",
+          "authors": [
+            "Sunil Kumar Gupta"
+          ],
+          "duration": 1217,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/mongodb-essentials-m/",
+          "title": "Complete MongoDB Administration Guide",
+          "platform": "Udemy",
+          "authors": [
+            "Bogdan Stashchuk | Software Engineer, MBA, PhD"
+          ],
+          "duration": 617,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/mongodb-the-complete-developers-guide/",
+          "title": "MongoDB - The Complete Developer's Guide 2023",
+          "platform": "Udemy",
+          "authors": [
+            "Academind by Maximilian Schwarzmüller",
+            "Maximilian Schwarzmüller"
+          ],
+          "duration": 1054,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/mongodb-with-spring-boot-spring-data-mongorepository-mlab-cloudfoundry/",
+          "title": "MongoDB with Java Spring Boot & Spring Framework",
+          "platform": "Udemy",
+          "authors": [
+            "Infybuzz Learning"
+          ],
+          "duration": 253,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/the-complete-developers-guide-to-mongodb/",
+          "title": "Master MongoDB & Mongoose (With a Test-Driven Approach)",
+          "platform": "Udemy",
+          "authors": [
+            "Stephen Grider"
+          ],
+          "duration": 784,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/the-complete-mongodb-course/",
+          "title": "The Complete MongoDB Course 2023",
+          "platform": "Udemy",
+          "authors": [
+            "Malvik Vaghadia"
+          ],
+          "duration": 488,
+          "type": "course"
+        }
+      ],
+      "documentation": [
+        {
+          "url": "https://learn.mongodb.com/",
+          "title": "",
+          "authors": [],
+          "type": "documentation"
+        },
+        {
+          "url": "https://www.mongodb.com/docs/",
+          "title": "",
+          "authors": [],
+          "type": "documentation"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://youtu.be/-bt_y4Loofg",
+          "title": "MongoDB in 100 Seconds",
+          "authors": [
+            "Fireship"
+          ],
+          "duration": 3,
+          "type": "video"
+        },
+        {
+          "url": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA",
+          "title": "Complete MongoDB Tutorial",
+          "authors": [
+            "The Net Ninja"
+          ],
+          "duration": 174,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/ofme2o29ngU",
+          "title": "MongoDB Crash Course",
+          "authors": [
+            "Web Dev Simplified"
+          ],
+          "duration": 30,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/RGfFpQF0NpE",
+          "title": "MongoDB Explained in 10 Minutes | SQL vs NoSQL | Jumpstart",
+          "authors": [
+            "MongoDB"
+          ],
+          "duration": 12,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/OdgZ0jr4jpM",
+          "title": "MySQL vs MongoDB",
+          "authors": [
+            "IBM Technology"
+          ],
+          "duration": 6,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/SnqPyqRh4r4",
+          "title": "What Is MongoDB? | What Is MongoDB And How It Works | MongoDB Tutorial For Beginners | Simplilearn",
+          "authors": [
+            "Simplilearn"
+          ],
+          "duration": 7,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/c2M-rlkkT5o",
+          "title": "Learn MongoDB in 1 Hour 🍃 (2023)",
+          "authors": [
+            "Bro Code"
+          ],
+          "duration": 60,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/2QQGWYe7IDU",
+          "title": "MongoDB Crash Course 2022",
+          "authors": [
+            "Traversy Media"
+          ],
+          "duration": 28,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/3GHZd0zv170",
+          "title": "Data Modeling with MongoDB",
+          "authors": [
+            "MongoDB"
+          ],
+          "duration": 35,
+          "type": "video"
+        }
+      ]
     }
   },
   "redis": {
@@ -500,15 +1123,181 @@
     "resources": {
       "articles": [
         {
+          "url": "https://medium.com/@kelechiogbogu/data-cleaning-and-preparation-with-sql-f5f7e539808",
+          "title": "Data Cleaning and Preparation With SQL",
           "authors": [
             "Kelechi Ogbogu"
           ],
-          "title": "Data Cleaning and Preparation With SQL",
-          "type": "article",
-          "url": "https://medium.com/@kelechiogbogu/data-cleaning-and-preparation-with-sql-f5f7e539808"
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@chriskuchar/connecting-to-ms-sql-server-from-a-mac-with-windows-authentication-44375ec1953e",
+          "title": "Connecting to MS Sql Server from a Mac with Windows Authentication",
+          "authors": [
+            "Chris Kuchar"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://sancaa94.medium.com/build-a-relational-database-for-a-data-analyst-portfolio-project-d92660f6d0e",
+          "title": "Build a Relational Database For a Data Analyst Portfolio Project",
+          "authors": [
+            "Angel Sanchez"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@itssaad.muhammad/cleaning-and-injecting-data-into-microsoft-sql-server-from-google-colab-4e248dfffc5f",
+          "title": "Cleaning and Injecting data into Microsoft SQL server from Google Colab.",
+          "authors": [
+            "Muhammad Saad Uddin"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://towardsdatascience.com/java-development-with-microsoft-sql-server-ee6efd13f799",
+          "title": "Java Development with Microsoft SQL Server",
+          "authors": [
+            "Gary A. Stafford"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://paggyru.medium.com/how-to-transfer-data-from-microsoft-sql-server-to-a-mysql-database-f63f30608d00",
+          "title": "How to transfer data from Microsoft SQL Server to a MySQL database",
+          "authors": [
+            "Akademily"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://paggyru.medium.com/import-data-from-excel-to-microsoft-sql-server-in-t-sql-language-c53914894d05",
+          "title": "Import data from Excel to Microsoft SQL Server in T-SQL language",
+          "authors": [
+            "Akademily"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://paggyru.medium.com/how-to-execute-python-code-in-microsoft-sql-server-on-t-sql-e185adef400f",
+          "title": "How to execute Python code in Microsoft SQL Server on T-SQL",
+          "authors": [
+            "Akademily"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://ip-specialist.medium.com/microsoft-sql-server-vs-oracle-48fcdae837f7",
+          "title": "Microsoft SQL Server vs. Oracle",
+          "authors": [
+            "IPSpecialist"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://www.simplilearn.com/what-is-microsoft-sql-server-architecture-article",
+          "title": "SQL Server Architecture Explained",
+          "authors": [
+            "John Terra"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://www.c-sharpcorner.com/article/getting-started-with-sql-server-2022/",
+          "title": "Getting Started With SQL Server 2022",
+          "authors": [
+            "Chittaranjan Swain"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.SQLServer.html",
+          "title": "Using a Microsoft SQL Server database as a source for AWS DMS",
+          "authors": [
+            "AWS"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://datacom.com/au/en/discover/articles/blog-five-ways-to-avoid-costly-microsoft-sql-database-licensing",
+          "title": "",
+          "authors": [],
+          "type": "article"
         }
       ],
-      "books": [],
+      "books": [
+        {
+          "url": "https://www.oreilly.com/library/view/t-sql-fundamentals-third/9781509302031/",
+          "title": "T-SQL Fundamentals, Third Edition",
+          "authors": [
+            "Itzik Ben-Gan"
+          ],
+          "pages": 464,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/microsoft-sql-server/9781260458886/",
+          "title": "Microsoft SQL Server 2019: A Beginner's Guide, Seventh Edition, 7th Edition",
+          "authors": [
+            "Dusan Petkovic"
+          ],
+          "pages": 896,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/sql-cookbook/0596009763/",
+          "title": "SQL Cookbook",
+          "authors": [
+            "Anthony Molinaro"
+          ],
+          "pages": 632,
+          "type": "book"
+        },
+        {
+          "url": "https://www.booktopia.com/sql-quickstart-guide-walter-shields/book/9781945051234.html",
+          "title": "SQL QuickStart Guide",
+          "authors": [
+            "Walter Shields"
+          ],
+          "pages": 250,
+          "type": "book"
+        },
+        {
+          "url": "https://www.murach.com/shop/murach-s-sql-server-2019-for-developers-detail",
+          "title": "",
+          "authors": [],
+          "pages": 0,
+          "type": "book"
+        },
+        {
+          "url": "https://www.booktopia.com/expert-scripting-and-automation-for-sql-server-dbas-peter-a-carter/book/9781484219423.html",
+          "title": "Expert Scripting and Automation for SQL Server DBAs",
+          "authors": [
+            "Peter A. Carter"
+          ],
+          "pages": 304,
+          "type": "book"
+        },
+        {
+          "url": "https://www.amazon.com/Troubleshooting-SQL-Server-Guide-Accidental/dp/1906434786",
+          "title": "Troubleshooting SQL Server - A Guide for the Accidental DBA",
+          "authors": [
+            "Jonathan Kehayias",
+            "Ted Krueger"
+          ],
+          "pages": 370,
+          "type": "book"
+        },
+        {
+          "url": "https://www.amazon.com/SQL-Practice-Problems-learn-doing/dp/1520807635",
+          "title": "SQL Practice Problems: 57 beginning, intermediate, and advanced challenges for you to solve using a “learn-by-doing” approach",
+          "authors": [
+            "Sylvia Moestl Vasilik"
+          ],
+          "pages": 147,
+          "type": "book"
+        }
+      ],
       "courses": [
         {
           "url": "https://www.udemy.com/course/microsoft-sql-server-for-beginners/",
@@ -519,10 +1308,189 @@
           ],
           "duration": 211,
           "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/microsoft-sql-server-2017-for-everyone/",
+          "title": "Complete Microsoft SQL Server Database Design Masterclass",
+          "platform": "Udemy",
+          "authors": [
+            "Trevoir Williams",
+            "Learn IT University",
+            "Andrii Piatakha"
+          ],
+          "duration": 499,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/mastering-sql-server/",
+          "title": "Learn Microsoft SQL Server from Scratch",
+          "platform": "Udemy",
+          "authors": [
+            "Yasir Mehmood"
+          ],
+          "duration": 106,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/how-to-become-a-real-world-sql-server-dba/",
+          "title": "How To Begin Your Career As a SQL Server DBA",
+          "platform": "Udemy",
+          "authors": [
+            "Mike West"
+          ],
+          "duration": 112,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/the-complete-sql-course-2021-learn-by-doing/",
+          "title": "The Complete SQL Course 2023 - Learn by Doing - SQL Server",
+          "platform": "Udemy",
+          "authors": [
+            "Daniel Tait"
+          ],
+          "duration": 794,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/complete-microsoft-sql-masterclass-beginner-advanced/",
+          "title": "Complete Microsoft SQL Server Masterclass:Beginner to Expert",
+          "platform": "Udemy",
+          "authors": [
+            "Sandeep Kumar"
+          ],
+          "duration": 668,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/sql-server-2019-sql-for-the-beginners-with-50-exercices/",
+          "title": "SQL Server 2022 for complete beginners (7 hours of practice)",
+          "platform": "Udemy",
+          "authors": [
+            "ELOA FORMATION | SQL | Postgres | Powershell| MySQL | Python | TSQL Administration,TSQL, and SQL Server performance."
+          ],
+          "duration": 437,
+          "type": "course"
+        },
+        {
+          "url": "https://www.pluralsight.com/courses/intro-sql-server",
+          "title": "Introduction to SQL Server",
+          "platform": "Pluralsight",
+          "authors": [
+            "Dan Sullivan"
+          ],
+          "duration": 129,
+          "type": "course"
+        },
+        {
+          "url": "https://www.coursera.org/projects/beginning-sql-server",
+          "title": "Beginning SQL Server",
+          "platform": "Coursera",
+          "authors": [],
+          "duration": 0,
+          "type": "course"
+        },
+        {
+          "url": "https://www.linkedin.com/learning/microsoft-sql-server-2022-essential-training",
+          "title": "Microsoft SQL Server 2022 Essential Training Online Class | LinkedIn Learning, formerly Lynda.com",
+          "platform": "LinkedIn Learning",
+          "authors": [
+            "Adam Wilbert"
+          ],
+          "duration": 85,
+          "type": "course"
+        },
+        {
+          "url": "https://www.pluralsight.com/courses/sql-server-first-instance-getting-started",
+          "title": "Getting Started with Your First SQL Server Instance",
+          "platform": "Pluralsight",
+          "authors": [
+            "Kevin Hill"
+          ],
+          "duration": 164,
+          "type": "course"
+        },
+        {
+          "url": "https://www.pluralsight.com/courses/sql-server-indexing",
+          "title": "SQL Server Performance: Indexing Basics",
+          "platform": "Pluralsight",
+          "authors": [
+            "Pinal Dave",
+            "Vinod Kumar"
+          ],
+          "duration": 119,
+          "type": "course"
         }
       ],
-      "documentation": [],
-      "videos": []
+      "documentation": [
+        {
+          "url": "https://learn.microsoft.com/en-us/sql/sql-server/?view=sql-server-ver16",
+          "title": "",
+          "authors": [],
+          "type": "documentation"
+        },
+        {
+          "url": "https://learn.microsoft.com/en-us/sql/?view=sql-server-ver16",
+          "title": "",
+          "authors": [],
+          "type": "documentation"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://youtu.be/h0nxCDiD-zg",
+          "title": "SQL for Beginners Tutorial",
+          "authors": [
+            "Kevin Stratvert"
+          ],
+          "duration": 45,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/8vTCyhDyRjg",
+          "title": "SQL Server Tutorial For Beginners | SQL Server Management Studio Install & Tips 2022",
+          "authors": [
+            "Teddy Smith"
+          ],
+          "duration": 16,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/-EPMOaV7h_Q",
+          "title": "SQL Server Tutorial For Beginners | Microsoft SQL Server Tutorial | SQL Server Training | Edureka",
+          "authors": [
+            "edureka!"
+          ],
+          "duration": 106,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/Q8gBvsUjTLw",
+          "title": "SQL Server Management Studio (SSMS) | Full Course",
+          "authors": [
+            "Joey Blue"
+          ],
+          "duration": 83,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/lo80Q8C0nXk",
+          "title": "SQL Server Crash course | Microsoft SQL Server Tutorial | From Absolute Beginners to Advanced",
+          "authors": [
+            "TutorialBrain"
+          ],
+          "duration": 128,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/7GVFYt6_ZFM",
+          "title": "Install SQL Server 2019 Step by Step | Developer Edition | Free Software | Install SSMS",
+          "authors": [
+            "kudvenkat"
+          ],
+          "duration": 6,
+          "type": "video"
+        }
+      ]
     }
   },
   "firestore": {
@@ -1160,7 +2128,9 @@
           "url": "https://www.pluralsight.com/courses/administering-elasticsearch-cluster",
           "title": "Administering an Elasticsearch Cluster",
           "platform": "Pluralsight",
-          "authors": [],
+          "authors": [
+            "JP Toto"
+          ],
           "duration": 128,
           "type": "course"
         }
@@ -1265,8 +2235,10 @@
         },
         {
           "url": "https://awstip.com/what-ive-learned-from-using-aws-dynamodb-in-production-for-more-than-3-years-49a077886b5c",
-          "title": "",
-          "authors": [],
+          "title": "What I’ve Learned From Using AWS DynamoDB in Production for More Than 3 Years",
+          "authors": [
+            "Borislav Stoilov"
+          ],
           "type": "article"
         },
         {
@@ -1331,14 +2303,18 @@
         },
         {
           "url": "https://dev.to/aws-builders/why-dynamodb-streams-is-very-useful-24e7",
-          "title": "",
-          "authors": [],
+          "title": "Why DynamoDB Streams is Very Useful",
+          "authors": [
+            "awedis"
+          ],
           "type": "article"
         },
         {
           "url": "https://dev.to/shavz/dynamodb-gotchas-bjm",
-          "title": "",
-          "authors": [],
+          "title": "Dynamodb Gotchas",
+          "authors": [
+            "Shiveen Pandita"
+          ],
           "type": "article"
         }
       ],

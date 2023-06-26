@@ -1,11 +1,18 @@
 import { z } from 'zod';
 
-export const videoResourceSchema = z.object({
+export const articleResourceSchema = z.object({
   url: z.string(),
   title: z.string(),
   authors: z.string().array(),
-  duration: z.number(),
-  type: z.literal('video'),
+  type: z.literal('article'),
+});
+
+export const bookResourceSchema = z.object({
+  url: z.string(),
+  title: z.string(),
+  authors: z.string().array(),
+  pages: z.number(),
+  type: z.literal('book'),
 });
 
 export const courseResourceSchema = z.object({
@@ -24,19 +31,12 @@ export const documentationResourceSchema = z.object({
   type: z.literal('documentation'),
 });
 
-export const articleResourceSchema = z.object({
+export const videoResourceSchema = z.object({
   url: z.string(),
   title: z.string(),
   authors: z.string().array(),
-  type: z.literal('article'),
-});
-
-export const bookResourceSchema = z.object({
-  url: z.string(),
-  title: z.string(),
-  authors: z.string().array(),
-  pages: z.number(),
-  type: z.literal('book'),
+  duration: z.number(),
+  type: z.literal('video'),
 });
 
 export const jnodeTypeSchema = z.union([
@@ -52,6 +52,14 @@ export const jnodeTypeSchema = z.union([
   z.literal('paradigm'),
   z.literal('field'),
   z.literal('career'),
+]);
+
+export const resourceSchema = z.discriminatedUnion('type', [
+  articleResourceSchema,
+  bookResourceSchema,
+  courseResourceSchema,
+  documentationResourceSchema,
+  videoResourceSchema,
 ]);
 
 export const resourcesSchema = z.object({
@@ -72,3 +80,16 @@ export const jnodeSchema = z.object({
 });
 
 export const jnodesMapSchema = z.record(jnodeSchema);
+
+export const partialResourcesSchema = z.object({
+  total: z.number(),
+  resources: resourceSchema.array(),
+});
+
+export const resourceTypeSchema = z.union([
+  articleResourceSchema.shape.type,
+  bookResourceSchema.shape.type,
+  courseResourceSchema.shape.type,
+  documentationResourceSchema.shape.type,
+  videoResourceSchema.shape.type,
+]);
