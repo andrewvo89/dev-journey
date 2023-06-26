@@ -1,5 +1,5 @@
-import { JNode } from 'types/jnode';
 import fs from 'fs';
+import { jnodeJSONSchema } from '../../schemas/data';
 import path from 'path';
 
 export async function main() {
@@ -15,7 +15,7 @@ export async function main() {
     }
 
     const existingJson = fs.readFileSync(path.join(__dirname, '..', jsonFile), 'utf-8');
-    const json = JSON.parse(existingJson) as Record<string, JNode>;
+    const json = jnodeJSONSchema.parse(JSON.parse(existingJson));
 
     for (const key of Object.keys(json)) {
       const fileExists = fs.existsSync(path.join(__dirname, '..', 'imports', folderName, key));

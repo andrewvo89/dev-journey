@@ -7,7 +7,6 @@ import {
   jnodeTypeSchema,
   jnodesMapSchema,
   partialResourcesSchema,
-  partialsMapSchema,
   resourceSchema,
   resourceTypeSchema,
   resourcesSchema,
