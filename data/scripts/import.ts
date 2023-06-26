@@ -163,9 +163,9 @@ async function mergeImports(key: string, imports: string, resources: Resources):
 
 function getUrls(importContents: string, key: string) {
   return importContents
-    .split(`/* ${key}`)[1]
+    .split(`<${key}>`)[1]
     .trim()
-    .split(`${key} */`)[0]
+    .split(`<${key}/>`)[0]
     .trim()
     .split('\n')
     .map((s) => s.trim())

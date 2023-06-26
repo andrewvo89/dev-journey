@@ -233,10 +233,9 @@ async function amazon(url: string): Promise<BookResource> {
     await page.setViewport({ width: 1080, height: 1024 });
 
     const title = (await page.$eval('span#productTitle', (el) => el.textContent))?.trim() ?? '';
-    const authors = (await page.$$eval('span.author > a', (els) => els.map((el) => el.textContent))).reduce<string[]>(
-      (prev, curr) => (curr ? [...prev, curr] : prev),
-      [],
-    );
+    const authors = (await page.$$eval('span.author > a', (els) => els.map((el) => el.textContent?.trim()))).reduce<
+      string[]
+    >((prev, curr) => (curr ? [...prev, curr] : prev), []);
     if (authors.length === 0) {
       console.info('No authors', url);
     }
@@ -271,7 +270,8 @@ async function packetpub(url: string): Promise<BookResource> {
     await page.goto(url);
     await page.setViewport({ width: 1080, height: 1024 });
 
-    const title = (await page.$eval('h1.product-page__block__contents__rhs__title', (el) => el.textContent)) ?? '';
+    const title =
+      (await page.$eval('h1.product-page__block__contents__rhs__title', (el) => el.textContent))?.trim() ?? '';
     let authorsString =
       (await page.$eval('div.product-page__block__contents__rhs__authors', (el) => el.textContent?.trim())) ?? '';
 
@@ -307,7 +307,7 @@ async function booktopia(url: string): Promise<BookResource> {
     await page.goto(url);
     await page.setViewport({ width: 1080, height: 1024 });
 
-    const title = (await page.$eval('meta[property="og:title"]', (el) => el.content)) ?? '';
+    const title = (await page.$eval('meta[property="og:title"]', (el) => el.content))?.trim() ?? '';
     const authors = (
       await page.$$eval('a[data-mh-ea="Author name"]', (els) => els.map((el) => el.textContent?.trim() ?? ''))
     ).filter(Boolean);
@@ -341,8 +341,8 @@ async function medium(url: string): Promise<ArticleResource> {
     await page.goto(url);
     await page.setViewport({ width: 1080, height: 1024 });
 
-    const title = (await page.$eval('meta[data-rh="true"][property="og:title"]', (el) => el.content)) ?? '';
-    const author = (await page.$eval('meta[data-rh="true"][name="author"]', (el) => el.content)) ?? '';
+    const title = (await page.$eval('meta[data-rh="true"][property="og:title"]', (el) => el.content))?.trim() ?? '';
+    const author = (await page.$eval('meta[data-rh="true"][name="author"]', (el) => el.content))?.trim() ?? '';
 
     return { authors: [author], title, type: 'article', url };
   } catch (error) {
@@ -361,7 +361,7 @@ async function devto(url: string): Promise<ArticleResource> {
     await page.goto(url);
     await page.setViewport({ width: 1080, height: 1024 });
 
-    const title = (await page.$eval('meta[property="og:title"]', (el) => el.content)) ?? '';
+    const title = (await page.$eval('meta[property="og:title"]', (el) => el.content.trim())) ?? '';
     const author =
       (await page.$eval('article#article-show-container', (el) => el.getAttribute('data-author-name'))) ?? '';
 
@@ -381,9 +381,10 @@ async function youtube(url: string): Promise<VideoResource> {
     await page.goto(url);
     await page.setViewport({ width: 1080, height: 1024 });
 
-    const title = (await page.$eval('meta[name="title"]', (el) => el.content)) ?? '';
-    const author = (await page.$eval('link[itemprop="name"]', (el) => el.getAttribute('content'))) ?? '';
-    const durationString = (await page.$eval('meta[itemprop="duration"]', (el) => el.getAttribute('content'))) ?? '';
+    const title = (await page.$eval('meta[name="title"]', (el) => el.content.trim())) ?? '';
+    const author = (await page.$eval('link[itemprop="name"]', (el) => el.getAttribute('content')?.trim())) ?? '';
+    const durationString =
+      (await page.$eval('meta[itemprop="duration"]', (el) => el.getAttribute('content')?.trim())) ?? '';
     let minutes = parseInt(durationString.split('PT')[1].split('M')[0]);
     const seconds = parseInt(durationString.split('M')[1].split('S')[0]);
     if (seconds > 0) {
@@ -405,8 +406,8 @@ async function youtube_playlist(url: string): Promise<VideoResource> {
     await page.goto(url);
     await page.setViewport({ width: 1080, height: 1024 });
 
-    const title = (await page.$eval('meta[name="title"]', (el) => el.content)) ?? '';
-    const author = (await page.$eval('yt-formatted-string#owner-text > a', (el) => el.textContent)) ?? '';
+    const title = (await page.$eval('meta[name="title"]', (el) => el.content.trim())) ?? '';
+    const author = (await page.$eval('yt-formatted-string#owner-text > a', (el) => el.textContent?.trim())) ?? '';
     const duration = (
       await page.$$eval('span.ytd-thumbnail-overlay-time-status-renderer', (els) =>
         els.map((el) => {
@@ -435,12 +436,12 @@ async function udemy(url: string): Promise<CourseResource> {
 
     await page.waitForSelector('div[data-purpose="curriculum-stats"]');
 
-    const title = (await page.$eval('meta[name="title"]', (el) => el.content)) ?? '';
+    const title = (await page.$eval('meta[name="title"]', (el) => el.content.trim())) ?? '';
     const authors = (
-      await page.$$eval('a.ud-instructor-links > span', (els) => els.map((el) => el.textContent))
+      await page.$$eval('a.ud-instructor-links > span', (els) => els.map((el) => el.textContent?.trim()))
     ).reduce<string[]>((prev, curr) => (curr ? [...prev, curr] : prev), []);
     const durationString =
-      (await page.$eval('div[data-purpose="curriculum-stats"] > span > span', (el) => el.textContent)) ?? '';
+      (await page.$eval('div[data-purpose="curriculum-stats"] > span > span', (el) => el.textContent?.trim())) ?? '';
 
     const hours = parseInt(durationString.split('h')[0]);
     const minutes = parseInt(durationString.split('h')[1].split('m total length')[0]);
@@ -462,7 +463,7 @@ async function pluralsight(url: string): Promise<CourseResource> {
 
     await page.waitForSelector('meta[property="og:title"]');
 
-    const title = (await page.$eval('meta[property="og:title"]', (el) => el.content)) ?? '';
+    const title = (await page.$eval('meta[property="og:title"]', (el) => el.content.trim())) ?? '';
     const authors = (await page.$$eval('div.author-name', (els) => els.map((el) => el.textContent?.trim()))).reduce<
       string[]
     >((prev, curr) => (curr ? [...prev, curr] : prev), []);
@@ -489,7 +490,8 @@ async function coursera(url: string): Promise<CourseResource> {
 
     await page.waitForSelector('meta[property="og:title"][data-react-helmet="true"]');
 
-    const title = (await page.$eval('meta[property="og:title"][data-react-helmet="true"]', (el) => el.content)) ?? '';
+    const title =
+      (await page.$eval('meta[property="og:title"][data-react-helmet="true"]', (el) => el.content.trim())) ?? '';
     const authors = (await page.$$eval('h3.instructor-name', (els) => els.map((el) => el.textContent?.trim()))).reduce<
       string[]
     >((prev, curr) => (curr ? [...prev, curr] : prev), []);
@@ -514,7 +516,7 @@ async function linkedin(url: string): Promise<CourseResource> {
     await page.goto(url);
     await page.setViewport({ width: 1080, height: 1024 });
 
-    const title = (await page.$eval('meta[property="og:title"]', (el) => el.content)) ?? '';
+    const title = (await page.$eval('meta[property="og:title"]', (el) => el.content.trim())) ?? '';
     const authors = (
       await page.$$eval('li.course-instructors__list-item > a > div > h3', (els) =>
         els.map((el) => el.textContent?.trim()),
