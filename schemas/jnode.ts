@@ -27,7 +27,6 @@ export const courseResourceSchema = z.object({
 export const documentationResourceSchema = z.object({
   url: z.string(),
   title: z.string(),
-  authors: z.string().array(),
   type: z.literal('documentation'),
 });
 

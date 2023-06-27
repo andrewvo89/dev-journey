@@ -2,7 +2,7 @@
   "mysql": {
     "id": "mysql",
     "title": "MySQL",
-    "description": "",
+    "description": "MySQL is an open-source relational database management system (RDBMS) that was first released in 1995. It is widely known for its speed, reliability, and ease of use. MySQL uses Structured Query Language (SQL) for managing and manipulating the data stored in relational tables. It is an essential component of the LAMP stack, which stands for Linux, Apache, MySQL, and PHP, and is a popular choice for web applications.\nMySQL is particularly favored for web development and is used by a range of applications, from small websites to large-scale enterprise systems. It supports a variety of features including stored procedures, triggers, cursors, and transactions, which are essential for data integrity and consistency.\nOver the years, MySQL has gained widespread adoption due to its performance and open-source nature. It has been used by some of the largest websites in the world, including Facebook and Twitter. There are also several forks and variants of MySQL, such as MariaDB, which was created by the original developers of MySQL.\nMySQL is maintained and distributed by Oracle Corporation, but as an open-source project, it also has a strong community of developers contributing to its ongoing development and support.",
     "type": "database",
     "dependencies": [
       "sql"
@@ -236,26 +236,40 @@
         },
         {
           "url": "https://www.datacamp.com/courses/introduction-to-sql",
-          "title": "",
-          "platform": "",
-          "authors": [],
-          "duration": 0,
+          "title": "Introduction to SQL",
+          "platform": "DataCamp",
+          "authors": [
+            "Izzy Weber",
+            "Amy Peterson",
+            "James Chapman"
+          ],
+          "duration": 120,
           "type": "course"
         },
         {
           "url": "https://www.datacamp.com/courses/joining-data-in-sql",
-          "title": "",
-          "platform": "",
-          "authors": [],
-          "duration": 0,
+          "title": "Joining Data in SQL",
+          "platform": "DataCamp",
+          "authors": [
+            "Maham Khan",
+            "Izzy Weber",
+            "Amy Peterson",
+            "James Chapman"
+          ],
+          "duration": 240,
           "type": "course"
         },
         {
           "url": "https://www.datacamp.com/courses/intermediate-sql",
-          "title": "",
-          "platform": "",
-          "authors": [],
-          "duration": 0,
+          "title": "Intermediate SQL",
+          "platform": "DataCamp",
+          "authors": [
+            "Jasmin Ludolf",
+            "Izzy Weber",
+            "Amy Peterson",
+            "James Chapman"
+          ],
+          "duration": 240,
           "type": "course"
         },
         {
@@ -354,20 +368,17 @@
       "documentation": [
         {
           "url": "https://dev.mysql.com/doc/",
-          "title": "",
-          "authors": [],
+          "title": "MySQL :: MySQL Documentation",
           "type": "documentation"
         },
         {
           "url": "https://docs.oracle.com/cd/E17952_01/index.html",
-          "title": "",
-          "authors": [],
+          "title": "MySQL 5.7 Reference Manual",
           "type": "documentation"
         },
         {
           "url": "https://docs.digitalocean.com/products/databases/mysql/",
-          "title": "",
-          "authors": [],
+          "title": "MySQL Databases | DigitalOcean Product Documentation",
           "type": "documentation"
         }
       ],
@@ -432,23 +443,409 @@
   "postgress": {
     "id": "postgress",
     "title": "PostgreSQL",
-    "description": "",
+    "description": "PostgreSQL, often simply called Postgres, is an open-source relational database management system (RDBMS) that was initially released in 1996. It is known for its advanced features, extensibility, and adherence to SQL standards. PostgreSQL supports both SQL for relational data and JSON for non-relational data, which makes it a popular choice for a variety of applications, from web services to data warehousing and analytics.\nOne of the distinguishing features of PostgreSQL is its support for custom data types and operators. Users can define their own data types, develop custom functions, and even write code in different programming languages without recompiling the database.\nPostgreSQL also boasts a robust set of features including transactions, multi-version concurrency control (MVCC), point-in-time recovery, table partitioning, and replication. Its ability to handle large volumes of data and perform complex queries efficiently makes it well-suited for high-performance environments and critical business applications.\nThe active community around PostgreSQL contributes to its continuous development and supports a rich ecosystem of tools and extensions. Moreover, its open-source nature and license, which allows for modification and distribution without any restrictions, make it a preferred choice for businesses and developers looking for a powerful and flexible RDBMS.",
     "type": "database",
     "dependencies": [
       "sql"
     ],
     "resources": {
-      "articles": [],
-      "books": [],
-      "courses": [],
-      "documentation": [],
-      "videos": []
+      "articles": [
+        {
+          "url": "https://amplitude.engineering/how-a-single-postgresql-config-change-improved-slow-query-performance-by-50x-85593b8991b0",
+          "title": "How a single PostgreSQL config change improved slow query performance by 50x",
+          "authors": [
+            "Pavan Patibandla"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://betterprogramming.pub/connect-from-local-machine-to-postgresql-docker-container-f785f00461a7",
+          "title": "Connect From Your Local Machine to a PostgreSQL Database in Docker",
+          "authors": [
+            "Lorenz Vanthillo"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://gajus.medium.com/lessons-learned-scaling-postgresql-database-to-1-2bn-records-month-edc5449b3067",
+          "title": "Lessons learned scaling PostgreSQL database to 1.2bn records/ month",
+          "authors": [
+            "Gajus Kuizinas"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://levelup.gitconnected.com/working-with-a-jsonb-array-of-objects-in-postgresql-d2b7e7f4db87",
+          "title": "Working with a JSONB Array of Objects in PostgreSQL",
+          "authors": [
+            "gravity well (Rob Tomlin)"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@viviennediegoencarnacion/getting-started-with-postgresql-on-mac-e6a5f48ee399",
+          "title": "Getting started with PostgreSQL on Mac",
+          "authors": [
+            "Vivi E"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/little-programming-joys/finding-and-killing-long-running-queries-on-postgres-7c4f0449e86d",
+          "title": "Finding and killing long running queries on PostgreSQL",
+          "authors": [
+            "Anderson Dias"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://rbranson.medium.com/10-things-i-hate-about-postgresql-20dbab8c2791",
+          "title": "10 Things I Hate About PostgreSQL",
+          "authors": [
+            "Rick Branson"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://towardsdatascience.com/local-development-set-up-of-postgresql-with-docker-c022632f13ea",
+          "title": "Local Development Set-Up of PostgreSQL with Docker",
+          "authors": [
+            "Cesar Flores"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://towardsdatascience.com/python-and-postgresql-how-to-access-a-postgresql-database-like-a-data-scientist-b5a9c5a0ea43",
+          "title": "Python and PostgreSQL: How To Access A PostgreSQL Database Like A Data Scientist",
+          "authors": [
+            "Alex Mitrani"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://towardsdatascience.com/some-important-key-concepts-to-start-using-postgresql-c6de63ab683f",
+          "title": "Some Important Key Concepts to start using PostgreSQL",
+          "authors": [
+            "Papa Moryba Kouate"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://towardsdatascience.com/sql-cheat-sheet-776f8e3189fa",
+          "title": "SQL Cheat Sheet",
+          "authors": [
+            "Jason"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://zhao-li.medium.com/getting-started-with-postgresql-using-docker-compose-34d6b808c47c",
+          "title": "Getting Started with PostgreSQL using Docker-Compose",
+          "authors": [
+            "Zhao Li"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://mastermind.dev/indexes-in-postgresql",
+          "title": "Understanding database Indexes in PostgreSQL",
+          "authors": [
+            "Paweł Dąbrowski"
+          ],
+          "type": "article"
+        }
+      ],
+      "books": [
+        {
+          "url": "https://www.packtpub.com/product/postgresql-14-administration-cookbook/9781803248974",
+          "title": "PostgreSQL 14 Administration Cookbook",
+          "authors": [
+            "Simon Riggs",
+            "Gianni Ciolli"
+          ],
+          "pages": 608,
+          "type": "book"
+        },
+        {
+          "url": "https://www.packtpub.com/product/mastering-postgresql-13-fourth-edition/9781800567498",
+          "title": "Mastering PostgreSQL 13 - Fourth Edition",
+          "authors": [
+            "Hans-Jürgen Schönig"
+          ],
+          "pages": 476,
+          "type": "book"
+        },
+        {
+          "url": "https://www.packtpub.com/product/learn-postgresql/9781838985288",
+          "title": "Learn PostgreSQL",
+          "authors": [
+            "Luca Ferrari",
+            "Enrico Pirozzi"
+          ],
+          "pages": 650,
+          "type": "book"
+        },
+        {
+          "url": "https://www.packtpub.com/product/troubleshooting-postgresql/9781783555314",
+          "title": "Troubleshooting PostgreSQL",
+          "authors": [
+            "Vasilis Ventirozos",
+            "Hans-Jürgen Schönig",
+            "kevin vicrey"
+          ],
+          "pages": 164,
+          "type": "book"
+        },
+        {
+          "url": "https://www.packtpub.com/product/postgresql-server-programming/9781849516983",
+          "title": "PostgreSQL Server Programming",
+          "authors": [
+            "Kirk Roybal",
+            "Jim Mlodgenski",
+            "Hannu Krosing\n and 1 more"
+          ],
+          "pages": 264,
+          "type": "book"
+        },
+        {
+          "url": "https://www.packtpub.com/product/postgresql-administration-essentials/9781783988983",
+          "title": "PostgreSQL Administration Essentials",
+          "authors": [
+            "Hans-Jürgen Schönig",
+            "Hans-Jürgen Schönig"
+          ],
+          "pages": 142,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/postgresql-up-and/9781491963401/",
+          "title": "PostgreSQL: Up and Running, 3rd Edition",
+          "authors": [
+            "Regina O. Obe",
+            "Leo S. Hsu"
+          ],
+          "pages": 314,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/developing-modern-database/9781838648145/",
+          "title": "Developing Modern Database Applications with PostgreSQL",
+          "authors": [
+            "Dr. Quan Ha Le",
+            "Marcelo Diaz"
+          ],
+          "pages": 440,
+          "type": "book"
+        }
+      ],
+      "courses": [
+        {
+          "url": "https://www.udemy.com/course/sql-and-postgresql-for-beginners/",
+          "title": "Learn SQL, PostgreSQL, and PgAdmin 4: Master Database Queries",
+          "platform": "Udemy",
+          "authors": [
+            "Jon Avis - SQL Instructor"
+          ],
+          "duration": 554,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/postgresqlmasterclass/",
+          "title": "PostgreSQL Bootcamp : Go From Beginner to Advanced, 60+hours",
+          "platform": "Udemy",
+          "authors": [
+            "Adnan Waheed"
+          ],
+          "duration": 4040,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/complete-python-postgresql-database-course/",
+          "title": "The Complete Python/PostgreSQL Course 2.0",
+          "platform": "Udemy",
+          "authors": [
+            "Codestars • over 2 million students worldwide!",
+            "Jose Salvatierra",
+            "Teclado by Jose Salvatierra"
+          ],
+          "duration": 820,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/postgresql-from-zero-to-hero/",
+          "title": "Learn SQL Using PostgreSQL: From Zero to Hero",
+          "platform": "Udemy",
+          "authors": [
+            "Will Bunker"
+          ],
+          "duration": 973,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/intro-to-postgresql-databases-with-pgadmin/",
+          "title": "Intro To PostgreSQL Databases With PgAdmin For Beginners",
+          "platform": "Udemy",
+          "authors": [
+            "John Elder"
+          ],
+          "duration": 111,
+          "type": "course"
+        },
+        {
+          "url": "https://www.coursera.org/specializations/postgresql-for-everybody",
+          "title": "PostgreSQL for Everybody",
+          "platform": "Coursera",
+          "authors": [
+            "Charles Severance"
+          ],
+          "duration": 3300,
+          "type": "course"
+        },
+        {
+          "url": "https://www.coursera.org/learn/intermediate-postgresql",
+          "title": "Intermediate PostgreSQL",
+          "platform": "Coursera",
+          "authors": [
+            "Charles Russell Severance"
+          ],
+          "duration": 448,
+          "type": "course"
+        },
+        {
+          "url": "https://www.coursera.org/learn/database-design-postgresql",
+          "title": "Database Design and Basic SQL in PostgreSQL",
+          "platform": "Coursera",
+          "authors": [
+            "Charles Russell Severance"
+          ],
+          "duration": 359,
+          "type": "course"
+        },
+        {
+          "url": "https://www.pluralsight.com/courses/postgresql-getting-started",
+          "title": "PostgreSQL: Getting Started",
+          "platform": "Pluralsight",
+          "authors": [
+            "Pinal Dave"
+          ],
+          "duration": 112,
+          "type": "course"
+        },
+        {
+          "url": "https://www.pluralsight.com/courses/postgresql-advanced-sql-queries",
+          "title": "PostgreSQL: Advanced SQL Queries",
+          "platform": "Pluralsight",
+          "authors": [
+            "Pinal Dave"
+          ],
+          "duration": 101,
+          "type": "course"
+        },
+        {
+          "url": "https://www.linkedin.com/learning/postgresql-essential-training",
+          "title": "PostgreSQL Essential Training",
+          "platform": "LinkedIn Learning",
+          "authors": [
+            "Adam Wilbert"
+          ],
+          "duration": 163,
+          "type": "course"
+        },
+        {
+          "url": "https://www.linkedin.com/learning/advanced-postgresql",
+          "title": "Advanced PostgreSQL",
+          "platform": "LinkedIn Learning",
+          "authors": [
+            "Janani Ravi"
+          ],
+          "duration": 140,
+          "type": "course"
+        },
+        {
+          "url": "https://www.linkedin.com/learning/postgresql-advanced-queries",
+          "title": "PostgreSQL: Advanced Queries",
+          "platform": "LinkedIn Learning",
+          "authors": [
+            "Adam Wilbert"
+          ],
+          "duration": 170,
+          "type": "course"
+        }
+      ],
+      "documentation": [
+        {
+          "url": "https://www.postgresql.org/docs/",
+          "title": "PostgreSQL: Documentation",
+          "type": "documentation"
+        },
+        {
+          "url": "https://wiki.postgresql.org/wiki/Main_Page",
+          "title": "PostgreSQL wiki",
+          "type": "documentation"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://youtu.be/qw--VYLpxG4",
+          "title": "Learn PostgreSQL Tutorial - Full Course for Beginners",
+          "authors": [
+            "freeCodeCamp.org"
+          ],
+          "duration": 260,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/btjBNKP49Rk",
+          "title": "PostgreSQL vs MySQL",
+          "authors": [
+            "IBM Technology"
+          ],
+          "duration": 7,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/zw4s3Ey8ayo",
+          "title": "PostgreSQL CRASH COURSE - Learn PostgreSQL in 2022",
+          "authors": [
+            "Troy Amelotte"
+          ],
+          "duration": 51,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/WFT5MaZN6g4",
+          "title": "pgAdmin Tutorial - How to Use pgAdmin",
+          "authors": [
+            "Database Star"
+          ],
+          "duration": 16,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/eMIxuk0nOkU",
+          "title": "PostgreSQL Tutorial For Beginners | What Is PostgreSQL? | Learn PostgreSQL | Simplilearn",
+          "authors": [
+            "Simplilearn"
+          ],
+          "duration": 94,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/ldYcgPKEZC8",
+          "title": "PERN Stack Course - Postgres, Express, React, and Node",
+          "authors": [
+            "freeCodeCamp.org"
+          ],
+          "duration": 83,
+          "type": "video"
+        }
+      ]
     }
   },
   "mongodb": {
     "id": "mongodb",
     "title": "MongoDB",
-    "description": "",
+    "description": "MongoDB is a widely used open-source NoSQL database management system that was first released in 2009. Unlike traditional relational databases that store data in structured tables, MongoDB is document-oriented, meaning it stores data in flexible, JSON-like documents (BSON format). Each document can have a different number of fields, content, and size, which makes MongoDB highly adaptable to various data models and applications.\nMongoDB is known for its scalability, performance, and flexibility. It supports sharding, which distributes data across multiple servers, making it possible to handle very large datasets and high traffic loads. Furthermore, it offers replication and automatic failover, ensuring high availability.\nMongoDB is particularly popular among developers working on big data, content management, mobile and IoT applications, where the schema can evolve rapidly or is not well-defined. Its query language is powerful and expressive, allowing for sophisticated querying and data manipulation.\nMongoDB also offers MongoDB Atlas, which is a fully managed cloud-based version of MongoDB, providing automated backups, scaling, and other features, making it easier for users to run MongoDB in the cloud.",
     "type": "database",
     "dependencies": [
       "nosql"
@@ -617,7 +1014,7 @@
             "David Hows",
             "Eelco Plugge"
           ],
-          "pages": 0,
+          "pages": 158,
           "type": "book"
         },
         {
@@ -635,7 +1032,7 @@
           "authors": [
             "Steve Hoberman"
           ],
-          "pages": 0,
+          "pages": 226,
           "type": "book"
         },
         {
@@ -709,74 +1106,92 @@
       "courses": [
         {
           "url": "https://learn.mongodb.com/learning-paths/atlas-essentials",
-          "title": "",
-          "platform": "",
-          "authors": [],
-          "duration": 0,
+          "title": "Atlas Essentials",
+          "platform": "MongoDB University",
+          "authors": [
+            "MongoDB University"
+          ],
+          "duration": 750,
           "type": "course"
         },
         {
           "url": "https://learn.mongodb.com/learning-paths/introduction-to-mongodb",
-          "title": "",
-          "platform": "",
-          "authors": [],
-          "duration": 0,
+          "title": "Introduction to MongoDB",
+          "platform": "MongoDB University",
+          "authors": [
+            "MongoDB University"
+          ],
+          "duration": 720,
           "type": "course"
         },
         {
           "url": "https://learn.mongodb.com/learning-paths/mongodb-associate-database-administrator-path",
-          "title": "",
-          "platform": "",
-          "authors": [],
-          "duration": 0,
+          "title": "MongoDB Associate Database Administrator Path",
+          "platform": "MongoDB University",
+          "authors": [
+            "MongoDB University"
+          ],
+          "duration": 1710,
           "type": "course"
         },
         {
           "url": "https://learn.mongodb.com/learning-paths/mongodb-for-sql-professionals",
-          "title": "",
-          "platform": "",
-          "authors": [],
-          "duration": 0,
+          "title": "MongoDB for SQL Professionals",
+          "platform": "MongoDB University",
+          "authors": [
+            "MongoDB University"
+          ],
+          "duration": 480,
           "type": "course"
         },
         {
           "url": "https://learn.mongodb.com/learning-paths/mongodb-nodejs-developer-path",
-          "title": "",
-          "platform": "",
-          "authors": [],
-          "duration": 0,
+          "title": "MongoDB Node.js Developer Path",
+          "platform": "MongoDB University",
+          "authors": [
+            "MongoDB University"
+          ],
+          "duration": 900,
           "type": "course"
         },
         {
           "url": "https://learn.mongodb.com/learning-paths/mongodb-python-developer-path",
-          "title": "",
-          "platform": "",
-          "authors": [],
-          "duration": 0,
+          "title": "MongoDB Python Developer Path",
+          "platform": "MongoDB University",
+          "authors": [
+            "MongoDB University"
+          ],
+          "duration": 900,
           "type": "course"
         },
         {
           "url": "https://learn.mongodb.com/learning-paths/using-mongodb-with-csharp",
-          "title": "",
-          "platform": "",
-          "authors": [],
-          "duration": 0,
+          "title": "Using MongoDB with C#",
+          "platform": "MongoDB University",
+          "authors": [
+            "MongoDB University"
+          ],
+          "duration": 180,
           "type": "course"
         },
         {
           "url": "https://learn.mongodb.com/learning-paths/using-mongodb-with-java",
-          "title": "",
-          "platform": "",
-          "authors": [],
-          "duration": 0,
+          "title": "Using MongoDB with Java",
+          "platform": "MongoDB University",
+          "authors": [
+            "MongoDB University"
+          ],
+          "duration": 180,
           "type": "course"
         },
         {
           "url": "https://www.codecademy.com/learn/learn-mongodb",
-          "title": "",
-          "platform": "",
-          "authors": [],
-          "duration": 0,
+          "title": "Learn MongoDB",
+          "platform": "Codecademy",
+          "authors": [
+            "David Patlut"
+          ],
+          "duration": 480,
           "type": "course"
         },
         {
@@ -803,7 +1218,7 @@
         },
         {
           "url": "https://www.linkedin.com/learning/advanced-mongodb",
-          "title": "Advanced MongoDB Online Class | LinkedIn Learning, formerly Lynda.com",
+          "title": "Advanced MongoDB",
           "platform": "LinkedIn Learning",
           "authors": [
             "Naomi Pentrel"
@@ -813,7 +1228,7 @@
         },
         {
           "url": "https://www.linkedin.com/learning/introduction-to-mongodb-22120765",
-          "title": "Introduction to MongoDB Online Class | LinkedIn Learning, formerly Lynda.com",
+          "title": "Introduction to MongoDB",
           "platform": "LinkedIn Learning",
           "authors": [
             "MongoDB"
@@ -823,7 +1238,7 @@
         },
         {
           "url": "https://www.linkedin.com/learning/learning-mongodb-17360744",
-          "title": "Learning MongoDB Online Class | LinkedIn Learning, formerly Lynda.com",
+          "title": "Learning MongoDB",
           "platform": "LinkedIn Learning",
           "authors": [
             "Justin Jenkins"
@@ -833,7 +1248,7 @@
         },
         {
           "url": "https://www.linkedin.com/learning/mongodb-essential-training",
-          "title": "MongoDB Essential Training Online Class | LinkedIn Learning, formerly Lynda.com",
+          "title": "MongoDB Essential Training",
           "platform": "LinkedIn Learning",
           "authors": [
             "Naomi Pentrel"
@@ -845,7 +1260,9 @@
           "url": "https://www.pluralsight.com/cloud-guru/courses/mongodb-deep-dive",
           "title": "MongoDB Deep Dive",
           "platform": "Pluralsight",
-          "authors": [],
+          "authors": [
+            "A Cloud Guru"
+          ],
           "duration": 395,
           "type": "course"
         },
@@ -984,14 +1401,12 @@
       "documentation": [
         {
           "url": "https://learn.mongodb.com/",
-          "title": "",
-          "authors": [],
+          "title": "MongoDB University",
           "type": "documentation"
         },
         {
           "url": "https://www.mongodb.com/docs/",
-          "title": "",
-          "authors": [],
+          "title": "MongoDB Documentation",
           "type": "documentation"
         }
       ],
@@ -1083,39 +1498,746 @@
   "redis": {
     "id": "redis",
     "title": "Redis",
-    "description": "",
+    "description": "Redis, which stands for Remote Dictionary Server, is an open-source, in-memory data structure store that was first released in 2009. It is often referred to as a database, cache, or message broker, due to its versatility in handling various data structures such as strings, hashes, lists, sets, sorted sets, bitmaps, hyperloglogs, and geospatial indexes.\nOne of the most prominent features of Redis is its performance. As an in-memory store, Redis can handle large volumes of data with low latency, making it an ideal choice for caching, session storage, real-time analytics, and message queuing.\nRedis also supports various features such as data persistence, replication, transactions, and support for Lua scripting. Moreover, it offers built-in support for master-slave replication, allowing data to be copied from a master Redis server to one or more replicas, which adds to its high availability and scaling capabilities.\nThe simplicity and high performance of Redis have made it one of the most popular NoSQL databases, and it is widely used in web development, gaming, IoT, and other applications where speed and scalability are critical. Additionally, Redis Enterprise extends the capabilities of Redis by providing features such as automated scaling, high availability, and enhanced security for enterprise-level applications.",
     "type": "database",
     "dependencies": [
       "nosql"
     ],
     "resources": {
-      "articles": [],
-      "books": [],
-      "courses": [],
-      "documentation": [],
-      "videos": []
+      "articles": [
+        {
+          "url": "https://amangoeliitb.medium.com/improving-database-performance-with-redis-dbd38fdf3cb",
+          "title": "Improving database performance with Redis",
+          "authors": [
+            "Aman Goel"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://codeburst.io/redis-53183e91f968",
+          "title": "Redis",
+          "authors": [
+            "Aditi Mittal"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://codeburst.io/redis-what-and-why-d52b6829813",
+          "title": "Redis: What and Why?",
+          "authors": [
+            "Prateek Gogia"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://instagram-engineering.com/storing-hundreds-of-millions-of-simple-key-value-pairs-in-redis-1091ae80f74c",
+          "title": "Storing hundreds of millions of simple key-value pairs in Redis",
+          "authors": [
+            "Instagram Engineering"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@amila922/redis-sentinel-high-availability-everything-you-need-to-know-from-dev-to-prod-complete-guide-deb198e70ea6",
+          "title": "Redis Sentinel — High Availability: Everything you need to know from DEV to PROD: Complete Guide",
+          "authors": [
+            "Amila Iddamalgoda"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@petehouston/install-and-config-redis-on-mac-os-x-via-homebrew-eb8df9a4f298",
+          "title": "Install and config Redis on Mac OS X via Homebrew",
+          "authors": [
+            "Pete Houston"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@stockholmux/store-javascript-objects-in-redis-with-node-js-the-right-way-1e2e89dbbf64",
+          "title": "Store Javascript objects in Redis with Node.js the right way",
+          "authors": [
+            "Kyle"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/containers-on-aws/scaling-a-realtime-chat-app-on-aws-using-socket-io-redis-and-aws-fargate-4ed63fb1b681",
+          "title": "Scaling a realtime chat app on AWS using Socket.io, Redis, and AWS Fargate",
+          "authors": [
+            "Nathan Peck"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/hackernoon/using-redis-with-node-js-8d87a48c5dd7",
+          "title": "Using Redis with Node JS",
+          "authors": [
+            "Chamara Madhushan Liyanage"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/swlh/session-management-in-nodejs-using-redis-as-session-store-64186112aa9",
+          "title": "Session Management in Nodejs Using Redis as Session Store",
+          "authors": [
+            "Chamith Madusanka"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://tech.oyorooms.com/finding-and-deleting-the-redis-keys-by-pattern-the-right-way-123629d7730",
+          "title": "Find and Delete multiple keys matching by a pattern in Redis the right way.",
+          "authors": [
+            "Ankit Jain AJ"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://towardsdatascience.com/redis-in-memory-data-store-easily-explained-3b92457be424",
+          "title": "Exploring the Power of Redis: A High-Performance In-Memory Data Store",
+          "authors": [
+            "Niklas Lang"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://blog.logrocket.com/guide-to-fully-understanding-redis/",
+          "title": "A guide to fully understanding Redis",
+          "authors": [
+            "Alexander Nnakwue"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://www.crio.do/blog/what-is-redis/",
+          "title": "What is Redis and Why is it used by leading industries?",
+          "authors": [
+            "Jaidev Singh Bhui"
+          ],
+          "type": "article"
+        }
+      ],
+      "books": [
+        {
+          "url": "https://www.oreilly.com/library/view/redis-cookbook/9781449311353/",
+          "title": "Redis Cookbook",
+          "authors": [
+            "Tiago Macedo",
+            "Fred Oliveira"
+          ],
+          "pages": 73,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/redis-in-action/9781617290855/",
+          "title": "Redis in Action",
+          "authors": [
+            "Dr. Josiah L. Carlson"
+          ],
+          "pages": 320,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/redis-essentials/9781784392451/",
+          "title": "Redis Essentials",
+          "authors": [
+            "Maxwell Dayvson Da Silva",
+            "Hugo Lopes Tavares"
+          ],
+          "pages": 230,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/learning-redis/9781783980123/",
+          "title": "Learning Redis",
+          "authors": [
+            "Vinoo Das"
+          ],
+          "pages": 318,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/mastering-redis/9781783988181/",
+          "title": "Mastering Redis",
+          "authors": [
+            "Jeremy Nelson"
+          ],
+          "pages": 366,
+          "type": "book"
+        },
+        {
+          "url": "https://www.amazon.com/Redis-Applied-Design-Patterns-Chinnachamy/dp/1783286717",
+          "title": "Redis Applied Design Patterns",
+          "authors": [
+            "Arun Chinnachamy"
+          ],
+          "pages": 316,
+          "type": "book"
+        },
+        {
+          "url": "https://www.packtpub.com/product/instant-redis-optimization-how-to/9781782164807",
+          "title": "Instant Redis Optimization How-to",
+          "authors": [
+            "Arun Chinnachamy"
+          ],
+          "pages": 56,
+          "type": "book"
+        },
+        {
+          "url": "https://www.amazon.com/dp/0655321608",
+          "title": "Redis Labs The Ultimate Step-By-Step Guide",
+          "authors": [
+            "Gerardus Blokdyk"
+          ],
+          "pages": 302,
+          "type": "book"
+        }
+      ],
+      "courses": [
+        {
+          "url": "https://www.udemy.com/course/masterredis/",
+          "title": "Master Redis - From Beginner to Advanced, 20+ hours",
+          "platform": "Udemy",
+          "authors": [
+            "Adnan Waheed"
+          ],
+          "duration": 1309,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/learn-redis-and-utilize-jedis-with-spring-data-redis/",
+          "title": "Learn Redis And Use Jedis With Spring Data Redis",
+          "platform": "Udemy",
+          "authors": [
+            "Bassem Abuein"
+          ],
+          "duration": 174,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/redis-latest/",
+          "title": "Redis - World's Fastest Database - Beginners to Advance",
+          "platform": "Udemy",
+          "authors": [
+            "Vikas Kumar Jha",
+            "Poonam Jha"
+          ],
+          "duration": 358,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/learn-redis-from-scratch/",
+          "title": "Learn Redis from Scratch for High Performance Key-Value Storage",
+          "platform": "Udemy",
+          "authors": [
+            "Eduonix Learning Solutions",
+            "Eduonix-Tech ."
+          ],
+          "duration": 180,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/redis-the-complete-developers-guide-p/",
+          "title": "Redis: The Complete Developer's Guide",
+          "platform": "Udemy",
+          "authors": [
+            "Stephen Grider"
+          ],
+          "duration": 934,
+          "type": "course"
+        },
+        {
+          "url": "https://www.linkedin.com/learning/redis-essential-training-15012713",
+          "title": "Redis Essential Training",
+          "platform": "LinkedIn Learning",
+          "authors": [
+            "Fernando Doglio"
+          ],
+          "duration": 86,
+          "type": "course"
+        },
+        {
+          "url": "https://www.linkedin.com/learning/advanced-redis",
+          "title": "Advanced Redis",
+          "platform": "LinkedIn Learning",
+          "authors": [
+            "Janani Ravi"
+          ],
+          "duration": 127,
+          "type": "course"
+        },
+        {
+          "url": "https://www.educative.io/courses/complete-guide-to-redis",
+          "title": "The Complete Guide to Redis",
+          "platform": "Educative",
+          "authors": [
+            "Saurav Aggarwal"
+          ],
+          "duration": 120,
+          "type": "course"
+        }
+      ],
+      "documentation": [
+        {
+          "url": "https://redis.io/docs/",
+          "title": "Redis Documentation",
+          "type": "documentation"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://youtu.be/8A_iNFRP0F4",
+          "title": "What is Redis and What Does It Do?",
+          "authors": [
+            "CBT Nuggets"
+          ],
+          "duration": 7,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/G1rOthIU-uo",
+          "title": "Redis in 100 Seconds",
+          "authors": [
+            "Fireship"
+          ],
+          "duration": 3,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/jgpVdJB2sKQ",
+          "title": "Redis Crash Course",
+          "authors": [
+            "Web Dev Simplified"
+          ],
+          "duration": 28,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/OqCK95AS-YE",
+          "title": "Redis Crash Course - the What, Why and How to use Redis as your primary database",
+          "authors": [
+            "TechWorld with Nana"
+          ],
+          "duration": 24,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/a4yX7RUgTxI",
+          "title": "Top 5 Redis Use Cases",
+          "authors": [
+            "ByteByteGo"
+          ],
+          "duration": 7,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/5TRFpFBccQM",
+          "title": "System Design: Why is single-threaded Redis so fast?",
+          "authors": [
+            "ByteByteGo"
+          ],
+          "duration": 4,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/muqiHwa8UvQ",
+          "title": "What is Redis?",
+          "authors": [
+            "IBM Technology"
+          ],
+          "duration": 5,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/oa1ns12KFhQ",
+          "title": "Redis as a Cache vs Redis as a Primary Database",
+          "authors": [
+            "Redis"
+          ],
+          "duration": 2,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/_4HwUVNl9Nc",
+          "title": "Why Your MySQL Needs Redis",
+          "authors": [
+            "Redis"
+          ],
+          "duration": 61,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/Z8qcpXyMAiA",
+          "title": "Redis Streams Explained",
+          "authors": [
+            "Redis"
+          ],
+          "duration": 11,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/XCsS_NVAa1g",
+          "title": "Redis Course - In-Memory Database Tutorial",
+          "authors": [
+            "freeCodeCamp.org"
+          ],
+          "duration": 87,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/-5RTyEim384",
+          "title": "How to use Redis Caching for Incredible Performance",
+          "authors": [
+            "Josh tried coding"
+          ],
+          "duration": 14,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/oaJq1mQ3dFI",
+          "title": "Redis Caching in Node.js",
+          "authors": [
+            "Traversy Media"
+          ],
+          "duration": 18,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/AzQ6_DTcG6c",
+          "title": "Redis with Node Crash Course - Cache Data for Improved Performance",
+          "authors": [
+            "Laith Academy"
+          ],
+          "duration": 45,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/Hbt56gFj998",
+          "title": "Redis Crash Course Tutorial",
+          "authors": [
+            "Traversy Media"
+          ],
+          "duration": 40,
+          "type": "video"
+        }
+      ]
     }
   },
   "sqlite": {
     "id": "sqlite",
     "title": "SQLite",
-    "description": "",
+    "description": "SQLite is a lightweight, self-contained, open-source relational database management system (RDBMS) that was first released in 2000. What sets SQLite apart from other traditional RDBMSs is its serverless architecture. Instead of running as a separate server process, SQLite is embedded into the application, and the database itself is stored in a single file on disk. This makes it extremely portable and easy to integrate into applications without the need for complex setup or administration.\nSQLite is known for its simplicity, reliability, and efficiency. It supports most of the SQL standard, including transactions, subqueries, and triggers. Despite its small footprint, SQLite is fully ACID-compliant, ensuring that database transactions are atomic, consistent, isolated, and durable.\nBecause of its serverless nature and ease of use, SQLite is a popular choice for embedded databases, particularly in mobile applications, desktop applications, and small to medium-sized web applications. It's also widely used as a local data store in browsers and for prototyping and development purposes.\nSQLite's source code is in the public domain, which allows it to be used for any purpose, including in commercial products, without any licensing fees or restrictions. This, coupled with its robustness and performance, has contributed to its widespread adoption across various industries and platforms.",
     "type": "database",
     "dependencies": [
       "sql"
     ],
     "resources": {
-      "articles": [],
-      "books": [],
-      "courses": [],
-      "documentation": [],
-      "videos": []
+      "articles": [
+        {
+          "url": "https://medium.com/@JasonWyatt/squeezing-performance-from-sqlite-indexes-indexes-c4e175f3c346",
+          "title": "Squeezing Performance from SQLite: Indexes? Indexes!",
+          "authors": [
+            "Jason Feinstein"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://koistya.medium.com/node-js-and-sqlite-for-rapid-prototyping-bc9cf1f26f10",
+          "title": "Using SQLite /w Node.js for Rapid Prototyping",
+          "authors": [
+            "Konstantin Tarkus"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://fmacedoo.medium.com/standalone-application-with-electron-react-and-sqlite-stack-9536a8b5a7b9",
+          "title": "Standalone application with Electron, React, and SQLite stack.",
+          "authors": [
+            "Filipe Macêdo"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.flutterdevs.com/data-persistence-with-sqlite-flutter-47a6f67b973f",
+          "title": "Data Persistence with SQLite | Flutter",
+          "authors": [
+            "Ashish Rawat"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://towardsdatascience.com/do-you-know-python-has-a-built-in-database-d553989c87bd",
+          "title": "Do You Know Python Has A Built-In Database?",
+          "authors": [
+            "Christopher Tao"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://www.twilio.com/blog/sqlite-postgresql-complicated",
+          "title": "SQLite or PostgreSQL? It's Complicated!",
+          "authors": [
+            "Miguel Grinberg"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://javascript.plainenglish.io/a-beginners-guide-to-setting-up-and-using-sqlite-3-in-a-browser-based-application-9e60cefe75ce",
+          "title": "SQLite 3 in Action: A Beginner’s Guide to Using a Relational Database in the Browser",
+          "authors": [
+            "Samuele"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://www.digitalocean.com/community/tutorials/sqlite-vs-mysql-vs-postgresql-a-comparison-of-relational-database-management-systems",
+          "title": "SQLite vs MySQL vs PostgreSQL: A Comparison of Relational Database Management Systems",
+          "authors": [
+            "Mark Drake"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/infinitbility/react-native-sqlite-storage-422503634dd2",
+          "title": "React Native SQLite Storage",
+          "authors": [
+            "Infinitbility"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://www.simplilearn.com/tutorials/sql-tutorial/what-is-sqlite",
+          "title": "What is SQLite? Everything You Need to Know",
+          "authors": [
+            "Ravikiran A S"
+          ],
+          "type": "article"
+        }
+      ],
+      "books": [
+        {
+          "url": "https://www.amazon.com/dp/product/B00M3OVSRK",
+          "title": "SQLite for Mobile Apps Simplified: Step by step details to create and access database from Android, BlackBerry and iPhone Apps",
+          "authors": [
+            "Sribatsa Das"
+          ],
+          "pages": 112,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/using-sqlite/9781449394592/",
+          "title": "Using SQLite",
+          "authors": [
+            "Jay A. Kreibich"
+          ],
+          "pages": 526,
+          "type": "book"
+        },
+        {
+          "url": "https://www.amazon.com/product/dp/0557076765",
+          "title": "The SQL Guide to SQLite",
+          "authors": [
+            "Rick F. van der Lans"
+          ],
+          "pages": 542,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/the-definitive-guide/9781430232254/",
+          "title": "The Definitive Guide to SQLite, Second Edition",
+          "authors": [
+            "Grant Allen",
+            "Mike Owens"
+          ],
+          "pages": 387,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/creating-a-database/9781484238998/",
+          "title": "Creating a Database with SQLite",
+          "authors": [
+            "Allen Taylor"
+          ],
+          "pages": 148,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/introduction-to-sqlite/9781838982867/",
+          "title": "Introduction to SQLite Databases for Python Programming",
+          "authors": [
+            "John Elder"
+          ],
+          "pages": 156,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/sqlite/067232685X/",
+          "title": "SQLite",
+          "authors": [
+            "Chris Newman"
+          ],
+          "pages": 340,
+          "type": "book"
+        }
+      ],
+      "courses": [
+        {
+          "url": "https://www.udemy.com/course/sqlite-for-beginners-f/",
+          "title": "SQLite for Beginners",
+          "platform": "Udemy",
+          "authors": [
+            "Dermot Downey"
+          ],
+          "duration": 34,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/using-sqlite3-databases-with-python/",
+          "title": "Intro To SQLite Databases for Python Programming",
+          "platform": "Udemy",
+          "authors": [
+            "John Elder"
+          ],
+          "duration": 97,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/sqlite-databases-python-programming-build-app-and-api/",
+          "title": "SQLite Databases | Python Programming: (Build App and API )",
+          "platform": "Udemy",
+          "authors": [
+            "Bluelime Learning Solutions"
+          ],
+          "duration": 574,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/sqlite-for-beginners-learn-sql-from-scratch/",
+          "title": "SQLite For Beginners - Learn SQL from Scratch",
+          "platform": "Udemy",
+          "authors": [
+            "Eduonix Learning Solutions",
+            "Eduonix-Tech ."
+          ],
+          "duration": 114,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/sqlite-sql-beginners/",
+          "title": "SQLite Fundamentals - Comprehensive SQL course on SQLite",
+          "platform": "Udemy",
+          "authors": [
+            "Saad Qureshi"
+          ],
+          "duration": 293,
+          "type": "course"
+        },
+        {
+          "url": "https://www.linkedin.com/learning/introduction-to-sqlite",
+          "title": "Introduction to SQLite",
+          "platform": "LinkedIn Learning",
+          "authors": [
+            "Brian Jepson"
+          ],
+          "duration": 76,
+          "type": "course"
+        },
+        {
+          "url": "https://www.eduonix.com/courses/Web-Development/sqlite-for-beginners-learn-sql-from-scratch",
+          "title": "SQLite For Beginners - Learn SQL from Scratch",
+          "platform": "Eduonix",
+          "authors": [
+            "Eduonix Learning Solutions"
+          ],
+          "duration": 180,
+          "type": "course"
+        },
+        {
+          "url": "https://www.codecademy.com/learn/learn-node-sqlite",
+          "title": "Learn Node-SQLite",
+          "platform": "Codecademy",
+          "authors": [
+            "Jiwon Shin"
+          ],
+          "duration": 60,
+          "type": "course"
+        }
+      ],
+      "documentation": [
+        {
+          "url": "https://www.sqlitetutorial.net/",
+          "title": "SQLite Tutorial - An Easy Way to Master SQLite Fast",
+          "type": "documentation"
+        },
+        {
+          "url": "https://www.sqlite.org/docs.html",
+          "title": "SQLite Documentation",
+          "type": "documentation"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://youtu.be/HQKwgk6XkIA",
+          "title": "SQLite Tutorial For Beginners - Make A Database In No Time",
+          "authors": [
+            "Avery Makes Games"
+          ],
+          "duration": 13,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/byHcYRpMgI4",
+          "title": "SQLite Databases With Python - Full Course",
+          "authors": [
+            "freeCodeCamp.org"
+          ],
+          "duration": 90,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/Ohj-CqALrwk",
+          "title": "SQLite Backend for Beginners - Create Quick Databases with Python and SQL",
+          "authors": [
+            "Python Simplified"
+          ],
+          "duration": 14,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/GMHK-0TKRVk",
+          "title": "SQLite Tutorial for Beginners in 1 Hour",
+          "authors": [
+            "TutorialBrain"
+          ],
+          "duration": 62,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/312RhjfetP8",
+          "title": "SQLite Database for Android - Full Course",
+          "authors": [
+            "freeCodeCamp.org"
+          ],
+          "duration": 89,
+          "type": "video"
+        },
+        {
+          "url": "https://youtube.com/playlist?list=PL-1QdJ8od_eyxntzYQhwCkcVZlqWVrmSf",
+          "title": "Learn SQLite Database and SQL",
+          "authors": [
+            "Programming Tutorials"
+          ],
+          "duration": 40,
+          "type": "video"
+        }
+      ]
     }
   },
   "microsoft_sql_server": {
     "id": "microsoft_sql_server",
     "title": "Microsoft SQL Sever",
-    "description": "",
+    "description": "Microsoft SQL Server is a relational database management system (RDBMS) developed by Microsoft. It was first released in 1989 and has since evolved into a comprehensive database solution for various data workloads. SQL Server is used to store, retrieve, and manage structured data in the form of tables. It supports the standard Structured Query Language (SQL) and offers various tools for database administration and business intelligence applications.\nSQL Server is known for its performance, security, and ease of use. It is widely used by businesses of all sizes for critical applications such as data warehousing, online transaction processing (OLTP), and business analytics. It offers a rich set of features including support for stored procedures, user-defined functions, transaction control, data replication, and advanced querying.\nIn addition to its on-premises version, Microsoft offers a cloud-based service called Azure SQL Database, which is a fully managed relational database service built on SQL Server technologies. This enables businesses to harness the scalability, availability, and flexibility of the cloud while using SQL Server for their database needs. Microsoft SQL Server is a popular choice among enterprises due to its comprehensive features, strong performance, and extensive ecosystem.",
     "type": "database",
     "dependencies": [
       "sql"
@@ -1220,8 +2342,10 @@
         },
         {
           "url": "https://datacom.com/au/en/discover/articles/blog-five-ways-to-avoid-costly-microsoft-sql-database-licensing",
-          "title": "",
-          "authors": [],
+          "title": "Five ways to avoid costly Microsoft SQL database licensing",
+          "authors": [
+            "Kevin Nicholas"
+          ],
           "type": "article"
         }
       ],
@@ -1264,9 +2388,12 @@
         },
         {
           "url": "https://www.murach.com/shop/murach-s-sql-server-2019-for-developers-detail",
-          "title": "",
-          "authors": [],
-          "pages": 0,
+          "title": "Murach's SQL Server 2019 for Developers",
+          "authors": [
+            "Joel Murach",
+            "Bryan Syverson"
+          ],
+          "pages": 672,
           "type": "book"
         },
         {
@@ -1385,13 +2512,15 @@
           "url": "https://www.coursera.org/projects/beginning-sql-server",
           "title": "Beginning SQL Server",
           "platform": "Coursera",
-          "authors": [],
-          "duration": 0,
+          "authors": [
+            "Mark Veljkov"
+          ],
+          "duration": 90,
           "type": "course"
         },
         {
           "url": "https://www.linkedin.com/learning/microsoft-sql-server-2022-essential-training",
-          "title": "Microsoft SQL Server 2022 Essential Training Online Class | LinkedIn Learning, formerly Lynda.com",
+          "title": "Microsoft SQL Server 2022 Essential Training",
           "platform": "LinkedIn Learning",
           "authors": [
             "Adam Wilbert"
@@ -1424,14 +2553,12 @@
       "documentation": [
         {
           "url": "https://learn.microsoft.com/en-us/sql/sql-server/?view=sql-server-ver16",
-          "title": "",
-          "authors": [],
+          "title": "SQL Server 2019 documentation",
           "type": "documentation"
         },
         {
           "url": "https://learn.microsoft.com/en-us/sql/?view=sql-server-ver16",
-          "title": "",
-          "authors": [],
+          "title": "SQL documentation",
           "type": "documentation"
         }
       ],
@@ -1496,7 +2623,7 @@
   "firestore": {
     "id": "firestore",
     "title": "Firestore",
-    "description": "",
+    "description": "Firestore, also known as Cloud Firestore, is a flexible, scalable NoSQL cloud database developed by Google for storing and syncing data for serverless, cloud-based, and mobile development. Released in 2017 as an evolution of Google's Realtime Database, Firestore offers robust, real-time capabilities and support for various data types, including complex nested objects.\nIn Firestore, data is stored as documents, which are organized into collections. Documents operate similarly to a JSON object, supporting a variety of data types like strings, numbers, dates, nested arrays, and objects. Firestore provides seamless synchronization, offline support, and the ability to query data within collections, making it suitable for a wide array of applications, from simple websites to complex, data-intensive applications.\\nFirestore's built-in security rules and automatic scaling make it a compelling choice for developers requiring a secure and reliable backend without the overhead of server management. It seamlessly integrates with other Google Cloud products and supports major programming languages, making it a versatile tool for multi-platform applications.",
     "type": "database",
     "dependencies": [
       "firebase",
@@ -1506,8 +2633,10 @@
       "articles": [
         {
           "url": "https://www.codemag.com/Article/1905071/Introduction-to-Cloud-Firestore",
-          "title": "",
-          "authors": [],
+          "title": "Introduction to Cloud Firestore",
+          "authors": [
+            "John V. Petersen"
+          ],
           "type": "article"
         },
         {
@@ -1584,8 +2713,10 @@
         },
         {
           "url": "https://www.freecodecamp.org/news/firebase-firestore-crash-course/",
-          "title": "",
-          "authors": [],
+          "title": "Firebase Cloud Firestore – Database Crash Course",
+          "authors": [
+            "Ihechikara Vincent Abba"
+          ],
           "type": "article"
         }
       ],
@@ -1601,42 +2732,52 @@
         },
         {
           "url": "https://www.scribd.com/book/384703902/Firebase-The-Ultimate-Step-By-Step-Guide",
-          "title": "",
-          "authors": [],
-          "pages": 0,
+          "title": "Firebase: The Ultimate Step-By-Step Guide",
+          "authors": [
+            "Gerardus Blokdyk"
+          ],
+          "pages": 122,
           "type": "book"
         },
         {
           "url": "https://www.roadtofirebase.com/",
-          "title": "",
-          "authors": [],
-          "pages": 0,
+          "title": "Road to Firebase",
+          "authors": [
+            "Robin Wieruch"
+          ],
+          "pages": 200,
           "type": "book"
         }
       ],
       "courses": [
         {
           "url": "https://fireship.io/courses/firestore-data-modeling/",
-          "title": "",
-          "platform": "",
-          "authors": [],
+          "title": "Firestore Data Modeling",
+          "platform": "fireship.io",
+          "authors": [
+            "Jeff Delaney"
+          ],
           "duration": 0,
           "type": "course"
         },
         {
           "url": "https://www.educative.io/courses/complete-guide-firebase-web",
-          "title": "",
-          "platform": "",
-          "authors": [],
-          "duration": 0,
+          "title": "The Complete Guide to Firebase",
+          "platform": "Educative",
+          "authors": [
+            "Dera Okeke"
+          ],
+          "duration": 405,
           "type": "course"
         },
         {
           "url": "https://www.educative.io/courses/fullstack-web-apps-with-firebase",
-          "title": "",
-          "platform": "",
-          "authors": [],
-          "duration": 0,
+          "title": "Fullstack Web Apps with Firebase",
+          "platform": "Educative",
+          "authors": [
+            "Eric Wallen"
+          ],
+          "duration": 780,
           "type": "course"
         },
         {
@@ -1683,32 +2824,27 @@
       "documentation": [
         {
           "url": "https://firebase.google.com/docs/firestore",
-          "title": "",
-          "authors": [],
+          "title": "Cloud Firestore  |  Google Cloud",
           "type": "documentation"
         },
         {
           "url": "https://cloud.google.com/firestore/docs",
-          "title": "",
-          "authors": [],
+          "title": "Cloud Firestore Documentation  |  Google Cloud",
           "type": "documentation"
         },
         {
           "url": "https://googleapis.dev/nodejs/firestore/latest/Firestore.html",
-          "title": "",
-          "authors": [],
+          "title": "Class: Firestore  |  Google Cloud Node.js",
           "type": "documentation"
         },
         {
           "url": "https://firebase.flutter.dev/docs/firestore/usage/",
-          "title": "",
-          "authors": [],
+          "title": "Usage  |  FlutterFire",
           "type": "documentation"
         },
         {
           "url": "https://rnfirebase.io/firestore/usage",
-          "title": "",
-          "authors": [],
+          "title": "Firestore Usage | React Native Firebase",
           "type": "documentation"
         }
       ],
@@ -1791,7 +2927,7 @@
   "elasticsearch": {
     "id": "elasticsearch",
     "title": "Elasticsearch",
-    "description": "",
+    "description": "Firestore, also known as Cloud Firestore, is a flexible, scalable NoSQL cloud database developed by Google for storing and syncing data for serverless, cloud-based, and mobile development. Released in 2017 as an evolution of Google's Realtime Database, Firestore offers robust, real-time capabilities and support for various data types, including complex nested objects.\nIn Firestore, data is stored as documents, which are organized into collections. Documents operate similarly to a JSON object, supporting a variety of data types like strings, numbers, dates, nested arrays, and objects. Firestore provides seamless synchronization, offline support, and the ability to query data within collections, making it suitable for a wide array of applications, from simple websites to complex, data-intensive applications.\nFirestore's built-in security rules and automatic scaling make it a compelling choice for developers requiring a secure and reliable backend without the overhead of server management. It seamlessly integrates with other Google Cloud products and supports major programming languages, making it a versatile tool for multi-platform applications.",
     "type": "database",
     "dependencies": [
       "nosql"
@@ -1872,8 +3008,10 @@
         },
         {
           "url": "https://www.elastic.co/blog/setting-up-elasticsearch-for-a-blog",
-          "title": "",
-          "authors": [],
+          "title": "Setting Up Elasticsearch for a Blog",
+          "authors": [
+            "Nicolás Bevacqua"
+          ],
           "type": "article"
         },
         {
@@ -1894,14 +3032,18 @@
         },
         {
           "url": "https://www.knowi.com/blog/what-is-elastic-search/",
-          "title": "",
-          "authors": [],
+          "title": "What is Elasticsearch and How Can It Be Useful?",
+          "authors": [
+            "Knowi Team"
+          ],
           "type": "article"
         },
         {
           "url": "https://logz.io/blog/elasticsearch-tutorial/",
-          "title": "",
-          "authors": [],
+          "title": "Elasticsearch Tutorial: Your Detailed Guide to Getting Started",
+          "authors": [
+            "Daniel Berman"
+          ],
           "type": "article"
         },
         {
@@ -1922,26 +3064,26 @@
         },
         {
           "url": "https://sematext.com/guides/elasticsearch/",
-          "title": "",
-          "authors": [],
+          "title": "Elasticsearch Tutorial & Getting Started Guide",
+          "authors": [
+            "Sematext Team"
+          ],
           "type": "article"
         },
         {
           "url": "https://www.elastic.co/blog/a-practical-introduction-to-elasticsearch",
-          "title": "",
-          "authors": [],
-          "type": "article"
-        },
-        {
-          "url": "https://www.elastic.co/blog/setting-up-elasticsearch-for-a-blog",
-          "title": "",
-          "authors": [],
+          "title": "A Practical Introduction to Elasticsearch",
+          "authors": [
+            "Alex Brasetvik"
+          ],
           "type": "article"
         },
         {
           "url": "https://www.elastic.co/blog/what-is-an-elasticsearch-index",
-          "title": "",
-          "authors": [],
+          "title": "What is an Elasticsearch Index?",
+          "authors": [
+            "Alex Brasetvik"
+          ],
           "type": "article"
         }
       ],
@@ -2106,7 +3248,7 @@
         },
         {
           "url": "https://www.linkedin.com/learning/elasticsearch-essential-training-18773441",
-          "title": "Elasticsearch Essential Training Online Class | LinkedIn Learning, formerly Lynda.com",
+          "title": "Elasticsearch Essential Training",
           "platform": "LinkedIn Learning",
           "authors": [
             "Ben Sullins"
@@ -2116,7 +3258,7 @@
         },
         {
           "url": "https://www.linkedin.com/learning/learning-the-elastic-stack-2",
-          "title": "Learning the Elastic Stack Online Class | LinkedIn Learning, formerly Lynda.com",
+          "title": "Learning the Elastic Stack",
           "platform": "LinkedIn Learning",
           "authors": [
             "Josh Samuelson"
@@ -2138,14 +3280,12 @@
       "documentation": [
         {
           "url": "https://www.elastic.co/guide/index.html",
-          "title": "",
-          "authors": [],
+          "title": "Elastic Docs",
           "type": "documentation"
         },
         {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html",
-          "title": "",
-          "authors": [],
+          "title": "Elasticsearch Reference [7.15]",
           "type": "documentation"
         }
       ],
@@ -2201,7 +3341,7 @@
   "dynamodb": {
     "id": "dynamodb",
     "title": "DynamoDB",
-    "description": "",
+    "description": "Amazon DynamoDB is a fully managed NoSQL database service provided by Amazon Web Services (AWS). Launched in 2012, it offers fast and predictable performance, making it an ideal choice for applications that require seamless scalability and high throughput. Unlike traditional relational databases, DynamoDB stores data in tables made up of items, which in turn are composed of attributes. It supports key-value and document data models, allowing developers to work with flexible data structures. DynamoDB is well-suited for a wide range of applications including gaming, mobile, web, IoT, and many more, where low latency and high availability are critical. It also offers features like automatic scaling, global tables for multi-region replication, and various consistency models, which makes it a powerful and versatile database service. Additionally, DynamoDB integrates well with other AWS services, allowing developers to create comprehensive and feature-rich applications.",
     "type": "database",
     "dependencies": [
       "nosql",
@@ -2291,14 +3431,19 @@
         },
         {
           "url": "https://www.alexdebrie.com/posts/dynamodb-single-table/",
-          "title": "",
-          "authors": [],
+          "title": "The What, Why, and When of Single-Table Design with DynamoDB",
+          "authors": [
+            "Alex DeBrie"
+          ],
           "type": "article"
         },
         {
           "url": "https://www.amazon.science/blog/lessons-learned-from-10-years-of-dynamodb",
-          "title": "",
-          "authors": [],
+          "title": "Lessons learned from 10 years of DynamoDB",
+          "authors": [
+            "Somu Perianayagam",
+            "Akshat Vig"
+          ],
           "type": "article"
         },
         {
@@ -2321,9 +3466,11 @@
       "books": [
         {
           "url": "https://www.dynamodbbook.com/",
-          "title": "",
-          "authors": [],
-          "pages": 0,
+          "title": "The DynamoDB Book",
+          "authors": [
+            "Alex DeBrie"
+          ],
+          "pages": 450,
           "type": "book"
         },
         {
@@ -2358,18 +3505,22 @@
       "courses": [
         {
           "url": "https://acloudguru.com/course/amazon-dynamodb-deep-dive",
-          "title": "",
-          "platform": "",
-          "authors": [],
-          "duration": 0,
+          "title": "Amazon DynamoDB Deep Dive",
+          "platform": "A Cloud Guru",
+          "authors": [
+            "A Cloud Guru"
+          ],
+          "duration": 1198,
           "type": "course"
         },
         {
           "url": "https://explore.skillbuilder.aws/learn/course/external/view/elearning/1525/developing-with-amazon-dynamodb",
-          "title": "",
-          "platform": "",
-          "authors": [],
-          "duration": 0,
+          "title": "Developing with Amazon DynamoDB",
+          "platform": "AWS Skill Builder",
+          "authors": [
+            "AWS Skill Builder"
+          ],
+          "duration": 1010,
           "type": "course"
         },
         {
@@ -2447,20 +3598,17 @@
       "documentation": [
         {
           "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide",
-          "title": "",
-          "authors": [],
+          "title": "Amazon DynamoDB Developer Guide",
           "type": "documentation"
         },
         {
           "url": "https://docs.aws.amazon.com/amazondynamodb/latest/APIReference",
-          "title": "",
-          "authors": [],
+          "title": "Amazon DynamoDB API Reference",
           "type": "documentation"
         },
         {
           "url": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/CheatSheet.html",
-          "title": "",
-          "authors": [],
+          "title": "Cheat sheet for DynamoDB",
           "type": "documentation"
         }
       ],

@@ -335,17 +335,11 @@
         {
           "url": "https://react.dev/",
           "title": "React Documentation",
-          "authors": [
-            "Facebook"
-          ],
           "type": "documentation"
         },
         {
           "url": "https://legacy.reactjs.org/",
           "title": "Legacy React Documentation",
-          "authors": [
-            "Facebook"
-          ],
           "type": "documentation"
         }
       ],

@@ -46,11 +46,11 @@ export function isResourcePartial(resource: Resource): boolean {
     case 'book':
       return resource.authors.length === 0 || resource.title.length === 0 || resource.pages === 0;
     case 'course': {
-      const { authors, title, duration, platform } = resource;
-      return [authors.length, title.length, duration, platform.length].some((l) => l === 0);
+      const { authors, title, platform } = resource;
+      return [authors.length, title.length, platform.length].some((l) => l === 0);
     }
     case 'documentation':
-      return resource.authors.length === 0 || resource.title.length === 0;
+      return resource.title.length === 0;
     case 'video':
       return resource.authors.length === 0 || resource.title.length === 0 || resource.duration === 0;
     default:

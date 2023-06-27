@@ -24,144 +24,153 @@ export async function main() {
       .filter((f) => fs.statSync(path.join(__dirname, '..', 'imports', folder, f)).isFile());
 
     const newResources: Resources[] = [];
+    const newDescriptions: string[] = [];
     for (const key of importFiles) {
-      const imports = fs.readFileSync(path.join(__dirname, '..', 'imports', folder, key), 'utf-8');
-      const res = await mergeImports(key, imports, prevJSON[key].resources);
-      newResources.push(res);
+      const importContents = fs.readFileSync(path.join(__dirname, '..', 'imports', folder, key), 'utf-8');
+      const { description, resources } = prevJSON[key];
+      newResources.push(await mergeImports(key, importContents, resources));
+      newDescriptions.push(mergeDescription(key, importContents, description));
     }
 
-    // const fns = importFiles.map((key) => {
-    //   const imports = fs.readFileSync(path.join(__dirname, '..', 'imports', folder, key), 'utf-8');
-    //   return mergeImports(key, imports, prevJSON[key].resources);
-    // })
-    // const newResources = await Promise.all(
-    //   importFiles.map((key) => {
-    //     const imports = fs.readFileSync(path.join(__dirname, '..', 'imports', folder, key), 'utf-8');
-    //     return mergeImports(key, imports, prevJSON[key].resources);
-    //   }),
-    // );
-    const newJSON = newResources.reduce((json, resources, index) => {
-      const key = importFiles[index];
-      return produce(json, (draft) => {
-        draft[key].resources = resources;
-      });
-    }, prevJSON);
+    const newJSON = importFiles.reduce(
+      (json, key, index) =>
+        produce(json, (draft) => {
+          draft[key].resources = newResources[index];
+          draft[key].description = newDescriptions[index];
+        }),
+      prevJSON,
+    );
     fs.writeFileSync(path.join(__dirname, '..', 'jnodes', `${folder}.json`), JSON.stringify(newJSON, null, 2));
   }
 }
 
-async function mergeImports(key: string, imports: string, resources: Resources): Promise<Resources> {
-  const newResources: Resource[] = [];
-  const articleUrls = getUrls(imports, 'articles').filter((url) => incompleteFilter(url, resources.articles));
+function mergeDescription(key: string, importContents: string, prevDesc: string): string {
+  if (prevDesc.length > 0) {
+    return prevDesc;
+  }
+  const nextDesc = importContents
+    .split('<description>')[1]
+    .trim()
+    .split('<description/>')[0]
+    .trim()
+    .split('\n')
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .join('\n');
+  if (nextDesc.length === 0) {
+    return prevDesc;
+  }
+  console.info(`Imported a new description for ${key}`);
+  return nextDesc;
+}
+
+async function mergeImports(key: string, importContents: string, resources: Resources): Promise<Resources> {
+  const scrapedResources: Resource[] = [];
+  const articleUrls = getUrls(importContents, 'articles').filter((url) => incompleteFilter(url, resources.articles));
   for (const url of articleUrls) {
     const resource = await scrapeArticle(url);
-    newResources.push(resource);
+    scrapedResources.push(resource);
   }
-  const bookUrls = getUrls(imports, 'books').filter((url) => incompleteFilter(url, resources.books));
+  const bookUrls = getUrls(importContents, 'books').filter((url) => incompleteFilter(url, resources.books));
   for (const url of bookUrls) {
     const resource = await scrapeBook(url);
-    newResources.push(resource);
+    scrapedResources.push(resource);
   }
-  const courseUrls = getUrls(imports, 'courses').filter((url) => incompleteFilter(url, resources.courses));
+  const courseUrls = getUrls(importContents, 'courses').filter((url) => incompleteFilter(url, resources.courses));
   for (const url of courseUrls) {
     const resource = await scrapeCourse(url);
-    newResources.push(resource);
+    scrapedResources.push(resource);
   }
-  const videoUrls = getUrls(imports, 'videos').filter((url) => incompleteFilter(url, resources.videos));
+  const videoUrls = getUrls(importContents, 'videos').filter((url) => incompleteFilter(url, resources.videos));
   for (const url of videoUrls) {
     const resource = await scrapeVideo(url);
-    newResources.push(resource);
+    scrapedResources.push(resource);
   }
-  const documentationUrls = getUrls(imports, 'documentation').filter((url) =>
+  const documentationUrls = getUrls(importContents, 'documentation').filter((url) =>
     incompleteFilter(url, resources.documentation),
   );
   for (const url of documentationUrls) {
-    const resource: DocumentationResource = { authors: [], title: '', type: 'documentation', url };
-    newResources.push(resource);
+    const resource: DocumentationResource = { title: '', type: 'documentation', url };
+    scrapedResources.push(resource);
   }
 
-  // const newResources = await Promise.all([
-  //   ...getUrls(imports, 'articles')
-  //     .filter((url) => incompleteFilter(url, resources.articles))
-  //     .map(scrapeArticle),
-  //   ...getUrls(imports, 'books')
-  //     .filter((url) => incompleteFilter(url, resources.books))
-  //     .map(scrapeBook),
-  //   ...getUrls(imports, 'courses')
-  //     .filter((url) => incompleteFilter(url, resources.courses))
-  //     .map(scrapeCourse),
-  //   ...getUrls(imports, 'videos')
-  //     .filter((url) => incompleteFilter(url, resources.videos))
-  //     .map(scrapeVideo),
-  //   ...getUrls(imports, 'documentation')
-  //     .filter((url) => incompleteFilter(url, resources.documentation))
-  //     .map((url) => Promise.resolve<DocumentationResource>({ authors: [], title: '', type: 'documentation', url })),
-  // ]);
+  const { newResources, newResourcesMap } = scrapedResources.reduce<{
+    newResources: Resource[];
+    newResourcesMap: Resources;
+  }>(
+    (prev, resource) => {
+      switch (resource.type) {
+        case 'article': {
+          return produce(prev, (draft) => {
+            const existsIndex = draft.newResourcesMap.articles.findIndex((a) => a.url === resource.url);
+            if (existsIndex > -1) {
+              draft.newResourcesMap.articles.splice(existsIndex, 1, resource);
+            } else {
+              draft.newResources.push(resource);
+              draft.newResourcesMap.articles.push(resource);
+            }
+          });
+        }
+        case 'book': {
+          return produce(prev, (draft) => {
+            const existsIndex = draft.newResourcesMap.books.findIndex((a) => a.url === resource.url);
+            if (existsIndex > -1) {
+              draft.newResourcesMap.books.splice(existsIndex, 1, resource);
+            } else {
+              draft.newResources.push(resource);
+              draft.newResourcesMap.books.push(resource);
+            }
+          });
+        }
+        case 'course': {
+          return produce(prev, (draft) => {
+            const existsIndex = draft.newResourcesMap.courses.findIndex((a) => a.url === resource.url);
+            if (existsIndex > -1) {
+              draft.newResourcesMap.courses.splice(existsIndex, 1, resource);
+            } else {
+              draft.newResources.push(resource);
+              draft.newResourcesMap.courses.push(resource);
+            }
+          });
+        }
+        case 'documentation': {
+          return produce(prev, (draft) => {
+            const existsIndex = draft.newResourcesMap.documentation.findIndex((a) => a.url === resource.url);
+            if (existsIndex > -1) {
+              draft.newResourcesMap.documentation.splice(existsIndex, 1, resource);
+            } else {
+              draft.newResources.push(resource);
+              draft.newResourcesMap.documentation.push(resource);
+            }
+          });
+        }
+        case 'video': {
+          return produce(prev, (draft) => {
+            const existsIndex = draft.newResourcesMap.videos.findIndex((a) => a.url === resource.url);
+            if (existsIndex > -1) {
+              draft.newResourcesMap.videos.splice(existsIndex, 1, resource);
+            } else {
+              draft.newResources.push(resource);
+              draft.newResourcesMap.videos.push(resource);
+            }
+          });
+        }
+      }
+    },
+    { newResources: [], newResourcesMap: resources },
+  );
 
   if (newResources.length > 0) {
     console.info(
-      `Imported the following resources for ${key}:`,
+      `Imported the following new resources for ${key}:`,
       newResources.map((r) => r.url),
     );
   }
 
-  return newResources.reduce<Resources>((prevResources, resource) => {
-    switch (resource.type) {
-      case 'article': {
-        return produce(prevResources, (draft) => {
-          const existsIndex = draft.articles.findIndex((a) => a.url === resource.url);
-          if (existsIndex > -1) {
-            draft.articles.splice(existsIndex, 1, resource);
-          } else {
-            draft.articles.push(resource);
-          }
-        });
-      }
-      case 'book': {
-        return produce(prevResources, (draft) => {
-          const existsIndex = draft.books.findIndex((a) => a.url === resource.url);
-          if (existsIndex > -1) {
-            draft.books.splice(existsIndex, 1, resource);
-          } else {
-            draft.books.push(resource);
-          }
-        });
-      }
-      case 'course': {
-        return produce(prevResources, (draft) => {
-          const existsIndex = draft.courses.findIndex((a) => a.url === resource.url);
-          if (existsIndex > -1) {
-            draft.courses.splice(existsIndex, 1, resource);
-          } else {
-            draft.courses.push(resource);
-          }
-        });
-      }
-      case 'documentation': {
-        return produce(prevResources, (draft) => {
-          const existsIndex = draft.documentation.findIndex((a) => a.url === resource.url);
-          if (existsIndex > -1) {
-            draft.documentation.splice(existsIndex, 1, resource);
-          } else {
-            draft.documentation.push(resource);
-          }
-        });
-      }
-      case 'video': {
-        return produce(prevResources, (draft) => {
-          const existsIndex = draft.videos.findIndex((a) => a.url === resource.url);
-          if (existsIndex > -1) {
-            draft.videos.splice(existsIndex, 1, resource);
-          } else {
-            draft.videos.push(resource);
-          }
-        });
-      }
-    }
-  }, resources);
+  return newResourcesMap;
 }
 
-function getUrls(importContents: string, key: string) {
+function getUrls(importContents: string, key: string): string[] {
   return importContents
     .split(`<${key}>`)[1]
     .trim()

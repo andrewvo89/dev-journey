@@ -18,17 +18,603 @@
   "angular": {
     "id": "angular",
     "title": "Angular",
-    "description": "",
+    "description": "Angular is a popular open-source web application framework developed and maintained by Google. Initially released in 2010 as AngularJS, it was completely rewritten and rebranded as Angular, with the release of Angular 2 in 2016. As of my last knowledge update in September 2021, Angular continues to receive updates and improvements.\nAngular is primarily used for building single-page applications (SPAs), which are web applications or websites that interact with the user by dynamically rewriting the current page rather than loading entire new pages from the server. It employs TypeScript, a strict syntactical superset of JavaScript, as its primary programming language.\nOne of Angular's defining features is its declarative approach to building user interfaces. It employs a powerful template language that allows developers to declaratively describe the structure and behavior of the user interface. Combined with its component-based architecture, this allows for highly modular and reusable code, making it easier to build and maintain complex web applications.\nAngular also offers a rich set of tools and features such as two-way data binding, dependency injection, and a robust ecosystem of third-party libraries and tools. Additionally, it is backed by Google, which gives it strong support and credibility in the developer community.",
     "type": "framework",
     "dependencies": [
       "typescript"
     ],
     "resources": {
-      "articles": [],
-      "books": [],
-      "courses": [],
-      "documentation": [],
-      "videos": []
+      "articles": [
+        {
+          "url": "https://balramchavan.medium.com/using-async-await-feature-in-angular-587dd56fdc77",
+          "title": "Using async-await feature in Angular",
+          "authors": [
+            "Balram Chavan"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://blog.angular.io/angular-v14-is-now-available-391a6db736af",
+          "title": "Angular v14 is now available!",
+          "authors": [
+            "Emma Twersky"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://blog.angular.io/angular-v16-is-here-4d7a28ec680d",
+          "title": "Angular v16 is here!",
+          "authors": [
+            "Minko Gechev"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://blog.angular.io/modern-css-in-angular-layouts-4a259dca9127",
+          "title": "Modern CSS in Angular: Layouts",
+          "authors": [
+            "Emma Twersky"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://blog.bitsrc.io/11-angular-component-libraries-you-should-know-in-2018-e9f9c9d544ff",
+          "title": "11 Angular Component Libraries You Should Know In 2019",
+          "authors": [
+            "Jonathan Saring"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://blog.bitsrc.io/6-ways-to-unsubscribe-from-observables-in-angular-ab912819a78f",
+          "title": "6 Ways to Unsubscribe from Observables in Angular",
+          "authors": [
+            "Chidume Nnamdi 🔥💻🎵🎮"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://blog.bitsrc.io/angular-best-practices-to-adapt-in-2023-bf67122b37ab",
+          "title": "Angular:  Best Practices for 2023",
+          "authors": [
+            "Priyank Bhardwaj"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://itnext.io/angular-signals-the-future-of-angular-395a69e60062",
+          "title": "Angular Signals the Future of Angular",
+          "authors": [
+            "Santosh Yadav"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://levelup.gitconnected.com/bad-practices-you-should-avoid-with-angular-development-58098e5542d5",
+          "title": "Bad practices you should avoid using Angular",
+          "authors": [
+            "Rebai Ahmed"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://luukgruijs.medium.com/understanding-creating-and-subscribing-to-observables-in-angular-426dbf0b04a3",
+          "title": "Understanding, creating and subscribing to observables in Angular",
+          "authors": [
+            "Luuk Gruijs"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@mirokoczka/3-ways-to-communicate-between-angular-components-a1e3f3304ecb",
+          "title": "3 ways to communicate between Angular components",
+          "authors": [
+            "Miro Koczka"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@ryanchenkie_40935/angular-authentication-using-route-guards-bf7a4ca13ae3",
+          "title": "Angular Authentication: Using Route Guards",
+          "authors": [
+            "Ryan Chenkie"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/@sakshi.chavan/angular-cheat-sheet-44f314b78f28",
+          "title": "Angular Cheat-Sheet 📄",
+          "authors": [
+            "Sakshi Chavan"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/codingthesmartway-com-blog/using-bootstrap-with-angular-c83c3cee3f4a",
+          "title": "Using Bootstrap with Angular",
+          "authors": [
+            "Sebastian"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/swlh/angular-unit-testing-jasmine-karma-step-by-step-e3376d110ab4",
+          "title": "Angular: Unit Testing Jasmine, Karma (step by step)",
+          "authors": [
+            "Santiago García da Rosa"
+          ],
+          "type": "article"
+        },
+        {
+          "url": "https://medium.com/taager-tech-blog/clean-architecture-for-angular-applications-b7ab140f0d5a",
+          "title": "Clean Architecture for Angular Applications",
+          "authors": [
+            "Moiz Nadeem"
+          ],
+          "type": "article"
+        }
+      ],
+      "books": [
+        {
+          "url": "https://www.amazon.com/Angular-Action-Jeremy-Wilken/dp/1617293318",
+          "title": "Angular in Action",
+          "authors": [
+            "Jeremy Wilken"
+          ],
+          "pages": 420,
+          "type": "book"
+        },
+        {
+          "url": "https://www.amazon.com/Angular-Development-Typescript-Yakov-Fain/dp/1617295345",
+          "title": "Angular Development with TypeScript",
+          "authors": [
+            "Yakov Fain",
+            "Anton Moiseev"
+          ],
+          "pages": 531,
+          "type": "book"
+        },
+        {
+          "url": "https://www.amazon.com/Beginning-Angular-Typescript-updated/dp/1973593793",
+          "title": "Beginning Angular with Typescript (updated to Angular 9)",
+          "authors": [
+            "Greg Lim"
+          ],
+          "pages": 206,
+          "type": "book"
+        },
+        {
+          "url": "https://www.amazon.com/Testing-Angular-Applications-Jesse-Palmer/dp/1617293644",
+          "title": "Testing Angular Applications",
+          "authors": [
+            "Jesse Palmer",
+            "Corinna Cohn",
+            "Mike Giambalvo",
+            "Craig Nishina"
+          ],
+          "pages": 240,
+          "type": "book"
+        },
+        {
+          "url": "https://www.amazon.com/ng-book-Complete-Angular-Nathan-Murray/dp/1985170280",
+          "title": "ng-book: The Complete Guide to Angular",
+          "authors": [
+            "Nathan Murray",
+            "Felipe Coury",
+            "Ari Lerner",
+            "Carlos Taborda"
+          ],
+          "pages": 626,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/angular-up-and/9781491999820/",
+          "title": "Angular: Up and Running",
+          "authors": [
+            "Shyam Seshadri"
+          ],
+          "pages": 334,
+          "type": "book"
+        },
+        {
+          "url": "https://www.oreilly.com/library/view/reactive-patterns-with/9781801811514/",
+          "title": "Reactive Patterns with RxJS for Angular",
+          "authors": [
+            "Lamis Chebbi"
+          ],
+          "pages": 224,
+          "type": "book"
+        },
+        {
+          "url": "https://www.packtpub.com/product/angular-cookbook/9781838989439",
+          "title": "Angular Cookbook",
+          "authors": [
+            "Muhammad Ahsan Ayaz"
+          ],
+          "pages": 652,
+          "type": "book"
+        },
+        {
+          "url": "https://www.packtpub.com/product/angular-for-enterprise-ready-web-applications-second-edition/9781838648800",
+          "title": "Angular for Enterprise-Ready Web Applications - Second Edition",
+          "authors": [
+            "Doguhan Uluca"
+          ],
+          "pages": 824,
+          "type": "book"
+        },
+        {
+          "url": "https://www.packtpub.com/product/angular-projects-second-edition/9781800205260",
+          "title": "Angular Projects - Second Edition",
+          "authors": [
+            "Aristeidis Bampakos"
+          ],
+          "pages": 344,
+          "type": "book"
+        },
+        {
+          "url": "https://www.packtpub.com/product/learning-angular-fourth-edition/9781803240602",
+          "title": "Learning Angular - Fourth Edition",
+          "authors": [
+            "Aristeidis Bampakos",
+            "Pablo Deeleman"
+          ],
+          "pages": 446,
+          "type": "book"
+        }
+      ],
+      "courses": [
+        {
+          "url": "https://ultimatecourses.com/learn/angular-basics",
+          "title": "Angular Basics",
+          "platform": "Ultimate Courses",
+          "authors": [
+            "Todd Motto"
+          ],
+          "duration": 540,
+          "type": "course"
+        },
+        {
+          "url": "https://ultimatecourses.com/learn/angular-pro",
+          "title": "Angular Pro",
+          "platform": "Ultimate Courses",
+          "authors": [
+            "Todd Motto"
+          ],
+          "duration": 1020,
+          "type": "course"
+        },
+        {
+          "url": "https://www.coursera.org/learn/codio-angular-for-front-end-engineers",
+          "title": "Angular for Front End Engineers",
+          "platform": "Coursera",
+          "authors": [
+            "Anh Le",
+            "Neil Thawani"
+          ],
+          "duration": 19,
+          "type": "course"
+        },
+        {
+          "url": "https://www.coursera.org/learn/single-page-web-apps-with-angularjs",
+          "title": "Single Page Web Applications with AngularJS",
+          "platform": "Coursera",
+          "authors": [
+            "Yaakov Chaikin"
+          ],
+          "duration": 2498,
+          "type": "course"
+        },
+        {
+          "url": "https://www.coursera.org/projects/angularjs-beginners-getting-started",
+          "title": "AngularJS for Beginners: Getting Started",
+          "platform": "Coursera",
+          "authors": [
+            "Randal L. Carr"
+          ],
+          "duration": 90,
+          "type": "course"
+        },
+        {
+          "url": "https://www.coursera.org/projects/routing-and-navigation-concepts-in-angular",
+          "title": "Routing and Navigation Concepts in Angular",
+          "platform": "Coursera",
+          "authors": [
+            "Chaitra Deshpande"
+          ],
+          "duration": 120,
+          "type": "course"
+        },
+        {
+          "url": "https://www.linkedin.com/learning/angular-essential-training-2",
+          "title": "Angular Essential Training",
+          "platform": "LinkedIn Learning",
+          "authors": [
+            "Justin Schwartzenberger"
+          ],
+          "duration": 210,
+          "type": "course"
+        },
+        {
+          "url": "https://www.linkedin.com/learning/learning-angular",
+          "title": "Learning Angular",
+          "platform": "LinkedIn Learning",
+          "authors": [
+            "Ray Villalobos"
+          ],
+          "duration": 100,
+          "type": "course"
+        },
+        {
+          "url": "https://www.pluralsight.com/courses/angular-2-getting-started-update",
+          "title": "Angular: Getting Started",
+          "platform": "Pluralsight",
+          "authors": [
+            "Deborah Kurata"
+          ],
+          "duration": 351,
+          "type": "course"
+        },
+        {
+          "url": "https://www.pluralsight.com/courses/angular-architecture-best-practices",
+          "title": "Angular Architecture and Best Practices",
+          "platform": "Pluralsight",
+          "authors": [
+            "Dan Wahlin"
+          ],
+          "duration": 321,
+          "type": "course"
+        },
+        {
+          "url": "https://www.pluralsight.com/courses/angular-cli",
+          "title": "Angular CLI",
+          "platform": "Pluralsight",
+          "authors": [
+            "John Papa"
+          ],
+          "duration": 188,
+          "type": "course"
+        },
+        {
+          "url": "https://www.pluralsight.com/courses/angular-ngrx-getting-started",
+          "title": "Angular NgRx: Getting Started",
+          "platform": "Pluralsight",
+          "authors": [
+            "Deborah Kurata",
+            "Duncan Hunter"
+          ],
+          "duration": 254,
+          "type": "course"
+        },
+        {
+          "url": "https://www.pluralsight.com/courses/structuring-angular-applications-angular-libraries",
+          "title": "Structuring Angular 7 Applications with Angular 7 Libraries",
+          "platform": "Pluralsight",
+          "authors": [
+            "Fabian Gosebrink"
+          ],
+          "duration": 123,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/angular-2-and-nodejs-the-practical-guide/",
+          "title": "Angular with NodeJS - The MEAN Stack Training Guide",
+          "platform": "Udemy",
+          "authors": [
+            "Maximilian Schwarzmüller"
+          ],
+          "duration": 764,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/angular-4-front-to-back/",
+          "title": "Angular Front To Back: Learn Angular 5 for Beginners",
+          "platform": "Udemy",
+          "authors": [
+            "Brad Traversy"
+          ],
+          "duration": 685,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/angular-course/",
+          "title": "Angular Core Deep Dive - Beginner to Advanced (Angular 16)",
+          "platform": "Udemy",
+          "authors": [
+            "Angular University"
+          ],
+          "duration": 546,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/angular-testing-course/",
+          "title": "Angular Testing Course Masterclass (with FREE E-Book)",
+          "platform": "Udemy",
+          "authors": [
+            "Angular University"
+          ],
+          "duration": 306,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/ngrx-course/",
+          "title": "NgRx (with NgRx Data) - The Complete Guide (Angular 16)",
+          "platform": "Udemy",
+          "authors": [
+            "Angular University"
+          ],
+          "duration": 375,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/rxjs-reactive-angular-course/",
+          "title": "Reactive Angular Course (with RxJs, Angular 16)",
+          "platform": "Udemy",
+          "authors": [
+            "Angular University"
+          ],
+          "duration": 332,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/testing-angular-apps/",
+          "title": "Testing Angular 4 (previously Angular 2) Apps with Jasmine",
+          "platform": "Udemy",
+          "authors": [
+            "Mosh Hamedani"
+          ],
+          "duration": 131,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/the-complete-angular-master-class/",
+          "title": "The Complete Angular Course: Beginner to Advanced",
+          "platform": "Udemy",
+          "authors": [
+            "Mosh Hamedani"
+          ],
+          "duration": 1773,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/the-complete-guide-to-angular-2/",
+          "title": "Master Angular 7 (formerly Angular 2): The Complete Course",
+          "platform": "Udemy",
+          "authors": [
+            "Maximilian Schwarzmüller"
+          ],
+          "duration": 2190,
+          "type": "course"
+        },
+        {
+          "url": "https://www.udemy.com/course/the-modern-angular-bootcamp/",
+          "title": "The Modern Angular Bootcamp",
+          "platform": "Udemy",
+          "authors": [
+            "Stephen Grider"
+          ],
+          "duration": 2721,
+          "type": "course"
+        }
+      ],
+      "documentation": [
+        {
+          "url": "https://angular-university.io/",
+          "title": "Angular University",
+          "type": "documentation"
+        },
+        {
+          "url": "https://angular.io/docs",
+          "title": "Angular Docs",
+          "type": "documentation"
+        },
+        {
+          "url": "https://blog.angular.io/",
+          "title": "Angular Blog",
+          "type": "documentation"
+        }
+      ],
+      "videos": [
+        {
+          "url": "https://www.youtube.com/playlist?list=PL1BztTYDF-QNrtkvjkT6Wjc8es7QB4Gty",
+          "title": "Complete Angular 13 Course Step by Step",
+          "authors": [
+            "procademy"
+          ],
+          "duration": 1194,
+          "type": "video"
+        },
+        {
+          "url": "https://www.youtube.com/playlist?list=PLC3y8-rFHvwhBRAgFinJR8KHIrCdTkZcZ",
+          "title": "Angular Tutorial For Beginners",
+          "authors": [
+            "Codevolution"
+          ],
+          "duration": 407,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/3dHNOWTI7H8",
+          "title": "Angular Crash Course",
+          "authors": [
+            "Traversy Media"
+          ],
+          "duration": 122,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/3qBXWUpoPHo",
+          "title": "Angular for Beginners Course [Full Front End Tutorial with TypeScript]",
+          "authors": [
+            "freeCodeCamp.org"
+          ],
+          "duration": 1054,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/5xg4Jvqy_UI",
+          "title": "What is Angular? | What Is Angular, And How It Works? | Angular Tutorial For Beginners | Simplilearn",
+          "authors": [
+            "Simplilearn"
+          ],
+          "duration": 13,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/AAu8bjj6-UI",
+          "title": "Angular Tutorial for Beginners - Web Framework with Typescript Course",
+          "authors": [
+            "freeCodeCamp.org"
+          ],
+          "duration": 97,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/Ata9cSC2WpM",
+          "title": "Angular in 100 Seconds",
+          "authors": [
+            "Fireship"
+          ],
+          "duration": 2,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/CGLdH5ORX-Y",
+          "title": "Angular Full Course - Complete Zero to Hero Angular full Tutorial",
+          "authors": [
+            "OctAcademy"
+          ],
+          "duration": 481,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/EEzDLpIbW9w",
+          "title": "Getting started with Angular Signals",
+          "authors": [
+            "Angular"
+          ],
+          "duration": 12,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/WHv1YQUg6ow",
+          "title": "The Modern Angular Crash Course - 2022",
+          "authors": [
+            "Laith Academy"
+          ],
+          "duration": 125,
+          "type": "video"
+        },
+        {
+          "url": "https://youtu.be/k5E2AVpwsko",
+          "title": "Angular Tutorial for Beginners: Learn Angular & TypeScript",
+          "authors": [
+            "Programming with Mosh"
+          ],
+          "duration": 123,
+          "type": "video"
+        }
+      ]
     }
   },
   "sveltekit": {

@@ -22,14 +22,7 @@ const documentation: ResourceMap<'documentation'> = {
   id: 'documentation',
   heading: 'Documentation',
   emptyDataMessage: 'Suggest documentation...',
-  fieldMappings: [
-    { key: 'title', heading: 'Title' },
-    {
-      key: 'authors',
-      heading: 'Authors',
-      transform: (value) => (Array.isArray(value) ? value.join(', ') : value.toString()),
-    },
-  ],
+  fieldMappings: [{ key: 'title', heading: 'Title' }],
   type: 'documentation',
   initalSort: 'title',
 };
@@ -43,7 +36,7 @@ const videos: ResourceMap<'video'> = {
     {
       key: 'authors',
       heading: 'Authors',
-      transform: (value) => (Array.isArray(value) ? value.join(', ') : value.toString()),
+      transform: (value) => (Array.isArray(value) ? (value.length === 0 ? 'N/A' : value.join(', ')) : value.toString()),
     },
     {
       key: 'duration',
@@ -64,12 +57,12 @@ const courses: ResourceMap<'course'> = {
     {
       key: 'authors',
       heading: 'Authors',
-      transform: (value) => (Array.isArray(value) ? value.join(', ') : value.toString()),
+      transform: (value) => (Array.isArray(value) ? (value.length === 0 ? 'N/A' : value.join(', ')) : value.toString()),
     },
     {
       key: 'duration',
       heading: 'Duration',
-      transform: (value) => `${toReadableHours(parseFloat(String(value)))}`,
+      transform: (value) => (value === 0 ? 'N/A' : `${toReadableHours(parseFloat(String(value)))}`),
     },
     { key: 'platform', heading: 'Platform' },
   ],
@@ -86,7 +79,7 @@ const articles: ResourceMap<'article'> = {
     {
       key: 'authors',
       heading: 'Authors',
-      transform: (value) => (Array.isArray(value) ? value.join(', ') : value.toString()),
+      transform: (value) => (Array.isArray(value) ? (value.length === 0 ? 'N/A' : value.join(', ')) : value.toString()),
     },
   ],
   type: 'article',
@@ -102,7 +95,7 @@ const books: ResourceMap<'book'> = {
     {
       key: 'authors',
       heading: 'Authors',
-      transform: (value) => (Array.isArray(value) ? value.join(', ') : value.toString()),
+      transform: (value) => (Array.isArray(value) ? (value.length === 0 ? 'N/A' : value.join(', ')) : value.toString()),
     },
     { key: 'pages', heading: 'Pages' },
   ],

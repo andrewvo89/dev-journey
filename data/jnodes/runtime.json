@@ -386,17 +386,11 @@
         {
           "url": "https://nodejs.org/en/docs/",
           "title": "Node.js Documentation",
-          "authors": [
-            "Node.js Foundation"
-          ],
           "type": "documentation"
         },
         {
           "url": "https://nodejs.org/api/",
           "title": "Node.js API Documentation",
-          "authors": [
-            "Node.js Foundation"
-          ],
           "type": "documentation"
         }
       ],

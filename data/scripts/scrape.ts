@@ -107,17 +107,25 @@ async function scrapeAndPopulate(json: JnodesMap): Promise<JnodesMap> {
 export async function scrapeArticle(url: string): Promise<ArticleResource> {
   try {
     const mediumLike = [
-      'levelup.gitconnected.com',
-      'medium.com',
-      'towardsdatascience.com',
+      'amangoeliitb.medium.com',
+      'amplitude.engineering',
+      'awstip.com',
       'betterprogramming.pub',
-      'engineering.universe.com',
-      'javascript.plainenglish.io',
+      'blog.angular.io',
+      'blog.bitsrc.io',
       'blog.exploratory.io',
       'blog.meteor.com',
+      'codeburst.io',
       'engineering.peerislands.io',
+      'engineering.universe.com',
       'infosecwriteups.com',
-      'awstip.com',
+      'instagram-engineering.com',
+      'javascript.plainenglish.io',
+      'levelup.gitconnected.com',
+      'medium.com',
+      'medium.flutterdevs.com',
+      'tech.oyorooms.com',
+      'towardsdatascience.com',
     ];
     if (mediumLike.some((s) => url.includes(s))) {
       return medium(url);
@@ -267,7 +275,7 @@ async function packetpub(url: string): Promise<BookResource> {
 
   try {
     const page = await browser.newPage();
-    await page.goto(url);
+    await page.goto(url, { timeout: 120000 });
     await page.setViewport({ width: 1080, height: 1024 });
 
     const title =
@@ -443,8 +451,15 @@ async function udemy(url: string): Promise<CourseResource> {
     const durationString =
       (await page.$eval('div[data-purpose="curriculum-stats"] > span > span', (el) => el.textContent?.trim())) ?? '';
 
-    const hours = parseInt(durationString.split('h')[0]);
-    const minutes = parseInt(durationString.split('h')[1].split('m total length')[0]);
+    let hours = 0;
+    let minutes = 0;
+    hours = parseInt(durationString.split('h')[0]);
+    minutes = parseInt(durationString.split('h')[1].split('m total length')[0]);
+
+    if (isNaN(minutes)) {
+      minutes = parseInt(durationString.split('m total length')[0]);
+      hours = 0;
+    }
     return { authors, title, type: 'course', url, duration: hours * 60 + minutes, platform: 'Udemy' };
   } catch (error) {
     console.error(url, error);
@@ -516,7 +531,7 @@ async function linkedin(url: string): Promise<CourseResource> {
     await page.goto(url);
     await page.setViewport({ width: 1080, height: 1024 });
 
-    const title = (await page.$eval('meta[property="og:title"]', (el) => el.content.trim())) ?? '';
+    const title = (await page.$eval('h1.top-card-layout__title', (el) => el.textContent?.trim())) ?? '';
     const authors = (
       await page.$$eval('li.course-instructors__list-item > a > div > h3', (els) =>
         els.map((el) => el.textContent?.trim()),
@@ -524,10 +539,17 @@ async function linkedin(url: string): Promise<CourseResource> {
     ).reduce<string[]>((prev, curr) => (curr ? [...prev, curr] : prev), []);
 
     const duration = await page.$eval(
-      'div.aside-learning-course-card__duration',
-      (el) =>
-        parseInt((el.textContent ?? '').split('h ')[0]) * 60 +
-        parseInt((el.textContent ?? '').split('h ')[1].split('m')[0]),
+      'h2.top-card-layout__headline > div.top-card__headline-row:nth-child(2) > span:nth-child(1)',
+      (el) => {
+        if (!el.textContent) {
+          return 0;
+        }
+        const time = el.textContent.split('Duration: ')[1].trim();
+        if (time.includes('h')) {
+          return parseInt(time.split('h')[0]) * 60 + parseInt(time.split('h')[1].split('m')[0]);
+        }
+        return parseInt(time.split('m')[0]);
+      },
     );
     return { authors, title, type: 'course', url, duration, platform: 'LinkedIn Learning' };
   } catch (error) {
@@ -539,8 +561,6 @@ async function linkedin(url: string): Promise<CourseResource> {
 }
 
 export async function test() {
-  const resource = await booktopia(
-    'https://www.booktopia.com.au/the-maudsley-prescribing-guidelines-in-psychiatry-david-m-taylor/book/9781119772224.html',
-  );
+  const resource = await udemy('https://www.udemy.com/course/sqlite-for-beginners-f/');
   console.log('resource', resource);
 }
