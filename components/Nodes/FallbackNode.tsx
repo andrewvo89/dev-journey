@@ -1,8 +1,8 @@
-import { ActionIcon, Badge, Paper, Text, ThemeIcon, Title, useMantineTheme } from '@mantine/core';
-import { Fragment, useMemo } from 'react';
+import { ActionIcon, Badge, Paper, Text, ThemeIcon, useMantineTheme } from '@mantine/core';
 import { Handle, NodeProps } from 'reactflow';
 import { IconCrown, IconRocket } from '@tabler/icons-react';
 
+import { Fragment } from 'react';
 import { JNodeTypeData } from 'types/flow';
 import ResourceModalContent from 'components/ResourceModalContent';
 import { modals } from '@mantine/modals';
@@ -27,11 +27,6 @@ export default function FallbackNode(props: NodeProps<JNodeTypeData>) {
 
   const { classes } = useStyles({ keepAlive, isOptional, isOnPath, type: jnode.type });
 
-  const resourceCount = useMemo(
-    () => Object.values(jnode.resources).reduce((count, resourceType) => count + resourceType.length, 0),
-    [jnode.resources],
-  );
-
   const rocketButtonClickHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.stopPropagation();
     updateNodes([{ id, enabled: true }]);
@@ -43,6 +38,7 @@ export default function FallbackNode(props: NodeProps<JNodeTypeData>) {
     }
 
     modals.open({
+      modalId: jnode.id,
       classNames: {
         overlay: classes.overlay,
         inner: classes.inner,
@@ -53,17 +49,8 @@ export default function FallbackNode(props: NodeProps<JNodeTypeData>) {
         opacity: 0.55,
         blur: 3,
       },
-      title: <Title>{jnode.title}</Title>,
-      closeButtonProps: {
-        size: 'lg',
-      },
-      children: (
-        <ResourceModalContent
-          description={jnode.description}
-          resources={jnode.resources}
-          resourceCount={resourceCount}
-        />
-      ),
+      withCloseButton: false,
+      children: <ResourceModalContent jnodeShallow={jnode} />,
     });
   };
 
@@ -84,9 +71,9 @@ export default function FallbackNode(props: NodeProps<JNodeTypeData>) {
             <IconRocket />
           </ActionIcon>
         )}
-        {resourceCount > 0 && (
+        {jnode.resources > 0 && (
           <Badge className={classes.badge} size='lg'>
-            {resourceCount}
+            {jnode.resources}
           </Badge>
         )}
         <Text align='center' lh='1.25'>

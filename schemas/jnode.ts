@@ -39,18 +39,16 @@ export const videoResourceSchema = z.object({
 });
 
 export const jnodeTypeSchema = z.union([
-  z.literal('root'),
-  z.literal('tool'),
-  z.literal('language'),
   z.literal('database'),
-  z.literal('framework'),
-  z.literal('meta_framework'),
-  z.literal('runtime'),
-  z.literal('library'),
-  z.literal('platform'),
-  z.literal('paradigm'),
   z.literal('field'),
-  z.literal('career'),
+  z.literal('framework'),
+  z.literal('language'),
+  z.literal('library'),
+  z.literal('paradigm'),
+  z.literal('platform'),
+  z.literal('root'),
+  z.literal('runtime'),
+  z.literal('tool'),
 ]);
 
 export const resourceSchema = z.discriminatedUnion('type', [
@@ -76,6 +74,10 @@ export const jnodeSchema = z.object({
   type: jnodeTypeSchema,
   dependencies: z.array(z.string()),
   resources: resourcesSchema,
+});
+
+export const jnodeShallowSchema = jnodeSchema.omit({ description: true, resources: true }).extend({
+  resources: z.number(),
 });
 
 export const jnodesMapSchema = z.record(jnodeSchema);

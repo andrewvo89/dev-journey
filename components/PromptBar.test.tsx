@@ -1,3 +1,5 @@
+import * as api from 'api/prompts';
+
 import { ClientPrompt, PromptResponse } from 'types/common';
 import PromptBar, { transformDesintations } from 'components/PromptBar';
 import { act, fireEvent, render, screen } from '@testing-library/react';
@@ -48,9 +50,7 @@ test('should contain prompt value of user input', async () => {
 test('prompt bar text is bound when user chooses an auto select item', async () => {
   const user = userEvent.setup({ delay: null });
 
-  global.fetch = vi.fn().mockResolvedValue({
-    json: () => new Promise((resolve) => resolve({ destinations: [] })),
-  });
+  vi.spyOn(api, 'getPromptDestinations').mockResolvedValueOnce([]);
 
   const prompts = [faker.lorem.sentence(), faker.lorem.sentence(), faker.lorem.sentence()];
   act(() => {
@@ -76,13 +76,11 @@ test('prompt bar text is bound when user chooses an auto select item', async () 
 test('api is called when user selects a drop down item', async () => {
   const user = userEvent.setup({ delay: null });
 
-  const mockFetch = vi.fn().mockResolvedValue({
-    json: () => new Promise((resolve) => resolve({ destinations: [] })),
-  });
-  global.fetch = mockFetch;
+  const spyFn = vi.spyOn(api, 'getPromptDestinations').mockResolvedValueOnce([]);
   const prompts = [faker.lorem.sentence(), faker.lorem.sentence(), faker.lorem.sentence()];
+
+  const clientPrompts: ClientPrompt[] = prompts.map((prompt) => ({ label: prompt, value: prompt }));
   act(() => {
-    const clientPrompts: ClientPrompt[] = prompts.map((prompt) => ({ label: prompt, value: prompt }));
     usePromptStore.getState().setPrompts(clientPrompts);
   });
   render(<PromptBar placeholder={faker.lorem.sentence()} />, { wrapper: AppWrapper });
@@ -95,13 +93,13 @@ test('api is called when user selects a drop down item', async () => {
   expect(options).toHaveLength(3);
   await user.click(options[2]);
 
-  expect(mockFetch).toBeCalledWith(`/api/prompts/${prompts[2]}`, { method: 'POST' });
+  expect(spyFn).toBeCalledWith(clientPrompts[2]);
 });
 
 test('application does not crash when api call fails', async () => {
   const user = userEvent.setup({ delay: null });
   console.error = vi.fn();
-  global.fetch = vi.fn().mockRejectedValue(new Error('test error'));
+  vi.spyOn(api, 'getPromptDestinations').mockRejectedValueOnce(new Error('test error'));
   const prompts = [faker.lorem.sentence(), faker.lorem.sentence(), faker.lorem.sentence()];
   act(() => {
     const clientPrompts: ClientPrompt[] = prompts.map((prompt) => ({ label: prompt, value: prompt }));
@@ -123,9 +121,7 @@ test('application does not crash when api call fails', async () => {
 test('clear button removes text from prompt bar and resets selected to null', async () => {
   const user = userEvent.setup({ delay: null });
 
-  global.fetch = vi.fn().mockResolvedValue({
-    json: () => new Promise((resolve) => resolve({ destinations: [] })),
-  });
+  vi.spyOn(api, 'getPromptDestinations').mockResolvedValueOnce([]);
 
   const prompts = [faker.lorem.sentence(), faker.lorem.sentence(), faker.lorem.sentence()];
   act(() => {
@@ -153,10 +149,8 @@ test('clear button removes text from prompt bar and resets selected to null', as
 test('loading spinner shows during api call', async () => {
   const user = userEvent.setup({ delay: null });
 
-  const mockFetch = vi.fn().mockResolvedValue({
-    json: () => new Promise((resolve) => resolve({ destinations: [] })),
-  });
-  global.fetch = mockFetch;
+  vi.spyOn(api, 'getPromptDestinations').mockResolvedValueOnce([]);
+
   const prompts = [faker.lorem.sentence(), faker.lorem.sentence(), faker.lorem.sentence()];
   act(() => {
     const clientPrompts: ClientPrompt[] = prompts.map((prompt) => ({ label: prompt, value: prompt }));

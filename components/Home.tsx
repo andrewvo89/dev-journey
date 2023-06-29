@@ -1,9 +1,11 @@
 import { Flex, createStyles } from '@mantine/core';
+import { getLayoutedElements, jnodesToFlow } from 'utils/flow';
 
 import { Graph } from 'components/Graph';
 import LeftPanel from 'components/LeftPanel';
 import PromptBar from 'components/PromptBar';
 import { Props } from 'pages';
+import { shallow } from 'zustand/shallow';
 import { useEffect } from 'react';
 import { useHistoryStore } from 'store/history';
 import { useNodeStore } from 'store/node';
@@ -20,20 +22,34 @@ const useStyles = createStyles(() => ({
 }));
 
 export default function Home(props: Props) {
-  const { initialEdges, initialNodes, initialJNodes, prompts, placeholder } = props;
+  const { placeholder, prompts, initialJNodes } = props;
 
-  const initFlow = useNodeStore((state) => state.initFlow);
+  const { initFlow, updateNodes } = useNodeStore(
+    (state) => ({ initFlow: state.initFlow, updateNodes: state.updateNodes }),
+    shallow,
+  );
   const setPrompts = usePromptStore((state) => state.setPrompts);
-  const updateNodes = useNodeStore((state) => state.updateNodes);
   const selected = useHistoryStore((state) => state.selected);
 
   const { classes } = useStyles();
 
   // Store initial values in store
   useEffect(() => {
+    const { nodes, edges } = jnodesToFlow({
+      jnodes: initialJNodes,
+      destinationIds: [],
+      maintainSettings: new Map(),
+      nodesIdsOnPath: [],
+      optionalIdsOnPath: [],
+    });
+    const { nodes: initialNodes, edges: initialEdges } = getLayoutedElements(nodes, edges, 'LR');
     initFlow(initialJNodes, initialNodes, initialEdges);
     setPrompts(prompts);
-  }, [initFlow, initialEdges, initialJNodes, initialNodes, prompts, setPrompts]);
+  }, [initFlow, initialJNodes, prompts, setPrompts]);
+
+  useEffect(() => {
+    setPrompts(prompts);
+  }, [prompts, setPrompts]);
 
   // Update nodes when selected updates
   useEffect(() => {

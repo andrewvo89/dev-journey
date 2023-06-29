@@ -3,7 +3,7 @@ import { ClientPrompt, PromptResponse } from 'types/common';
 import { useEffect, useRef, useState } from 'react';
 
 import dayjs from 'dayjs';
-import { promptResponseSchema } from 'schemas/common';
+import { getPromptDestinations } from 'api/prompts';
 import { shallow } from 'zustand/shallow';
 import { useHistoryStore } from 'store/history';
 import { useInputRefStore } from 'store/input-ref';
@@ -63,9 +63,7 @@ export default function PromptBar(props: Props) {
     setIsLoading(true);
     setPrompt(selectedPrompt.label);
     try {
-      const res = await fetch(`/api/prompts/${selectedPrompt.value}`, { method: 'POST' });
-      const jsonResponse = await res.json();
-      const { destinations } = promptResponseSchema.parse(jsonResponse);
+      const destinations = await getPromptDestinations(selectedPrompt);
       addJourney({
         id: uuidv4(),
         createdAt: dayjs().toISOString(),

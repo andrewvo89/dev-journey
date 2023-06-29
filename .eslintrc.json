@@ -1,9 +1,13 @@
 {
+  "plugins": [
+    "@tanstack/query"
+  ],
   "extends": [
     "next/core-web-vitals",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier"
+    "prettier",
+    "plugin:@tanstack/eslint-plugin-query/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "rules": {
@@ -63,6 +67,8 @@
         ]
       }
     ],
-    "spaced-comment": "error"
+    "spaced-comment": "error",
+    "@tanstack/query/exhaustive-deps": "error",
+    "@tanstack/query/prefer-query-object-syntax": "error"
   }
 }

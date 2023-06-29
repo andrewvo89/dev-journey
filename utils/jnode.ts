@@ -1,7 +1,14 @@
-import { JNode } from 'types/jnode';
+import { JNodeShallow, JNodeType } from 'types/jnode';
 
-export function getRoutesToJnode(sourceJnodeId: string, targetJnode: JNode, jnodesMap: Map<string, JNode>): JNode[][] {
-  const parentRoutes = targetJnode.dependencies.reduce<JNode[][]>((list, depId) => {
+import { DefaultMantineColor } from '@mantine/core';
+import { jnodeTypeSchema } from 'schemas/jnode';
+
+export function getRoutesToJnode(
+  sourceJnodeId: string,
+  targetJnode: JNodeShallow,
+  jnodesMap: Map<string, JNodeShallow>,
+): JNodeShallow[][] {
+  const parentRoutes = targetJnode.dependencies.reduce<JNodeShallow[][]>((list, depId) => {
     const dependency = jnodesMap.get(depId);
     if (!dependency) {
       return list;
@@ -18,8 +25,8 @@ export function getRoutesToJnode(sourceJnodeId: string, targetJnode: JNode, jnod
   return parentRoutes.map((path) => [...path, targetJnode]);
 }
 
-export function resolveNodeIdsToJNodes(nodeIds: string[], jnodesMap: Map<string, JNode>): JNode[] {
-  return nodeIds.reduce<JNode[]>((list, id) => {
+export function resolveNodeIdsToJNodes(nodeIds: string[], jnodesMap: Map<string, JNodeShallow>): JNodeShallow[] {
+  return nodeIds.reduce<JNodeShallow[]>((list, id) => {
     const found = jnodesMap.get(id);
     if (found) {
       list.push(found);
@@ -27,3 +34,19 @@ export function resolveNodeIdsToJNodes(nodeIds: string[], jnodesMap: Map<string,
     return list;
   }, []);
 }
+
+export const jnodeTypeMap: Record<JNodeType, { label: string; color: DefaultMantineColor }> = {
+  root: { label: 'Start of journey', color: 'blue' },
+  language: { label: 'Language', color: 'red' },
+  database: { label: 'Database', color: 'cyan' },
+  tool: { label: 'Tool', color: 'teal' },
+  library: { label: 'Library', color: 'violet' },
+  framework: { label: 'Framework', color: 'pink' },
+  // meta_framework: { label: 'Meta Framework', color: 'grape' },
+  runtime: { label: 'Runtime', color: 'orange' },
+  paradigm: { label: 'Paradigm', color: 'lime' },
+  platform: { label: 'Platform', color: 'green' },
+  field: { label: 'Field', color: 'indigo' },
+  // career: { label: 'Career', color: 'yellow' },
+};
+export const jnodeTypes = Object.keys(jnodeTypeMap).map((key) => jnodeTypeSchema.parse(key));

@@ -10,14 +10,14 @@ import { useHistoryStore } from 'store/history';
 import { useNodeStore } from 'store/node';
 
 test('renders main container', () => {
-  render(<Home prompts={[]} initialEdges={[]} initialJNodes={[]} initialNodes={[]} placeholder='' />, {
+  render(<Home prompts={[]} initialJNodes={[]} placeholder='' />, {
     wrapper: AppWrapper,
   });
   expect(screen.getByRole('main', { name: 'Main container' })).toBeInTheDocument();
 });
 
 test('renders right container', () => {
-  render(<Home prompts={[]} initialEdges={[]} initialJNodes={[]} initialNodes={[]} placeholder='' />, {
+  render(<Home prompts={[]} initialJNodes={[]} placeholder='' />, {
     wrapper: AppWrapper,
   });
   expect(screen.getByRole('region', { name: 'Right container' })).toBeInTheDocument();
@@ -27,7 +27,7 @@ test('updates nodes with no destinations', () => {
   const mockUpdateNodes = vi.fn();
   useNodeStore.getState().updateNodes = mockUpdateNodes;
 
-  render(<Home prompts={[]} initialEdges={[]} initialJNodes={[]} initialNodes={[]} placeholder='' />, {
+  render(<Home prompts={[]} initialJNodes={[]} placeholder='' />, {
     wrapper: AppWrapper,
   });
   expect(mockUpdateNodes).toHaveBeenCalledWith([]);
@@ -48,7 +48,7 @@ test('updates nodes with selected destinations', async () => {
       prompt: { label: prompt, value: prompt },
     });
   });
-  render(<Home prompts={[]} initialEdges={[]} initialJNodes={[]} initialNodes={[]} placeholder='' />, {
+  render(<Home prompts={[]} initialJNodes={[]} placeholder='' />, {
     wrapper: AppWrapper,
   });
   expect(mockUpdateNodes).toHaveBeenCalledWith(destinations);

@@ -9,3 +9,7 @@ export function toReadableHours(minutes: number) {
   }
   return `${hours}h ${mins}m`;
 }
+
+export const isServer = typeof window === 'undefined';
+
+export const isClient = !isServer;

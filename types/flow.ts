@@ -1,4 +1,4 @@
-import { JNode } from 'types/jnode';
+import { JNodeShallow } from 'types/jnode';
 
 export type NodeTypeProps = {
   type: 'fallback';
@@ -17,7 +17,7 @@ export const jnodeProps: NodeTypeProps = {
 };
 
 export type JNodeTypeData = {
-  jnode: JNode;
+  jnode: JNodeShallow;
   isDesNode: boolean;
   isOnPath: boolean;
   isLeafNode: boolean;

@@ -1,7 +1,7 @@
 import { JNodeType } from 'types/jnode';
 import { createStyles } from '@mantine/core';
 import { jnodeProps } from 'types/flow';
-import { jnodeTypeMap } from 'utils/node';
+import { jnodeTypeMap } from 'utils/jnode';
 
 type StyleProps = {
   type: JNodeType;

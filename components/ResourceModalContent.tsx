@@ -1,11 +1,14 @@
-import { Accordion, Badge, Group, Stack, Text, createStyles } from '@mantine/core';
-import { NarrowResourceType, Resource, Resources } from 'types/jnode';
+import { Accordion, Badge, CloseButton, Group, Loader, Stack, Text, Title, createStyles } from '@mantine/core';
+import { JNodeShallow, NarrowResourceType, Resource, Resources } from 'types/jnode';
 import ResourceTable, { FieldMap } from 'components/ResourceTable';
 
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
+import { getJnode } from 'api/github';
+import { modals } from '@mantine/modals';
 import { toReadableHours } from 'utils/common';
 import { useMemo } from 'react';
+import { useQuery } from '@tanstack/react-query';
 
 dayjs.extend(duration);
 
@@ -136,32 +139,46 @@ function AccordionItem<T extends Resource['type']>(props: AccordionPanelProps<T>
 }
 
 type Props = {
-  description: string;
-  resources: Resources;
-  resourceCount: number;
+  jnodeShallow: JNodeShallow;
 };
 
 const fallback =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
 export default function ResourceModalContent(props: Props) {
-  const { resources, description, resourceCount } = props;
+  const { jnodeShallow } = props;
   const { classes } = useStyles();
 
-  const filtered = useMemo(
-    () => [articles, books, courses, documentation, videos].filter((map) => resources[map.id].length > 0),
-    [resources],
-  );
+  const { data: jnode } = useQuery({ queryKey: [jnodeShallow.id], queryFn: () => getJnode(jnodeShallow.id) });
+
+  const filtered = useMemo(() => {
+    if (!jnode) {
+      return [];
+    }
+    return [articles, books, courses, documentation, videos].filter((map) => jnode.resources[map.id].length > 0);
+  }, [jnode]);
+
+  if (!jnode) {
+    return <Loader />;
+  }
 
   return (
     <Stack spacing='2rem'>
+      <Group position='apart'>
+        <Title>{jnode.title}</Title>
+        <CloseButton size='lg' onClick={() => modals.close(jnode.id)} />
+      </Group>
       <Stack>
-        {description ? description.split('\n').map((line) => <Text key={line}>{line}</Text>) : <Text>{fallback}</Text>}
+        {jnode.description ? (
+          jnode.description.split('\n').map((line) => <Text key={line}>{line}</Text>)
+        ) : (
+          <Text>{fallback}</Text>
+        )}
       </Stack>
-      {resourceCount > 0 && (
+      {filtered.length > 0 && (
         <Accordion variant='separated' classNames={{ content: classes.accordianContent }}>
           {filtered.map((map) => (
-            <AccordionItem key={map.id} data={resources[map.id]} map={map} />
+            <AccordionItem key={map.id} data={jnode.resources[map.id]} map={map} />
           ))}
         </Accordion>
       )}

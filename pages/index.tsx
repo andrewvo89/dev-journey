@@ -1,73 +1,34 @@
-import { Edge, Node } from 'reactflow';
-import type { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next';
-import { getLayoutedElements, jnodesToFlow } from 'utils/flow';
-import { jnodeJSONSchema, placeholdersJSONSchema } from 'schemas/data';
+import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 
 import { ClientPrompt } from 'types/common';
 import Home from 'components/Home';
-import { JNode } from 'types/jnode';
-import { JNodeTypeData } from 'types/flow';
-import { clientPrompts } from 'data/prompts';
-import databasesJSON from 'data/jnodes/databases.json';
-import fieldsJSON from 'data/jnodes/fields.json';
-import frameworksJSON from 'data/jnodes/frameworks.json';
-import languagesJSON from 'data/jnodes/languages.json';
-import librariesJSON from 'data/jnodes/libraries.json';
-import paradigmsJSON from 'data/jnodes/paradigms.json';
+import { JNodeShallow } from 'types/jnode';
+import { getClientPrompts } from 'utils/prompt';
+import { getJnodesMap } from '../api/github';
+import { getPrompts } from 'api/prompts';
 import placeholdersJSON from 'data/placeholders.json';
-import platformsJSON from 'data/jnodes/platforms.json';
-import rootJSON from 'data/jnodes/root.json';
-import runtimeJSON from 'data/jnodes/runtime.json';
-import toolsJSON from 'data/jnodes/tools.json';
+import { placeholdersJSONSchema } from 'schemas/data';
 
 export type Props = {
   placeholder: string;
   prompts: ClientPrompt[];
-  initialNodes: Node<JNodeTypeData>[];
-  initialEdges: Edge[];
-  initialJNodes: JNode[];
+  initialJNodes: JNodeShallow[];
 };
-
-const jnodeJSONs = jnodeJSONSchema.parse({
-  ...databasesJSON,
-  ...fieldsJSON,
-  ...frameworksJSON,
-  ...languagesJSON,
-  ...librariesJSON,
-  ...paradigmsJSON,
-  ...platformsJSON,
-  ...rootJSON,
-  ...runtimeJSON,
-  ...toolsJSON,
-});
 
 const placeholders = placeholdersJSONSchema.parse(placeholdersJSON);
-const initialJNodes = Object.values(jnodeJSONs)
-  // .sort((a, b) => a.attributes.group.localeCompare(b.attributes.group) || a.name.localeCompare(b.name))
-  .map<JNode>((jnode) => ({
-    dependencies: jnode.dependencies,
-    description: jnode.description,
-    id: jnode.id,
-    title: jnode.title,
-    resources: jnode.resources,
-    type: jnode.type,
-  }));
 
-const { nodes, edges } = jnodesToFlow({
-  jnodes: initialJNodes,
-  destinationIds: [],
-  maintainSettings: new Map(),
-  nodesIdsOnPath: [],
-  optionalIdsOnPath: [],
-});
-const { nodes: initialNodes, edges: initialEdges } = getLayoutedElements(nodes, edges, 'LR');
-
-export const getServerSideProps: GetServerSideProps<Props> = async () => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const placeholder = placeholders[Math.floor(Math.random() * placeholders.length)];
-  return { props: { placeholder, prompts: clientPrompts, initialNodes, initialEdges, initialJNodes } };
+  const jnodesMap = await getJnodesMap();
+  const prompts = getClientPrompts(getPrompts(jnodesMap));
+  const initialJNodes = Object.values(jnodesMap).map<JNodeShallow>((jnode) => ({
+    ...jnode,
+    resources: Object.values(jnode.resources).flat().length,
+  }));
+  return { props: { placeholder, prompts, initialJNodes } };
 };
 
-const HomePage: NextPage<InferGetServerSidePropsType<typeof getServerSideProps>> = (props) => {
+const HomePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
   return <Home {...props} />;
 };
 

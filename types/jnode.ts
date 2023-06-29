@@ -4,6 +4,7 @@ import {
   courseResourceSchema,
   documentationResourceSchema,
   jnodeSchema,
+  jnodeShallowSchema,
   jnodeTypeSchema,
   jnodesMapSchema,
   partialResourcesSchema,
@@ -16,6 +17,8 @@ import {
 import { z } from 'zod';
 
 export type JNode = z.infer<typeof jnodeSchema>;
+
+export type JNodeShallow = z.infer<typeof jnodeShallowSchema>;
 
 export type JNodeType = z.infer<typeof jnodeTypeSchema>;
 

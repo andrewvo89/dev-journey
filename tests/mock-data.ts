@@ -1,4 +1,4 @@
-import { JNode } from 'types/jnode';
+import { JNodeShallow } from 'types/jnode';
 import { faker } from '@faker-js/faker';
 
 export const mockJnodeType = () =>
@@ -16,47 +16,26 @@ export const mockJnodeType = () =>
     'career',
   ] as const);
 
-export const mockJnodes: JNode[] = [
+export const mockJnodes: JNodeShallow[] = [
   {
     id: 'root',
     title: 'root',
     dependencies: [],
-    description: faker.lorem.paragraph(),
-    resources: {
-      articles: [],
-      books: [],
-      courses: [],
-      documentation: [],
-      videos: [],
-    },
+    resources: faker.number.int(),
     type: 'root',
   },
   {
     id: faker.string.uuid(),
     title: faker.lorem.word(),
     dependencies: ['root'],
-    description: faker.lorem.paragraph(),
-    resources: {
-      articles: [],
-      books: [],
-      courses: [],
-      documentation: [],
-      videos: [],
-    },
+    resources: faker.number.int(),
     type: mockJnodeType(),
   },
   {
     id: faker.string.uuid(),
     title: faker.lorem.word(),
     dependencies: ['root'],
-    description: 'Start of the tree',
-    resources: {
-      articles: [],
-      books: [],
-      courses: [],
-      documentation: [],
-      videos: [],
-    },
+    resources: faker.number.int(),
     type: mockJnodeType(),
   },
 ];

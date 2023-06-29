@@ -1,7 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { PromptResponse } from 'types/common';
-import { promptsMap } from 'data/prompts';
+import { getJnodesMap } from 'api/github';
+import { getPrompts } from 'api/prompts';
 
 type SuccessResponse = PromptResponse;
 
@@ -22,7 +23,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     return;
   }
 
-  const prompt = promptsMap[id];
+  const jnodesMap = await getJnodesMap();
+  const prompts = getPrompts(jnodesMap);
+  const prompt = prompts.find((p) => p.id === id);
+
   if (!prompt) {
     res.status(404).json({ error: 'Prompt Not Found' });
     return;
