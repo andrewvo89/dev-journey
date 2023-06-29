@@ -1,5 +1,8 @@
-import { ClientPrompt, Prompt } from 'types/common';
+import { ClientPrompt, Prompt, PromptResponse } from 'types/common';
 import { JNodeType, JnodesMap } from 'types/jnode';
+
+import axios from 'axios';
+import { promptResponseSchema } from 'schemas/common';
 
 export function getTechPrompts(jnodeMap: JnodesMap): Prompt[] {
   const allowedTypes: JNodeType[] = ['database', 'framework', 'language', 'library', 'platform', 'runtime', 'tool'];
@@ -72,4 +75,30 @@ export function getNosqlPrompt(jnodeMap: JnodesMap): Prompt {
 
 export function getClientPrompts(prompts: Prompt[]): ClientPrompt[] {
   return prompts.map<ClientPrompt>((p) => ({ value: p.id, label: p.prompt }));
+}
+/**
+ * Given a jnodes map, return a list of prompts.
+ * @export
+ * @param {JnodesMap} jnodeMap
+ * @return {*}  {Prompt[]}
+ */
+export function getPrompts(jnodeMap: JnodesMap): Prompt[] {
+  return [
+    ...getTechPrompts(jnodeMap),
+    getJavascriptPrompt(jnodeMap),
+    getPythonPrompt(jnodeMap),
+    getRelationalPrompt(jnodeMap),
+    getNosqlPrompt(jnodeMap),
+  ].sort((a, b) => a.priority - b.priority);
+}
+
+/**
+ * Given a prompt, return a list of destinations.
+ * @export
+ * @param {ClientPrompt} prompt
+ * @return {*}  {Promise<PromptResponse['destinations']>}
+ */
+export async function getPromptDestinations(prompt: ClientPrompt): Promise<PromptResponse['destinations']> {
+  const res = await axios.post<PromptResponse>(`/api/prompts/${prompt.value}`);
+  return promptResponseSchema.parse(res.data).destinations;
 }

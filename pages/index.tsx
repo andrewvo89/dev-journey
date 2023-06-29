@@ -1,11 +1,10 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
+import { getClientPrompts, getPrompts } from 'utils/prompt';
 
 import { ClientPrompt } from 'types/common';
 import Home from 'components/Home';
 import { JNodeShallow } from 'types/jnode';
-import { getClientPrompts } from 'utils/prompt';
-import { getJnodesMap } from '../api/_github';
-import { getPrompts } from 'api/_prompts';
+import { getJnodesMap } from '../utils/github';
 import placeholdersJSON from 'data/placeholders.json';
 import { placeholdersJSONSchema } from 'schemas/data';
 

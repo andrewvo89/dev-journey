@@ -1,4 +1,4 @@
-import * as api from 'api/_prompts';
+import * as utils from 'utils/prompt';
 
 import { ClientPrompt, PromptResponse } from 'types/common';
 import PromptBar, { transformDesintations } from 'components/PromptBar';
@@ -50,7 +50,7 @@ test('should contain prompt value of user input', async () => {
 test('prompt bar text is bound when user chooses an auto select item', async () => {
   const user = userEvent.setup({ delay: null });
 
-  vi.spyOn(api, 'getPromptDestinations').mockResolvedValueOnce([]);
+  vi.spyOn(utils, 'getPromptDestinations').mockResolvedValueOnce([]);
 
   const prompts = [faker.lorem.sentence(), faker.lorem.sentence(), faker.lorem.sentence()];
   act(() => {
@@ -73,10 +73,10 @@ test('prompt bar text is bound when user chooses an auto select item', async () 
   expect(input.getAttribute('value')).toBe(prompts[2]);
 }, 10000);
 
-test('api is called when user selects a drop down item', async () => {
+test('utils is called when user selects a drop down item', async () => {
   const user = userEvent.setup({ delay: null });
 
-  const spyFn = vi.spyOn(api, 'getPromptDestinations').mockResolvedValueOnce([]);
+  const spyFn = vi.spyOn(utils, 'getPromptDestinations').mockResolvedValueOnce([]);
   const prompts = [faker.lorem.sentence(), faker.lorem.sentence(), faker.lorem.sentence()];
 
   const clientPrompts: ClientPrompt[] = prompts.map((prompt) => ({ label: prompt, value: prompt }));
@@ -96,10 +96,10 @@ test('api is called when user selects a drop down item', async () => {
   expect(spyFn).toBeCalledWith(clientPrompts[2]);
 });
 
-test('application does not crash when api call fails', async () => {
+test('application does not crash when utils call fails', async () => {
   const user = userEvent.setup({ delay: null });
   console.error = vi.fn();
-  vi.spyOn(api, 'getPromptDestinations').mockRejectedValueOnce(new Error('test error'));
+  vi.spyOn(utils, 'getPromptDestinations').mockRejectedValueOnce(new Error('test error'));
   const prompts = [faker.lorem.sentence(), faker.lorem.sentence(), faker.lorem.sentence()];
   act(() => {
     const clientPrompts: ClientPrompt[] = prompts.map((prompt) => ({ label: prompt, value: prompt }));
@@ -121,7 +121,7 @@ test('application does not crash when api call fails', async () => {
 test('clear button removes text from prompt bar and resets selected to null', async () => {
   const user = userEvent.setup({ delay: null });
 
-  vi.spyOn(api, 'getPromptDestinations').mockResolvedValueOnce([]);
+  vi.spyOn(utils, 'getPromptDestinations').mockResolvedValueOnce([]);
 
   const prompts = [faker.lorem.sentence(), faker.lorem.sentence(), faker.lorem.sentence()];
   act(() => {
@@ -146,10 +146,10 @@ test('clear button removes text from prompt bar and resets selected to null', as
   expect(useHistoryStore.getState().selected).toBeFalsy();
 });
 
-test('loading spinner shows during api call', async () => {
+test('loading spinner shows during utils call', async () => {
   const user = userEvent.setup({ delay: null });
 
-  vi.spyOn(api, 'getPromptDestinations').mockResolvedValueOnce([]);
+  vi.spyOn(utils, 'getPromptDestinations').mockResolvedValueOnce([]);
 
   const prompts = [faker.lorem.sentence(), faker.lorem.sentence(), faker.lorem.sentence()];
   act(() => {

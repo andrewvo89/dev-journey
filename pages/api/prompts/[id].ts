@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { PromptResponse } from 'types/common';
-import { getJnodesMap } from 'api/_github';
-import { getPrompts } from 'api/_prompts';
+import { getJnodesMap } from 'utils/github';
+import { getPrompts } from 'utils/prompt';
 
 type SuccessResponse = PromptResponse;
 
