@@ -1,4 +1,4 @@
-import * as api from 'api/prompts';
+import * as api from 'api/_prompts';
 
 import { ClientPrompt, PromptResponse } from 'types/common';
 import PromptBar, { transformDesintations } from 'components/PromptBar';

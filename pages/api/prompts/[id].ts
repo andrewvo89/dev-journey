@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { PromptResponse } from 'types/common';
-import { getJnodesMap } from 'api/github';
-import { getPrompts } from 'api/prompts';
+import { getJnodesMap } from 'api/_github';
+import { getPrompts } from 'api/_prompts';
 
 type SuccessResponse = PromptResponse;
 
@@ -24,6 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   }
 
   const jnodesMap = await getJnodesMap();
+  console.log('jnodesMap', jnodesMap);
   const prompts = getPrompts(jnodesMap);
   const prompt = prompts.find((p) => p.id === id);
 

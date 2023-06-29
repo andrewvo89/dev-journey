@@ -4,7 +4,7 @@ import ResourceTable, { FieldMap } from 'components/ResourceTable';
 
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
-import { getJnode } from 'api/github';
+import { getJnode } from 'api/_github';
 import { toReadableHours } from 'utils/common';
 import { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';

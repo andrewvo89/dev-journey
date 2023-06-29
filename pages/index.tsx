@@ -4,8 +4,8 @@ import { ClientPrompt } from 'types/common';
 import Home from 'components/Home';
 import { JNodeShallow } from 'types/jnode';
 import { getClientPrompts } from 'utils/prompt';
-import { getJnodesMap } from '../api/github';
-import { getPrompts } from 'api/prompts';
+import { getJnodesMap } from '../api/_github';
+import { getPrompts } from 'api/_prompts';
 import placeholdersJSON from 'data/placeholders.json';
 import { placeholdersJSONSchema } from 'schemas/data';
 

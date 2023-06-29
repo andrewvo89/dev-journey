@@ -3,7 +3,7 @@ import { ClientPrompt, PromptResponse } from 'types/common';
 import { useEffect, useRef, useState } from 'react';
 
 import dayjs from 'dayjs';
-import { getPromptDestinations } from 'api/prompts';
+import { getPromptDestinations } from 'api/_prompts';
 import { shallow } from 'zustand/shallow';
 import { useHistoryStore } from 'store/history';
 import { useInputRefStore } from 'store/input-ref';
