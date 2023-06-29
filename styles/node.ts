@@ -61,11 +61,5 @@ export const useStyles = createStyles((theme, props: StyleProps) => {
       position: 'absolute',
       left: '-1rem',
     },
-    overlay: {
-      zIndex: 1001,
-    },
-    inner: {
-      zIndex: 1002,
-    },
   };
 });

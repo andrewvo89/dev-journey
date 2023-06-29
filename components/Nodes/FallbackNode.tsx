@@ -1,4 +1,4 @@
-import { ActionIcon, Badge, Paper, Text, ThemeIcon, useMantineTheme } from '@mantine/core';
+import { ActionIcon, Badge, Paper, Text, ThemeIcon, createStyles, useMantineTheme } from '@mantine/core';
 import { Handle, NodeProps } from 'reactflow';
 import { IconCrown, IconRocket } from '@tabler/icons-react';
 
@@ -9,6 +9,20 @@ import { modals } from '@mantine/modals';
 import { useHistoryStore } from 'store/history';
 import { useNodeStore } from 'store/node';
 import { useStyles } from 'styles/node';
+
+const useModalStyles = createStyles((theme) => ({
+  overlay: {
+    zIndex: 1001,
+  },
+  inner: {
+    zIndex: 1002,
+  },
+  title: {
+    fontSize: theme.headings.sizes.h1.fontSize,
+    fontWeight: 700,
+    lineHeight: theme.headings.sizes.h1.lineHeight,
+  },
+}));
 
 export default function FallbackNode(props: NodeProps<JNodeTypeData>) {
   const {
@@ -26,6 +40,7 @@ export default function FallbackNode(props: NodeProps<JNodeTypeData>) {
   const keepAlive = isOnPath || isOnOptionalPath || noNodesOnPath || !selected;
 
   const { classes } = useStyles({ keepAlive, isOptional, isOnPath, type: jnode.type });
+  const { classes: modalClasses } = useModalStyles();
 
   const rocketButtonClickHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.stopPropagation();
@@ -40,8 +55,9 @@ export default function FallbackNode(props: NodeProps<JNodeTypeData>) {
     modals.open({
       modalId: jnode.id,
       classNames: {
-        overlay: classes.overlay,
-        inner: classes.inner,
+        overlay: modalClasses.overlay,
+        inner: modalClasses.inner,
+        title: modalClasses.title,
       },
       size: 'xl',
       overlayProps: {
@@ -49,7 +65,10 @@ export default function FallbackNode(props: NodeProps<JNodeTypeData>) {
         opacity: 0.55,
         blur: 3,
       },
-      withCloseButton: false,
+      closeButtonProps: {
+        size: 'lg',
+      },
+      title: jnode.title,
       children: <ResourceModalContent jnodeShallow={jnode} />,
     });
   };

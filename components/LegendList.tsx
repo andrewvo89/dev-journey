@@ -50,12 +50,10 @@ const typesOrder: JNodeType[] = [
   'language',
   'database',
   'framework',
-  'meta_framework',
   'library',
   'platform',
   'paradigm',
   'field',
-  'career',
 ];
 
 export function LegendList() {

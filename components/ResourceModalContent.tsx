@@ -1,11 +1,10 @@
-import { Accordion, Badge, CloseButton, Group, Loader, Stack, Text, Title, createStyles } from '@mantine/core';
+import { Accordion, Badge, Group, Skeleton, Stack, Text, createStyles } from '@mantine/core';
 import { JNodeShallow, NarrowResourceType, Resource, Resources } from 'types/jnode';
 import ResourceTable, { FieldMap } from 'components/ResourceTable';
 
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import { getJnode } from 'api/github';
-import { modals } from '@mantine/modals';
 import { toReadableHours } from 'utils/common';
 import { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
@@ -159,15 +158,27 @@ export default function ResourceModalContent(props: Props) {
   }, [jnode]);
 
   if (!jnode) {
-    return <Loader />;
+    return (
+      <Stack spacing='2rem'>
+        <Stack>
+          <Skeleton height='6rem' />
+          <Skeleton height='4rem' />
+          <Skeleton height='7rem' />
+          <Skeleton height='5rem' />
+        </Stack>
+        <Stack>
+          <Skeleton height='3rem' />
+          <Skeleton height='3rem' />
+          <Skeleton height='3rem' />
+          <Skeleton height='3rem' />
+          <Skeleton height='3rem' />
+        </Stack>
+      </Stack>
+    );
   }
 
   return (
     <Stack spacing='2rem'>
-      <Group position='apart'>
-        <Title>{jnode.title}</Title>
-        <CloseButton size='lg' onClick={() => modals.close(jnode.id)} />
-      </Group>
       <Stack>
         {jnode.description ? (
           jnode.description.split('\n').map((line) => <Text key={line}>{line}</Text>)
