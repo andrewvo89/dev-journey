@@ -1,11 +1,11 @@
-import { JNodeShallow, JNodeType } from 'types/jnode';
+import { JnodeShallow, JnodeType } from 'types/jnode';
 
 import { faker } from '@faker-js/faker';
 import { jnodeTypes } from 'utils/jnode';
 
-export const mockJnodeType = (): JNodeType => faker.helpers.arrayElement(jnodeTypes);
+export const mockJnodeType = (): JnodeType => faker.helpers.arrayElement(jnodeTypes);
 
-export const mockJnodes: JNodeShallow[] = [
+export const mockJnodes: JnodeShallow[] = [
   {
     id: 'root',
     title: 'root',

@@ -24,7 +24,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   }
 
   const jnodesMap = await getJnodesMap();
-  console.log('jnodesMap', jnodesMap);
   const prompts = getPrompts(jnodesMap);
   const prompt = prompts.find((p) => p.id === id);
 

@@ -1,6 +1,6 @@
 import { Edge, Node, Position } from 'reactflow';
-import { JNode, JNodeShallow } from 'types/jnode';
 import { JNodeTypeData, jnodeProps } from 'types/flow';
+import { Jnode, JnodeShallow } from 'types/jnode';
 
 import dagre from 'dagre';
 
@@ -39,7 +39,7 @@ export function getLayoutedElements<TData>(nodes: Node<TData>[], edges: Edge[], 
   return { nodes, edges };
 }
 
-export const highlightEdges = (edges: Edge[], jnodes: JNode[]): Edge[] => {
+export const highlightEdges = (edges: Edge[], jnodes: Jnode[]): Edge[] => {
   const currentEdges = edges.reduce<Map<string, Edge>>((map, edge) => {
     const newMap = new Map(map);
     return newMap.set(edge.id, edge);
@@ -68,12 +68,12 @@ export const highlightEdges = (edges: Edge[], jnodes: JNode[]): Edge[] => {
   return Array.from(updatedEdges.values());
 };
 
-function getIsLeafNode(jnode: JNodeShallow, jnodes: JNodeShallow[]): boolean {
+function getIsLeafNode(jnode: JnodeShallow, jnodes: JnodeShallow[]): boolean {
   return jnodes.every((j) => !j.dependencies.includes(jnode.id));
 }
 
 type JnodesToFlowParams = {
-  jnodes: JNodeShallow[];
+  jnodes: JnodeShallow[];
   destinationIds: string[];
   nodesIdsOnPath: string[];
   optionalIdsOnPath: string[];
@@ -137,7 +137,7 @@ export function jnodesToFlow(params: JnodesToFlowParams): { nodes: Node<JNodeTyp
   return { nodes, edges };
 }
 
-export function highlightManyEdges(edges: Edge[], paths: JNode[][][]): Edge[] {
+export function highlightManyEdges(edges: Edge[], paths: Jnode[][][]): Edge[] {
   return paths.flat().reduce<Edge[]>((list, jnodes) => highlightEdges(list, jnodes), edges);
 }
 

@@ -1,14 +1,14 @@
-import { JNodeShallow, JNodeType } from 'types/jnode';
+import { JnodeShallow, JnodeType } from 'types/jnode';
 
 import { DefaultMantineColor } from '@mantine/core';
 import { jnodeTypeSchema } from 'schemas/jnode';
 
 export function getRoutesToJnode(
   sourceJnodeId: string,
-  targetJnode: JNodeShallow,
-  jnodesMap: Map<string, JNodeShallow>,
-): JNodeShallow[][] {
-  const parentRoutes = targetJnode.dependencies.reduce<JNodeShallow[][]>((list, depId) => {
+  targetJnode: JnodeShallow,
+  jnodesMap: Map<string, JnodeShallow>,
+): JnodeShallow[][] {
+  const parentRoutes = targetJnode.dependencies.reduce<JnodeShallow[][]>((list, depId) => {
     const dependency = jnodesMap.get(depId);
     if (!dependency) {
       return list;
@@ -25,8 +25,8 @@ export function getRoutesToJnode(
   return parentRoutes.map((path) => [...path, targetJnode]);
 }
 
-export function resolveNodeIdsToJNodes(nodeIds: string[], jnodesMap: Map<string, JNodeShallow>): JNodeShallow[] {
-  return nodeIds.reduce<JNodeShallow[]>((list, id) => {
+export function resolveNodeIdsToJNodes(nodeIds: string[], jnodesMap: Map<string, JnodeShallow>): JnodeShallow[] {
+  return nodeIds.reduce<JnodeShallow[]>((list, id) => {
     const found = jnodesMap.get(id);
     if (found) {
       list.push(found);
@@ -35,7 +35,7 @@ export function resolveNodeIdsToJNodes(nodeIds: string[], jnodesMap: Map<string,
   }, []);
 }
 
-export const jnodeTypeMap: Record<JNodeType, { label: string; color: DefaultMantineColor }> = {
+export const jnodeTypeMap: Record<JnodeType, { label: string; color: DefaultMantineColor }> = {
   root: { label: 'Start of journey', color: 'blue' },
   language: { label: 'Language', color: 'red' },
   database: { label: 'Database', color: 'cyan' },

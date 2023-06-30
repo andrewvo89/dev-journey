@@ -1,6 +1,6 @@
 import { DefaultMantineColor, Group, Paper, Text, createStyles } from '@mantine/core';
 
-import { JNodeType } from 'types/jnode';
+import { JnodeType } from 'types/jnode';
 import { jnodeTypeMap } from 'utils/jnode';
 
 type StyleProps = {
@@ -19,7 +19,7 @@ const useStyles = createStyles((theme, props: StyleProps) => ({
 }));
 
 type Props = {
-  type: JNodeType;
+  type: JnodeType;
 };
 
 export default function LegendTypeListItem(props: Props) {

@@ -1,7 +1,7 @@
 import { IconCrown, IconRocket } from '@tabler/icons-react';
 import { Stack, createStyles } from '@mantine/core';
 
-import { JNodeType } from 'types/jnode';
+import { JnodeType } from 'types/jnode';
 import { LegendBorderListItem } from 'components/LegendBorderListItem';
 import { LegendIconListItem } from 'components/LegendIconListItem';
 import LegendTypeListItem from 'components/LegendTypeListItem';
@@ -43,7 +43,7 @@ const borderLegends: { name: string; paperClassName: 'onPath' | 'notOnPath' | 'e
   { name: 'Extended path', paperClassName: 'extendedPath' },
 ];
 
-const typesOrder: JNodeType[] = [
+const typesOrder: JnodeType[] = [
   'root',
   'tool',
   'runtime',
@@ -58,8 +58,8 @@ const typesOrder: JNodeType[] = [
 
 export function LegendList() {
   const nodes = useNodeStore((state) => state.nodes);
-  const uniqueTypes = useMemo<Set<JNodeType>>(
-    () => nodes.reduce((list, node) => list.add(node.data.jnode.type), new Set<JNodeType>()),
+  const uniqueTypes = useMemo<Set<JnodeType>>(
+    () => nodes.reduce((list, node) => list.add(node.data.jnode.type), new Set<JnodeType>()),
     [nodes],
   );
   const { classes } = useStyles();

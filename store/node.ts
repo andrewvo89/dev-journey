@@ -2,16 +2,16 @@ import { Destination, DestinationWithRoutes } from 'types/common';
 import { Edge, Node } from 'reactflow';
 import { getRoutesToJnode, resolveNodeIdsToJNodes } from 'utils/jnode';
 
-import { JNodeShallow } from 'types/jnode';
 import { JNodeTypeData } from 'types/flow';
+import { JnodeShallow } from 'types/jnode';
 import { create } from 'zustand';
 import { jnodesToFlow } from 'utils/flow';
 
 type NodeState = {
-  jnodes: Map<string, JNodeShallow>;
+  jnodes: Map<string, JnodeShallow>;
   nodes: Node<JNodeTypeData>[];
   edges: Edge[];
-  initFlow: (jnodes: JNodeShallow[], nodes: Node<JNodeTypeData>[], edges: Edge[]) => void;
+  initFlow: (jnodes: JnodeShallow[], nodes: Node<JNodeTypeData>[], edges: Edge[]) => void;
   updateNodes: (destinations: Destination[]) => void;
 };
 
@@ -21,7 +21,7 @@ export const useNodeStore = create<NodeState>()((set) => ({
   edges: [],
   initFlow: (jnodes, nodes, edges) =>
     set({
-      jnodes: jnodes.reduce<Map<string, JNodeShallow>>((map, jnode) => map.set(jnode.id, jnode), new Map()),
+      jnodes: jnodes.reduce<Map<string, JnodeShallow>>((map, jnode) => map.set(jnode.id, jnode), new Map()),
       nodes,
       edges,
     }),

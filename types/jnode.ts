@@ -16,11 +16,11 @@ import {
 
 import { z } from 'zod';
 
-export type JNode = z.infer<typeof jnodeSchema>;
+export type Jnode = z.infer<typeof jnodeSchema>;
 
-export type JNodeShallow = z.infer<typeof jnodeShallowSchema>;
+export type JnodeShallow = z.infer<typeof jnodeShallowSchema>;
 
-export type JNodeType = z.infer<typeof jnodeTypeSchema>;
+export type JnodeType = z.infer<typeof jnodeTypeSchema>;
 
 export type Resources = z.infer<typeof resourcesSchema>;
 

@@ -3,7 +3,7 @@ import { getClientPrompts, getPrompts } from 'utils/prompt';
 
 import { ClientPrompt } from 'types/common';
 import Home from 'components/Home';
-import { JNodeShallow } from 'types/jnode';
+import { JnodeShallow } from 'types/jnode';
 import { getJnodesMap } from '../utils/github';
 import placeholdersJSON from 'data/placeholders.json';
 import { placeholdersJSONSchema } from 'schemas/data';
@@ -11,7 +11,7 @@ import { placeholdersJSONSchema } from 'schemas/data';
 export type Props = {
   placeholder: string;
   prompts: ClientPrompt[];
-  initialJNodes: JNodeShallow[];
+  initialJNodes: JnodeShallow[];
 };
 
 const placeholders = placeholdersJSONSchema.parse(placeholdersJSON);
@@ -20,7 +20,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const placeholder = placeholders[Math.floor(Math.random() * placeholders.length)];
   const jnodesMap = await getJnodesMap();
   const prompts = getClientPrompts(getPrompts(jnodesMap));
-  const initialJNodes = Object.values(jnodesMap).map<JNodeShallow>((jnode) => ({
+  const initialJNodes = Object.values(jnodesMap).map<JnodeShallow>((jnode) => ({
     ...jnode,
     resources: Object.values(jnode.resources).flat().length,
   }));

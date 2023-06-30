@@ -1,10 +1,10 @@
-import { JNodeType } from 'types/jnode';
+import { JnodeType } from 'types/jnode';
 import { createStyles } from '@mantine/core';
 import { jnodeProps } from 'types/flow';
 import { jnodeTypeMap } from 'utils/jnode';
 
 type StyleProps = {
-  type: JNodeType;
+  type: JnodeType;
   keepAlive: boolean;
   isOptional: boolean;
   isOnPath: boolean;

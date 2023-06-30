@@ -1,5 +1,5 @@
 import { Accordion, Badge, Group, Skeleton, Stack, Text, createStyles } from '@mantine/core';
-import { JNodeShallow, NarrowResourceType, Resource, Resources } from 'types/jnode';
+import { JnodeShallow, NarrowResourceType, Resource, Resources } from 'types/jnode';
 import ResourceTable, { FieldMap } from 'components/ResourceTable';
 
 import dayjs from 'dayjs';
@@ -138,7 +138,7 @@ function AccordionItem<T extends Resource['type']>(props: AccordionPanelProps<T>
 }
 
 type Props = {
-  jnodeShallow: JNodeShallow;
+  jnodeShallow: JnodeShallow;
 };
 
 const fallback =

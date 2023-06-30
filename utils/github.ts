@@ -1,4 +1,4 @@
-import { JNode, JnodesMap } from 'types/jnode';
+import { Jnode, JnodesMap } from 'types/jnode';
 
 import axios from 'axios';
 import { isServer } from 'utils/common';
@@ -38,8 +38,8 @@ async function getJnodeKeys(folder: string): Promise<string[]> {
  * @param {string} key
  * @return {*}  {Promise<JNode>}
  */
-export async function getJnode(key: string): Promise<JNode> {
-  const response = await axios.get<JNode>(`${baseRawUrl}/${key}.json`);
+export async function getJnode(key: string): Promise<Jnode> {
+  const response = await axios.get<Jnode>(`${baseRawUrl}/${key}.json`);
   const jnode = jnodeSchema.omit({ id: true, type: true }).parse(response.data);
   const [type, id] = key.split('/');
   return jnodeSchema.parse({ ...jnode, id: `${type}/${id}`, type });

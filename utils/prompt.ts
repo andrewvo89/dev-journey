@@ -1,11 +1,11 @@
 import { ClientPrompt, Prompt, PromptResponse } from 'types/common';
-import { JNodeType, JnodesMap } from 'types/jnode';
+import { JnodeType, JnodesMap } from 'types/jnode';
 
 import axios from 'axios';
 import { promptResponseSchema } from 'schemas/common';
 
 export function getTechPrompts(jnodeMap: JnodesMap): Prompt[] {
-  const allowedTypes: JNodeType[] = ['database', 'framework', 'language', 'library', 'platform', 'runtime', 'tool'];
+  const allowedTypes: JnodeType[] = ['database', 'framework', 'language', 'library', 'platform', 'runtime', 'tool'];
   return Object.values(jnodeMap)
     .filter((t) => allowedTypes.includes(t.type))
     .sort((a, b) => a.title.localeCompare(b.title))

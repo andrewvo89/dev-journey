@@ -1,6 +1,6 @@
 import { promptResponseSchema, promptSchema } from 'schemas/common';
 
-import { JNodeShallow } from 'types/jnode';
+import { JnodeShallow } from 'types/jnode';
 import { z } from 'zod';
 
 export type Prompt = z.infer<typeof promptSchema>;
@@ -12,7 +12,7 @@ export type ClientPrompt = {
   label: string;
 };
 
-export type Route = JNodeShallow[];
+export type Route = JnodeShallow[];
 
 export type Destination = {
   id: string;
