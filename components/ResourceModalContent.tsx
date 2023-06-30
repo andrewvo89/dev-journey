@@ -20,12 +20,12 @@ type ResourceMap<TType extends Resource['type']> = {
   initalSort: keyof NarrowResourceType<TType>;
 };
 
-const documentation: ResourceMap<'documentation'> = {
-  id: 'documentation',
-  heading: 'Documentation',
-  emptyDataMessage: 'Suggest documentation...',
+const misc: ResourceMap<'misc'> = {
+  id: 'misc',
+  heading: 'Miscellaneous',
+  emptyDataMessage: 'Suggest miscellaneous resources...',
   fieldMappings: [{ key: 'title', heading: 'Title' }],
-  type: 'documentation',
+  type: 'misc',
   initalSort: 'title',
 };
 
@@ -154,7 +154,7 @@ export default function ResourceModalContent(props: Props) {
     if (!jnode) {
       return [];
     }
-    return [articles, books, courses, documentation, videos].filter((map) => jnode.resources[map.id].length > 0);
+    return [articles, books, courses, videos, misc].filter((map) => jnode.resources[map.id].length > 0);
   }, [jnode]);
 
   if (!jnode) {

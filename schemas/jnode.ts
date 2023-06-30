@@ -24,10 +24,10 @@ export const courseResourceSchema = z.object({
   type: z.literal('course'),
 });
 
-export const documentationResourceSchema = z.object({
+export const miscResourceSchema = z.object({
   url: z.string(),
   title: z.string(),
-  type: z.literal('documentation'),
+  type: z.literal('misc'),
 });
 
 export const videoResourceSchema = z.object({
@@ -55,7 +55,7 @@ export const resourceSchema = z.discriminatedUnion('type', [
   articleResourceSchema,
   bookResourceSchema,
   courseResourceSchema,
-  documentationResourceSchema,
+  miscResourceSchema,
   videoResourceSchema,
 ]);
 
@@ -63,7 +63,7 @@ export const resourcesSchema = z.object({
   articles: z.array(articleResourceSchema),
   books: z.array(bookResourceSchema),
   courses: z.array(courseResourceSchema),
-  documentation: z.array(documentationResourceSchema),
+  misc: z.array(miscResourceSchema),
   videos: z.array(videoResourceSchema),
 });
 
@@ -91,6 +91,6 @@ export const resourceTypeSchema = z.union([
   articleResourceSchema.shape.type,
   bookResourceSchema.shape.type,
   courseResourceSchema.shape.type,
-  documentationResourceSchema.shape.type,
+  miscResourceSchema.shape.type,
   videoResourceSchema.shape.type,
 ]);

@@ -2,11 +2,11 @@ import {
   articleResourceSchema,
   bookResourceSchema,
   courseResourceSchema,
-  documentationResourceSchema,
   jnodeSchema,
   jnodeShallowSchema,
   jnodeTypeSchema,
   jnodesMapSchema,
+  miscResourceSchema,
   partialResourcesSchema,
   resourceSchema,
   resourceTypeSchema,
@@ -30,7 +30,7 @@ export type BookResource = z.infer<typeof bookResourceSchema>;
 
 export type CourseResource = z.infer<typeof courseResourceSchema>;
 
-export type DocumentationResource = z.infer<typeof documentationResourceSchema>;
+export type MiscResource = z.infer<typeof miscResourceSchema>;
 
 export type ArticleResource = z.infer<typeof articleResourceSchema>;
 
@@ -44,8 +44,8 @@ export type NarrowResourceType<TType extends ResourceType> = TType extends 'book
   ? ArticleResource
   : TType extends 'video'
   ? VideoResource
-  : TType extends 'documentation'
-  ? DocumentationResource
+  : TType extends 'misc'
+  ? MiscResource
   : TType extends 'course'
   ? CourseResource
   : never;
