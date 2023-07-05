@@ -1,7 +1,7 @@
 import { Badge, Menu, Paper, Text, ThemeIcon, createStyles, useMantineTheme } from '@mantine/core';
 import { Fragment, MouseEvent } from 'react';
 import { Handle, NodeProps } from 'reactflow';
-import { IconBook, IconCrown, IconFileDescription, IconRocket } from '@tabler/icons-react';
+import { IconBook, IconFileDescription, IconFlag, IconRocket } from '@tabler/icons-react';
 
 import { JNodeTypeData } from 'types/flow';
 import ResourceModalContent from 'components/ResourceModalContent';
@@ -102,7 +102,7 @@ export default function FallbackNode(props: NodeProps<JNodeTypeData>) {
           >
             {isDesNode && (
               <ThemeIcon className={classes.crownIcon}>
-                <IconCrown />
+                <IconFlag />
               </ThemeIcon>
             )}
             {isOnOptionalPath && !isDesNode && (

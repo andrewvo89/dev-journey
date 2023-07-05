@@ -1,4 +1,4 @@
-import { IconCrown, IconRocket } from '@tabler/icons-react';
+import { IconFlag, IconRocket } from '@tabler/icons-react';
 import { Stack, createStyles } from '@mantine/core';
 
 import { JnodeType } from 'types/jnode';
@@ -33,7 +33,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const iconKeys: { name: string; icon: JSX.Element }[] = [
-  { name: 'Destination', icon: <IconCrown /> },
+  { name: 'Destination', icon: <IconFlag /> },
   { name: 'Next step', icon: <IconRocket /> },
 ];
 
