@@ -1,4 +1,4 @@
-import { ActionIcon, Badge, Menu, Paper, Text, ThemeIcon, createStyles, useMantineTheme } from '@mantine/core';
+import { Badge, Menu, Paper, Text, ThemeIcon, createStyles, useMantineTheme } from '@mantine/core';
 import { Fragment, MouseEvent } from 'react';
 import { Handle, NodeProps } from 'reactflow';
 import { IconBook, IconCrown, IconFileDescription, IconRocket } from '@tabler/icons-react';
@@ -80,19 +80,20 @@ export default function FallbackNode(props: NodeProps<JNodeTypeData>) {
     setIsOpened(jnode.id);
   };
 
+  const menuChangeHandler = (opened: boolean) => {
+    if (opened) {
+      return;
+    }
+    setIsOpened(null);
+  };
+
   return (
     <Fragment>
       {sourcePosition && !isLeafNode && <Handle type='source' position={sourcePosition} className={classes.handle} />}
       {targetPosition && jnode.dependencies.length > 0 && (
         <Handle type='target' position={targetPosition} className={classes.handle} />
       )}
-      <Menu
-        shadow='md'
-        trigger='click'
-        withinPortal
-        opened={isOpened === jnode.id}
-        onChange={(opened) => setIsOpened(opened ? jnode.id : null)}
-      >
+      <Menu shadow='md' trigger='click' withinPortal opened={isOpened === jnode.id} onChange={menuChangeHandler}>
         <Menu.Target>
           <Paper
             className={[classes.paper, 'nodrag'].join(' ')}
@@ -105,9 +106,9 @@ export default function FallbackNode(props: NodeProps<JNodeTypeData>) {
               </ThemeIcon>
             )}
             {isOnOptionalPath && !isDesNode && (
-              <ActionIcon variant='filled' color='blue' className={classes.rocketIcon} onClick={goToNodeClickHandler}>
+              <ThemeIcon variant='filled' color='blue' className={classes.rocketIcon}>
                 <IconRocket />
-              </ActionIcon>
+              </ThemeIcon>
             )}
             {jnode.resources > 0 && (
               <Badge className={classes.badge} size='lg'>
@@ -121,6 +122,7 @@ export default function FallbackNode(props: NodeProps<JNodeTypeData>) {
         </Menu.Target>
         <Menu.Dropdown>
           <Menu.Label>{jnode.title}</Menu.Label>
+          <Menu.Divider />
           <Menu.Item icon={<IconRocket size={14} />} onClick={goToNodeClickHandler}>
             Go to node
           </Menu.Item>

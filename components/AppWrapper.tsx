@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { MantineProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
+import { Notifications } from '@mantine/notifications';
 import { ReactFlowProvider } from 'reactflow';
 
 type Props = {
@@ -23,6 +24,7 @@ export default function AppWrapper(props: Props) {
         }}
       >
         <ModalsProvider>
+          <Notifications zIndex={1003} />
           <ReactFlowProvider>{children}</ReactFlowProvider>
         </ModalsProvider>
       </MantineProvider>

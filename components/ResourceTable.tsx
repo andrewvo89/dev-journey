@@ -1,16 +1,11 @@
-import { Center, Group, Table, Text, Tooltip, UnstyledButton, createStyles } from '@mantine/core';
+import { Center, Group, Table, Text, UnstyledButton, createStyles } from '@mantine/core';
 import { IconChevronDown, IconChevronUp, IconSelector } from '@tabler/icons-react';
 import { useMemo, useState } from 'react';
 
 import { Resource } from 'types/jnode';
+import ResourceItem from 'components/ResourceItem';
 
 const useStyles = createStyles((theme) => ({
-  tr: {
-    '&&:hover': {
-      cursor: 'pointer',
-      backgroundColor: theme.colors.gray[1],
-    },
-  },
   th: {
     '&&': {
       padding: 0,
@@ -59,10 +54,6 @@ export default function ResourceTable<T extends Resource>(props: Props<T>) {
     setSortBy(field);
   };
 
-  const tableRowClickHandler = (url: string) => {
-    window.open(url, '_blank', 'noreferrer');
-  };
-
   const sortedData = useMemo(() => {
     if (!sortBy) {
       return data;
@@ -108,14 +99,8 @@ export default function ResourceTable<T extends Resource>(props: Props<T>) {
         </tr>
       </thead>
       <tbody>
-        {sortedData.map((item) => (
-          <Tooltip key={item.url} label={item.url} openDelay={500}>
-            <tr className={classes.tr} onClick={() => tableRowClickHandler(item.url)}>
-              {fieldMappings.map((field) => (
-                <td key={field.key.toString()}>{field.transform?.(item[field.key]) ?? String(item[field.key])}</td>
-              ))}
-            </tr>
-          </Tooltip>
+        {sortedData.map((resource) => (
+          <ResourceItem key={resource.url} resource={resource} fieldMappings={fieldMappings} />
         ))}
       </tbody>
     </Table>
