@@ -2,7 +2,7 @@ import { Journey } from 'types/common';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-type HistoryState = {
+type State = {
   journeys: Journey[];
   addJourney: (journey: Journey) => void;
   removeJourney: (journey: Journey) => void;
@@ -13,7 +13,7 @@ type HistoryState = {
   clearHistory: () => void;
 };
 
-export const useHistoryStore = create<HistoryState>()(
+export const useHistoryStore = create<State>()(
   persist(
     (set) => ({
       journeys: [],

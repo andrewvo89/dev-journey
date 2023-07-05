@@ -26,11 +26,11 @@ export const useStyles = createStyles((theme, props: StyleProps) => {
       borderColor: isOnPath || isOptional ? theme.colors.blue[6] : theme.colors.gray[6],
       color: theme.colors.gray[0],
       backgroundColor: theme.colors[jnodeTypeMap[type].color][5],
-      boxShadow: keepAlive ? theme.shadows.sm : undefined,
+      boxShadow: theme.shadows.sm,
       transition: 'all .2s ease-in-out',
       ':hover': {
-        boxShadow: keepAlive ? theme.shadows.xl : undefined,
-        transform: keepAlive ? 'scale(1.1)' : undefined,
+        boxShadow: theme.shadows.xl,
+        transform: 'scale(1.1)',
       },
     },
     handle: {

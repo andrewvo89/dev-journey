@@ -9,25 +9,25 @@ import { useHistoryStore } from 'store/history';
 import { useInputRefStore } from 'store/input-ref';
 import userEvent from '@testing-library/user-event';
 
-test('renders a legend accordian heading', () => {
+test('renders a ket accordian heading', () => {
   render(<MiddleSection />, { wrapper: AppWrapper });
-  expect(screen.getByRole('button', { name: 'Legend' })).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: 'Key' })).toBeInTheDocument();
 });
 
-test('legend accordian is not expanded by default', () => {
+test('ket accordian is not expanded by default', () => {
   render(<MiddleSection />);
-  const heading = screen.getByRole('button', { name: 'Legend' });
+  const heading = screen.getByRole('button', { name: 'Key' });
   expect(heading.getAttribute('aria-expanded')).toBe('false');
-  expect(screen.queryByRole('region', { name: 'Legend' })).toBeNull();
+  expect(screen.queryByRole('region', { name: 'Key' })).toBeNull();
 });
 
-test('legend accordian is expanded when clicked on', async () => {
+test('ket accordian is expanded when clicked on', async () => {
   const user = userEvent.setup({ delay: null });
   render(<MiddleSection />, { wrapper: AppWrapper });
-  const heading = screen.getByRole('button', { name: 'Legend' });
+  const heading = screen.getByRole('button', { name: 'Key' });
   expect(heading.getAttribute('aria-expanded')).toBe('false');
 
-  let byLabelText = await screen.findAllByLabelText('Legend');
+  let byLabelText = await screen.findAllByLabelText('Key');
   let filtered = byLabelText.filter(
     (el) => el.getAttribute('role') === 'region' && el.getAttribute('aria-hidden') === 'true',
   );
@@ -35,7 +35,7 @@ test('legend accordian is expanded when clicked on', async () => {
 
   await user.click(heading);
   expect(heading.getAttribute('aria-expanded')).toBe('true');
-  byLabelText = await screen.findAllByLabelText('Legend');
+  byLabelText = await screen.findAllByLabelText('Key');
   filtered = byLabelText.filter(
     (el) => el.getAttribute('role') === 'region' && el.getAttribute('aria-hidden') === 'true',
   );

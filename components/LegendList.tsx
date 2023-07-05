@@ -32,12 +32,12 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const iconLegends: { name: string; icon: JSX.Element }[] = [
+const iconKeys: { name: string; icon: JSX.Element }[] = [
   { name: 'Destination', icon: <IconCrown /> },
   { name: 'Next step', icon: <IconRocket /> },
 ];
 
-const borderLegends: { name: string; paperClassName: 'onPath' | 'notOnPath' | 'extendedPath' }[] = [
+const borderKeys: { name: string; paperClassName: 'onPath' | 'notOnPath' | 'extendedPath' }[] = [
   { name: 'On path', paperClassName: 'onPath' },
   { name: 'Not on path', paperClassName: 'notOnPath' },
   { name: 'Extended path', paperClassName: 'extendedPath' },
@@ -66,19 +66,14 @@ export function LegendList() {
 
   return (
     <Stack>
-      {iconLegends.map((legend) => (
-        <LegendIconListItem
-          key={legend.name}
-          classNames={{ text: classes.keyName }}
-          icon={legend.icon}
-          name={legend.name}
-        />
+      {iconKeys.map((key) => (
+        <LegendIconListItem key={key.name} classNames={{ text: classes.keyName }} icon={key.icon} name={key.name} />
       ))}
-      {borderLegends.map((legend) => (
+      {borderKeys.map((key) => (
         <LegendBorderListItem
-          key={legend.name}
-          name={legend.name}
-          classNames={{ text: classes.keyName, paper: `${classes.borderLegend} ${classes[legend.paperClassName]}` }}
+          key={key.name}
+          name={key.name}
+          classNames={{ text: classes.keyName, paper: `${classes.borderLegend} ${classes[key.paperClassName]}` }}
         />
       ))}
       {Array.from(uniqueTypes)

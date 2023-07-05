@@ -1,11 +1,12 @@
 import { ActionIcon, Group, Menu, Text, Title, createStyles, useMantineTheme } from '@mantine/core';
-import { IconDotsVertical, IconPlus, IconTrashX } from '@tabler/icons-react';
+import { IconDotsVertical, IconPlus, IconTrashX, IconZoomReset } from '@tabler/icons-react';
 
 import { modals } from '@mantine/modals';
 import { shallow } from 'zustand/shallow';
 import { useHistoryStore } from 'store/history';
 import { useHydratedStore } from 'hooks/useHydratedStore';
 import { useInputRefStore } from 'store/input-ref';
+import { useNodeStore } from 'store/node';
 
 const useStyles = createStyles(() => ({
   overlay: {
@@ -21,6 +22,7 @@ export function TopSection() {
     (state) => ({ clearHistory: state.clearHistory, setSelected: state.setSelected }),
     shallow,
   );
+  const updateNodes = useNodeStore((state) => state.updateNodes);
   const journeys = useHydratedStore(useHistoryStore, (state) => state.journeys);
   const inputRef = useInputRefStore((state) => state.inputRef);
 
@@ -53,6 +55,11 @@ export function TopSection() {
       onConfirm: clearHistory,
     });
 
+  const resetViewClickHandler = () => {
+    setSelected(null);
+    updateNodes([]);
+  };
+
   return (
     <Group position='apart'>
       <Title order={2}>Dev Journey</Title>
@@ -65,6 +72,9 @@ export function TopSection() {
         <Menu.Dropdown>
           <Menu.Item onClick={newJourneyHandler} icon={<IconPlus size='1.25em' />}>
             New journey
+          </Menu.Item>
+          <Menu.Item onClick={resetViewClickHandler} icon={<IconZoomReset size='1.25em' />}>
+            Reset view
           </Menu.Item>
           <Menu.Item
             onClick={clearHistoryClickHandler}

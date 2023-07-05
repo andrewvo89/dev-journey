@@ -32,11 +32,11 @@ export function MiddleSection() {
 
   return (
     <Accordion multiple defaultValue={['history']} classNames={{ content: classes.accordianPanel }}>
-      <Accordion.Item value='legend'>
-        <Accordion.Control aria-label='Legend' icon={<IconKey />}>
-          Legend
+      <Accordion.Item value='key'>
+        <Accordion.Control aria-label='Key' icon={<IconKey />}>
+          Key
         </Accordion.Control>
-        <Accordion.Panel aria-label='Legend' className={classes.accordianPanel}>
+        <Accordion.Panel aria-label='Key' className={classes.accordianPanel}>
           <LegendList />
         </Accordion.Panel>
       </Accordion.Item>

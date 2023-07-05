@@ -5,6 +5,7 @@ import { getBoundsOfNodes, isJnodeNodeType } from 'utils/flow';
 import FallbackNode from 'components/Nodes/FallbackNode';
 import RootNode from 'components/Nodes/RootNode';
 import { shallow } from 'zustand/shallow';
+import { useContextMenuStore } from 'store/context-menu';
 import { useEffect } from 'react';
 import { useNodeStore } from 'store/node';
 
@@ -25,6 +26,7 @@ export function Graph() {
 
   const { classes } = useStyles();
   const { fitView, fitBounds, zoomOut } = useReactFlow();
+  const setIsOpened = useContextMenuStore((state) => state.setIsOpened);
 
   useEffect(() => {
     const nodesOnPath = nodes.filter((node) => isJnodeNodeType(node) && node.data.isDesNode);
@@ -44,6 +46,7 @@ export function Graph() {
       <ReactFlow
         nodes={nodes}
         edges={edges}
+        onMoveStart={() => setIsOpened(null)}
         onInit={({ fitBounds, fitView }) => {
           const root = nodes.find((node) => node.type === 'root');
           if (!root?.width || !root?.height) {

@@ -83,6 +83,7 @@ export default function PromptBar(props: Props) {
 
   const clearClickHandler = () => {
     setSelected(null);
+    ref.current?.focus();
   };
 
   return (
@@ -101,13 +102,17 @@ export default function PromptBar(props: Props) {
       dropdownPosition='flip'
       switchDirectionOnFlip
       readOnly={isLoading}
-      rightSection={
-        isLoading ? (
-          <Loader size='sm' role='alert' aria-label='Loading result' aria-live='assertive' />
-        ) : (
-          <CloseButton role='button' aria-label='Clear' variant='transparent' size='lg' onClick={clearClickHandler} />
-        )
-      }
+      rightSection={(() => {
+        if (isLoading) {
+          return <Loader size='sm' role='alert' aria-label='Loading result' aria-live='assertive' />;
+        }
+        if (prompt) {
+          return (
+            <CloseButton role='button' aria-label='Clear' variant='transparent' size='lg' onClick={clearClickHandler} />
+          );
+        }
+        return null;
+      })()}
     />
   );
 }

@@ -54,7 +54,6 @@ export default function Home(props: Props) {
   // Update nodes when selected updates
   useEffect(() => {
     if (!selected) {
-      updateNodes([]);
       return;
     }
     updateNodes(selected.destinations);

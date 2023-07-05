@@ -30,7 +30,7 @@ test('updates nodes with no destinations', () => {
   render(<Home prompts={[]} initialJNodes={[]} placeholder='' />, {
     wrapper: AppWrapper,
   });
-  expect(mockUpdateNodes).toHaveBeenCalledWith([]);
+  expect(mockUpdateNodes).not.toBeCalled();
 });
 
 test('updates nodes with selected destinations', async () => {

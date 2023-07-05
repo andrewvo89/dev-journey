@@ -1,11 +1,13 @@
-import { ActionIcon, Badge, Paper, Text, ThemeIcon, createStyles, useMantineTheme } from '@mantine/core';
+import { ActionIcon, Badge, Menu, Paper, Text, ThemeIcon, createStyles, useMantineTheme } from '@mantine/core';
+import { Fragment, MouseEvent } from 'react';
 import { Handle, NodeProps } from 'reactflow';
-import { IconCrown, IconRocket } from '@tabler/icons-react';
+import { IconBook, IconCrown, IconFileDescription, IconRocket } from '@tabler/icons-react';
 
-import { Fragment } from 'react';
 import { JNodeTypeData } from 'types/flow';
 import ResourceModalContent from 'components/ResourceModalContent';
 import { modals } from '@mantine/modals';
+import { shallow } from 'zustand/shallow';
+import { useContextMenuStore } from 'store/context-menu';
 import { useHistoryStore } from 'store/history';
 import { useNodeStore } from 'store/node';
 import { useStyles } from 'styles/node';
@@ -32,26 +34,26 @@ export default function FallbackNode(props: NodeProps<JNodeTypeData>) {
     targetPosition,
   } = props;
 
-  const selected = useHistoryStore((state) => state.selected);
   const updateNodes = useNodeStore((state) => state.updateNodes);
   const theme = useMantineTheme();
+  const setSelected = useHistoryStore((state) => state.setSelected);
+  const { isOpened, setIsOpened } = useContextMenuStore(
+    (state) => ({ isOpened: state.isOpened, setIsOpened: state.setIsOpened }),
+    shallow,
+  );
 
   const isOptional = isOnOptionalPath && !isDesNode;
-  const keepAlive = isOnPath || isOnOptionalPath || noNodesOnPath || !selected;
+  const keepAlive = isOnPath || isOnOptionalPath || noNodesOnPath;
 
   const { classes } = useStyles({ keepAlive, isOptional, isOnPath, type: jnode.type });
   const { classes: modalClasses } = useModalStyles();
 
-  const rocketButtonClickHandler = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.stopPropagation();
+  const goToNodeClickHandler = () => {
     updateNodes([{ id, enabled: true }]);
+    setSelected(null);
   };
 
   const cardClickHandler = () => {
-    if (!keepAlive) {
-      return;
-    }
-
     modals.open({
       modalId: jnode.id,
       classNames: {
@@ -73,32 +75,63 @@ export default function FallbackNode(props: NodeProps<JNodeTypeData>) {
     });
   };
 
+  const cardRightClickHandler = (e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
+    e.preventDefault();
+    setIsOpened(jnode.id);
+  };
+
   return (
     <Fragment>
       {sourcePosition && !isLeafNode && <Handle type='source' position={sourcePosition} className={classes.handle} />}
       {targetPosition && jnode.dependencies.length > 0 && (
         <Handle type='target' position={targetPosition} className={classes.handle} />
       )}
-      <Paper className={[classes.paper, 'nodrag'].join(' ')} onClick={cardClickHandler}>
-        {isDesNode && (
-          <ThemeIcon className={classes.crownIcon}>
-            <IconCrown />
-          </ThemeIcon>
-        )}
-        {isOnOptionalPath && !isDesNode && (
-          <ActionIcon variant='filled' color='blue' className={classes.rocketIcon} onClick={rocketButtonClickHandler}>
-            <IconRocket />
-          </ActionIcon>
-        )}
-        {jnode.resources > 0 && (
-          <Badge className={classes.badge} size='lg'>
-            {jnode.resources}
-          </Badge>
-        )}
-        <Text align='center' lh='1.25'>
-          {jnode.title}
-        </Text>
-      </Paper>
+      <Menu
+        shadow='md'
+        trigger='click'
+        withinPortal
+        opened={isOpened === jnode.id}
+        onChange={(opened) => setIsOpened(opened ? jnode.id : null)}
+      >
+        <Menu.Target>
+          <Paper
+            className={[classes.paper, 'nodrag'].join(' ')}
+            onClick={cardClickHandler}
+            onContextMenu={cardRightClickHandler}
+          >
+            {isDesNode && (
+              <ThemeIcon className={classes.crownIcon}>
+                <IconCrown />
+              </ThemeIcon>
+            )}
+            {isOnOptionalPath && !isDesNode && (
+              <ActionIcon variant='filled' color='blue' className={classes.rocketIcon} onClick={goToNodeClickHandler}>
+                <IconRocket />
+              </ActionIcon>
+            )}
+            {jnode.resources > 0 && (
+              <Badge className={classes.badge} size='lg'>
+                {jnode.resources}
+              </Badge>
+            )}
+            <Text align='center' lh='1.25'>
+              {jnode.title}
+            </Text>
+          </Paper>
+        </Menu.Target>
+        <Menu.Dropdown>
+          <Menu.Label>{jnode.title}</Menu.Label>
+          <Menu.Item icon={<IconRocket size={14} />} onClick={goToNodeClickHandler}>
+            Go to node
+          </Menu.Item>
+          <Menu.Item
+            icon={jnode.resources > 0 ? <IconBook size={14} /> : <IconFileDescription size={14} />}
+            onClick={cardClickHandler}
+          >
+            View {jnode.resources > 0 ? 'resources' : 'description'}
+          </Menu.Item>
+        </Menu.Dropdown>
+      </Menu>
     </Fragment>
   );
 }

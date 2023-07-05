@@ -7,7 +7,7 @@ import { JnodeShallow } from 'types/jnode';
 import { create } from 'zustand';
 import { jnodesToFlow } from 'utils/flow';
 
-type NodeState = {
+type State = {
   jnodes: Map<string, JnodeShallow>;
   nodes: Node<JNodeTypeData>[];
   edges: Edge[];
@@ -15,7 +15,7 @@ type NodeState = {
   updateNodes: (destinations: Destination[]) => void;
 };
 
-export const useNodeStore = create<NodeState>()((set) => ({
+export const useNodeStore = create<State>()((set) => ({
   jnodes: new Map(),
   nodes: [],
   edges: [],

@@ -1,14 +1,14 @@
 import { ClientPrompt } from 'types/common';
 import { create } from 'zustand';
 
-export type PrompState = {
+export type State = {
   prompt: string;
   setPrompt: (prompt: string) => void;
   prompts: ClientPrompt[];
   setPrompts: (prompts: ClientPrompt[]) => void;
 };
 
-export const usePromptStore = create<PrompState>()((set) => ({
+export const usePromptStore = create<State>()((set) => ({
   prompt: '',
   setPrompt: (prompt) => set(() => ({ prompt })),
   prompts: [],
