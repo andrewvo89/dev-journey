@@ -44,7 +44,7 @@ export function FiltersChooser() {
   return (
     <Stack>
       <Checkbox
-        label='Bookmark types'
+        label='Select all'
         checked={allChecked}
         indeterminate={indeterminate}
         onChange={parentCheckboxChangeHandler}

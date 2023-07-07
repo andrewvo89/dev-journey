@@ -112,7 +112,13 @@ export default function BookmarkListItem(props: Props) {
 
   const copyToClipboardHandler = (text: string) => {
     navigator.clipboard.writeText(text);
-    notifications.show({ title: 'Copied to clipboard', message: text, icon: <IconClipboard />, withBorder: true });
+    notifications.show({
+      title: 'Copied to clipboard',
+      message: text,
+      icon: <IconClipboard />,
+      withBorder: true,
+      autoClose: 10000,
+    });
   };
 
   const filtersClickHandler = () => {

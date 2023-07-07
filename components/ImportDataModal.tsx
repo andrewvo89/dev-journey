@@ -2,13 +2,14 @@ import { Alert, Button, Checkbox, Group, Modal, Stack, useMantineTheme } from '@
 import { Bookmark, BookmarkFilter, BookmarkSort } from 'types/bookmark';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { IconAlertCircle, IconPackageImport } from '@tabler/icons-react';
+import { Viewport, useReactFlow } from 'reactflow';
 import { bookmarkSchema, bookmarkSortSchema, bookmarkTypeSchema } from 'schemas/bookmark';
+import { importTypeSchema, viewportSchema } from 'schemas/import-export';
 
 import { ImportType } from 'types/import-export';
 import { Journey } from 'types/journey';
 import { getPrettySort } from 'utils/bookmark';
 import { getPrettyType } from 'utils/import-export';
-import { importTypeSchema } from 'schemas/import-export';
 import { journeySchema } from 'schemas/journey';
 import { notifications } from '@mantine/notifications';
 import { produce } from 'immer';
@@ -34,6 +35,8 @@ export function ImportDataModal(props: Props) {
   const setStoreFilters = useBookmarkStore((state) => state.setFilters);
   const [sort, setSort] = useState<BookmarkSort>();
   const setStoreSort = useBookmarkStore((state) => state.setSort);
+  const [viewport, setViewport] = useState<Viewport>();
+  const { setViewport: setStoreViewport } = useReactFlow();
 
   const { classes: modalClasses } = useModalStyles();
   const theme = useMantineTheme();
@@ -45,37 +48,47 @@ export function ImportDataModal(props: Props) {
       setJourneys(undefined);
       setFilters(undefined);
       setSort(undefined);
+      setViewport(undefined);
       return;
     }
     file.text().then((text) => {
-      const root = JSON.parse(text);
-      const parsedHistory = journeySchema.array().safeParse(root.history);
-      const newImportTypes: ImportType[] = [];
-      if (parsedHistory.success) {
-        setJourneys(parsedHistory.data);
-        newImportTypes.push('history');
+      try {
+        const root = JSON.parse(text);
+        const parsedHistory = journeySchema.array().safeParse(root.history);
+        const newImportTypes: ImportType[] = [];
+        if (parsedHistory.success) {
+          setJourneys(parsedHistory.data);
+          newImportTypes.push('history');
+        }
+        const parsedBookmarks = bookmarkSchema.array().safeParse(root.bookmarks);
+        if (parsedBookmarks.success) {
+          setBookmarks(parsedBookmarks.data);
+          newImportTypes.push('bookmarks');
+        }
+        const parsedFilters = bookmarkTypeSchema.array().safeParse(root.filters);
+        if (parsedFilters.success) {
+          setFilters(parsedFilters.data);
+          newImportTypes.push('filters');
+        }
+        const parsedSort = bookmarkSortSchema.safeParse(root.sort);
+        if (parsedSort.success) {
+          setSort(parsedSort.data);
+          newImportTypes.push('sort');
+        }
+        const parsedViewport = viewportSchema.safeParse(root.viewport);
+        if (parsedViewport.success) {
+          setViewport(parsedViewport.data);
+          newImportTypes.push('viewport');
+        }
+        setImportTypes(newImportTypes);
+        setEnabledTypes(newImportTypes);
+      } catch {
+        return;
       }
-      const parsedBookmarks = bookmarkSchema.array().safeParse(root.bookmarks);
-      if (parsedBookmarks.success) {
-        setBookmarks(parsedBookmarks.data);
-        newImportTypes.push('bookmarks');
-      }
-      const parsedFilters = bookmarkTypeSchema.array().safeParse(root.filters);
-      if (parsedFilters.success) {
-        setFilters(parsedFilters.data);
-        newImportTypes.push('filters');
-      }
-      const parsedSort = bookmarkSortSchema.safeParse(root.sort);
-      if (parsedSort.success) {
-        setSort(parsedSort.data);
-        newImportTypes.push('sort');
-      }
-      setImportTypes(newImportTypes);
-      setEnabledTypes(newImportTypes);
     });
   }, [file]);
 
-  const allChecked = importTypes.length === enabledTypes.length;
+  const allChecked = importTypes.length === enabledTypes.length && importTypes.length > 0;
   const indeterminate = importTypes.length > 0 && !allChecked;
 
   if (!file) {
@@ -134,12 +147,16 @@ export function ImportDataModal(props: Props) {
     if (sort) {
       setStoreSort(sort);
     }
+    if (viewport) {
+      setStoreViewport(viewport, { duration: 1000 });
+    }
     setFile(undefined);
     notifications.show({
       title: 'Import',
       message: 'File imported successfully',
       icon: <IconPackageImport />,
       withBorder: true,
+      autoClose: 10000,
     });
   };
 
@@ -163,6 +180,7 @@ export function ImportDataModal(props: Props) {
             </Alert>
             <Checkbox
               label='Select all'
+              disabled={enabledTypes.length === 0}
               checked={allChecked}
               indeterminate={indeterminate}
               onChange={parentCheckboxChangeHandler}
@@ -199,12 +217,22 @@ export function ImportDataModal(props: Props) {
               disabled={!sort}
               onChange={childCheckboxChangeHandler}
             />
+            <Checkbox
+              ml='xl'
+              value='viewport'
+              label={`${getPrettyType('viewport')} (X, Y, Zoom)`}
+              checked={importTypes.includes('viewport')}
+              disabled={!viewport}
+              onChange={childCheckboxChangeHandler}
+            />
           </Stack>
           <Group position='right'>
             <Button onClick={() => setFile(undefined)} variant='outline'>
               Close
             </Button>
-            <Button onClick={importConfirmHandler}>Confirm</Button>
+            <Button onClick={importConfirmHandler} disabled={importTypes.length === 0}>
+              Confirm
+            </Button>
           </Group>
         </Modal.Body>
       </Modal.Content>

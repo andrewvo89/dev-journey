@@ -140,10 +140,11 @@ export function TopSection() {
     if (file.type !== 'application/json' || !file.name.endsWith('.json')) {
       notifications.show({
         title: 'Invalid file',
-        message: 'File must be of type .json',
+        message: 'File must be a valid .json file',
         icon: <IconFileAlert />,
         color: 'red',
         withBorder: true,
+        autoClose: 10000,
       });
       return;
     }

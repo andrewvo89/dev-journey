@@ -12,6 +12,7 @@ import { useBookmarkStore } from 'store/bookmark';
 import { useHistoryStore } from 'store/history';
 import { useHydratedStore } from 'hooks/useHydratedStore';
 import { useModalStyles } from 'styles/modal';
+import { useReactFlow } from 'reactflow';
 
 type Props = {
   isOpen: boolean;
@@ -25,6 +26,7 @@ export function ExportDataModal(props: Props) {
   const journeys = useHydratedStore(useHistoryStore, (state) => state.journeys);
   const filters = useHydratedStore(useBookmarkStore, (state) => state.filters);
   const sort = useHydratedStore(useBookmarkStore, (state) => state.sort);
+  const { getViewport } = useReactFlow();
 
   const { classes: modalClasses } = useModalStyles();
   const theme = useMantineTheme();
@@ -82,6 +84,7 @@ export function ExportDataModal(props: Props) {
       bookmarks: exportTypes.includes('bookmarks') ? bookmarks : undefined,
       filters: exportTypes.includes('filters') ? filters : undefined,
       sort: exportTypes.includes('sort') ? sort : undefined,
+      viewport: exportTypes.includes('viewport') ? getViewport() : undefined,
     });
     link.download = `export-${dayjs().format('YYYY-MM-DD_HH-mm-ss')}.json`;
     link.click();
@@ -92,6 +95,7 @@ export function ExportDataModal(props: Props) {
       message: 'File prepared for downloading',
       icon: <IconPackageExport />,
       withBorder: true,
+      autoClose: 10000,
     });
   };
 
@@ -144,12 +148,21 @@ export function ExportDataModal(props: Props) {
               checked={exportTypes.includes('sort')}
               onChange={childCheckboxChangeHandler}
             />
+            <Checkbox
+              ml='xl'
+              value='viewport'
+              label={`${getPrettyType('viewport')} (X, Y & Zoom)`}
+              checked={exportTypes.includes('viewport')}
+              onChange={childCheckboxChangeHandler}
+            />
           </Stack>
           <Group position='right'>
             <Button onClick={() => setIsOpen(false)} variant='outline'>
               Close
             </Button>
-            <Button onClick={exportConfirmHandler}>Confirm</Button>
+            <Button onClick={exportConfirmHandler} disabled={exportTypes.length === 0}>
+              Confirm
+            </Button>
           </Group>
         </Modal.Body>
       </Modal.Content>

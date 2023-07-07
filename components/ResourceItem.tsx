@@ -53,6 +53,7 @@ export default function ResourceItem<T extends Resource>(props: Props<T>) {
       message: resource.title,
       icon: <IconBookmarkPlus />,
       withBorder: true,
+      autoClose: 10000,
     });
   };
 
@@ -67,7 +68,7 @@ export default function ResourceItem<T extends Resource>(props: Props<T>) {
 
   const copyToClipboardHandler = (text: string) => {
     navigator.clipboard.writeText(text);
-    notifications.show({ title: 'Copied to clipboard', message: text, icon: <IconClipboard /> });
+    notifications.show({ title: 'Copied to clipboard', message: text, icon: <IconClipboard />, autoClose: 10000 });
   };
 
   return (

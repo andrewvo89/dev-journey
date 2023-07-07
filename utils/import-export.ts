@@ -1,6 +1,6 @@
 import { ImportFile, ImportType } from 'types/import-export';
 
-export const importTypes: ImportType[] = ['bookmarks', 'history', 'filters', 'sort'];
+export const importTypes: ImportType[] = ['bookmarks', 'history', 'filters', 'sort', 'viewport'];
 
 export function getPrettyType(type: ImportType) {
   switch (type) {
@@ -12,6 +12,8 @@ export function getPrettyType(type: ImportType) {
       return 'Filters';
     case 'sort':
       return 'Sort';
+    case 'viewport':
+      return 'Viewport';
   }
 }
 

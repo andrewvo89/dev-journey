@@ -146,6 +146,7 @@ export default function HistoryListItem(props: Props) {
       message: journey.prompt.label,
       icon: <IconBookmarkPlus />,
       withBorder: true,
+      autoClose: 10000,
     });
   };
 
