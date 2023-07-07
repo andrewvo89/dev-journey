@@ -8,10 +8,13 @@ type StyleProps = {
 };
 
 const useStyles = createStyles((theme, props: StyleProps) => ({
-  keyName: {
+  container: {
+    padding: '0.5rem 0.75rem',
+  },
+  text: {
     whiteSpace: 'nowrap',
   },
-  keyBox: {
+  paper: {
     backgroundColor: `${theme.colors[props.color][5]}`,
     width: '1rem',
     height: '1rem',
@@ -27,9 +30,9 @@ export default function LegendTypeListItem(props: Props) {
   const { label, color } = jnodeTypeMap[type];
   const { classes } = useStyles({ color });
   return (
-    <Group noWrap grow={false}>
-      <Paper shadow='sm' className={classes.keyBox}></Paper>
-      <Text className={classes.keyName}>{label}</Text>
+    <Group noWrap grow={false} className={classes.container}>
+      <Paper shadow='sm' className={classes.paper}></Paper>
+      <Text className={classes.text}>{label}</Text>
     </Group>
   );
 }

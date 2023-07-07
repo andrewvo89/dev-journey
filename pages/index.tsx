@@ -1,7 +1,7 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import { getClientPrompts, getPrompts } from 'utils/prompt';
 
-import { ClientPrompt } from 'types/common';
+import { ClientPrompt } from 'types/journey';
 import Home from 'components/Home';
 import { JnodeShallow } from 'types/jnode';
 import { getJnodesMap } from '../utils/github';

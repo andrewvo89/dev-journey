@@ -2,7 +2,7 @@ import { act, render, screen } from '@testing-library/react';
 import { expect, test, vi } from 'vitest';
 
 import AppWrapper from 'components/AppWrapper';
-import { Journey } from 'types/common';
+import { Journey } from 'types/journey';
 import { TopSection } from 'components/LeftPanel/TopSection';
 import { faker } from '@faker-js/faker';
 import { useHistoryStore } from 'store/history';

@@ -1,61 +1,25 @@
-import { Accordion, Button, Container, createStyles } from '@mantine/core';
-import { IconHistory, IconKey, IconPlus } from '@tabler/icons-react';
+import { Container, createStyles } from '@mantine/core';
 
+import BookmarksList from 'components/LeftPanel/BookmarksList';
 import HistoryList from 'components/LeftPanel/HistoryList';
-import { LegendList } from 'components/LegendList';
-import { useHistoryStore } from 'store/history';
-import { useHydratedStore } from 'hooks/useHydratedStore';
-import { useInputRefStore } from 'store/input-ref';
+import { LegendList } from 'components/LeftPanel/LegendList';
+import { useTabStore } from 'store/tab';
 
 const useStyles = createStyles(() => ({
-  historyContainer: {
-    padding: 0,
-  },
-  accordianPanel: {
-    padding: '.5rem',
+  container: {
+    padding: '0',
   },
 }));
 
 export function MiddleSection() {
-  const journeys = useHydratedStore(useHistoryStore, (state) => state.journeys);
-  const inputRef = useInputRefStore((state) => state.inputRef);
-  const setSelected = useHistoryStore((state) => state.setSelected);
+  const tab = useTabStore((state) => state.tab);
   const { classes } = useStyles();
 
-  const newJourneyHandler = () => {
-    if (!inputRef) {
-      return;
-    }
-    inputRef.focus();
-    setSelected(null);
-  };
-
   return (
-    <Accordion multiple defaultValue={['history']} classNames={{ content: classes.accordianPanel }}>
-      <Accordion.Item value='key'>
-        <Accordion.Control aria-label='Key' icon={<IconKey />}>
-          Key
-        </Accordion.Control>
-        <Accordion.Panel aria-label='Key' className={classes.accordianPanel}>
-          <LegendList />
-        </Accordion.Panel>
-      </Accordion.Item>
-      <Accordion.Item value='history'>
-        <Accordion.Control aria-label='History' icon={<IconHistory />}>
-          History
-        </Accordion.Control>
-        <Accordion.Panel aria-label='History' className={classes.accordianPanel}>
-          <Container className={classes.historyContainer}>
-            {!journeys ||
-              (journeys.length === 0 && (
-                <Button fullWidth leftIcon={<IconPlus size='1rem' />} onClick={newJourneyHandler}>
-                  Start new journey
-                </Button>
-              ))}
-            <HistoryList />
-          </Container>
-        </Accordion.Panel>
-      </Accordion.Item>
-    </Accordion>
+    <Container className={classes.container}>
+      {tab === 'history' && <HistoryList />}
+      {tab === 'bookmarks' && <BookmarksList />}
+      {tab === 'info' && <LegendList />}
+    </Container>
   );
 }

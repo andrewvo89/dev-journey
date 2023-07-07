@@ -1,4 +1,4 @@
-import { ClientPrompt, Prompt, PromptResponse } from 'types/common';
+import { ClientPrompt, Prompt, PromptResponse } from 'types/journey';
 import { JnodeType, JnodesMap } from 'types/jnode';
 
 import axios from 'axios';

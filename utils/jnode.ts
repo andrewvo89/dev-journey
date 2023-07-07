@@ -49,4 +49,5 @@ export const jnodeTypeMap: Record<JnodeType, { label: string; color: DefaultMant
   field: { label: 'Field', color: 'indigo' },
   // career: { label: 'Career', color: 'yellow' },
 };
+
 export const jnodeTypes = Object.keys(jnodeTypeMap).map((key) => jnodeTypeSchema.parse(key));

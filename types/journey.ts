@@ -1,6 +1,7 @@
 import { promptResponseSchema, promptSchema } from 'schemas/common';
 
 import { JnodeShallow } from 'types/jnode';
+import { journeySchema } from 'schemas/journey';
 import { z } from 'zod';
 
 export type Prompt = z.infer<typeof promptSchema>;
@@ -23,9 +24,4 @@ export type DestinationWithRoutes = Destination & {
   routes: Route[];
 };
 
-export type Journey = {
-  id: string;
-  createdAt: string;
-  prompt: ClientPrompt;
-  destinations: Destination[];
-};
+export type Journey = z.infer<typeof journeySchema>;

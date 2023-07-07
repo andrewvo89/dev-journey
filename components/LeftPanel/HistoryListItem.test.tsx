@@ -3,7 +3,7 @@ import { expect, test, vi } from 'vitest';
 
 import AppWrapper from 'components/AppWrapper';
 import HistoryListItem from 'components/LeftPanel/HistoryListItem';
-import { Journey } from 'types/common';
+import { Journey } from 'types/journey';
 import dayjs from 'dayjs';
 import { faker } from '@faker-js/faker';
 import { mockJnodes } from 'tests/mock-data';

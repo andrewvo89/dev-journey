@@ -1,4 +1,4 @@
-import { Journey } from 'types/common';
+import { Journey } from 'types/journey';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 

@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { PromptResponse } from 'types/common';
+import { PromptResponse } from 'types/journey';
 import { getJnodesMap } from 'utils/github';
 import { getPrompts } from 'utils/prompt';
 

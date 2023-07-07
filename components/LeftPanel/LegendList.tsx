@@ -2,33 +2,16 @@ import { IconFlag, IconRocket } from '@tabler/icons-react';
 import { Stack, createStyles } from '@mantine/core';
 
 import { JnodeType } from 'types/jnode';
-import { LegendBorderListItem } from 'components/LegendBorderListItem';
-import { LegendIconListItem } from 'components/LegendIconListItem';
-import LegendTypeListItem from 'components/LegendTypeListItem';
+import { LegendBorderListItem } from 'components/LeftPanel/LegendBorderListItem';
+import { LegendIconListItem } from 'components/LeftPanel/LegendIconListItem';
+import LegendTypeListItem from 'components/LeftPanel/LegendTypeListItem';
 import { useMemo } from 'react';
 import { useNodeStore } from 'store/node';
 
-const useStyles = createStyles((theme) => ({
-  keyName: {
-    whiteSpace: 'nowrap',
-  },
-  borderLegend: {
-    borderWidth: 1,
-    width: '1rem',
-    height: '1rem',
-  },
-  onPath: {
-    borderColor: theme.colors.blue[6],
-    borderStyle: 'solid',
-  },
-  extendedPath: {
-    borderStyle: 'dashed',
-    borderColor: theme.colors.blue[6],
-  },
-  notOnPath: {
-    borderStyle: 'solid',
-    borderColor: theme.colors.gray[6],
-    opacity: 0.2,
+const useStyles = createStyles(() => ({
+  container: {
+    padding: '0.5rem 0',
+    gap: 0,
   },
 }));
 
@@ -65,16 +48,12 @@ export function LegendList() {
   const { classes } = useStyles();
 
   return (
-    <Stack>
+    <Stack className={classes.container}>
       {iconKeys.map((key) => (
-        <LegendIconListItem key={key.name} classNames={{ text: classes.keyName }} icon={key.icon} name={key.name} />
+        <LegendIconListItem key={key.name} icon={key.icon} name={key.name} />
       ))}
       {borderKeys.map((key) => (
-        <LegendBorderListItem
-          key={key.name}
-          name={key.name}
-          classNames={{ text: classes.keyName, paper: `${classes.borderLegend} ${classes[key.paperClassName]}` }}
-        />
+        <LegendBorderListItem key={key.name} name={key.name} paperClassName={key.paperClassName} />
       ))}
       {Array.from(uniqueTypes)
         .sort((a, b) => typesOrder.indexOf(a) - typesOrder.indexOf(b))

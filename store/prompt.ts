@@ -1,4 +1,4 @@
-import { ClientPrompt } from 'types/common';
+import { ClientPrompt } from 'types/journey';
 import { create } from 'zustand';
 
 export type State = {

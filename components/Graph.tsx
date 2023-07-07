@@ -5,8 +5,10 @@ import { getBoundsOfNodes, isJnodeNodeType } from 'utils/flow';
 import FallbackNode from 'components/Nodes/FallbackNode';
 import RootNode from 'components/Nodes/RootNode';
 import { shallow } from 'zustand/shallow';
-import { useContextMenuStore } from 'store/context-menu';
+import { useBookmarkCtxMenuStore } from 'store/bookmark-context-menu';
 import { useEffect } from 'react';
+import { useGraphCtxMenuStore } from 'store/graph-context-menu';
+import { useHistoryCtxMenuStore } from 'store/history-context-menu';
 import { useNodeStore } from 'store/node';
 
 const useStyles = createStyles(() => ({
@@ -26,7 +28,9 @@ export function Graph() {
 
   const { classes } = useStyles();
   const { fitView, fitBounds, zoomOut } = useReactFlow();
-  const setIsOpened = useContextMenuStore((state) => state.setIsOpened);
+  const setGraphCtxMenuOpen = useGraphCtxMenuStore((state) => state.setMenuIsOpen);
+  const setHistoryCtxMenuOpen = useHistoryCtxMenuStore((state) => state.setMenuIsOpen);
+  const setBookmarkCtxMenuOpen = useBookmarkCtxMenuStore((state) => state.setMenuIsOpen);
 
   useEffect(() => {
     const nodesOnPath = nodes.filter((node) => isJnodeNodeType(node) && node.data.isDesNode);
@@ -41,12 +45,18 @@ export function Graph() {
     fitBounds({ x: bounds.xMin, y: bounds.yMin, width, height }, { duration: 1000 });
   }, [nodes, fitView, fitBounds, zoomOut]);
 
+  const closeContextMenus = () => {
+    setGraphCtxMenuOpen(null);
+    setHistoryCtxMenuOpen(null);
+    setBookmarkCtxMenuOpen(null);
+  };
+
   return (
     <Flex className={classes.container}>
       <ReactFlow
         nodes={nodes}
         edges={edges}
-        onMoveStart={() => setIsOpened(null)}
+        onMoveStart={closeContextMenus}
         onInit={({ fitBounds, fitView }) => {
           const root = nodes.find((node) => node.type === 'root');
           if (!root?.width || !root?.height) {

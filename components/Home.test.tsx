@@ -2,7 +2,7 @@ import { expect, test, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
 import AppWrapper from 'components/AppWrapper';
-import { Destination } from 'types/common';
+import { Destination } from 'types/journey';
 import Home from 'components/Home';
 import { act } from 'react-dom/test-utils';
 import { faker } from '@faker-js/faker';

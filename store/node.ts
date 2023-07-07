@@ -1,4 +1,4 @@
-import { Destination, DestinationWithRoutes } from 'types/common';
+import { Destination, DestinationWithRoutes } from 'types/journey';
 import { Edge, Node } from 'reactflow';
 import { getRoutesToJnode, resolveNodeIdsToJNodes } from 'utils/jnode';
 

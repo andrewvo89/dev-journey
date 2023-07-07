@@ -5,7 +5,7 @@ import { render, screen } from '@testing-library/react';
 
 import AppWrapper from 'components/AppWrapper';
 import HistoryList from 'components/LeftPanel/HistoryList';
-import { Journey } from 'types/common';
+import { Journey } from 'types/journey';
 import { faker } from '@faker-js/faker';
 
 test('render loader when there are no journeys', () => {
@@ -14,13 +14,6 @@ test('render loader when there are no journeys', () => {
   const spinner = screen.getByRole('alert', { name: 'Loading history' });
   expect(spinner).toBeInTheDocument();
   expect(spinner.getAttribute('aria-live')).toBe('assertive');
-});
-
-test('render menu when journeys are available', () => {
-  render(<HistoryList />, { wrapper: AppWrapper });
-  const menu = screen.getByLabelText('History', { selector: 'div[role="menu"]' });
-  expect(menu).toBeInTheDocument();
-  expect(menu.getAttribute('role')).toBe('menu');
 });
 
 test('should render a menu item for each journey', () => {

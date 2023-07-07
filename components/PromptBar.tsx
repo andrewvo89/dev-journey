@@ -1,5 +1,5 @@
 import { Autocomplete, CloseButton, Loader, createStyles } from '@mantine/core';
-import { ClientPrompt, PromptResponse } from 'types/common';
+import { ClientPrompt, PromptResponse } from 'types/journey';
 import { useEffect, useRef, useState } from 'react';
 
 import dayjs from 'dayjs';
@@ -8,6 +8,7 @@ import { shallow } from 'zustand/shallow';
 import { useHistoryStore } from 'store/history';
 import { useInputRefStore } from 'store/input-ref';
 import { usePromptStore } from 'store/prompt';
+import { useTabStore } from 'store/tab';
 import { v4 as uuidv4 } from 'uuid';
 
 export function transformDesintations(destinations: PromptResponse['destinations']) {
@@ -43,6 +44,7 @@ export default function PromptBar(props: Props) {
   const ref = useRef<HTMLInputElement>(null);
 
   const setInputRef = useInputRefStore((state) => state.setInputRef);
+  const setTab = useTabStore((state) => state.setTab);
 
   useEffect(() => {
     // Happens after first render when UI assigns the ref
@@ -70,6 +72,7 @@ export default function PromptBar(props: Props) {
         destinations: transformDesintations(destinations),
         prompt: selectedPrompt,
       });
+      setTab('history');
     } catch (error) {
       console.error(error);
     } finally {

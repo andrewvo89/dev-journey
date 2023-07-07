@@ -1,6 +1,6 @@
 import * as utils from 'utils/prompt';
 
-import { ClientPrompt, PromptResponse } from 'types/common';
+import { ClientPrompt, PromptResponse } from 'types/journey';
 import PromptBar, { transformDesintations } from 'components/PromptBar';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { expect, test, vi } from 'vitest';

@@ -1,10 +1,12 @@
+import { IconBookmarkPlus, IconClipboard } from '@tabler/icons-react';
 import { Menu, Tooltip, createStyles } from '@mantine/core';
 import { MouseEvent, useState } from 'react';
 
 import { FieldMap } from 'components/ResourceTable';
-import { IconClipboard } from '@tabler/icons-react';
 import { Resource } from 'types/jnode';
 import { notifications } from '@mantine/notifications';
+import { useBookmarkStore } from 'store/bookmark';
+import { useTabStore } from 'store/tab';
 
 const useStyles = createStyles((theme) => ({
   tr: {
@@ -24,6 +26,30 @@ export default function ResourceItem<T extends Resource>(props: Props<T>) {
   const { resource, fieldMappings } = props;
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const { classes } = useStyles();
+  const addBookmark = useBookmarkStore((state) => state.addBookmark);
+  const setTab = useTabStore((state) => state.setTab);
+
+  const bookmarkClickHandler = () => {
+    switch (resource.type) {
+      case 'article':
+        addBookmark({ id: resource.url, type: 'article', article: resource });
+        break;
+      case 'book':
+        addBookmark({ id: resource.url, type: 'book', book: resource });
+        break;
+      case 'course':
+        addBookmark({ id: resource.url, type: 'course', course: resource });
+        break;
+      case 'misc':
+        addBookmark({ id: resource.url, type: 'misc', misc: resource });
+        break;
+      case 'video':
+        addBookmark({ id: resource.url, type: 'video', video: resource });
+        break;
+    }
+    setTab('bookmarks');
+    notifications.show({ title: 'Added bookmark', message: resource.title, icon: <IconBookmarkPlus /> });
+  };
 
   const rowClickHandler = () => {
     window.open(resource.url, '_blank', 'noreferrer');
@@ -36,11 +62,7 @@ export default function ResourceItem<T extends Resource>(props: Props<T>) {
 
   const copyToClipboardHandler = (text: string) => {
     navigator.clipboard.writeText(text);
-    notifications.show({
-      title: 'Copied to clipboard',
-      message: text,
-      icon: <IconClipboard />,
-    });
+    notifications.show({ title: 'Copied to clipboard', message: text, icon: <IconClipboard /> });
   };
 
   return (
@@ -59,6 +81,7 @@ export default function ResourceItem<T extends Resource>(props: Props<T>) {
       <Menu.Dropdown>
         <Menu.Label w={200}>{resource.title}</Menu.Label>
         <Menu.Divider />
+        <Menu.Item onClick={bookmarkClickHandler}>Add to bookmarks</Menu.Item>
         <Menu.Item onClick={rowClickHandler}>Open link</Menu.Item>
         <Menu.Item onClick={() => copyToClipboardHandler(resource.url)}>Copy link</Menu.Item>
         {fieldMappings.map((field) => (
