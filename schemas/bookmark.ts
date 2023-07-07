@@ -71,3 +71,5 @@ export const bookmarkTypeSchema = z.union([
   z.literal('misc'),
   z.literal('video'),
 ]);
+
+export const bookmarkSortSchema = z.union([z.literal('asc'), z.literal('desc'), z.literal('none')]);

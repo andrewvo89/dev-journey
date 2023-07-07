@@ -141,7 +141,12 @@ export default function HistoryListItem(props: Props) {
   const bookmarkClickHandler = () => {
     addBookmark({ id: generateId(journey.destinations), type: 'journey', journey });
     setTab('bookmarks');
-    notifications.show({ title: 'Added bookmark', message: journey.prompt.label, icon: <IconBookmarkPlus /> });
+    notifications.show({
+      title: 'Added bookmark',
+      message: journey.prompt.label,
+      icon: <IconBookmarkPlus />,
+      withBorder: true,
+    });
   };
 
   const removeHistoryClickHandler = () =>

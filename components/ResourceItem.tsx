@@ -48,7 +48,12 @@ export default function ResourceItem<T extends Resource>(props: Props<T>) {
         break;
     }
     setTab('bookmarks');
-    notifications.show({ title: 'Added bookmark', message: resource.title, icon: <IconBookmarkPlus /> });
+    notifications.show({
+      title: 'Added bookmark',
+      message: resource.title,
+      icon: <IconBookmarkPlus />,
+      withBorder: true,
+    });
   };
 
   const rowClickHandler = () => {
@@ -82,7 +87,7 @@ export default function ResourceItem<T extends Resource>(props: Props<T>) {
         <Menu.Label w={200}>{resource.title}</Menu.Label>
         <Menu.Divider />
         <Menu.Item onClick={bookmarkClickHandler}>Add to bookmarks</Menu.Item>
-        <Menu.Item onClick={rowClickHandler}>Open link</Menu.Item>
+        <Menu.Item onClick={rowClickHandler}>Open in a new tab</Menu.Item>
         <Menu.Item onClick={() => copyToClipboardHandler(resource.url)}>Copy link</Menu.Item>
         {fieldMappings.map((field) => (
           <Menu.Item

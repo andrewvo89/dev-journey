@@ -68,7 +68,7 @@ export default function FallbackNode(props: NodeProps<JNodeTypeData>) {
   const bookmarkClickHandler = () => {
     addBookmark({ id: jnode.id, type: 'destination', jnode });
     setTab('bookmarks');
-    notifications.show({ title: 'Added bookmark', message: jnode.title, icon: <IconBookmarkPlus /> });
+    notifications.show({ title: 'Added bookmark', message: jnode.title, icon: <IconBookmarkPlus />, withBorder: true });
   };
 
   return (

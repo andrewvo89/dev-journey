@@ -4,6 +4,7 @@ import { persist } from 'zustand/middleware';
 
 type State = {
   journeys: Journey[];
+  setJourneys: (journeys: Journey[]) => void;
   addJourney: (journey: Journey) => void;
   removeJourney: (journey: Journey) => void;
   selectPath: (journey: Journey, pathId: string) => void;
@@ -17,6 +18,7 @@ export const useHistoryStore = create<State>()(
   persist(
     (set) => ({
       journeys: [],
+      setJourneys: (journeys) => set({ journeys }),
       addJourney: (journey) =>
         set((state) => {
           const firstJourney = state.journeys.at(0);

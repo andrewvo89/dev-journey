@@ -1,4 +1,4 @@
-import { Bookmark, BookmarkType } from 'types/bookmark';
+import { Bookmark, BookmarkSort, BookmarkType } from 'types/bookmark';
 import {
   IconBinaryTree,
   IconBook,
@@ -128,4 +128,15 @@ export function getUrl(bookmark: Bookmark): string | null {
 export function generateId(destinations: Destination[]): string {
   const sorted = produce(destinations, (draft) => draft.sort());
   return sorted.join('-');
+}
+
+export function getPrettySort(sort: BookmarkSort): string {
+  switch (sort) {
+    case 'asc':
+      return 'Ascending';
+    case 'desc':
+      return 'Descending';
+    case 'none':
+      return 'None';
+  }
 }

@@ -5,7 +5,7 @@ import { SortableContext, arrayMove, verticalListSortingStrategy } from '@dnd-ki
 import BookmarkListItem from 'components/LeftPanel/BookmarkListItem';
 import { FiltersChooser } from 'components/FiltersChooser';
 import { IconFilterEdit } from '@tabler/icons-react';
-import { bookmarkTypes } from 'utils/bookmark';
+import { getLabel } from 'utils/bookmark';
 import { modals } from '@mantine/modals';
 import { useBookmarkStore } from 'store/bookmark';
 import { useHydratedStore } from 'hooks/useHydratedStore';
@@ -24,19 +24,27 @@ const useStyles = createStyles(() => ({
 export default function BookmarksList() {
   const bookmarks = useHydratedStore(useBookmarkStore, (state) => state.bookmarks);
   const filters = useHydratedStore(useBookmarkStore, (state) => state.filters);
+  const sort = useHydratedStore(useBookmarkStore, (state) => state.sort);
+
   const setBookmarks = useBookmarkStore((state) => state.setBookmarks);
+
   const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 8 } }));
   const { classes } = useStyles();
   const { classes: modalClasses } = useModalStyles();
   const theme = useMantineTheme();
 
-  const filteredBookmarks = useMemo(() => {
-    if (!bookmarks) {
+  const transformedBookmarks = useMemo(() => {
+    if (!bookmarks || !filters || !sort) {
       return [];
     }
-
-    return bookmarks.filter((bookmark) => (filters ?? bookmarkTypes).includes(bookmark.type));
-  }, [bookmarks, filters]);
+    const filtered = bookmarks.filter((bookmark) => filters.includes(bookmark.type));
+    if (sort === 'none') {
+      return filtered;
+    }
+    return filtered.sort((a, b) =>
+      sort === 'asc' ? getLabel(a).localeCompare(getLabel(b)) : getLabel(b).localeCompare(getLabel(a)),
+    );
+  }, [bookmarks, filters, sort]);
 
   if (!bookmarks) {
     return (
@@ -54,7 +62,7 @@ export default function BookmarksList() {
     );
   }
 
-  if (filteredBookmarks.length === 0) {
+  if (transformedBookmarks.length === 0) {
     const filtersClickHandler = () => {
       modals.open({
         classNames: { overlay: modalClasses.overlay, inner: modalClasses.inner, title: modalClasses.h3 },
@@ -93,8 +101,8 @@ export default function BookmarksList() {
   return (
     <Container className={classes.container}>
       <DndContext onDragEnd={onDragEndHandler} collisionDetection={closestCenter} sensors={sensors}>
-        <SortableContext items={filteredBookmarks} strategy={verticalListSortingStrategy}>
-          {filteredBookmarks.map((bookmark) => (
+        <SortableContext items={transformedBookmarks} strategy={verticalListSortingStrategy}>
+          {transformedBookmarks.map((bookmark) => (
             <BookmarkListItem key={bookmark.id} bookmark={bookmark} />
           ))}
         </SortableContext>

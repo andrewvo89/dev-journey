@@ -1,6 +1,6 @@
-import { Bookmark, BookmarkType } from 'types/bookmark';
-import { bookmarkTypes, getLabel } from 'utils/bookmark';
+import { Bookmark, BookmarkFilter, BookmarkSort } from 'types/bookmark';
 
+import { bookmarkTypes } from 'utils/bookmark';
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 import { persist } from 'zustand/middleware';
@@ -8,14 +8,16 @@ import { persist } from 'zustand/middleware';
 type State = {
   bookmarks: Bookmark[];
   setBookmarks: (bookmarks: Bookmark[]) => void;
-  sortBookmarks: (direction: 'asc' | 'desc') => void;
   addBookmark: (bookmark: Bookmark) => void;
   removeBookmark: (id: string) => void;
-  filters: BookmarkType[];
+  filters: BookmarkFilter[];
+  setFilters: (filters: BookmarkFilter[]) => void;
   selectAllFilters: () => void;
-  selectNoFilters: () => void;
-  addFilter: (type: BookmarkType) => void;
-  removeFilter: (type: BookmarkType) => void;
+  deselectAllFilters: () => void;
+  selectFilter: (type: BookmarkFilter) => void;
+  deselectFilter: (type: BookmarkFilter) => void;
+  sort: BookmarkSort;
+  setSort: (sort: BookmarkSort) => void;
 };
 
 export const useBookmarkStore = create<State>()(
@@ -23,12 +25,6 @@ export const useBookmarkStore = create<State>()(
     immer<State>((set) => ({
       bookmarks: [],
       setBookmarks: (bookmarks) => set({ bookmarks }),
-      sortBookmarks: (direction) =>
-        set((state) => {
-          state.bookmarks.sort((a, b) =>
-            direction === 'asc' ? getLabel(a).localeCompare(getLabel(b)) : getLabel(b).localeCompare(getLabel(a)),
-          );
-        }),
       addBookmark: (bookmark) =>
         set((state) => {
           const found = state.bookmarks.find((b) => b.id === bookmark.id);
@@ -44,23 +40,30 @@ export const useBookmarkStore = create<State>()(
           }
         }),
       filters: bookmarkTypes,
+      setFilters: (filters) => set({ filters }),
       selectAllFilters: () => set({ filters: bookmarkTypes }),
-      selectNoFilters: () => set({ filters: [] }),
-      addFilter: (type) =>
+      deselectAllFilters: () => set({ filters: [] }),
+      selectFilter: (type) =>
         set((state) => {
-          const foundIndex = state.filters.findIndex((f) => f === type);
+          const foundIndex = state.filters.indexOf(type);
           if (foundIndex === -1) {
             state.filters.push(type);
           }
         }),
-      removeFilter: (type) =>
+      deselectFilter: (type) =>
         set((state) => {
-          const foundIndex = state.filters.findIndex((f) => f === type);
+          const foundIndex = state.filters.indexOf(type);
           if (foundIndex !== -1) {
             state.filters.splice(foundIndex, 1);
           }
         }),
+      sort: 'none',
+      setSort: (sort) => set({ sort }),
     })),
-    { name: 'bookmarks', partialize: (state) => ({ bookmarks: state.bookmarks, filters: state.filters }), version: 1 },
+    {
+      name: 'bookmarks',
+      partialize: (state) => ({ bookmarks: state.bookmarks, filters: state.filters, sort: state.sort }),
+      version: 1,
+    },
   ),
 );

@@ -59,8 +59,8 @@ export default function BookmarkListItem(props: Props) {
   const updateNodes = useNodeStore((state) => state.updateNodes);
   const setSelected = useHistoryStore((state) => state.setSelected);
   const { menuIsOpen, setMenuIsOpen } = useBookmarkCtxMenuStore();
-  const { removeBookmark, sortBookmarks } = useBookmarkStore(
-    (state) => ({ removeBookmark: state.removeBookmark, sortBookmarks: state.sortBookmarks }),
+  const { removeBookmark, setSort } = useBookmarkStore(
+    (state) => ({ removeBookmark: state.removeBookmark, setSort: state.setSort }),
     shallow,
   );
   const { classes: modalClasses } = useModalStyles();
@@ -112,7 +112,7 @@ export default function BookmarkListItem(props: Props) {
 
   const copyToClipboardHandler = (text: string) => {
     navigator.clipboard.writeText(text);
-    notifications.show({ title: 'Copied to clipboard', message: text, icon: <IconClipboard /> });
+    notifications.show({ title: 'Copied to clipboard', message: text, icon: <IconClipboard />, withBorder: true });
   };
 
   const filtersClickHandler = () => {
@@ -169,8 +169,9 @@ export default function BookmarkListItem(props: Props) {
         <Menu.Item onClick={removeBookmarkHandler}>Remove from bookmarks</Menu.Item>
         <Menu.Divider />
         <Menu.Label>Sort</Menu.Label>
-        <Menu.Item onClick={() => sortBookmarks('asc')}>Ascending</Menu.Item>
-        <Menu.Item onClick={() => sortBookmarks('desc')}>Descending</Menu.Item>
+        <Menu.Item onClick={() => setSort('none')}>None</Menu.Item>
+        <Menu.Item onClick={() => setSort('asc')}>Ascending</Menu.Item>
+        <Menu.Item onClick={() => setSort('desc')}>Descending</Menu.Item>
         <Menu.Divider />
         <Menu.Label>Filter</Menu.Label>
         <Menu.Item onClick={filtersClickHandler}>Configure filters</Menu.Item>

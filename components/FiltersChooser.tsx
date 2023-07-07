@@ -10,10 +10,10 @@ export function FiltersChooser() {
   const { filters, addFilter, removeFilter, selectAllFilters, selectNoFilters } = useBookmarkStore(
     (state) => ({
       filters: state.filters,
-      addFilter: state.addFilter,
-      removeFilter: state.removeFilter,
+      addFilter: state.selectFilter,
+      removeFilter: state.deselectFilter,
       selectAllFilters: state.selectAllFilters,
-      selectNoFilters: state.selectNoFilters,
+      selectNoFilters: state.deselectAllFilters,
     }),
     shallow,
   );
