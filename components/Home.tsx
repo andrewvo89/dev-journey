@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import { useHistoryStore } from 'store/history';
 import { useNodeStore } from 'store/node';
 import { usePromptStore } from 'store/prompt';
+import { useSyncSpotlight } from 'hooks/useSyncSpotlight';
 
 const useStyles = createStyles(() => ({
   container: {
@@ -23,6 +24,7 @@ const useStyles = createStyles(() => ({
 
 export default function Home(props: Props) {
   const { placeholder, prompts, initialJNodes } = props;
+  useSyncSpotlight();
 
   const { initFlow, updateNodes } = useNodeStore(
     (state) => ({ initFlow: state.initFlow, updateNodes: state.updateNodes }),

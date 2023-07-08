@@ -1,4 +1,5 @@
 import { Bookmark, BookmarkSort, BookmarkType } from 'types/bookmark';
+import { Destination, Journey } from 'types/journey';
 import {
   IconBinaryTree,
   IconBook,
@@ -10,7 +11,6 @@ import {
   TablerIconsProps,
 } from '@tabler/icons-react';
 
-import { Destination } from 'types/journey';
 import { produce } from 'immer';
 import { useNodeStore } from 'store/node';
 
@@ -54,7 +54,7 @@ export function getSubtitle(bookmark: Bookmark): string {
   }
 }
 
-export function getPrettyType(type: Bookmark['type']): string {
+export function getPrettyType(type: BookmarkType): string {
   switch (type) {
     case 'destination':
       return 'Destination';
@@ -73,7 +73,7 @@ export function getPrettyType(type: Bookmark['type']): string {
   }
 }
 
-export function getIcon(type: Bookmark['type']): (props: TablerIconsProps) => JSX.Element {
+export function getIcon(type: BookmarkType): (props: TablerIconsProps) => JSX.Element {
   switch (type) {
     case 'destination':
       return IconFlag;
@@ -92,7 +92,7 @@ export function getIcon(type: Bookmark['type']): (props: TablerIconsProps) => JS
   }
 }
 
-export function getAction(type: Bookmark['type']): string {
+export function getAction(type: BookmarkType): string {
   switch (type) {
     case 'destination':
       return 'Visit destination';
@@ -138,5 +138,40 @@ export function getPrettySort(sort: BookmarkSort): string {
       return 'Descending';
     case 'none':
       return 'None';
+  }
+}
+
+type BookmarkActionParams = {
+  bookmark: Bookmark;
+  window: Window & typeof globalThis;
+  updateNodes: (destinations: Destination[]) => void;
+  setSelected: (journey: Journey | null) => void;
+};
+
+export function actionHandler(params: BookmarkActionParams): void {
+  const { bookmark, window, updateNodes, setSelected } = params;
+  switch (bookmark.type) {
+    case 'article':
+      window.open(bookmark.article.url, '_blank', 'noreferrer');
+      break;
+    case 'book':
+      window.open(bookmark.book.url, '_blank', 'noreferrer');
+      break;
+    case 'course':
+      window.open(bookmark.course.url, '_blank', 'noreferrer');
+      break;
+    case 'misc':
+      window.open(bookmark.misc.url, '_blank', 'noreferrer');
+      break;
+    case 'video':
+      window.open(bookmark.video.url, '_blank', 'noreferrer');
+      break;
+    case 'destination':
+      updateNodes([{ id: bookmark.jnode.id, enabled: true }]);
+      setSelected(null);
+      break;
+    case 'journey':
+      updateNodes(bookmark.journey.destinations);
+      break;
   }
 }

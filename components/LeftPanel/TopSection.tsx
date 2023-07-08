@@ -5,9 +5,11 @@ import {
   IconFileAlert,
   IconFilterEdit,
   IconFilterOff,
+  IconInfoCircle,
   IconPackageExport,
   IconPackageImport,
   IconPlus,
+  IconSearch,
   IconSortAZ,
   IconSortAscendingLetters,
   IconSortDescendingLetters,
@@ -22,6 +24,7 @@ import { ImportDataModal } from 'components/ImportDataModal';
 import { modals } from '@mantine/modals';
 import { notifications } from '@mantine/notifications';
 import { shallow } from 'zustand/shallow';
+import { spotlight } from '@mantine/spotlight';
 import { useBookmarkStore } from 'store/bookmark';
 import { useHistoryStore } from 'store/history';
 import { useHydratedStore } from 'hooks/useHydratedStore';
@@ -33,6 +36,11 @@ import { useTabStore } from 'store/tab';
 const useStyles = createStyles(() => ({
   importInput: {
     display: 'none',
+  },
+  title: {
+    ':hover': {
+      cursor: 'pointer',
+    },
   },
 }));
 
@@ -73,7 +81,6 @@ export function TopSection() {
   }, [importFile]);
 
   const newJourneyHandler = () => {
-    setTab('history');
     if (!inputRef) {
       return;
     }
@@ -157,72 +164,81 @@ export function TopSection() {
       <ImportDataModal file={importFile} setFile={setImportFile} />
       <ExportDataModal isOpen={exportModalIsOpen} setIsOpen={setExportModalIsOpen} />
       <Group position='apart'>
-        <Title order={2}>Dev Journey</Title>
-        <Menu>
-          <Menu.Target>
-            <ActionIcon color='dark' variant='transparent' aria-label='Menu'>
-              <IconDotsVertical />
-            </ActionIcon>
-          </Menu.Target>
-          <Menu.Dropdown>
-            <Menu.Item onClick={newJourneyHandler} icon={<IconPlus size='1.25em' />}>
-              New journey
-            </Menu.Item>
-            <Menu.Item
-              onClick={clearHistoryClickHandler}
-              icon={<IconTrashX size='1.25em' />}
-              disabled={!journeys || journeys.length === 0}
-            >
-              Clear history
-            </Menu.Item>
-            <Menu.Divider />
-            <Menu.Item
-              onClick={() => sortBookmarksHandler('asc')}
-              icon={<IconSortAscendingLetters size='1.25em' />}
-              disabled={!bookmarks || bookmarks.length === 0}
-            >
-              Sort bookmarks ascending
-            </Menu.Item>
-            <Menu.Item
-              onClick={() => sortBookmarksHandler('desc')}
-              icon={<IconSortDescendingLetters size='1.25em' />}
-              disabled={!bookmarks || bookmarks.length === 0}
-            >
-              Sort bookmarks descending
-            </Menu.Item>
-            <Menu.Item
-              onClick={() => sortBookmarksHandler('none')}
-              icon={<IconSortAZ size='1.25em' />}
-              disabled={!bookmarks || bookmarks.length === 0}
-            >
-              Reset bookmark sort
-            </Menu.Item>
-            <Menu.Item
-              onClick={filtersClickHandler}
-              icon={<IconFilterEdit size='1.25em' />}
-              disabled={!bookmarks || bookmarks.length === 0}
-            >
-              Configure filters
-            </Menu.Item>
-            <Menu.Item
-              onClick={resetFiltersHandler}
-              icon={<IconFilterOff size='1.25em' />}
-              disabled={!bookmarks || bookmarks.length === 0}
-            >
-              Reset bookmark filters
-            </Menu.Item>
-            <Menu.Item onClick={resetViewClickHandler} icon={<IconZoomReset size='1.25em' />}>
-              Reset view
-            </Menu.Item>
-            <Menu.Divider />
-            <Menu.Item onClick={importDataHandler} icon={<IconPackageImport size='1.25em' />}>
-              Import data
-            </Menu.Item>
-            <Menu.Item onClick={exportDataHandler} icon={<IconPackageExport size='1.25em' />}>
-              Export data
-            </Menu.Item>
-          </Menu.Dropdown>
-        </Menu>
+        <Title order={2} onClick={resetViewClickHandler} className={classes.title}>
+          Dev Journey
+        </Title>
+        <Group>
+          <ActionIcon color='dark' variant='transparent' aria-label='Search'>
+            <IconSearch onClick={() => spotlight.open()} />
+          </ActionIcon>
+          <Menu>
+            <Menu.Target>
+              <ActionIcon color='dark' variant='transparent' aria-label='Menu'>
+                <IconDotsVertical />
+              </ActionIcon>
+            </Menu.Target>
+            <Menu.Dropdown>
+              <Menu.Item onClick={newJourneyHandler} icon={<IconPlus size='1.25em' />}>
+                New journey
+              </Menu.Item>
+              <Menu.Item
+                onClick={clearHistoryClickHandler}
+                icon={<IconTrashX size='1.25em' />}
+                disabled={!journeys || journeys.length === 0}
+              >
+                Clear history
+              </Menu.Item>
+              <Menu.Divider />
+              <Menu.Item
+                onClick={() => sortBookmarksHandler('asc')}
+                icon={<IconSortAscendingLetters size='1.25em' />}
+                disabled={!bookmarks || bookmarks.length === 0}
+              >
+                Sort bookmarks ascending
+              </Menu.Item>
+              <Menu.Item
+                onClick={() => sortBookmarksHandler('desc')}
+                icon={<IconSortDescendingLetters size='1.25em' />}
+                disabled={!bookmarks || bookmarks.length === 0}
+              >
+                Sort bookmarks descending
+              </Menu.Item>
+              <Menu.Item
+                onClick={() => sortBookmarksHandler('none')}
+                icon={<IconSortAZ size='1.25em' />}
+                disabled={!bookmarks || bookmarks.length === 0}
+              >
+                Reset bookmark sort
+              </Menu.Item>
+              <Menu.Item
+                onClick={filtersClickHandler}
+                icon={<IconFilterEdit size='1.25em' />}
+                disabled={!bookmarks || bookmarks.length === 0}
+              >
+                Configure filters
+              </Menu.Item>
+              <Menu.Item
+                onClick={resetFiltersHandler}
+                icon={<IconFilterOff size='1.25em' />}
+                disabled={!bookmarks || bookmarks.length === 0}
+              >
+                Reset bookmark filters
+              </Menu.Item>
+              <Menu.Item onClick={resetViewClickHandler} icon={<IconZoomReset size='1.25em' />}>
+                Reset view
+              </Menu.Item>
+              <Menu.Divider />
+              <Menu.Item onClick={importDataHandler} icon={<IconPackageImport size='1.25em' />}>
+                Import data
+              </Menu.Item>
+              <Menu.Item onClick={exportDataHandler} icon={<IconPackageExport size='1.25em' />}>
+                Export data
+              </Menu.Item>
+              <Menu.Divider />
+              <Menu.Item icon={<IconInfoCircle size='1.25em' />}>About</Menu.Item>
+            </Menu.Dropdown>
+          </Menu>
+        </Group>
       </Group>
     </Fragment>
   );

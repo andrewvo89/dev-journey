@@ -6,6 +6,8 @@ export type State = {
   setPrompt: (prompt: string) => void;
   prompts: ClientPrompt[];
   setPrompts: (prompts: ClientPrompt[]) => void;
+  isLoading: boolean;
+  setIsLoading: (isLoading: boolean) => void;
 };
 
 export const usePromptStore = create<State>()((set) => ({
@@ -13,4 +15,6 @@ export const usePromptStore = create<State>()((set) => ({
   setPrompt: (prompt) => set(() => ({ prompt })),
   prompts: [],
   setPrompts: (prompts) => set(() => ({ prompts })),
+  isLoading: false,
+  setIsLoading: (isLoading) => set(() => ({ isLoading })),
 }));

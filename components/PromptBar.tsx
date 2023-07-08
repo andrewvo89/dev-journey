@@ -1,6 +1,6 @@
 import { Autocomplete, CloseButton, Loader, createStyles } from '@mantine/core';
 import { ClientPrompt, PromptResponse } from 'types/journey';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 import dayjs from 'dayjs';
 import { getPromptDestinations } from 'utils/prompt';
@@ -39,8 +39,6 @@ type Props = {
 
 export default function PromptBar(props: Props) {
   const { placeholder } = props;
-  const [isLoading, setIsLoading] = useState(false);
-  const { classes } = useStyles({ isLoading });
   const ref = useRef<HTMLInputElement>(null);
 
   const setInputRef = useInputRefStore((state) => state.setInputRef);
@@ -51,8 +49,14 @@ export default function PromptBar(props: Props) {
     setInputRef(ref.current);
   }, [setInputRef]);
 
-  const { prompt, setPrompt, prompts } = usePromptStore(
-    (state) => ({ prompt: state.prompt, setPrompt: state.setPrompt, prompts: state.prompts }),
+  const { prompt, setPrompt, prompts, isLoading, setIsLoading } = usePromptStore(
+    (state) => ({
+      prompt: state.prompt,
+      setPrompt: state.setPrompt,
+      prompts: state.prompts,
+      isLoading: state.isLoading,
+      setIsLoading: state.setIsLoading,
+    }),
     shallow,
   );
 
@@ -60,6 +64,7 @@ export default function PromptBar(props: Props) {
     (state) => ({ addJourney: state.addJourney, selected: state.selected, setSelected: state.setSelected }),
     shallow,
   );
+  const { classes } = useStyles({ isLoading });
 
   const itemSelectedHandler = async (selectedPrompt: ClientPrompt) => {
     setIsLoading(true);

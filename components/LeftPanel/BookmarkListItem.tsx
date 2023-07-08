@@ -1,7 +1,7 @@
 import { CSS, Transform } from '@dnd-kit/utilities';
 import { Fragment, MouseEvent } from 'react';
 import { Menu, NavLink, Text, Tooltip, createStyles, useMantineTheme } from '@mantine/core';
-import { getAction, getIcon, getLabel, getPrettyType, getSubtitle, getUrl } from 'utils/bookmark';
+import { actionHandler, getAction, getIcon, getLabel, getPrettyType, getSubtitle, getUrl } from 'utils/bookmark';
 
 import { Bookmark } from 'types/bookmark';
 import { FiltersChooser } from 'components/FiltersChooser';
@@ -67,32 +67,7 @@ export default function BookmarkListItem(props: Props) {
 
   const label = getLabel(bookmark);
 
-  const bookmarkActionHandler = () => {
-    switch (bookmark.type) {
-      case 'article':
-        window.open(bookmark.article.url, '_blank', 'noreferrer');
-        break;
-      case 'book':
-        window.open(bookmark.book.url, '_blank', 'noreferrer');
-        break;
-      case 'course':
-        window.open(bookmark.course.url, '_blank', 'noreferrer');
-        break;
-      case 'misc':
-        window.open(bookmark.misc.url, '_blank', 'noreferrer');
-        break;
-      case 'video':
-        window.open(bookmark.video.url, '_blank', 'noreferrer');
-        break;
-      case 'destination':
-        updateNodes([{ id: bookmark.jnode.id, enabled: true }]);
-        setSelected(null);
-        break;
-      case 'journey':
-        updateNodes(bookmark.journey.destinations);
-        break;
-    }
-  };
+  const bookmarkActionHandler = () => actionHandler({ bookmark, setSelected, updateNodes, window });
 
   const bookmarkRightClickHandler = (e: MouseEvent<HTMLLIElement, globalThis.MouseEvent>) => {
     e.preventDefault();
