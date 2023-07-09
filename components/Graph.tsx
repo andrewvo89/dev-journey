@@ -28,9 +28,9 @@ export function Graph() {
 
   const { classes } = useStyles();
   const { fitView, fitBounds, zoomOut } = useReactFlow();
-  const setGraphCtxMenuOpen = useGraphCtxMenuStore((state) => state.setMenuIsOpen);
-  const setHistoryCtxMenuOpen = useHistoryCtxMenuStore((state) => state.setMenuIsOpen);
-  const setBookmarkCtxMenuOpen = useBookmarkCtxMenuStore((state) => state.setMenuIsOpen);
+  const setGraphCtxMenuOpen = useGraphCtxMenuStore((state) => state.setIsOpen);
+  const setHistoryCtxMenuOpen = useHistoryCtxMenuStore((state) => state.setIsOpen);
+  const setBookmarkCtxMenuOpen = useBookmarkCtxMenuStore((state) => state.setIsOpen);
 
   useEffect(() => {
     const nodesOnPath = nodes.filter((node) => isJnodeNodeType(node) && node.data.isDesNode);

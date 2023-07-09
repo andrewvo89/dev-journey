@@ -13,3 +13,7 @@ export function toReadableHours(minutes: number) {
 export const isServer = typeof window === 'undefined';
 
 export const isClient = !isServer;
+
+export const isMac = isClient && navigator.userAgent.toLowerCase().includes('mac');
+
+export const modKey = isMac ? '⌘' : 'Ctrl';

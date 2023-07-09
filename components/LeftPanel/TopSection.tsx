@@ -1,4 +1,4 @@
-import { ActionIcon, Group, Menu, Text, Title, createStyles, useMantineTheme } from '@mantine/core';
+import { ActionIcon, Group, Menu, Text, Title, Tooltip, createStyles, useMantineTheme } from '@mantine/core';
 import { ChangeEvent, Fragment, useEffect, useRef, useState } from 'react';
 import {
   IconDotsVertical,
@@ -21,6 +21,7 @@ import { BookmarkSort } from 'types/bookmark';
 import { ExportDataModal } from 'components/ExportDataModal';
 import { FiltersChooser } from 'components/FiltersChooser';
 import { ImportDataModal } from 'components/ImportDataModal';
+import { modKey } from 'utils/common';
 import { modals } from '@mantine/modals';
 import { notifications } from '@mantine/notifications';
 import { shallow } from 'zustand/shallow';
@@ -31,6 +32,7 @@ import { useHydratedStore } from 'hooks/useHydratedStore';
 import { useInputRefStore } from 'store/input-ref';
 import { useModalStyles } from 'styles/modal';
 import { useNodeStore } from 'store/node';
+import { useSettingsMenuStore } from 'store/settings-menu';
 import { useTabStore } from 'store/tab';
 
 const useStyles = createStyles(() => ({
@@ -48,6 +50,8 @@ export function TopSection() {
   const importInputRef = useRef<HTMLInputElement>(null);
   const [exportModalIsOpen, setExportModalIsOpen] = useState(false);
   const [importFile, setImportFile] = useState<File>();
+
+  const { isOpen: menuIsOpen, setIsOpen: setMenuIsOpen } = useSettingsMenuStore();
 
   const { clearHistory, setSelected } = useHistoryStore(
     (state) => ({ clearHistory: state.clearHistory, setSelected: state.setSelected }),
@@ -168,14 +172,18 @@ export function TopSection() {
           Dev Journey
         </Title>
         <Group>
-          <ActionIcon color='dark' variant='transparent' aria-label='Search'>
-            <IconSearch onClick={() => spotlight.open()} />
-          </ActionIcon>
-          <Menu>
+          <Tooltip label={`Search (${modKey} + F)`}>
+            <ActionIcon color='dark' variant='transparent' aria-label='Search'>
+              <IconSearch onClick={() => spotlight.open()} />
+            </ActionIcon>
+          </Tooltip>
+          <Menu opened={menuIsOpen} onChange={setMenuIsOpen}>
             <Menu.Target>
-              <ActionIcon color='dark' variant='transparent' aria-label='Menu'>
-                <IconDotsVertical />
-              </ActionIcon>
+              <Tooltip label={`Menu (${modKey} + M)`}>
+                <ActionIcon color='dark' variant='transparent' aria-label='Menu' onClick={() => setMenuIsOpen(true)}>
+                  <IconDotsVertical />
+                </ActionIcon>
+              </Tooltip>
             </Menu.Target>
             <Menu.Dropdown>
               <Menu.Item onClick={newJourneyHandler} icon={<IconPlus size='1.25em' />}>

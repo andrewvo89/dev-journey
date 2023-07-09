@@ -50,7 +50,7 @@ const useStyles = createStyles(() => ({
 
 export default function HistoryListItem(props: Props) {
   const { journey } = props;
-  const { menuIsOpen, setMenuIsOpen } = useHistoryCtxMenuStore();
+  const { isOpen: menuIsOpen, setIsOpen: setMenuIsOpen } = useHistoryCtxMenuStore();
   const setTab = useTabStore((state) => state.setTab);
 
   const { selected, setSelected, removeJourney, selectPath, deselectPath, clearHistory } = useHistoryStore(
@@ -68,7 +68,7 @@ export default function HistoryListItem(props: Props) {
   const isSelected = selected?.id === journey.id;
   const { classes } = useStyles();
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [navlinkIsOpen, setNavlinkIsOpen] = useState(false);
   const [deleteMode, setDeleteMode] = useState(false);
   const [relativeTime, setRelativeTime] = useState(dayjs().to(dayjs(journey.createdAt)));
   const addBookmark = useBookmarkStore((state) => state.addBookmark);
@@ -89,7 +89,7 @@ export default function HistoryListItem(props: Props) {
 
   useEffect(() => {
     if (!isSelected) {
-      setIsOpen(false);
+      setNavlinkIsOpen(false);
       setDeleteMode(false);
       return;
     }
@@ -123,7 +123,7 @@ export default function HistoryListItem(props: Props) {
   };
 
   const expandHandler = (newIsOpened: boolean) => {
-    setIsOpen(newIsOpened);
+    setNavlinkIsOpen(newIsOpened);
   };
 
   const linkRightClickHandler = (e: MouseEvent<HTMLLIElement, globalThis.MouseEvent>) => {
@@ -182,7 +182,7 @@ export default function HistoryListItem(props: Props) {
             component='li'
             role='menuitem'
             aria-label='History item'
-            aria-expanded={isOpen}
+            aria-expanded={navlinkIsOpen}
             classNames={{ children: classes.listItemChildren, root: classes.listItemRoot }}
             active={isSelected}
             onClick={linkClickHandler}
@@ -210,7 +210,7 @@ export default function HistoryListItem(props: Props) {
               </Group>
             }
             description={relativeTime}
-            opened={isOpen}
+            opened={navlinkIsOpen}
             onChange={expandHandler}
           >
             {journey.destinations.length > 1 && (

@@ -27,7 +27,7 @@ export default function AppWrapper(props: Props) {
           colorScheme: 'light',
         }}
       >
-        <SpotlightProvider actions={actions} onActionsChange={setActions} shortcut='mod+f'>
+        <SpotlightProvider actions={actions} onActionsChange={setActions}>
           <ModalsProvider>
             <Notifications zIndex={1003} />
             <ReactFlowProvider>{children}</ReactFlowProvider>

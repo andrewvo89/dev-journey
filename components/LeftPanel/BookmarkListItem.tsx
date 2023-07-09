@@ -58,7 +58,7 @@ export default function BookmarkListItem(props: Props) {
 
   const updateNodes = useNodeStore((state) => state.updateNodes);
   const setSelected = useHistoryStore((state) => state.setSelected);
-  const { menuIsOpen, setMenuIsOpen } = useBookmarkCtxMenuStore();
+  const { isOpen: menuIsOpen, setIsOpen: setMenuIsOpen } = useBookmarkCtxMenuStore();
   const { removeBookmark, setSort } = useBookmarkStore(
     (state) => ({ removeBookmark: state.removeBookmark, setSort: state.setSort }),
     shallow,

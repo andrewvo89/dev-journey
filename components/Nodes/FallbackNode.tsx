@@ -28,7 +28,7 @@ export default function FallbackNode(props: NodeProps<JNodeTypeData>) {
   const addBookmark = useBookmarkStore((state) => state.addBookmark);
   const setTab = useTabStore((state) => state.setTab);
   const setSelected = useHistoryStore((state) => state.setSelected);
-  const { menuIsOpen, setMenuIsOpen } = useGraphCtxMenuStore();
+  const { isOpen, setIsOpen } = useGraphCtxMenuStore();
 
   const isOptional = isOnOptionalPath && !isDesNode;
   const keepAlive = isOnPath || isOnOptionalPath || noNodesOnPath;
@@ -55,14 +55,14 @@ export default function FallbackNode(props: NodeProps<JNodeTypeData>) {
 
   const cardRightClickHandler = (e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
     e.preventDefault();
-    setMenuIsOpen(jnode.id);
+    setIsOpen(jnode.id);
   };
 
   const menuChangeHandler = (opened: boolean) => {
     if (opened) {
       return;
     }
-    setMenuIsOpen(null);
+    setIsOpen(null);
   };
 
   const bookmarkClickHandler = () => {
@@ -83,7 +83,7 @@ export default function FallbackNode(props: NodeProps<JNodeTypeData>) {
       {targetPosition && jnode.dependencies.length > 0 && (
         <Handle type='target' position={targetPosition} className={classes.handle} />
       )}
-      <Menu shadow='md' trigger='click' withinPortal opened={menuIsOpen === jnode.id} onChange={menuChangeHandler}>
+      <Menu shadow='md' trigger='click' withinPortal opened={isOpen === jnode.id} onChange={menuChangeHandler}>
         <Menu.Target>
           <Paper
             className={[classes.paper, 'nodrag'].join(' ')}

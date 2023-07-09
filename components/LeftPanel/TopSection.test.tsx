@@ -20,7 +20,7 @@ test('pressing on menu button opens menu', async () => {
   const button = screen.getByRole('button', { name: 'Menu' });
   expect(button).toBeInTheDocument();
   await user.click(button);
-  expect(screen.getByRole('menu', { name: 'Menu' })).toBeInTheDocument();
+  expect(screen.getByRole('menu')).toBeInTheDocument();
 });
 
 test('New journey menu item is present', async () => {
