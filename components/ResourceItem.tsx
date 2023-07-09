@@ -58,7 +58,7 @@ export default function ResourceItem<T extends Resource>(props: Props<T>) {
   };
 
   const rowClickHandler = () => {
-    window.open(resource.url, '_blank', 'noreferrer');
+    window.open(resource.url, '_blank', 'noopener noreferrer');
   };
 
   const rowRightClickHandler = (e: MouseEvent<HTMLTableRowElement, globalThis.MouseEvent>) => {

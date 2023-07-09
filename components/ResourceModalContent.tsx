@@ -1,4 +1,4 @@
-import { Accordion, Badge, Group, Skeleton, Stack, Text, createStyles } from '@mantine/core';
+import { Accordion, Anchor, Badge, Group, Skeleton, Stack, Text, createStyles } from '@mantine/core';
 import { JnodeShallow, NarrowResourceType, Resource, Resources } from 'types/jnode';
 import ResourceTable, { FieldMap } from 'components/ResourceTable';
 
@@ -112,6 +112,7 @@ type AccordionPanelProps<TType extends Resource['type']> = {
 
 const useStyles = createStyles(() => ({
   accordianContent: { padding: 0 },
+  anchor: { alignSelf: 'flex-end' },
 }));
 
 function AccordionItem<T extends Resource['type']>(props: AccordionPanelProps<T>) {
@@ -193,6 +194,14 @@ export default function ResourceModalContent(props: Props) {
           ))}
         </Accordion>
       )}
+      <Anchor
+        className={classes.anchor}
+        href={`${process.env.NEXT_PUBLIC_GITHUB_ISSUES_BASE_URL}/new?title=${jnode.title}`}
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        Contribute, amend or report a resource
+      </Anchor>
     </Stack>
   );
 }

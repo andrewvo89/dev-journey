@@ -1,6 +1,8 @@
 import { ActionIcon, Group, Menu, Text, Title, Tooltip, createStyles, useMantineTheme } from '@mantine/core';
 import { ChangeEvent, Fragment, useEffect, useRef, useState } from 'react';
 import {
+  IconBrandGithub,
+  IconCommand,
   IconDotsVertical,
   IconFileAlert,
   IconFilterEdit,
@@ -21,6 +23,7 @@ import { BookmarkSort } from 'types/bookmark';
 import { ExportDataModal } from 'components/ExportDataModal';
 import { FiltersChooser } from 'components/FiltersChooser';
 import { ImportDataModal } from 'components/ImportDataModal';
+import KeyboardShortcuts from 'components/KeyboardShortcuts';
 import { modKey } from 'utils/common';
 import { modals } from '@mantine/modals';
 import { notifications } from '@mantine/notifications';
@@ -162,6 +165,18 @@ export function TopSection() {
     setImportFile(file);
   };
 
+  const keyboardShortcutClickHandler = () => {
+    modals.open({
+      classNames: { overlay: modalClasses.overlay, inner: modalClasses.inner, title: modalClasses.h3 },
+      overlayProps: { color: theme.colors.gray[2], opacity: 0.55, blur: 1 },
+      closeButtonProps: { size: 'md' },
+      centered: true,
+      title: 'Keyboard shortcuts',
+      children: <KeyboardShortcuts />,
+      size: 'lg',
+    });
+  };
+
   return (
     <Fragment>
       <input onChange={importConfirmHandler} className={classes.importInput} type='file' ref={importInputRef} />
@@ -172,14 +187,14 @@ export function TopSection() {
           Dev Journey
         </Title>
         <Group>
-          <Tooltip label={`Search (${modKey} + F)`}>
+          <Tooltip label={`Search (${modKey} + f)`}>
             <ActionIcon color='dark' variant='transparent' aria-label='Search'>
               <IconSearch onClick={() => spotlight.open()} />
             </ActionIcon>
           </Tooltip>
           <Menu opened={menuIsOpen} onChange={setMenuIsOpen}>
             <Menu.Target>
-              <Tooltip label={`Menu (${modKey} + M)`}>
+              <Tooltip label={`Menu (${modKey} + m)`}>
                 <ActionIcon color='dark' variant='transparent' aria-label='Menu' onClick={() => setMenuIsOpen(true)}>
                   <IconDotsVertical />
                 </ActionIcon>
@@ -243,6 +258,19 @@ export function TopSection() {
                 Export data
               </Menu.Item>
               <Menu.Divider />
+              <Menu.Item
+                onClick={() => null}
+                icon={<IconBrandGithub size='1.25em' />}
+                component='a'
+                href={`${process.env.NEXT_PUBLIC_GITHUB_ISSUES_BASE_URL}/new?title=Dataset change request`}
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                Contribute to dataset
+              </Menu.Item>
+              <Menu.Item onClick={keyboardShortcutClickHandler} icon={<IconCommand size='1.25em' />}>
+                Keyboard shortcuts
+              </Menu.Item>
               <Menu.Item icon={<IconInfoCircle size='1.25em' />}>About</Menu.Item>
             </Menu.Dropdown>
           </Menu>

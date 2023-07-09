@@ -152,19 +152,19 @@ export function actionHandler(params: BookmarkActionParams): void {
   const { bookmark, window, updateNodes, setSelected } = params;
   switch (bookmark.type) {
     case 'article':
-      window.open(bookmark.article.url, '_blank', 'noreferrer');
+      window.open(bookmark.article.url, '_blank', 'noopener noreferrer');
       break;
     case 'book':
-      window.open(bookmark.book.url, '_blank', 'noreferrer');
+      window.open(bookmark.book.url, '_blank', 'noopener noreferrer');
       break;
     case 'course':
-      window.open(bookmark.course.url, '_blank', 'noreferrer');
+      window.open(bookmark.course.url, '_blank', 'noopener noreferrer');
       break;
     case 'misc':
-      window.open(bookmark.misc.url, '_blank', 'noreferrer');
+      window.open(bookmark.misc.url, '_blank', 'noopener noreferrer');
       break;
     case 'video':
-      window.open(bookmark.video.url, '_blank', 'noreferrer');
+      window.open(bookmark.video.url, '_blank', 'noopener noreferrer');
       break;
     case 'destination':
       updateNodes([{ id: bookmark.jnode.id, enabled: true }]);
