@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import { useGraphCtxMenuStore } from 'store/graph-context-menu';
 import { useHistoryCtxMenuStore } from 'store/history-context-menu';
 import { useNodeStore } from 'store/node';
+import { useSettingsMenuStore } from 'store/settings-menu';
 
 const useStyles = createStyles(() => ({
   container: {
@@ -31,6 +32,7 @@ export function Graph() {
   const setGraphCtxMenuOpen = useGraphCtxMenuStore((state) => state.setIsOpen);
   const setHistoryCtxMenuOpen = useHistoryCtxMenuStore((state) => state.setIsOpen);
   const setBookmarkCtxMenuOpen = useBookmarkCtxMenuStore((state) => state.setIsOpen);
+  const setSettingsMenuOpen = useSettingsMenuStore((state) => state.setIsOpen);
 
   useEffect(() => {
     const nodesOnPath = nodes.filter((node) => isJnodeNodeType(node) && node.data.isDesNode);
@@ -49,6 +51,7 @@ export function Graph() {
     setGraphCtxMenuOpen(null);
     setHistoryCtxMenuOpen(null);
     setBookmarkCtxMenuOpen(null);
+    setSettingsMenuOpen(false);
   };
 
   return (
