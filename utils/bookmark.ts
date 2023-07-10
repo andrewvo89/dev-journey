@@ -73,6 +73,20 @@ export function getPrettyType(type: BookmarkType): string {
   }
 }
 
+export function isOpenInNewTab(type: BookmarkType): boolean {
+  switch (type) {
+    case 'destination':
+    case 'journey':
+      return false;
+    case 'article':
+    case 'book':
+    case 'course':
+    case 'misc':
+    case 'video':
+      return true;
+  }
+}
+
 export function getIcon(type: BookmarkType): (props: TablerIconsProps) => JSX.Element {
   switch (type) {
     case 'destination':

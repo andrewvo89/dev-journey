@@ -1,7 +1,16 @@
 import { CSS, Transform } from '@dnd-kit/utilities';
 import { Fragment, MouseEvent } from 'react';
 import { Menu, NavLink, Text, Tooltip, createStyles, useMantineTheme } from '@mantine/core';
-import { actionHandler, getAction, getIcon, getLabel, getPrettyType, getSubtitle, getUrl } from 'utils/bookmark';
+import {
+  actionHandler,
+  getAction,
+  getIcon,
+  getLabel,
+  getPrettyType,
+  getSubtitle,
+  getUrl,
+  isOpenInNewTab,
+} from 'utils/bookmark';
 
 import { Bookmark } from 'types/bookmark';
 import { FiltersChooser } from 'components/FiltersChooser';
@@ -69,7 +78,9 @@ export default function BookmarkListItem(props: Props) {
 
   const bookmarkActionHandler = () => actionHandler({ bookmark, setSelected, updateNodes, window });
 
-  const bookmarkRightClickHandler = (e: MouseEvent<HTMLLIElement, globalThis.MouseEvent>) => {
+  const bookmarkRightClickHandler = (
+    e: MouseEvent<HTMLLIElement, globalThis.MouseEvent> | MouseEvent<HTMLAnchorElement, globalThis.MouseEvent>,
+  ) => {
     e.preventDefault();
     setMenuIsOpen(bookmark.id);
   };
@@ -124,20 +135,40 @@ export default function BookmarkListItem(props: Props) {
           openDelay={500}
           disabled={isDragging}
         >
-          <NavLink
-            classNames={{ children: classes.listItemChildren, root: classes.listItemRoot }}
-            ref={setNodeRef}
-            {...attributes}
-            {...listeners}
-            component='li'
-            role='menuitem'
-            aria-label='History item'
-            onContextMenu={bookmarkRightClickHandler}
-            onClick={bookmarkActionHandler}
-            label={<Text truncate>{label}</Text>}
-            description={getPrettyType(bookmark.type)}
-            icon={<Icon />}
-          />
+          {isOpenInNewTab(bookmark.type) ? (
+            <NavLink
+              classNames={{ children: classes.listItemChildren, root: classes.listItemRoot }}
+              ref={setNodeRef}
+              {...attributes}
+              {...listeners}
+              component='a'
+              href={getUrl(bookmark) ?? ''}
+              target='_blank'
+              rel='noreferrer noopener'
+              role='menuitem'
+              aria-label='History item'
+              onContextMenu={bookmarkRightClickHandler}
+              onClick={bookmarkActionHandler}
+              label={<Text truncate>{label}</Text>}
+              description={getPrettyType(bookmark.type)}
+              icon={<Icon />}
+            />
+          ) : (
+            <NavLink
+              classNames={{ children: classes.listItemChildren, root: classes.listItemRoot }}
+              ref={setNodeRef}
+              {...attributes}
+              {...listeners}
+              component='li'
+              role='menuitem'
+              aria-label='History item'
+              onContextMenu={bookmarkRightClickHandler}
+              onClick={bookmarkActionHandler}
+              label={<Text truncate>{label}</Text>}
+              description={getPrettyType(bookmark.type)}
+              icon={<Icon />}
+            />
+          )}
         </Tooltip>
       </Menu.Target>
       <Menu.Dropdown>

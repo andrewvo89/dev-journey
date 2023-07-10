@@ -78,7 +78,9 @@ export default function ResourceItem<T extends Resource>(props: Props<T>) {
           <tr className={classes.tr} onClick={rowClickHandler} onContextMenu={rowRightClickHandler}>
             {fieldMappings.map((field) => (
               <td key={field.key.toString()}>
-                {field.transform?.(resource[field.key]) ?? String(resource[field.key])}
+                <a href={resource.url} target='_blank' rel='noopener noreferrer'>
+                  {field.transform?.(resource[field.key]) ?? String(resource[field.key])}
+                </a>
               </td>
             ))}
           </tr>
