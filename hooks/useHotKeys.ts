@@ -14,15 +14,15 @@ export function useHotKeys() {
   const setTab = useTabStore((state) => state.setTab);
 
   useHotkeys([
-    ['mod+shift+m', toggleIsOpen],
-    ['mod+shift+f', () => spotlight.toggle()],
-    ['mod+shift+n', () => inputRef?.focus()],
+    ['mod+m', toggleIsOpen],
+    ['mod+f', () => spotlight.toggle()],
+    ['mod+n', () => inputRef?.focus()],
     ['/', () => inputRef?.focus()],
-    ['mod+shift+h', () => setTab('history')],
-    ['mod+shift+b', () => setTab('bookmarks')],
-    ['mod+shift+i', () => setTab('info')],
+    ['mod+h', () => setTab('history')],
+    ['mod+b', () => setTab('bookmarks')],
+    ['mod+i', () => setTab('info')],
     [
-      'mod+shift+r',
+      'mod+r',
       () => {
         setSelected(null);
         updateNodes([]);

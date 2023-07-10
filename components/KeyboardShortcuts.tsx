@@ -40,20 +40,20 @@ export default function KeyboardShortcuts() {
     <Stack spacing='1rem'>
       <KeyboardShortcut
         shortcut='Search for journeys, destinations or bookmarks'
-        kbds={[{ id: 'primary', keys: [modKey, 'shift', 'f'] }]}
+        kbds={[{ id: 'primary', keys: [modKey, 'f'] }]}
       />
-      <KeyboardShortcut shortcut='Open settings menu' kbds={[{ id: 'primary', keys: [modKey, 'shift', 'm'] }]} />
+      <KeyboardShortcut shortcut='Open settings menu' kbds={[{ id: 'primary', keys: [modKey, 'm'] }]} />
       <KeyboardShortcut
         shortcut='Start a new journey'
         kbds={[
           { id: 'primary', keys: ['/'] },
-          { id: 'secondary', keys: [modKey, 'shift', 'j'] },
+          { id: 'secondary', keys: [modKey, 'j'] },
         ]}
       />
-      <KeyboardShortcut shortcut='Reset view to default' kbds={[{ id: 'primary', keys: [modKey, 'shift', 'r'] }]} />
-      <KeyboardShortcut shortcut='Go to history tab' kbds={[{ id: 'primary', keys: [modKey, 'shift', 'h'] }]} />
-      <KeyboardShortcut shortcut='Go to bookmarks tab' kbds={[{ id: 'primary', keys: [modKey, 'shift', 'b'] }]} />
-      <KeyboardShortcut shortcut='Go to info tab' kbds={[{ id: 'primary', keys: [modKey, 'shift', 'i'] }]} />
+      <KeyboardShortcut shortcut='Reset view to default' kbds={[{ id: 'primary', keys: [modKey, 'r'] }]} />
+      <KeyboardShortcut shortcut='Go to history tab' kbds={[{ id: 'primary', keys: [modKey, 'h'] }]} />
+      <KeyboardShortcut shortcut='Go to bookmarks tab' kbds={[{ id: 'primary', keys: [modKey, 'b'] }]} />
+      <KeyboardShortcut shortcut='Go to info tab' kbds={[{ id: 'primary', keys: [modKey, 'i'] }]} />
     </Stack>
   );
 }
