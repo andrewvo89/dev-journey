@@ -17,6 +17,7 @@ export function useHotKeys() {
     ['mod+shift+m', toggleIsOpen],
     ['mod+shift+f', () => spotlight.toggle()],
     ['mod+shift+n', () => inputRef?.focus()],
+    ['/', () => inputRef?.focus()],
     ['mod+shift+h', () => setTab('history')],
     ['mod+shift+b', () => setTab('bookmarks')],
     ['mod+shift+i', () => setTab('info')],

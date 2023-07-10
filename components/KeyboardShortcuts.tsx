@@ -1,41 +1,59 @@
-import { Group, Kbd, Stack, Text } from '@mantine/core';
+import { Divider, Group, Kbd, Stack, Text } from '@mantine/core';
 
 import { Fragment } from 'react';
 import { IconPlus } from '@tabler/icons-react';
 import { modKey } from 'utils/common';
 
+type KeyCombination = { id: string; keys: string[] };
+
 type Props = {
   shortcut: string;
-  kbds: string[];
+  kbds: KeyCombination[];
 };
 
 function KeyboardShortcut(props: Props) {
   const { kbds, shortcut } = props;
   return (
-    <Group position='apart'>
-      <Text truncate>{shortcut}</Text>
-      <Group spacing='xs'>
-        {kbds.map((kbd, index) => (
-          <Fragment key={kbd}>
-            <Kbd>{kbd}</Kbd>
-            {index !== kbds.length - 1 && <IconPlus size='1rem' />}
-          </Fragment>
-        ))}
+    <Stack>
+      <Group position='apart' align='flex-start'>
+        <Text truncate>{shortcut}</Text>
+        <Stack>
+          {kbds.map(({ id, keys }) => (
+            <Group key={id} spacing='xs' position='right'>
+              {keys.map((key, index, arr) => (
+                <Fragment key={key}>
+                  <Kbd>{key}</Kbd>
+                  {index !== arr.length - 1 && <IconPlus size='1rem' />}
+                </Fragment>
+              ))}
+            </Group>
+          ))}
+        </Stack>
       </Group>
-    </Group>
+      <Divider />
+    </Stack>
   );
 }
 
 export default function KeyboardShortcuts() {
   return (
     <Stack spacing='1rem'>
-      <KeyboardShortcut shortcut='Search for journeys, destinations or bookmarks' kbds={[modKey, 'shift', 'f']} />
-      <KeyboardShortcut shortcut='Open settings menu' kbds={[modKey, 'shift', 'm']} />
-      <KeyboardShortcut shortcut='Start a new journey' kbds={[modKey, 'shift', 'j']} />
-      <KeyboardShortcut shortcut='Reset view to default' kbds={[modKey, 'shift', 'r']} />
-      <KeyboardShortcut shortcut='Go to history tab' kbds={[modKey, 'shift', 'h']} />
-      <KeyboardShortcut shortcut='Go to bookmarks tab' kbds={[modKey, 'shift', 'b']} />
-      <KeyboardShortcut shortcut='Go to info tab' kbds={[modKey, 'shift', 'i']} />
+      <KeyboardShortcut
+        shortcut='Search for journeys, destinations or bookmarks'
+        kbds={[{ id: 'primary', keys: [modKey, 'shift', 'f'] }]}
+      />
+      <KeyboardShortcut shortcut='Open settings menu' kbds={[{ id: 'primary', keys: [modKey, 'shift', 'm'] }]} />
+      <KeyboardShortcut
+        shortcut='Start a new journey'
+        kbds={[
+          { id: 'primary', keys: ['/'] },
+          { id: 'secondary', keys: [modKey, 'shift', 'j'] },
+        ]}
+      />
+      <KeyboardShortcut shortcut='Reset view to default' kbds={[{ id: 'primary', keys: [modKey, 'shift', 'r'] }]} />
+      <KeyboardShortcut shortcut='Go to history tab' kbds={[{ id: 'primary', keys: [modKey, 'shift', 'h'] }]} />
+      <KeyboardShortcut shortcut='Go to bookmarks tab' kbds={[{ id: 'primary', keys: [modKey, 'shift', 'b'] }]} />
+      <KeyboardShortcut shortcut='Go to info tab' kbds={[{ id: 'primary', keys: [modKey, 'shift', 'i'] }]} />
     </Stack>
   );
 }

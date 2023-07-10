@@ -164,5 +164,17 @@ export function useSyncSpotlight() {
     );
 
     spotlight.registerActions(actions);
-  }, [addJourney, bookmarks, jnodes, prompts, setIsLoading, setIsOpen, setPrompt, setSelected, setTab, updateNodes]);
+  }, [
+    addJourney,
+    bookmarks,
+    inputRef,
+    jnodes,
+    prompts,
+    setIsLoading,
+    setIsOpen,
+    setPrompt,
+    setSelected,
+    setTab,
+    updateNodes,
+  ]);
 }
