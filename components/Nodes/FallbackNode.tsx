@@ -4,7 +4,7 @@ import { Handle, NodeProps } from 'reactflow';
 import { IconBook, IconBookmarkPlus, IconFileDescription, IconFlag, IconRocket } from '@tabler/icons-react';
 
 import { JNodeTypeData } from 'types/flow';
-import ResourceModalContent from 'components/ResourceModalContent';
+import ResourceContent from 'components/ResourceContent';
 import { modals } from '@mantine/modals';
 import { notifications } from '@mantine/notifications';
 import { useBookmarkStore } from 'store/bookmark';
@@ -49,7 +49,7 @@ export default function FallbackNode(props: NodeProps<JNodeTypeData>) {
       overlayProps: { color: theme.colors.gray[2], opacity: 0.55, blur: 3 },
       closeButtonProps: { size: 'lg' },
       title: jnode.title,
-      children: <ResourceModalContent jnodeShallow={jnode} />,
+      children: <ResourceContent jnodeShallow={jnode} />,
     });
   };
 

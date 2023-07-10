@@ -1,11 +1,12 @@
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
-      GITHUB_API_BASE_URL: string;
-      GITHUB_RAW_BASE_URL: string;
-      GITHUB_TOKEN: string;
-      NEXT_PUBLIC_GITHUB_ISSUES_BASE_URL: string;
-      NEXT_PUBLIC_GITHUB_RAW_BASE_URL: string;
+      GH_API_BASE_URL: string;
+      GH_RAW_BASE_URL: string;
+      GH_TOKEN: string;
+      NEXT_PUBLIC_GH_RAW_BASE_URL: string;
+      NEXT_PUBLIC_GH_DATASET_URL: string;
+      NEXT_PUBLIC_BMAC_URL: string;
     }
   }
 }

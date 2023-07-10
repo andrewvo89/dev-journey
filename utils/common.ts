@@ -17,3 +17,9 @@ export const isClient = !isServer;
 export const isMac = isClient && navigator.userAgent.toLowerCase().includes('mac');
 
 export const modKey = isMac ? '⌘' : 'Ctrl';
+
+export const githubUrl = process.env.NEXT_PUBLIC_GH_DATASET_URL;
+
+export const issuesUrl = `${githubUrl}/issues`;
+
+export const bmacUrl = process.env.NEXT_PUBLIC_BMAC_URL;

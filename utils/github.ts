@@ -5,9 +5,9 @@ import { isServer } from 'utils/common';
 import { jnodeSchema } from 'schemas/jnode';
 import { jnodeTypes } from 'utils/jnode';
 
-const baseUrl = process.env.GITHUB_API_BASE_URL;
-const ghToken = process.env.GITHUB_TOKEN;
-const baseRawUrl = isServer ? process.env.GITHUB_RAW_BASE_URL : process.env.NEXT_PUBLIC_GITHUB_RAW_BASE_URL;
+const baseUrl = process.env.GH_API_BASE_URL;
+const ghToken = process.env.GH_TOKEN;
+const baseRawUrl = isServer ? process.env.GH_RAW_BASE_URL : process.env.NEXT_PUBLIC_GH_RAW_BASE_URL;
 
 /**
  * To only be run on the server as it contains a GitHub token.

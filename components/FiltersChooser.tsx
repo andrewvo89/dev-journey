@@ -1,7 +1,8 @@
+import { ChangeEvent, useMemo } from 'react';
 import { Checkbox, Stack } from '@mantine/core';
 import { bookmarkTypes, getPrettyType } from 'utils/bookmark';
 
-import { ChangeEvent } from 'react';
+import { BookmarkType } from 'types/bookmark';
 import { bookmarkTypeSchema } from 'schemas/bookmark';
 import { shallow } from 'zustand/shallow';
 import { useBookmarkStore } from 'store/bookmark';
@@ -16,6 +17,15 @@ export function FiltersChooser() {
       selectNoFilters: state.deselectAllFilters,
     }),
     shallow,
+  );
+  const bookmarks = useBookmarkStore((state) => state.bookmarks);
+  const counts = useMemo<Record<BookmarkType, number>>(
+    () =>
+      bookmarks.reduce(
+        (map, bookmark) => ({ ...map, [bookmark.type]: map[bookmark.type] + 1 }),
+        bookmarkTypes.reduce<Record<string, number>>((map, type) => ({ ...map, [type]: 0 }), {}),
+      ),
+    [bookmarks],
   );
 
   const allChecked = bookmarkTypes.every((type) => filters.includes(type));
@@ -54,7 +64,7 @@ export function FiltersChooser() {
           key={type}
           ml='xl'
           value={type}
-          label={getPrettyType(type)}
+          label={`${getPrettyType(type)} (${counts[type]})`}
           checked={filters.includes(type)}
           onChange={childCheckboxChangeHandler}
         />

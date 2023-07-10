@@ -1,11 +1,12 @@
 import { Accordion, Anchor, Badge, Group, Skeleton, Stack, Text, createStyles } from '@mantine/core';
 import { JnodeShallow, NarrowResourceType, Resource, Resources } from 'types/jnode';
 import ResourceTable, { FieldMap } from 'components/ResourceTable';
+import { issuesUrl, toReadableHours } from 'utils/common';
 
+import Link from 'next/link';
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import { getJnode } from 'utils/github';
-import { toReadableHours } from 'utils/common';
 import { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
@@ -145,7 +146,7 @@ type Props = {
 const fallback =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
-export default function ResourceModalContent(props: Props) {
+export default function ResourceContent(props: Props) {
   const { jnodeShallow } = props;
   const { classes } = useStyles();
 
@@ -196,7 +197,7 @@ export default function ResourceModalContent(props: Props) {
       )}
       <Anchor
         className={classes.anchor}
-        href={`${process.env.NEXT_PUBLIC_GITHUB_ISSUES_BASE_URL}/new?title=${jnode.title}`}
+        href={`${issuesUrl}/new?title=${jnode.title}`}
         target='_blank'
         rel='noopener noreferrer'
       >

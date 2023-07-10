@@ -18,13 +18,14 @@ import {
   IconTrashX,
   IconZoomReset,
 } from '@tabler/icons-react';
+import { issuesUrl, modKey } from 'utils/common';
 
+import About from 'components/About';
 import { BookmarkSort } from 'types/bookmark';
 import { ExportDataModal } from 'components/ExportDataModal';
 import { FiltersChooser } from 'components/FiltersChooser';
 import { ImportDataModal } from 'components/ImportDataModal';
 import KeyboardShortcuts from 'components/KeyboardShortcuts';
-import { modKey } from 'utils/common';
 import { modals } from '@mantine/modals';
 import { notifications } from '@mantine/notifications';
 import { shallow } from 'zustand/shallow';
@@ -119,7 +120,7 @@ export function TopSection() {
     modals.open({
       classNames: { overlay: modalClasses.overlay, inner: modalClasses.inner, title: modalClasses.h3 },
       overlayProps: { color: theme.colors.gray[2], opacity: 0.55, blur: 1 },
-      closeButtonProps: { size: 'md' },
+      closeButtonProps: { size: 'lg' },
       centered: true,
       title: 'Filters',
       children: <FiltersChooser />,
@@ -173,6 +174,18 @@ export function TopSection() {
       centered: true,
       title: 'Keyboard shortcuts',
       children: <KeyboardShortcuts />,
+      size: 'lg',
+    });
+  };
+
+  const aboutClickHandler = () => {
+    modals.open({
+      classNames: { overlay: modalClasses.overlay, inner: modalClasses.inner, title: modalClasses.h3 },
+      overlayProps: { color: theme.colors.gray[2], opacity: 0.55, blur: 1 },
+      closeButtonProps: { size: 'md' },
+      centered: true,
+      title: 'About',
+      children: <About />,
       size: 'lg',
     });
   };
@@ -262,7 +275,7 @@ export function TopSection() {
                 onClick={() => null}
                 icon={<IconBrandGithub size='1.25em' />}
                 component='a'
-                href={`${process.env.NEXT_PUBLIC_GITHUB_ISSUES_BASE_URL}/new?title=Dataset change request`}
+                href={`${issuesUrl}/new?title=Dataset change request`}
                 target='_blank'
                 rel='noopener noreferrer'
               >
@@ -271,7 +284,9 @@ export function TopSection() {
               <Menu.Item onClick={keyboardShortcutClickHandler} icon={<IconCommand size='1.25em' />}>
                 Keyboard shortcuts
               </Menu.Item>
-              <Menu.Item icon={<IconInfoCircle size='1.25em' />}>About</Menu.Item>
+              <Menu.Item onClick={aboutClickHandler} icon={<IconInfoCircle size='1.25em' />}>
+                About
+              </Menu.Item>
             </Menu.Dropdown>
           </Menu>
         </Group>
