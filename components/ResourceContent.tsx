@@ -3,7 +3,6 @@ import { JnodeShallow, NarrowResourceType, Resource, Resources } from 'types/jno
 import ResourceTable, { FieldMap } from 'components/ResourceTable';
 import { issuesUrl, toReadableHours } from 'utils/common';
 
-import Link from 'next/link';
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import { getJnode } from 'utils/github';
