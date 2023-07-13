@@ -15,6 +15,7 @@ import { notifications } from '@mantine/notifications';
 import { produce } from 'immer';
 import { useBookmarkStore } from 'store/bookmark';
 import { useHistoryStore } from 'store/history';
+import { useModalStore } from 'store/modal';
 import { useModalStyles } from 'styles/modal';
 
 type Props = {
@@ -24,6 +25,8 @@ type Props = {
 
 export function ImportDataModal(props: Props) {
   const { file, setFile } = props;
+
+  const setModalIsActive = useModalStore((state) => state.setIsActive);
   const [importTypes, setImportTypes] = useState<ImportType[]>([]);
   const [enabledTypes, setEnabledTypes] = useState<ImportType[]>([]);
 
@@ -40,6 +43,10 @@ export function ImportDataModal(props: Props) {
 
   const { classes: modalClasses } = useModalStyles();
   const theme = useMantineTheme();
+
+  useEffect(() => {
+    setModalIsActive(!!file);
+  }, [file, setModalIsActive]);
 
   useEffect(() => {
     if (!file) {

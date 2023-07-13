@@ -34,6 +34,7 @@ import { useBookmarkStore } from 'store/bookmark';
 import { useHistoryStore } from 'store/history';
 import { useHydratedStore } from 'hooks/useHydratedStore';
 import { useInputRefStore } from 'store/input-ref';
+import { useModalStore } from 'store/modal';
 import { useModalStyles } from 'styles/modal';
 import { useNodeStore } from 'store/node';
 import { useSettingsMenuStore } from 'store/settings-menu';
@@ -55,6 +56,7 @@ export function TopSection() {
   const [exportModalIsOpen, setExportModalIsOpen] = useState(false);
   const [importFile, setImportFile] = useState<File>();
 
+  const setModalIsActive = useModalStore((state) => state.setIsActive);
   const { isOpen: menuIsOpen, setIsOpen: setMenuIsOpen } = useSettingsMenuStore();
 
   const { clearHistory, setSelected } = useHistoryStore(
@@ -107,7 +109,9 @@ export function TopSection() {
       children: <Text>Please confirm that you want to clear your history. This action cannot be undone.</Text>,
       labels: { confirm: 'Confirm', cancel: 'Cancel' },
       onConfirm: clearHistory,
+      onClose: () => setModalIsActive(false),
     });
+    setModalIsActive(true);
   };
 
   const resetViewClickHandler = () => {
@@ -124,7 +128,9 @@ export function TopSection() {
       centered: true,
       title: 'Filters',
       children: <FiltersChooser />,
+      onClose: () => setModalIsActive(false),
     });
+    setModalIsActive(true);
   };
 
   const sortBookmarksHandler = (order: BookmarkSort) => {
@@ -175,7 +181,9 @@ export function TopSection() {
       title: 'Keyboard shortcuts',
       children: <KeyboardShortcuts />,
       size: 'lg',
+      onClose: () => setModalIsActive(false),
     });
+    setModalIsActive(true);
   };
 
   const aboutClickHandler = () => {
@@ -187,7 +195,9 @@ export function TopSection() {
       title: 'About',
       children: <About />,
       size: 'lg',
+      onClose: () => setModalIsActive(false),
     });
+    setModalIsActive(true);
   };
 
   return (

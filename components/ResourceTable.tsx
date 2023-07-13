@@ -1,8 +1,19 @@
-import { Center, Group, Table, Text, UnstyledButton, createStyles } from '@mantine/core';
-import { IconChevronDown, IconChevronUp, IconSelector } from '@tabler/icons-react';
-import { useMemo, useState } from 'react';
+import {
+  ActionIcon,
+  Center,
+  CloseButton,
+  Group,
+  Stack,
+  Table,
+  Text,
+  TextInput,
+  UnstyledButton,
+  createStyles,
+} from '@mantine/core';
+import { IconChevronDown, IconChevronUp, IconSearch, IconSelector } from '@tabler/icons-react';
+import { NarrowResource, ResourceMap, ResourceType } from 'types/resource';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
-import { Resource } from 'types/jnode';
 import ResourceItem from 'components/ResourceItem';
 
 const useStyles = createStyles((theme) => ({
@@ -28,37 +39,70 @@ const useStyles = createStyles((theme) => ({
     height: '1.5rem',
     borderRadius: '1.5rem',
   },
+  inputContainer: {
+    marginRight: theme.spacing.md,
+    alignSelf: 'flex-end',
+  },
+  placeholderMessage: {
+    color: theme.colors.gray[6],
+    margin: `0 ${theme.spacing.md} ${theme.spacing.xs}`,
+  },
 }));
 
-export type FieldMap<T extends Resource> = {
-  key: keyof T;
-  heading: string;
-  transform?: (value: T[keyof T]) => string;
+type Props<TType extends ResourceType> = {
+  data: NarrowResource<TType>[];
+  isVisible: boolean;
+  map: ResourceMap<TType>;
 };
 
-type Props<T extends Resource> = {
-  initialSort: keyof T;
-  fieldMappings: FieldMap<T>[];
-  data: T[];
-};
+const searcherFn = (outer: string, inner: string) => outer.trim().toLowerCase().includes(inner.toLowerCase().trim());
 
-export default function ResourceTable<T extends Resource>(props: Props<T>) {
-  const { fieldMappings, data, initialSort } = props;
-  const { classes } = useStyles();
-  const [sortBy, setSortBy] = useState<keyof T>(initialSort);
+export default function ResourceTable<TType extends ResourceType>(props: Props<TType>) {
+  const { data, isVisible, map } = props;
+  const { singularTerm, initialSort, fieldMappings } = map;
+
+  const [query, setQuery] = useState('');
+  const searchRef = useRef<HTMLInputElement>(null);
+  const [sortBy, setSortBy] = useState<keyof NarrowResource<TType>>(initialSort);
   const [reverseSortDirection, setReverseSortDirection] = useState(false);
 
-  const setSorting = (field: keyof T) => {
+  const { classes } = useStyles();
+
+  useEffect(() => {
+    if (isVisible) {
+      setTimeout(() => searchRef.current?.focus(), 100);
+    }
+  }, [isVisible]);
+
+  const setSorting = (field: keyof NarrowResource<TType>) => {
     const reversed = field === sortBy ? !reverseSortDirection : false;
     setReverseSortDirection(reversed);
     setSortBy(field);
   };
 
-  const sortedData = useMemo(() => {
+  const sortedAndFiltered = useMemo(() => {
+    const filtered = data.filter((item) =>
+      Object.entries(item).some(([key, value]) => {
+        const isResourceValue = (value: any): value is NarrowResource<TType>[keyof NarrowResource<TType>] =>
+          typeof value === 'string' || typeof value === 'number' || Array.isArray(value);
+
+        const fieldMap = fieldMappings.find((field) => field.key === key);
+        if (fieldMap?.transform && isResourceValue(value)) {
+          return searcherFn(fieldMap.transform(value), query);
+        }
+        if (typeof value === 'string') {
+          return searcherFn(value, query);
+        }
+        if (typeof value === 'number') {
+          return searcherFn(value.toString(), query);
+        }
+        return searcherFn(value.join(''), query);
+      }),
+    );
     if (!sortBy) {
-      return data;
+      return filtered;
     }
-    return [...data].sort((a, b) => {
+    return filtered.sort((a, b) => {
       const aValue = a[sortBy];
       const bValue = b[sortBy];
 
@@ -74,35 +118,57 @@ export default function ResourceTable<T extends Resource>(props: Props<T>) {
       }
       return String(a[sortBy]).localeCompare(String(b[sortBy]));
     });
-  }, [data, reverseSortDirection, sortBy]);
+  }, [data, fieldMappings, query, reverseSortDirection, sortBy]);
 
   return (
-    <Table>
-      <thead>
-        <tr>
-          {fieldMappings.map((field) => {
-            const sorted = field.key === sortBy;
-            const Icon = sorted ? (reverseSortDirection ? IconChevronUp : IconChevronDown) : IconSelector;
-            return (
-              <th key={field.key.toString()} className={classes.th}>
-                <UnstyledButton onClick={() => setSorting(field.key)} className={classes.control}>
-                  <Group position='apart' noWrap>
-                    <Text className={classes.heading}>{field.heading}</Text>
-                    <Center className={classes.icon}>
-                      <Icon size='0.9rem' stroke={1.5} />
-                    </Center>
-                  </Group>
-                </UnstyledButton>
-              </th>
-            );
-          })}
-        </tr>
-      </thead>
-      <tbody>
-        {sortedData.map((resource) => (
-          <ResourceItem key={resource.url} resource={resource} fieldMappings={fieldMappings} />
-        ))}
-      </tbody>
-    </Table>
+    <Stack>
+      <TextInput
+        placeholder='Search...'
+        ref={searchRef}
+        classNames={{ root: classes.inputContainer }}
+        rightSection={
+          query ? (
+            <CloseButton size='md' variant='transparent' onClick={() => setQuery('')} />
+          ) : (
+            <ActionIcon size='md' variant='transparent'>
+              <IconSearch />
+            </ActionIcon>
+          )
+        }
+        value={query}
+        onChange={(e) => setQuery(e.currentTarget.value)}
+      />
+      {sortedAndFiltered.length === 0 ? (
+        <Text className={classes.placeholderMessage}>No {singularTerm} resources found...</Text>
+      ) : (
+        <Table>
+          <thead>
+            <tr>
+              {fieldMappings.map((field) => {
+                const sorted = field.key === sortBy;
+                const Icon = sorted ? (reverseSortDirection ? IconChevronUp : IconChevronDown) : IconSelector;
+                return (
+                  <th key={field.key.toString()} className={classes.th}>
+                    <UnstyledButton onClick={() => setSorting(field.key)} className={classes.control}>
+                      <Group position='apart' noWrap>
+                        <Text className={classes.heading}>{field.heading}</Text>
+                        <Center className={classes.icon}>
+                          <Icon size='0.9rem' stroke={1.5} />
+                        </Center>
+                      </Group>
+                    </UnstyledButton>
+                  </th>
+                );
+              })}
+            </tr>
+          </thead>
+          <tbody>
+            {sortedAndFiltered.map((resource) => (
+              <ResourceItem key={resource.url} resource={resource} fieldMappings={fieldMappings} />
+            ))}
+          </tbody>
+        </Table>
+      )}
+    </Stack>
   );
 }

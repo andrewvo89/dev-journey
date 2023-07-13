@@ -1,9 +1,8 @@
+import { FieldMap, Resource } from 'types/resource';
 import { IconBookmarkPlus, IconClipboard } from '@tabler/icons-react';
 import { Menu, Tooltip, createStyles } from '@mantine/core';
 import { MouseEvent, useState } from 'react';
 
-import { FieldMap } from 'components/ResourceTable';
-import { Resource } from 'types/jnode';
 import { notifications } from '@mantine/notifications';
 import { useBookmarkStore } from 'store/bookmark';
 import { useTabStore } from 'store/tab';

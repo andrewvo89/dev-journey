@@ -1,5 +1,5 @@
 import { Button, Checkbox, Group, Modal, Stack, useMantineTheme } from '@mantine/core';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { createExportJSON, getPrettyType, importTypes } from 'utils/import-export';
 
 import { IconPackageExport } from '@tabler/icons-react';
@@ -11,6 +11,7 @@ import { produce } from 'immer';
 import { useBookmarkStore } from 'store/bookmark';
 import { useHistoryStore } from 'store/history';
 import { useHydratedStore } from 'hooks/useHydratedStore';
+import { useModalStore } from 'store/modal';
 import { useModalStyles } from 'styles/modal';
 import { useReactFlow } from 'reactflow';
 
@@ -21,6 +22,9 @@ type Props = {
 
 export function ExportDataModal(props: Props) {
   const { isOpen, setIsOpen } = props;
+
+  const setModalIsActive = useModalStore((state) => state.setIsActive);
+
   const [exportTypes, setExportTypes] = useState(importTypes);
   const bookmarks = useHydratedStore(useBookmarkStore, (state) => state.bookmarks);
   const journeys = useHydratedStore(useHistoryStore, (state) => state.journeys);
@@ -33,6 +37,10 @@ export function ExportDataModal(props: Props) {
 
   const allChecked = importTypes.every((type) => exportTypes.includes(type));
   const indeterminate = importTypes.some((type) => exportTypes.includes(type)) && !allChecked;
+
+  useEffect(() => {
+    setModalIsActive(isOpen);
+  }, [isOpen, setModalIsActive]);
 
   if (!bookmarks || !journeys || !filters || !sort) {
     return null;

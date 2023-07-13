@@ -10,6 +10,7 @@ import { notifications } from '@mantine/notifications';
 import { useBookmarkStore } from 'store/bookmark';
 import { useGraphCtxMenuStore } from 'store/graph-context-menu';
 import { useHistoryStore } from 'store/history';
+import { useModalStore } from 'store/modal';
 import { useModalStyles } from 'styles/modal';
 import { useNodeStore } from 'store/node';
 import { useStyles } from 'styles/node';
@@ -23,6 +24,7 @@ export default function FallbackNode(props: NodeProps<JNodeTypeData>) {
     targetPosition,
   } = props;
 
+  const setModalIsActive = useModalStore((state) => state.setIsActive);
   const updateNodes = useNodeStore((state) => state.updateNodes);
   const theme = useMantineTheme();
   const addBookmark = useBookmarkStore((state) => state.addBookmark);
@@ -50,7 +52,9 @@ export default function FallbackNode(props: NodeProps<JNodeTypeData>) {
       closeButtonProps: { size: 'lg' },
       title: jnode.title,
       children: <ResourceContent jnodeShallow={jnode} />,
+      onClose: () => setModalIsActive(false),
     });
+    setModalIsActive(true);
   };
 
   const cardRightClickHandler = (e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {

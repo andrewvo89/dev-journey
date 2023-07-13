@@ -86,11 +86,3 @@ export const partialResourcesSchema = z.object({
   total: z.number(),
   resources: resourceSchema.array(),
 });
-
-export const resourceTypeSchema = z.union([
-  articleResourceSchema.shape.type,
-  bookResourceSchema.shape.type,
-  courseResourceSchema.shape.type,
-  miscResourceSchema.shape.type,
-  videoResourceSchema.shape.type,
-]);

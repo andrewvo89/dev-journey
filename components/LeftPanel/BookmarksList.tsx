@@ -10,6 +10,7 @@ import { modals } from '@mantine/modals';
 import { useBookmarkStore } from 'store/bookmark';
 import { useHydratedStore } from 'hooks/useHydratedStore';
 import { useMemo } from 'react';
+import { useModalStore } from 'store/modal';
 import { useModalStyles } from 'styles/modal';
 
 const useStyles = createStyles(() => ({
@@ -26,6 +27,7 @@ export default function BookmarksList() {
   const filters = useHydratedStore(useBookmarkStore, (state) => state.filters);
   const sort = useHydratedStore(useBookmarkStore, (state) => state.sort);
 
+  const setModalIsActive = useModalStore((state) => state.setIsActive);
   const setBookmarks = useBookmarkStore((state) => state.setBookmarks);
 
   const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 8 } }));
@@ -71,7 +73,9 @@ export default function BookmarksList() {
         centered: true,
         title: 'Filters',
         children: <FiltersChooser />,
+        onClose: () => setModalIsActive(false),
       });
+      setModalIsActive(true);
     };
 
     return (

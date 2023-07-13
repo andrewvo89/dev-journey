@@ -23,6 +23,7 @@ import { shallow } from 'zustand/shallow';
 import { useBookmarkStore } from 'store/bookmark';
 import { useHistoryCtxMenuStore } from 'store/history-context-menu';
 import { useHistoryStore } from 'store/history';
+import { useModalStore } from 'store/modal';
 import { useModalStyles } from 'styles/modal';
 import { useNodeStore } from 'store/node';
 import { useTabStore } from 'store/tab';
@@ -67,6 +68,8 @@ export default function HistoryListItem(props: Props) {
 
   const isSelected = selected?.id === journey.id;
   const { classes } = useStyles();
+
+  const setModalIsActive = useModalStore((state) => state.setIsActive);
 
   const [navlinkIsOpen, setNavlinkIsOpen] = useState(false);
   const [deleteMode, setDeleteMode] = useState(false);
@@ -150,7 +153,7 @@ export default function HistoryListItem(props: Props) {
     });
   };
 
-  const removeHistoryClickHandler = () =>
+  const removeHistoryClickHandler = () => {
     modals.openConfirmModal({
       classNames: { overlay: modalClasses.overlay, inner: modalClasses.inner, title: modalClasses.h3 },
       overlayProps: { color: theme.colors.gray[2], opacity: 0.55, blur: 3 },
@@ -160,9 +163,12 @@ export default function HistoryListItem(props: Props) {
       children: <Text>Please confirm that you want to remove this history item. This action cannot be undone.</Text>,
       labels: { confirm: 'Confirm', cancel: 'Cancel' },
       onConfirm: removeConfirmHandler,
+      onClose: () => setModalIsActive(false),
     });
+    setModalIsActive(true);
+  };
 
-  const clearHistoryClickHandler = () =>
+  const clearHistoryClickHandler = () => {
     modals.openConfirmModal({
       classNames: { overlay: modalClasses.overlay, inner: modalClasses.inner, title: modalClasses.h3 },
       overlayProps: { color: theme.colors.gray[2], opacity: 0.55, blur: 3 },
@@ -172,7 +178,10 @@ export default function HistoryListItem(props: Props) {
       children: <Text>Please confirm that you want to clear your history. This action cannot be undone.</Text>,
       labels: { confirm: 'Confirm', cancel: 'Cancel' },
       onConfirm: clearHistory,
+      onClose: () => setModalIsActive(false),
     });
+    setModalIsActive(true);
+  };
 
   return (
     <Menu opened={menuIsOpen === journey.id} onChange={menuChangeHandler} withArrow>

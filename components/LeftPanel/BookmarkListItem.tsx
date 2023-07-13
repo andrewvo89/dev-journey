@@ -21,6 +21,7 @@ import { shallow } from 'zustand/shallow';
 import { useBookmarkCtxMenuStore } from 'store/bookmark-context-menu';
 import { useBookmarkStore } from 'store/bookmark';
 import { useHistoryStore } from 'store/history';
+import { useModalStore } from 'store/modal';
 import { useModalStyles } from 'styles/modal';
 import { useNodeStore } from 'store/node';
 import { useSortable } from '@dnd-kit/sortable';
@@ -65,6 +66,7 @@ export default function BookmarkListItem(props: Props) {
   const { classes } = useStyles({ transform, transition, isDragging, isOver });
   const theme = useMantineTheme();
 
+  const setModalIsActive = useModalStore((state) => state.setIsActive);
   const updateNodes = useNodeStore((state) => state.updateNodes);
   const setSelected = useHistoryStore((state) => state.setSelected);
   const { isOpen: menuIsOpen, setIsOpen: setMenuIsOpen } = useBookmarkCtxMenuStore();
@@ -115,7 +117,9 @@ export default function BookmarkListItem(props: Props) {
       centered: true,
       title: 'Filters',
       children: <FiltersChooser />,
+      onClose: () => setModalIsActive(false),
     });
+    setModalIsActive(true);
   };
 
   const Icon = getIcon(bookmark.type);

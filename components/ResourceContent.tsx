@@ -1,26 +1,16 @@
-import { Accordion, Anchor, Badge, Group, Skeleton, Stack, Text, TextInput, createStyles } from '@mantine/core';
-import { JnodeShallow, NarrowResourceType, Resource, Resources } from 'types/jnode';
-import ResourceTable, { FieldMap } from 'components/ResourceTable';
+import { Accordion, Anchor, Badge, Group, Skeleton, Stack, Text, createStyles } from '@mantine/core';
+import { NarrowResource, ResourceMap, ResourceType } from 'types/resource';
 import { issuesUrl, toReadableHours } from 'utils/common';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useMemo, useState } from 'react';
 
-import { IconSearch } from '@tabler/icons-react';
+import { JnodeShallow } from 'types/jnode';
+import ResourceTable from 'components/ResourceTable';
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import { getJnode } from 'utils/github';
 import { useQuery } from '@tanstack/react-query';
 
 dayjs.extend(duration);
-
-type ResourceMap<TType extends Resource['type']> = {
-  id: keyof Resources;
-  heading: string;
-  singularTerm: string;
-  pluralTerm: string;
-  fieldMappings: FieldMap<NarrowResourceType<TType>>[];
-  type: TType;
-  initalSort: keyof NarrowResourceType<TType>;
-};
 
 const misc: ResourceMap<'misc'> = {
   id: 'misc',
@@ -29,7 +19,7 @@ const misc: ResourceMap<'misc'> = {
   pluralTerm: 'miscellaneous',
   fieldMappings: [{ key: 'title', heading: 'Title' }],
   type: 'misc',
-  initalSort: 'title',
+  initialSort: 'title',
 };
 
 const videos: ResourceMap<'video'> = {
@@ -51,7 +41,7 @@ const videos: ResourceMap<'video'> = {
     },
   ],
   type: 'video',
-  initalSort: 'title',
+  initialSort: 'title',
 };
 
 const courses: ResourceMap<'course'> = {
@@ -74,7 +64,7 @@ const courses: ResourceMap<'course'> = {
     { key: 'platform', heading: 'Platform' },
   ],
   type: 'course',
-  initalSort: 'title',
+  initialSort: 'title',
 };
 
 const articles: ResourceMap<'article'> = {
@@ -91,7 +81,7 @@ const articles: ResourceMap<'article'> = {
     },
   ],
   type: 'article',
-  initalSort: 'title',
+  initialSort: 'title',
 };
 
 const books: ResourceMap<'book'> = {
@@ -109,49 +99,17 @@ const books: ResourceMap<'book'> = {
     { key: 'pages', heading: 'Pages' },
   ],
   type: 'book',
-  initalSort: 'title',
+  initialSort: 'title',
 };
 
-type AccordionPanelProps<TType extends Resource['type']> = {
+type AccordionPanelProps<TType extends ResourceType> = {
   map: ResourceMap<TType>;
-  data: NarrowResourceType<TType>[];
+  data: NarrowResource<TType>[];
   isOpen: boolean;
 };
 
-const useAccordionItemStyles = createStyles((theme) => ({
-  inputContainer: {
-    marginRight: theme.spacing.md,
-    alignSelf: 'flex-end',
-  },
-  input: {
-    borderRadius: theme.radius.xl,
-  },
-  placeholderMessage: {
-    color: theme.colors.gray[6],
-    margin: `0 ${theme.spacing.md} ${theme.spacing.xs}`,
-  },
-}));
-
-function AccordionItem<T extends Resource['type']>(props: AccordionPanelProps<T>) {
+function AccordionItem<T extends ResourceType>(props: AccordionPanelProps<T>) {
   const { data, map, isOpen } = props;
-  const [query, setQuery] = useState('');
-  const searchRef = useRef<HTMLInputElement>(null);
-  const { classes } = useAccordionItemStyles();
-
-  const filteredData = useMemo(
-    () =>
-      data.filter((item) =>
-        Object.values(item).some((value) => String(value).trim().toLowerCase().includes(query.toLowerCase().trim())),
-      ),
-    [data, query],
-  );
-
-  useEffect(() => {
-    if (isOpen) {
-      setTimeout(() => searchRef.current?.focus(), 100);
-    }
-  }, [isOpen]);
-
   return (
     <Accordion.Item value={map.id}>
       <Accordion.Control>
@@ -161,20 +119,7 @@ function AccordionItem<T extends Resource['type']>(props: AccordionPanelProps<T>
         </Group>
       </Accordion.Control>
       <Accordion.Panel>
-        <Stack>
-          <TextInput
-            ref={searchRef}
-            classNames={{ root: classes.inputContainer, input: classes.input }}
-            rightSection={<IconSearch />}
-            value={query}
-            onChange={(e) => setQuery(e.currentTarget.value)}
-          />
-          {filteredData.length === 0 ? (
-            <Text className={classes.placeholderMessage}>No {map.singularTerm} resources found...</Text>
-          ) : (
-            <ResourceTable data={filteredData} fieldMappings={map.fieldMappings} initialSort={map.initalSort} />
-          )}
-        </Stack>
+        <ResourceTable data={data} map={map} isVisible={isOpen} />
       </Accordion.Panel>
     </Accordion.Item>
   );
