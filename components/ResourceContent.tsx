@@ -96,7 +96,6 @@ const books: ResourceMap<'book'> = {
       heading: 'Authors',
       transform: (value) => (Array.isArray(value) ? (value.length === 0 ? 'N/A' : value.join(', ')) : value.toString()),
     },
-    { key: 'pages', heading: 'Pages' },
   ],
   type: 'book',
   initialSort: 'title',

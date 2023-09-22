@@ -11,7 +11,6 @@ export const bookResourceSchema = z.object({
   url: z.string(),
   title: z.string(),
   authors: z.string().array(),
-  pages: z.number(),
   type: z.literal('book'),
 });
 
