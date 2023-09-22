@@ -56,11 +56,6 @@ const courses: ResourceMap<'course'> = {
       heading: 'Authors',
       transform: (value) => (Array.isArray(value) ? (value.length === 0 ? 'N/A' : value.join(', ')) : value.toString()),
     },
-    {
-      key: 'duration',
-      heading: 'Duration',
-      transform: (value) => (value === 0 ? 'N/A' : `${toReadableHours(parseFloat(String(value)))}`),
-    },
     { key: 'platform', heading: 'Platform' },
   ],
   type: 'course',

@@ -19,7 +19,6 @@ export const courseResourceSchema = z.object({
   title: z.string(),
   platform: z.string(),
   authors: z.string().array(),
-  duration: z.number(),
   type: z.literal('course'),
 });
 
